@@ -105,7 +105,13 @@ The triangle inequality is given by $|a+b| \leq |a| + |b| $.
                 $(a + b)^2  \leq (|a| + |b|)^2$. We can now use this to prove the triangle inequality by taking the square root of both sides which yeilds, 
 
                 \[
-                    |a + b| \leq |a| + |b| 
+                    |a + b| \leq ||a| + |b|| 
+                \]
+
+                but since $|a| + |b| \geq 0$ we have 
+
+                \[
+                    |a + b| \leq |a| + |b|
                 \]
 
                 as desired. 
@@ -134,19 +140,53 @@ The triangle inequality is given by $|a+b| \leq |a| + |b| $.
 
             
     \end{alphaparts}
-% Your content
+
 
 \question
-Given a function $f$ and a subset of its domain $A$, let $f[a]$ denote the range of $f$ over $A$, i.e., $f[a] = \{f(x) | x \in A \} $
+Given a function $f$ and a subset of its domain $A$, let $f[A]$ denote the range of $f$ over $A$, i.e., $f[A] = \{f(x) | x \in A \} $
 
 \begin{alphaparts}
     \questionpart
     let $f: \R \to \R$ given by $f(x) = x^2$. Let $A = [0, 2]$ and let $B = [1, 4]$. Does $f[A \cap B] = f[A] \cap f[B]$? What about $f[A \cup B] = f[A] \cup f[B]$? 
 
-    Both parts of this question are true. First I prove $f[A \cap B] = f[A] \cap f[B]$. First note that $A \cap B = [1, 2]$ then we may compute the range of $f$ on this domain and we get that $\ran f = [1, 4]$. 
+    
     \begin{proof}
-       
+        Both parts of this question are true. First I prove $f[A \cap B] = f[A] \cap f[B]$. First note that $A \cap B = [1, 2]$ then we may compute the range of $f$ on this domain and we get that $\ran f = [1, 4]$. 
+
+       To prove that $\ran f = [1,4]$ first we prove that $\ran f \subseteq [1, 4]$ so let $y \in \ran f$. Then we fix $x \in \dom f$ such that $y = f(x) = x^2$. Then since $f$ is increasing on the interval $[1,2]$ it is clear that $y \in [1, 4]$. 
+       Now to prove that $[1,4] \subseteq \ran f$ let $y \in [1, 4]$ be arbitrary. Then we must find a $x \in \dom f$ such that $f(x) = y$. Choosing $x = \sqrt{y}$ gives the desired result. Since $f(\sqrt{y}) = (\sqrt{y})^2 = y$. Since $\sqrt{y}$ is well defined on $[0, 4]$ 
+       we conclude that $\ran f = [1, 4]$. Hence $f[A \cap B] = [1, 4]$. 
     \end{proof}
+
+    \questionpart 
+    Give an example where $f[A \cap B] = f[A] \cap f[B]$ doesn't hold. 
+
+    Example: let $A = [-1, -2]$ and $B = [1, 2]$. 
+
+    \questionpart 
+    Let $A,B \subseteq \R$ and prove that for an arbitrary function $g: \R \to \R$, $g[A \cap B] \subseteq g[A] \cap g[B]$.
+
+    \begin{proof}
+        Let $y \in g[A \cap B]$ be arbitrary. Then there exists an $x \in A \cap B$ such that $y = g(x)$. Since $x \in A \cap B$ we know that $x \in A$ and $x \in B$. We also have that $y = g(x)$. 
+        Hence $y \in g[A] $ and $y \in g[B]$. Then we have that $y \in g[A] \cap g[B]$.  
+    \end{proof}
+
+    *side note: if I add the condidtion that $g$ be injective, I think that you could prove $g[A \cap B] = g[A] \cap g[B]$. 
+    A counter example existed for $f(x) = x^2$ only because it is not injective (I think). 
+
+    \questionpart 
+    Form a conjecture about $g[A \cup B]$ and $g[A] \cup g[B]$ and prove it. 
+
+    Conjecture: $g[A \cup B] = g[A] \cup g[B]$. 
+
+    \begin{proof}
+        Let $y \in g[A \cup B]$ then we may fix $x \in A \cup B$ such that $y = g(x)$. Since we have that $x \in A$ or $x \in B$, we know that either $y \in g[A] $ or $y \in [B]$. It is then clear that $y$ is in the union. 
+        To prove the other direction assume that $y \in g[A] \cup g[B]$, then either $y \in g[A] $ or $y \in g[B]$. If $y \in g[A]$ then we may fix $x \in A$ such that $y = g(x)$. Then it follows that $x \in A \cup B$; So then $y \in g[A \cup B]$. If it is not the case 
+        that $y \in g[A]$ then $y \in g[B]$ must be true and the argument is the same. 
+    \end{proof}
+
+    
+
 \end{alphaparts}
 
 \end{document}
