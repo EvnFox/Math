@@ -112,6 +112,26 @@ The triangle inequality is given by $|a+b| \leq |a| + |b| $.
             
             \end{proof}
 
+        \questionpart
+            Use the triangle inequality to prove that $|a - b| \leq |a - c| + |c - d| + |d - b|$. 
+
+            \begin{proof}
+                Let $x = (a - c)$ and let $y = (c - d) + (d - b)$, the the triangle inequality tells us that 
+
+                \[ |x + y| \leq |x| + |y| \] 
+                \[ |a - b| \leq |a - c| + |(c - d) + (d - b)| \] 
+
+                Now we can apply the triangle inequality again to the second term on the right hand side of the last 
+                equation. So we let $z = (c - d)$ and let $w = (d - b)$, by the triangle inequality we the have $|c - b| \leq |c - d| + |d - b|$. 
+                Substituting back in gives, 
+
+                \[ |a - b| \leq |a - c| + |(c - d) + (d - b)| = |a - c| + |c - d| + |d - b| \] 
+                \[|a - b| \leq |a - c| + |c - d| + |d - b|\]
+
+                as desired. 
+
+            \end{proof}
+
             
     \end{alphaparts}
 % Your content
