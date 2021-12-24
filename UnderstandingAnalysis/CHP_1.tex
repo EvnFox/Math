@@ -94,12 +94,29 @@ The triangle inequality is given by $|a+b| \leq |a| + |b| $.
             Verify the triangle inequality in the special case that $a$ and $b$ have the same sign. 
             
             \begin{proof}
-                Let $a,b \in \R$ and assume that $a $ and $b$ have the same sign. 
+                Let $a,b \in \R$ and assume that $a $ and $b$ have the same sign. Then if $a$ and $b$ are both negitive we see that $|a + b| = a + b$ and if $a$ and $b$ are both positive then $|a + b| = a + b$. Then note that regardless of the signs of $a$ and $b$, $|a| + |b| = a + b$.
+                It is then clear that the inequality holds. 
             \end{proof}
         \questionpart
-            part b
+            Give a general proof the the triangle inequality. 
+
+            \begin{proof}
+                First we prove that $(a + b)^2 \leq (|a| + |b|)^2 $ by observing $ab \leq |ab| $. Then we multiply both sides by $2$ and obtain $2ab \leq 2|ab|$, we then add $a^2 + b^2$ to both sides and get $a^2 + 2ab + b^2 \leq |a|^2 + 2|ab| + |b|^2$. Factoring this gives 
+                $(a + b)^2  \leq (|a| + |b|)^2$. We can now use this to prove the triangle inequality by taking the square root of both sides which yeilds, 
+
+                \[
+                    |a + b| \leq |a| + |b| 
+                \]
+
+                as desired. 
+            
+            \end{proof}
+
             
     \end{alphaparts}
 % Your content
+
+\question
+
 
 \end{document}
