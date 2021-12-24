@@ -1,0 +1,105 @@
+\documentclass[11pt,largemargins]{homework}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\ran}{\operatorname{ran}}
+\newcommand{\dom}{\operatorname{dom}}
+\newcommand{\eps}{\varepsilon}
+\newcommand{\ssd}{\bigtriangleup}
+\newcommand{\pow}{\mathcal{P}}
+
+% TODO: replace these with your information
+\newcommand{\hwname}{Evan Fox}
+\newcommand{\hwemail}{efox20@uri.edu}
+\newcommand{\hwtype}{Chapter}
+\newcommand{\hwnum}{1}
+\newcommand{\hwclass}{Understanding Analysis}
+\newcommand{\hwlecture}{}
+\newcommand{\hwsection}{}
+
+\begin{document}
+\maketitle
+The first part of chapter one just went over some prelims/reviews. Here are my solutions to selected exercises. 
+\question
+    \begin{alphaparts}
+        \questionpart
+            Prove that the $\sqrt{3} \notin \Q$
+            
+            First, I prove that $3|x^2 \implies 3|x$ as I will need this fact in my proof of the irrationality of $\sqrt{3}$. 
+            
+            \begin{proof}
+                We use the contrapositive, so assume that $3\nmid x$. Then there exists $k \in \Z$ such that $x = 3k + 1$ or $ x = 3k + 2$. Then note that if $x = 3k + 1$, then 
+                \[ x = 3k + 1 \] 
+                \[ x^2 = 9k^2 + 6k + 1 = 3(3k^2 + 2k) + 1\]
+                
+                and in the other case we have
+                
+                \[ x = 3k + 2 \] 
+                \[ x^2 = 9k^2 + 12k + 4 = 3(3k^2 + 4k + 1) + 1 \] 
+                
+                So, in both cases we see that $3\nmid x^2$ as desired. 
+            \end{proof}
+            
+            Now I prove that $\sqrt{3} \notin \Q$ 
+            \begin{proof}
+                For the sake of contradiction, assume that $\sqrt{3} \in \Q$. Then we may fix $m, n \in \Q$ such that $\sqrt{3} = \frac{m}{n}$. We then have that, 
+                
+                \[ 3 = \left(\frac{m}{n}\right)^2 \]\ 
+                
+                by the fundamental theorem of arithmetic, we may write $m^2$ and $n^2$ in terms of their prime factors and cancel any factor(s) that they have in common, i.e., we reduce $\frac{m}{n}$ such that they have no common factors. Since $m$ and $n$ have no common factors we note that they cannot both be divisible by 3. Fist observe that 
+                \begin{equation}
+                    3n^2 = m^2
+                \end{equation}
+                
+                
+                and hence we have $3| m^2$ which implies $3|m$; so we fix $k \in \Z$ such that $ m = 3k$ and then we substitute this expression for $m$ back into (1). 
+                
+                \begin{equation}
+                     3n^2 = (3k)^2 = 9k^2
+                \end{equation}
+                
+                \begin{equation}
+                     n^2 = 3k^2 
+                \end{equation}
+                
+                and we have that 3 divides $n^2$ and by extension 3 divides $n$. Thus we have a contradiction as desired.  
+            \end{proof}
+        \questionpart
+            Does a similar argument work to prove that $\sqrt{6} \notin \Q$? Where does the proof breakdown for $\sqrt{4}$?
+            
+                Yes, weather or not this method works for $\sqrt{x}$ is related to the prime factorization of $x$, since the prime factors of 6 both have an exponent of 1, $6|m^2 \implies 6|m$ will hold. This is because if 2 and 3 are prime factors of $m^2$ then they will have to be prime factors of m, otherwise how would they have been prime factors of $m^2$? The point is squaring a number doesn't add new prime factors; it just multiples the exponent of each prime factor by 2. When we try to apply this argument to $\sqrt{4}$ the problem is that $4|m^2 \implies 4|m$ doesn't hold since the exponent of the prime factor of 4 is 2. To give an example note that $4|36 = 6^2 = 2^23^2$ but $4\nmid 6 = 3 (2) $. 
+    \end{alphaparts}
+    
+    \question
+    Prove that there is no rational number satisfying $2^r = 3$. 
+    
+    \begin{proof}
+    We use contradiction, so assume that there exists $r \in \Q$ such that $2^r = 3$. Then since $r$ is rational by assumption we may fix $m, n \in \Q$ such that $r = \frac{m}{n}$. Substituting in for $r$ gives
+    
+    \[ 2^{\frac{m}{n} = 3} \] 
+    
+    then we raise both sides to the $n^{\text{th}}$ power and get 
+    
+    \[ 2^m = 3^n \] 
+    
+    which contradicts the uniqueness of the fundamental theorem of arithmetic. 
+    \end{proof}
+
+
+\question
+The triangle inequality is given by $|a+b| \leq |a| + |b| $.
+    \begin{alphaparts}
+        \questionpart
+            Verify the triangle inequality in the special case that $a$ and $b$ have the same sign. 
+            
+            \begin{proof}
+                Let $a,b \in \R$ and assume that $a $ and $b$ have the same sign. 
+            \end{proof}
+        \questionpart
+            part b
+            
+    \end{alphaparts}
+% Your content
+
+\end{document}
