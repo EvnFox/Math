@@ -190,6 +190,114 @@ Given a function $f$ and a subset of its domain $A$, let $f[A]$ denote the range
 \end{alphaparts}
 
 \question
-s
+Let $A, B \subseteq \R$ and let $g: D \to \R$ be arbitrary. Then we define $g^{-1}[B] = \{x \in D | g(x) \in B \} $. Prove that $g^{-1}[A \cap B] = g^{-1}[A] \cap g^{-1}[B]$. 
+
+\begin{proof}
+    Let $x \in g^{-1}[A \cap B]$, then we may fix $g(x) \in A \cap B$ such that $x \mapsto g(x)$. Then since $g(x) \in A \cap B$ we have that $g(x) \in A $ and $g(x) \in B$. It then follows by definition that 
+    $x \in g^{-1}[A] $ and $x \in g^{-1}[B]$; then again by definition we have $x \in g^{-1}[A]  \cap g^{-1}[B]$. 
+    
+    To prove the other direction, let $x \in  g^{-1}[A]  \cap g^{-1}[B]$. Since $x \mapsto g(x) $ we have that $g(x) \in A$ and $g(x) \in B$. Thus $g(x) \in A \cap B$. Then by defintion we have that $x \in g^{-1}[A \cap B]$ as desired. 
+    
+\end{proof}
+
+\question
+let $y_1 = 6$ then for all $n \in \N$ define $y_{n + 1} = \frac{2y_n - 6}{3}$. 
+
+\begin{alphaparts}
+    \questionpart
+    Prove that $y_n > 6$ for all $n \in \N$
+
+    \begin{proof}
+        We proceed with the principal of mathematical induction. 
+        \begin{induction}
+            \basecase
+            We show that $y_2 > -6$, since we already have $y_1 = 6$ we compute $y_2$ using the definition and we get 
+            \[ y_2 = \frac{2(y_1) - 6}{3} = \frac{2(6)- 6}{3} = 2 > -6\] 
+            as desired. 
+
+            \indhyp
+            Assume that for some $k \geq 2$ that we have $y_k > -6$ we want to show that $y_{k + 1} > -6$. 
+
+            \indstep
+            we have that $y_k > -6$ and can use simple algebra to get to the $y_{k+1}$ case. 
+
+            \[y_k > -6 \]
+            \[ 2y_k > -12 \] 
+            \[ 2y_k - 6 > -18 \] 
+            \[ \frac{2y_k - 6}{3} > -6 \] 
+            \[y_{k+1} > -6 \] 
+
+            and so by the principal of mathematical induction the proposistion holds. 
+        \end{induction}
+    \end{proof}
+
+    \questionpart
+    Show that the sequence $\{y_1, y_2, y_3, ... \}$ is decreasing. 
+    
+    \begin{proof}
+        To prove that the sequence is decreasing we show that for any $n \in \N$ we have $y_n > y_{n+1}$. By the previous result 
+        we have that $y_n > -6$ for all $n \in \N$. Then it follows, 
+
+        \[3y_n - 2y_n > -6 \] 
+        \[3y_n > 2y_n - 6 \] 
+        \[ y_n > \frac{2y_n -6}{3} \] 
+
+        but then by defintion of the $n + 1$th term we get 
+
+        \[ y_n > y_{n+1} \] 
+        
+        as desired. 
+    
+    \end{proof}
+\end{alphaparts}
+
+\question 
+We have DeMorgan's laws given by 
+
+\[A^c \cap B^c = (A \cup B)^c \] 
+and 
+\[A^c \cup B^c = (A \cap B)^c \] 
+
+ 
+
+\begin{alphaparts}
+    \questionpart
+    use induction to prove DeMorgan's laws for an arbitrary number of unions/intersections. 
+
+    \[\bigcap_{i =1}^n A_i^c = \left(\bigcup_{i = 1}^n A_i \right)^c \]
+
+    \begin{proof}
+        \begin{induction}
+            \basecase 
+            For a basecase of $n = 2$ we simply have DeMorgan's laws, to prove that $A_1^c \cap A_2^c = (A_1 \cup A_2)^c$
+            first let $x \in A_1^c \cap A_2^c$ then we have that $x \in A_1^c $ and that $x \in A_2^c$. By definiton this gives 
+            $x \notin A_1$ and $x \notin A_2$. It then follows that $x \notin A_1 \cup A_2$. Which then by definiton implies
+            $x \in (A_1 \cup A_2)^c $. The proof of the other direction is similar. 
+            
+            \indhyp
+            Assume that for some $k \geq 2$ that we have $\bigcap_{i =1}^k A_i^c = \left(\bigcup_{i = 1}^k A_i \right)^c $
+            
+            
+        \end{induction}
+    \end{proof}
+
+    \questionpart
+    Give an example showing that induction cannot be used to imply the validity of the infinite case.
+
+    \begin{proof}
+        Consider $B_i = (0, \frac{1}{i})$
+    \end{proof}
+
+    \questionpart
+    prove the infinte case of DeMorgan's laws. 
+
+    \begin{proof}
+        We want to prove that 
+
+        \[\bigcap_{i = 1}^{\infty} A_i^c = \left(\bigcup_{i = 1}^{\infty} A_i \right)^c \]
+
+        We proceed by showing that they are subsets of each other. 
+    \end{proof}
+\end{alphaparts}
 
 \end{document}
