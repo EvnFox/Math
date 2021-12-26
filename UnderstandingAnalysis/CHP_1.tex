@@ -275,8 +275,19 @@ and
             $x \in (A_1 \cup A_2)^c $. The proof of the other direction is similar. 
             
             \indhyp
-            Assume that for some $k \geq 2$ that we have $\bigcap_{i =1}^k A_i^c = \left(\bigcup_{i = 1}^k A_i \right)^c $
+            Assume that for some $k \geq 2$ that we have $\bigcap_{i =1}^k A_i^c = \left(\bigcup_{i = 1}^k A_i \right)^c $.
             
+            \indstep
+            Since we have  $\bigcap_{i =1}^k A_i^c = \left(\bigcup_{i = 1}^k A_i \right)^c $ we intersect both sides with $A_{k + 1}^c$ and get 
+
+            \[ \left( \bigcap_{i =1}^k A_i^c  \right) \cap A_{k+1}^c = \left(\bigcup_{i = 1}^k A_i \right)^c \cap A_{k+1}^c \] 
+            \[\bigcap_{i =1}^{k+1} A_i^c = \left(\bigcup_{i = 1}^k A_i \right)^c \cap A_{k+1}^c \]
+
+            to deal with the right hand side we simply apply DeMorgan's law as proven in the basecase. So we have that $\left(\bigcup_{i = 1}^k A_i \right)^c \cap A_{k+1}^c  = \left( \bigcup_{i = 1}^k A_i \cup A_{k+1} \right)^c$. Now Substituting in yeilds 
+
+            \[\bigcap_{i =1}^{k+1} A_i^c = \left(\bigcup_{i = 1}^{k+1} A_i \right)^c \]
+
+            as desired. 
             
         \end{induction}
     \end{proof}
