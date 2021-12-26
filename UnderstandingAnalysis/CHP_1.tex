@@ -262,7 +262,7 @@ and
 
 \begin{alphaparts}
     \questionpart
-    use induction to prove DeMorgan's laws for an arbitrary number of unions/intersections. 
+    use induction to prove DeMorgan's laws for an arbitrary number of unions/intersections with $n > 1$. 
 
     \[\bigcap_{i =1}^n A_i^c = \left(\bigcup_{i = 1}^n A_i \right)^c \]
 
@@ -296,8 +296,37 @@ and
     Give an example showing that induction cannot be used to imply the validity of the infinite case.
 
     \begin{proof}
-        Consider $B_i = (0, \frac{1}{i})$
+        Consider $B_i = (0, \frac{1}{i})$ we use induction to show that for all $n \in \N$ with $n > 1$ the intersection of $B_i$ is non-empty. 
+
+        \begin{induction}
+            \basecase
+            For $n = 2$ we have that $\bigcap_{i = 1}^2 B_i = (0,\frac{1}{2})$. 
+
+            \indhyp
+            Assume that for some $k \geq 2$ that we have $\bigcap_{i = 1}^k B_i \neq \varnothing$.
+
+            \indstep
+            We know that $\bigcap_{i = 1}^k B_i \neq \varnothing$, now observe that for all $n \in \N$ the fraction $\frac{1}{n} > 0$. Also note that 
+            $\frac{1}{n+1} < \frac{1}{n}$. Hence it follows that $B_{k+1} \neq \varnothing$ and that $B_{k+1} \subseteq B_k \subseteq \bigcap_{i = 1}^k B_i$. 
+            then we have that 
+
+            \[\bigcap_{i = 1}^k B_i \cap B_{k+1} \neq \varnothing \]
+            \[\bigcap_{i =1}^{k+1} B_i \neq \varnothing \]
+
+            as desired. 
+                
+            
+        \end{induction}
+
+        Now we show that $\bigcap_{i = 1}^{\infty} B_i = \varnothing$ by contradiction. So assume that there exists $x \in \bigcap_{i=1}^{\infty} B_i$. Then we would have $0 < x < \frac{1}{n}$ for all $n \in \N$. 
+        But then by the Archimedian property we may fix $N \in \N$ such that for all $n > N$ we have $\frac{1}{n} < x $. Hence $x \notin B_n$. But since we assumed that $x \in \bigcap_{i = 1}^{\infty} B_i $
+        we have a contradiction. Thus we see that $\bigcap_{i = 1}^{\infty} B_i = \varnothing$ must be true. Hence induction on $\N$ does not imply the infinite case. 
+
+
     \end{proof}
+
+
+
 
     \questionpart
     prove the infinte case of DeMorgan's laws. 
@@ -307,7 +336,11 @@ and
 
         \[\bigcap_{i = 1}^{\infty} A_i^c = \left(\bigcup_{i = 1}^{\infty} A_i \right)^c \]
 
-        We proceed by showing that they are subsets of each other. 
+        We proceed by showing that they are subsets of each other in the standard way. So assume that $x \in  \bigcap_{i = 1}^{\infty} A_i^c$
+        Which implys that $x \notin A_i$ for all $i \in \N$. Hence $x \notin \bigcup_{i=1}^{\infty} A_i$. Then by defintion $x$ must be in the complement. 
+        Now we assume that $x \in \left(\bigcup_{i=1}^{\infty} A_i \right)^c$ then we have that $x \notin \bigcup_{i=1}^{\infty} A_i $, Thus 
+        $x \notin A_i$ for all $i \in \N$ which implys that $x \in A_i^c$ for all $i \in \N$. Then we get the desired result that $x \in \bigcap_{i=1}^{\infty} A_i^c$. 
+
     \end{proof}
 \end{alphaparts}
 
