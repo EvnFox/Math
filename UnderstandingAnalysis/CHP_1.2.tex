@@ -1,0 +1,54 @@
+\documentclass[11pt,largemargins]{homework}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\ran}{\operatorname{ran}}
+\newcommand{\dom}{\operatorname{dom}}
+
+\newcommand{\eps}{\varepsilon}
+\newcommand{\ssd}{\bigtriangleup}
+\newcommand{\pow}{\mathcal{P}}
+
+% TODO: replace these with your information
+% TODO: replace these with your information
+\newcommand{\hwname}{Evan Fox}
+\newcommand{\hwemail}{efox20@uri.edu}
+\newcommand{\hwtype}{Chapter}
+\newcommand{\hwnum}{1.2}
+\newcommand{\hwclass}{Understanding Analysis}
+\newcommand{\hwlecture}{}
+\newcommand{\hwsection}{}
+
+\begin{document}
+\maketitle
+
+\question
+Give a definition for greatest lower bound and prove a lemma analagous to 1.3.8 
+
+\newtheorem{definition}{Definition}
+\begin{definition}
+    
+ Let $A \subseteq \R$ and let $l \in \R$. We say that $l = \inf(A)$ if and only if 
+\begin{enumerate}
+    \item $l$ is a lower bound for $A$ (i.e. $l \leq a$ for all $a \in A$).
+    \item For an arbitrary lower bound $L$, we have that $L \leq l$. 
+\end{enumerate}
+\end{definition}
+\newtheorem{lemma}{Lemma}[definition]
+\begin{lemma}
+    Assume that $l \in \R$ is a lower bound for a set $A \subseteq \R$. Then, $l = \inf(A)$ if and only if, for all choices $\eps > 0$, we have that 
+    $l + \eps > a$ for some $a \in A$. 
+\end{lemma}
+
+\begin{proof}
+    Assume $l = \inf(A)$. Then note for all $\eps \geq 0$ that $l < l + \eps$. Then since $l$ is the greatest lower bound for $A$
+    by definiton, we have that $l + \eps$ is not a lower bound. But then there must exist $a \in A$ such that $l + \eps > a$. 
+
+    To prove the Other direction assume we have $l \in \R$ such that $l$ is a lower bound for $A$ with the property that 
+    for all $\eps > 0$ we have $l + \eps > a$ for some $a \in A$. For the sake of contradiction assume that we have $L \in \R$ such that $L > l$ and that $L = \inf(A)$. Then we note that by choosing $\eps = -l + L$
+    we get that $L > a$ for some $a \in A$. Hence $L$ is not a lower bound for $A$ contradicting our assumtion. Hence $l = \inf(A)$.  
+\end{proof}
+
+
+\end{document}
