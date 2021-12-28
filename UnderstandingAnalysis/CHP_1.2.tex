@@ -100,4 +100,37 @@ Let $A_1, A_2, A_2, ... $ be a collection of non empty sets that are bounded abo
     Find a formula for $\sup(A_1 \cup A_2)$ and extend it to finite unions 
 \end{alphaparts}
 
+
+\question
+Let $A \in \R$ be bounded above and let $c \in \R$. Then define $cA = \{ ca | a \in A \} $. 
+
+\begin{alphaparts}
+    \questionpart
+    For $c \geq 0$, prove $\sup(cA) = c\sup(A)$. 
+
+    \begin{proof}
+        Fix $s \in \R$ such that $s = \sup(A)$. Then $cs \geq ca $ for all $a \in A$. Then if $b$ is an arbitrary upper bound of $A$ then 
+        $s \leq b$, hence $cs \leq cb$. So  $cs = c\sup(A) = sup(cA)$.
+    \end{proof}
+
+    \questionpart
+    For $c < 0$, prove $\sup(cA) = c\inf(A)$. 
+
+    \begin{proof}
+        Assume $c < 0 $ and fix $s, i \in \R$ such that $s = \sup(cA)$ and $i = \inf(A)$. Then since $i \leq a$ for all $a \in A$ we have 
+        $ci \geq ca$ for all $a \in A$. Hence $i$ is a upper bound for $cA$. To prove $s = ci$ first suppose that $s < ci$; then
+        for all $a \in A$ we have $ci > s \geq ca$ which is equivalent to $i < s \leq a$, contradicting $i = \inf(A)$. Now suppose that 
+        $s > ci$; since we already know that $ci \geq ca$ for all $a \in A$ we see this contradicts $s = \sup(cA)$. Hence we must have $s = ci$. 
+
+    \end{proof}
+
+    Below is my attempt to shorten the argument and do a direct proof. In general I feel like using contradiction is easier for me. 
+    \begin{proof}
+        Assume $c < 0$ and let $L \in \R$ be an arbitrary lower bound for $A$, then we note that since $L \leq a$ for all $a \in A$, we have that 
+        $cL \geq ca$ for all $a \in A$; therefore $cL$ is an arbitrary upper bound for $cA$. Now we fix $i \in \R$ such that $i = \inf(A)$, then for our arbitrary lower bound L we have $i \geq L$ and $ci \leq cL$. Hence, $ci = sup(cA)$. 
+    \end{proof}
+\end{alphaparts}
+
+
+
 \end{document}
