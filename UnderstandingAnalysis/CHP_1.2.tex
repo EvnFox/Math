@@ -50,5 +50,46 @@ Give a definition for greatest lower bound and prove a lemma analagous to 1.3.8
     we get that $L > a$ for some $a \in A$. Hence $L$ is not a lower bound for $A$ contradicting our assumtion. Hence $l = \inf(A)$.  
 \end{proof}
 
+\question
+For each part either given an example or state that the request is impossible. 
+
+\begin{alphaparts}
+    \questionpart
+        A set B with $\inf(B) \geq \sup(B)$. 
+
+        Consider the set $B = \{0\}$. It is clear that $B \subset \R$ and that $\inf(B) = \sup(B) = 0$. 
+
+    \questionpart
+        A set that contains its infinium but not it's supprenum. 
+
+        Consider the set $[0, 1)$. 
+
+    \questionpart
+        A set $B \subseteq \Q$ that contains its supprenum but not its infinium. 
+
+        Consider the set $B = \{x \in \Q | 0 < x \leq 1 \} $. 
+
+\end{alphaparts}
+
+\question 
+
+\begin{alphaparts}
+    \questionpart 
+    Let $A$ be non-empty and bounded below. Then
+    Define $B = \{ b \in \R | \text{ b is a lower bound for A} \}$. Prove that 
+    $\sup(B) = \inf(A)$. 
+
+    \begin{proof}
+        We fix $s \in \R$ such that $s = \inf(A)$. Then we know the $s \in B$ since $s$ is a lower bound for $A$. We also have that 
+        for an arbitrary element $l \in B$, $s \geq l$; then $s$ is an upper bound for $B$ and must be the least upper bound since 
+        $s \in B$ and any arbitrary upper bound $S$ must then satisfy $s \leq S$. 
+    \end{proof}
+
+    \questionpart 
+    Use the result from (a) to argue why there is no need to assert that greatest lower bounds exist in the axiom of completness. 
+
+    The result from part (a) shows shows us that we can define the greatest lower bound as the supprenum of the set of lower bounds. 
+    Hence the assertion that all sets bounded above have a least upper bound implys that all sets bounded below have a greatest lower bound. 
+\end{alphaparts}
 
 \end{document}
