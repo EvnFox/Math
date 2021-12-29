@@ -109,8 +109,8 @@ Let $A \in \R$ be bounded above and let $c \in \R$. Then define $cA = \{ ca | a 
     For $c \geq 0$, prove $\sup(cA) = c\sup(A)$. 
 
     \begin{proof}
-        Fix $s \in \R$ such that $s = \sup(A)$. Then $cs \geq ca $ for all $a \in A$. Then if $b$ is an arbitrary upper bound of $A$ then 
-        $s \leq b$, hence $cs \leq cb$. So  $cs = c\sup(A) = sup(cA)$.
+        Let $c  \geq 0$ and fix $s \in \R$ such that $s = \sup(A)$. Then $cs \geq ca $ for all $a \in A$. Then if $b$ is an arbitrary upper bound of $A$ then 
+        $s \leq b$, hence $cs \leq cb$ where $cb$ is an arbitrary upper bound of $cA$. So  $cs = c\sup(A) = \sup(cA)$.
     \end{proof}
 
     \questionpart
@@ -131,6 +131,22 @@ Let $A \in \R$ be bounded above and let $c \in \R$. Then define $cA = \{ ca | a 
     \end{proof}
 \end{alphaparts}
 
+\question
+Prove that if $a \in A$ and $a$ is an upper bound for $A$, then $a = \sup(A)$. 
+
+\begin{proof}
+    Fix $a \in \R$ such that $a \in A$ and $a$ is an upper bound for $a$. Then to prove that $a = \sup(A)$, note that 
+    if $b$ is an arbitrary upper bound for $A$ then $x \leq b$ for all $x \in A$. Then since $a \in A$ it is clear that $a \leq b$. 
+    Hence, $a$ satisfys the definition of a least upper bound. 
+\end{proof}
+
+\question
+    if $\sup(A) < \sup(B)$ then there is some element $b \in B$ that is an upperbound for $A$.
+
+    \begin{proof}
+        We use the contrapostive. A+ssume that there is no $b \in B$ that bounds $A$ above. Then $\sup(A) > b$ for all $b \in B$. Hence $\sup(A)$ is an upper bound for $B$ and so 
+        $\sup(B) \leq \sup(A)$. 
+    \end{proof}
 
 
 \end{document}
