@@ -144,9 +144,55 @@ Prove that if $a \in A$ and $a$ is an upper bound for $A$, then $a = \sup(A)$.
     if $\sup(A) < \sup(B)$ then there is some element $b \in B$ that is an upperbound for $A$.
 
     \begin{proof}
-        We use the contrapostive. A+ssume that there is no $b \in B$ that bounds $A$ above. Then $\sup(A) > b$ for all $b \in B$. Hence $\sup(A)$ is an upper bound for $B$ and so 
+        We use the contrapostive. Assume that there is no $b \in B$ that bounds $A$ above. Then $\sup(A) > b$ for all $b \in B$. Hence $\sup(A)$ is an upper bound for $B$ and so 
         $\sup(B) \leq \sup(A)$. 
     \end{proof}
 
+
+\question
+
+\begin{definition}[The Cut Property]
+    If $A, B \subseteq \R$ such that $A \cap B = \varnothing$ and $A \cup B = \R$ and for all $a \in A $ and $b \in B$ we have $a < b$ then then there exists $c \in \R$ such that 
+    $c \geq a$ for all $a \in A$ and $c \leq b$ for all $b \in B$. 
+\end{definition}
+
+Prove that the cut property is equivalent to the axiom of completness (i.e. prove that they imply each other).
+
+\begin{proof}
+    We begin by assuming the cut property so suppose that we have $A \subseteq \R$ then define $B = \{x \in \R | (\forall a \in A)(x > a) \}$. Then we may fix $c \in \R$ such that $a \leq c \leq b$ for all $a \in A$ and all $b \in B$. 
+    Then it is clear that $c$ is an upper bound for $A$. Then to prove that $c$ is the least upper bound we first condsider the case where $c \in A$ then by previous result it follows that $c = \sup(A)$. If $c \notin A$ then $B$ must be the set of all upper bounds; then since
+    we have $c \leq b$ for all $b \in B$ we see that $c = \sup(A)$ as desired. 
+
+    To prove the other direction we assume the axiom of completness, that is, assume every bounded subset of $\R$ has a least upper bound. Then let $A \subseteq \R$ that is bounded above. Then we may fix $\alpha \in \R$ such that $a \leq \alpha$ for all $a \in A$. Now we define  $B = \{x \in \R | (\forall a \in A)(x > a) \}$. 
+    then since every element of $B$ is an upper bound for $A$ we must have $a \leq \alpha \leq b$ for all $a \in A$ and all $b \in B$. 
+\end{proof}
+
+
+\question
+Prove or disprove the following 
+
+\begin{alphaparts}
+    \questionpart
+    Let $A$ and $B$ be nonempty subsets of $\R$ such that $A \subseteq B$. Then $\sup(A) \leq \sup(B)$. 
+
+    \begin{proof}
+        Note that since $A \subseteq B$ we must have $\sup(B) \geq a$ for all $a \in A$; so $\sup(B)$ is an upper bound for $A$. Then $\sup(A) \leq \sup(B)$ by definition. 
+    \end{proof}
+
+    \questionpart
+    if $\sup(A) < \inf(B)$ then there exists $c \in \R$ satisfying $a < c < b$ for all $a \in A$ and all $b \in B$. 
+
+    \begin{proof}
+        Since $\sup(A) < \sup(B)$ there exists $\eps \in \R$ such that $\sup(A) +  \eps = \sup(B)$. Then consider $\sup(A) + \frac{\epsilon}{2}$; it is clear that $\sup(A) < \sup(A) + \frac{\epsilon}{2} < \sup(B)$
+    \end{proof}
+
+    \questionpart
+    if there exists $c \in \R$ satisfying $a < c < b$ for all $a \in A$ and all $b \in B$ then  $\sup(A) < \inf(B)$. 
+
+    This is false
+    \begin{proof}
+        Consider the counter example $A = (0, 2)$ and $B = (2, 4)$. 
+    \end{proof}
+\end{alphaparts}
 
 \end{document}
