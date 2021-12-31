@@ -12,8 +12,8 @@
 
 % TODO: replace these with your information
 % TODO: replace these with your information
-\newcommand{\hwname}{Evan Fox}
-\newcommand{\hwemail}{efox20@uri.edu}
+\newcommand{\hwname}{name}
+\newcommand{\hwemail}{email}
 \newcommand{\hwtype}{Chapter}
 \newcommand{\hwnum}{1.2}
 \newcommand{\hwclass}{Understanding Analysis}
@@ -98,6 +98,20 @@ Let $A_1, A_2, A_2, ... $ be a collection of non empty sets that are bounded abo
 \begin{alphaparts}
     \questionpart
     Find a formula for $\sup(A_1 \cup A_2)$ and extend it to finite unions 
+
+    Claim: $\sup(A_1 \cup A_2) = \sup(\{\sup(A_1), \sup(A_2)\})$
+
+    \begin{proof}
+        Note that either $\sup(A_1) \leq \sup(A_2)$ or $\sup(A_2) \leq \sup(A_1)$ must hold. If we are in the first cases then 
+        it is clear that $\sup(A_2)$ is the supprenum of $A_1 \cup A_2$ and if we are in the latter case then $\sup(A_1)$ will be the supprenum. 
+        Hence the supprenum of the union will be the largest supprenum of the sets being unioned. 
+    \end{proof}
+
+    To extend this to finite unions we claim 
+
+    \[\sup(\bigcup_{i = 0}^n A_i) = \sup(S) \] 
+
+    where $S = \{ \sup(A_i) | i \leq n \}$. 
 \end{alphaparts}
 
 
@@ -194,5 +208,25 @@ Prove or disprove the following
         Consider the counter example $A = (0, 2)$ and $B = (2, 4)$. 
     \end{proof}
 \end{alphaparts}
+
+\question
+Let $A$ and $B$ be nonempty subsets of $\R$. Define $A + B = \{a + b| a \in A \text{and} b \in B \}$. Prove that 
+$\sup(A  + B) = \sup(A) + \sup(B)$. 
+
+\begin{proof}
+    Let $s_a = \sup(A)$ and $s_b = \sup(B)$. Then $s_a + s_b \geq a + b$ for all $a \in A $ and $b \in B$; so $s_a + s_b$ is an upper bound for $A + B$. 
+    Then let $u$ be an arbitrary upper bound for $A + B$ so that $u \geq a + b$ for all $a$ and $b$. We then fix $a \in A$ 
+    such that for all $\eps > 0$, $s_a - \eps < a$. Then 
+
+    \[u - a \geq b\] 
+    \[u - a \geq s_b\] 
+    \[u - \eps > s_b + s_a\] 
+
+    which implys
+
+    \[u \geq s_b + s_a \] 
+
+    hence it follows that $s_a + s_b = \sup(A + B)$. 
+\end{proof}
 
 \end{document}
