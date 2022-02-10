@@ -1,0 +1,51 @@
+\documentclass[11pt,largemargins]{homework}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\ran}{\operatorname{ran}}
+\newcommand{\dom}{\operatorname{dom}}
+\newcommand{\E}{\operatorname{E}}
+\newcommand{\eps}{\varepsilon}
+\newcommand{\ssd}{\bigtriangleup}
+\newcommand{\pow}{\mathcal{P}}
+
+% TODO: replace these with your information
+\newcommand{\hwname}{Evan Fox}
+\newcommand{\hwemail}{efox20@uri.edu}
+\newcommand{\hwtype}{Quiz}
+\newcommand{\hwnum}{4}
+\newcommand{\hwclass}{MTH 451}
+\newcommand{\hwlecture}{}
+\newcommand{\hwsection}{}
+
+\begin{document}
+\maketitle
+\question
+\begin{alphaparts}
+\questionpart
+Applying the definition gives
+\[\E(X) = \displaystyle \sum_{x \in X} xf(X) = 0 * 7/17 + 1 * 5/17 + 2*3/17 + 3*2/17 = 1 \]
+
+\questionpart
+Since $\E$ is linear
+$\E(2x + 3) = 2\E(X) + 3 = 2 + 3 = 5$
+
+\questionpart
+We use the LOTUS. 
+\[\E(X^2) = \displaystyle \sum_{x \in X} x^2 f(X) \]
+\[= 0^2 * 7/17 + 1^2 * 5/17 + 2^2 *3/17 + 3^2 *2/17= 35/17 \]
+
+\questionpart
+By definiton $V(X) = E[x - E[X]^2]$, Then we have $V(X) = E(X^2) - E(X)^2 = 35/17 - 1 = 18/17$
+
+\questionpart 
+Since $V(aX + b) = a^2V(X)$ we have 
+\[V(2X + 3) = 4V(X) = 4(18/17) = 72/12 \]
+
+\end{alphaparts}
+
+
+% Your content
+
+\end{document}

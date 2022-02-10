@@ -1,0 +1,58 @@
+\documentclass[11pt,largemargins]{homework}
+\usepackage{qtree}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\ran}{\operatorname{ran}}
+\newcommand{\dom}{\operatorname{dom}}
+\newcommand{\eps}{\varepsilon}
+\newcommand{\ssd}{\bigtriangleup}
+\newcommand{\pow}{\mathcal{P}}
+
+% TODO: replace these with your information
+\newcommand{\hwname}{Evan Fox}
+\newcommand{\hwemail}{efox20@uri.edu}
+\newcommand{\hwtype}{Quiz}
+\newcommand{\hwnum}{3}
+\newcommand{\hwclass}{MTH 451}
+\newcommand{\hwlecture}{}
+\newcommand{\hwsection}{}
+
+
+\begin{document}
+\maketitle
+
+\question
+\begin{alphaparts}
+\questionpart 
+let $a = 1$ and $b = 1$. Then 
+
+\[(a + b)^n = ( 1 + 1 )^n =  \sum_{k = 0}^{n} {n \choose k} \]
+
+\questionpart 
+Let $a = -1$ and let $b = 1$. Then 
+\[ (-1 + 1)^n = \sum_{k = 0}^n {n \choose k} (-1)^k \]
+
+\questionpart
+Let $x = a - 1$ and $y = 1$. Then 
+
+\[(x + y)^n =(a)^n = (a - 1 + 1)^n = \sum_{k = 0}^{n}(a - 1)^k \]
+\end{alphaparts}
+% Your content
+\question
+\begin{alphaparts}
+\questionpart 
+Let B denote the event of getting a broken item and let G denote the event of getting a non-broken item. 
+\[\Tree [.Tree [.B(15/124) [.BB(14/123) ] [.BG((109/123) ]] [.G(109/124) [.GG(108/123) ] [.GB(15/123) ]]]  \]   
+
+\questionpart 
+
+Since $B = \frac{15}{124}$ and $BB = \frac{14}{123}$, $P(B \cap BB) = B \times BB = .014 $
+
+\questionpart
+We have $P(BB) = \frac{|BB|}{|S|} = \frac{{15 \choose 2}}{{124 \choose 2}} = 0.014$. We get the same answer as expected.
+
+\end{alphaparts}
+
+\end{document}

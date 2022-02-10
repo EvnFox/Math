@@ -1,0 +1,52 @@
+\documentclass[11pt,largemargins]{homework}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\ran}{\operatorname{ran}}
+\newcommand{\dom}{\operatorname{dom}}
+\newcommand{\eps}{\varepsilon}
+\newcommand{\ssd}{\bigtriangleup}
+\newcommand{\pow}{\mathcal{P}}
+
+% TODO: replace these with your information
+\newcommand{\hwname}{Evan Fox}
+\newcommand{\hwemail}{efox20@uri.edu}
+\newcommand{\hwtype}{Quiz}
+\newcommand{\hwnum}{2}
+\newcommand{\hwclass}{MTH 451}
+\newcommand{\hwlecture}{}
+\newcommand{\hwsection}{}
+
+
+\begin{document}
+\maketitle
+
+\question
+\begin{alphaparts}
+\questionpart
+This question is the same as asking out of 24 objects how many 3 permutations are there? It is a permutation question because order matters, then we have $24P3 = \frac{24!}{21!} = 12,144$.
+
+\questionpart
+Since this time all three winners receive the same award, it becomes a question about combinations. Then want the number of ways to choose 3 out of 24 or ${24 \choose 3} = 2,024$.
+\end{alphaparts}
+
+\question
+The number of ways of selecting 2 boys out of 7 is given by ${7 \choose 2}$ and the number of ways to select 3 girls out of ten is ${10 \choose 3}$. To find the total number of ways we need to multiply these values together since for each way of choosing the boys there are ${10 \choose 3}$ ways of choosing the girls. So we get 
+\[{10 \choose 3} \times {7 \choose 2} = 120 \times 21 = 2,520 \] 
+
+different ways. 
+
+\question
+Let $S$ denote the sample space, then $|S| = {26 \choose 3}$. Since we want the chance that none are in Tampa there are ${14 \choose 3}$ ways to do it, so 
+\[P(E) = \frac{{14 \choose 3}}{{26 \choose 3}} = 14\%\]
+
+
+\question
+Let $S$ denote the sample space. Then $|S| = {20 \choose 5}$. We want to know the probability of getting 2 red balls and 3 white. Given that there are 5 and 7 red and white balls respectively, we have that the total number of ways of choosing 2 red and 3 white is 
+
+\[ {5 \choose 2} \times {7 \choose 3} \] 
+
+Then since $P(E) = \frac{|E|}{|S|}$ we get 
+\[P(E) = \frac{{5 \choose 2} \times {7 \choose 3} }{ {20 \choose 5}} = 0.022\%\]
+\end{document}
