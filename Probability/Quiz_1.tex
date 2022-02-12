@@ -1,0 +1,76 @@
+\documentclass[11pt,largemargins]{homework}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\ran}{\operatorname{ran}}
+\newcommand{\dom}{\operatorname{dom}}
+\newcommand{\eps}{\varepsilon}
+\newcommand{\ssd}{\bigtriangleup}
+\newcommand{\pow}{\mathcal{P}}
+
+% TODO: replace these with your information
+% TODO: replace these with your information
+\newcommand{\hwname}{Evan Fox}
+\newcommand{\hwemail}{efox20@uri.edu}
+\newcommand{\hwtype}{Quiz}
+\newcommand{\hwnum}{1}
+\newcommand{\hwclass}{MTH 451}
+\newcommand{\hwlecture}{}
+\newcommand{\hwsection}{}
+
+\begin{document}
+\maketitle
+
+\question
+\begin{alphaparts}
+    \questionpart
+    These values are not permissible because $P(D) = -0.2$ violates axiom 1 which requires that all probabliltys are non-negative. 
+
+    \questionpart 
+    We first see that since all values are non-negative, axiom 1 is not violated. Similarly axiom 2 is not violated since the sum 
+    of all events equals 1. There is no contradiction with the axioms and so this assignment is allowable.
+    \questionpart
+    Note by axiom two we must have $P(S) = 1$, then since A, B, C, and D are disjoint, we may apply axiom 3 to get 
+    \[ P(S) = P(A \cup B \cup C \cup D) = + P(A) + P(B) + P(C) + P(D) = \frac{18}{19} \neq 1 \] 
+    Hence by axioms 2 and 3, this probability distribution is impossible. 
+\end{alphaparts}
+
+\question 
+\begin{alphaparts}
+    \questionpart
+    We use $P(A \cup B) = P(A) + P(B) - P(A \cap B)$. 
+    
+    \begin{proof}
+    Let $A, B \subseteq S$ and let $C = A \cap B$. Then $P(A \cup B) = P(A - C \cup B) = P(A  - C) + P(B)$.
+    Now consider 
+    \[P(A^c \cup C) + P(B^c) = 1 - P(A - C)  + 1 - P(B)\]
+    \[P(A^c) + P(C) + P(B^c) = 1 - P(A - C) + 1 - P(B)\]
+    \[P(A - C) + P(B) = 1 - P(A^c) + 1 - P(B^c) - P(C)\]
+    \[P(A - C) + P(B) = P(A) + P(B) - P(C) \] 
+    As desired. 
+    \end{proof}
+    
+    
+    Since all of these values are given we simply plug in to get 
+
+    \[ P(A \cup B) = 0.3 + 0.5 - 0.25 = .55 \] 
+
+    \questionpart
+    We use $P(B/A) = P(B) - P(A \cap B)$
+
+    \begin{proof}
+
+    By definition of set difference 
+    $P(B/A) = P(B/( A \cap B))$. Now let $C = A \cap B$, then observe $B^c \cap C = \varnothing$ 
+    since $C \subseteq B$, so our use of axiom 3 in the next step is permissable. We compute 
+    \[ P(B/C) = 1 - P(B^c \cup C) = 1 - (P(B^c) + P(C)) \] 
+    \[ 1 - ((1 - P(B)) + P(C)) = P(B) - P(C)\]
+    as desired.
+    \end{proof}
+    Thus $P(B/C) = P(B/A) = P(B) - P(A \cap B) = 0.5 - 0.25 = 0.25$.
+
+\end{alphaparts}
+% Your content
+
+\end{document}
