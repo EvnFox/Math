@@ -1,0 +1,76 @@
+\documentclass[11pt,largemargins]{homework}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\ran}{\operatorname{ran}}
+\newcommand{\dom}{\operatorname{dom}}
+%\newcommand{\d}{\operatorname{dx}}
+\newcommand{\eps}{\varepsilon}
+\newcommand{\ssd}{\bigtriangleup}
+\newcommand{\pow}{\mathcal{P}}
+\usepackage{qtree}
+\usepackage{commath}
+% TODO: replace these with your information
+% TODO: replace these with your information
+\newcommand{\hwname}{Evan Fox}
+\newcommand{\hwemail}{efox20@uri.edu}
+\newcommand{\hwtype}{Worksheet}
+\newcommand{\hwnum}{3}
+\newcommand{\hwclass}{MTH 451}
+\newcommand{\hwlecture}{}
+\newcommand{\hwsection}{}
+
+\begin{document}
+\maketitle
+\question 
+First I calculate $C(7,x) = \binom{7}{x}$ for $x \in \{1,2,3,4,5,6,7\}$.
+
+\[C(7,0) = 1 \]
+
+\[C(7,1) = 7\]
+
+\[C(7,2) = 21\]
+
+\[C(7,3) = 35\]
+
+\[C(7, 4) = 35\]
+
+\[C(7,5) = 21\]
+
+\[C(7,6) = 7\]
+
+\[C(7,7) =1\]
+
+In order for $f$ to be a PMF each value of the function must be between 0 and 1 and the sum over 
+all values of $f$ must equal 1. We note that $\sum_{i = 0}^7 C(7,i) = 128$, so setting $c = 1/128$ will have the desired effect.
+
+
+
+\newpage 
+
+\question
+For $f$ to be a PMF it must have all outputs between 0 and 1 and it must sum to 1. Let $c = 3$, then it is clear that 
+$f(x) < 1$ for all $x \in \N$. Let $S = \sum_{i = 1}^\infty 3(1/4)^i$. We must show that $S = 1$, note that 
+$S$ is a geometric series with common ratio $1/4$ then since $1/4 < 1$ the series will converge to 3r/1 - r = (3/4)/(1 - 1/4) = 1. 
+Thus for $C = 3$, $f$ is a probability mass function as desired.
+
+\newpage
+
+\question
+\begin{alphaparts}
+    \questionpart 
+    We need $\int_{-\infty}^{\infty} f(x) \dif x= 1$. Note that there is only a contribution on the interval from $0$ to $4$. Then 
+
+    \[ \int_{0}^{4} \frac{c}{\sqrt{x}} \dif x = c \int_{0}^{4} x^{-1/2} \dif x \]
+    \[ = \tfrac{c}{2} x^{1/2} \Big|_0^4 = \frac{c}{2}2 = c \]
+
+    Thus we select $c = 1$ so that the intergral equals $1$. 
+
+    \questionpart 
+    We want to find $P(X > 1) = \int_{1}^4 f(x) \dif x = \int_{1}^4 \frac{1}{\sqrt{x}} \dif x$ which is 
+    $ \tfrac{1}{2} x^{1/2} \Big|_1^4$ so we get $ 2 - \tfrac{1}{2} = \frac{3}{2}$. 
+% Your content
+\end{alphaparts}
+
+\end{document}
