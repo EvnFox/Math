@@ -73,4 +73,43 @@ Thus for $C = 3$, $f$ is a probability mass function as desired.
 % Your content
 \end{alphaparts}
 
+\newpage 
+
+\question
+\begin{alphaparts}
+    \questionpart
+    We have $E(x) = \int_{-\infty}^{\infty} xf(X) \dif x$, then plugging in $f(x)$ and noting there is only a non zero contribution 
+    on the interval $(0, 2)$ we get 
+    \[ \tfrac{1}{2} \int_{0}^{2} x^2 \dif x = \tfrac{1}{2} (\tfrac{1}{3}x^3 \big|_0^2) = \frac{4}{3} \]
+    
+    \questionpart
+    To find $E(x^2)$ we use the law of the unconscious statistican, and get 
+    \[ \tfrac{1}{2} \int_{0}^{2} x^3 \dif x = \tfrac{1}{2} (\tfrac{1}{4}x^4 \big|_0^2) = 2 \]
+
+    \questionpart 
+    We use the identity $V(X) = E(x^2) - E(x)^2$ to find the variance so 
+
+    \[V(X) = 2 -(\frac{4}{3})^2 = \frac{2}{9} \] 
+
+\end{alphaparts}
+
+\newpage
+\question
+
+\begin{alphaparts}
+    \questionpart
+    $P(X \leq 0)$ is by definition equivalent to $F(X)$ evaluated at zero, so $P(X \leq 0) = 0.61$
+
+    \questionpart
+    We want $P(X = 1)$, since for $x \in [0, 3)$ we have $F(x) = 0.61$ we can see that $P(X = 1) = 0$, since $1$ cannot be in the support 
+    of $X$. For instance if $P(X = 1) = c$ and $c \neq 0$ then we should have $P(X \leq 0) < P(\leq 1)$ but this is not the case. 
+
+    \questionpart 
+    We note  $P(-1 < X < 4) = P(-2 \leq X \leq 3)  = F(-2) - F(3) = 0.52$ 
+
+    \questionpart 
+    To find $P(X > 2)$ we observe that $P(X \leq 2) + P(X > 2) = 1$ so $P(X > 2) = 1 - F(2) = 0.39$.  
+\end{alphaparts}
+
+
 \end{document}
