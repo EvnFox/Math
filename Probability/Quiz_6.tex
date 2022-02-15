@@ -1,0 +1,68 @@
+\documentclass[11pt,largemargins]{homework}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\ran}{\operatorname{ran}}
+\newcommand{\dom}{\operatorname{dom}}
+\newcommand{\eps}{\varepsilon}
+\newcommand{\ssd}{\bigtriangleup}
+\newcommand{\pow}{\mathcal{P}}
+\usepackage{qtree}
+\usepackage{commath}
+
+% TODO: replace these with your information
+% TODO: replace these with your information
+\newcommand{\hwname}{Evan Fox}
+\newcommand{\hwemail}{efox20@uri.edu}
+\newcommand{\hwtype}{Quiz}
+\newcommand{\hwnum}{6}
+\newcommand{\hwclass}{MTH 451}
+\newcommand{\hwlecture}{}
+\newcommand{\hwsection}{}
+
+\begin{document}
+\maketitle
+
+\question
+
+\begin{alphaparts}
+    \questionpart 
+    We can simply use the table and find the value for $X = 1$ and $Y = 2$ which is $1/23$
+
+    \questionpart 
+    We fix $Y = 0$ and sum from $x = 1$ to $x = 2$. So $f(1, 0) + f(2, 0) = 4/23 + 2/23 = 6/23$
+
+    \questionpart 
+    The only three points satisfying this are $\{(0, 0), (1, 0), (0, 1) \}$ adding together the probability of each one gives 
+    $8/23$. 
+
+    \questionpart 
+    For this condidtion the only points in the domain satisfying this are $\{(1, 0), (2, 0), (2, 1), (3, 0) \}$. Summing them gives 
+    $11/23$. 
+
+    \questionpart 
+    $F(1.5, 0.9) = P(X \leq 1.5, Y \leq 0.9) = 4/23 + 1/23 = 5/23 $ 
+
+    \questionpart 
+    Note that the CDF is defined for all $(x, y) \in \R^2$ so it's fine that $5$ is not in the support. $F(2.7, 5) = 21/23$. We simply add 
+    all probabilitys with $x < 3$. 
+    
+    
+
+    
+\end{alphaparts}
+
+
+\question
+We have $F_X(x) = \sum_{y} f(x, y) $
+\begin{alphaparts}
+    \questionpart 
+    we fix $x \in \{0, 1, 2, 3\}$ and sum over $Y$ to get, $F_X(0) = 6/23$, $F_X(1) = 10/23$, $F_X(2) = 5/23$, $F_X(3) = 2/23$.
+    
+    \questionpart 
+    Now we fix $y \in \{0 , 1, 2 \}$ and sum over $X$ to get, $F_Y(0) = 10/23$, $F_Y(1) = 10/23$, $F_Y(2) = 3/23$, 
+
+\end{alphaparts}
+
+\end{document}
