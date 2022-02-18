@@ -1,0 +1,68 @@
+\documentclass[11pt,largemargins]{homework}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\ran}{\operatorname{ran}}
+\newcommand{\dom}{\operatorname{dom}}
+\newcommand{\eps}{\varepsilon}
+\newcommand{\pp}{\frac{\partial^2 F}{\partial x \partial y} }
+\newcommand{\px}{\frac{\partial }{\partial x} }
+\newcommand{\py}{\frac{\partial }{\partial y} }
+\newcommand{\ssd}{\bigtriangleup}
+\newcommand{\pow}{\mathcal{P}}
+\usepackage{qtree}
+\usepackage{commath}
+
+% TODO: replace these with your information
+% TODO: replace these with your information
+\newcommand{\hwname}{Evan Fox}
+\newcommand{\hwemail}{efox20@uri.edu}
+\newcommand{\hwtype}{Quiz}
+\newcommand{\hwnum}{1}
+\newcommand{\hwclass}{MTH 451}
+\newcommand{\hwlecture}{}
+\newcommand{\hwsection}{}
+
+\begin{document}
+\maketitle
+
+\question
+For $f$ to be a PDF it must be non-negitive and the intergral must equal 1. The fact that $f$ is non-negitive is clear so we 
+must choose $c$ so that 
+
+\[ \iint_I c(x^2 - xy) \dif x \dif y= 1 \] 
+
+so we compute 
+
+\[ c \int_0^1  \int_{-x}^{x} x^2 - xy \dif y \dif x = c \int_{0}^1 (x^2y - \tfrac{1}{2}xy^2\big|_{-x}^{x} \dif x \]
+\[c\int_{0}^1 (x^3 - \tfrac{1}{2}x^3 + x^3 + \tfrac{1}{2}x^3  \dif x = c \int_{0}^1 2x^3 \dif x\] 
+\[2c(\tfrac{1}{4} x^4 \big|_0^1) = \tfrac{1}{2}c = 1 \]
+\[ c = 2 \] 
+so $c = 2 $
+
+
+\question 
+To find the joint PDF we find the second order mixed partial derivative of $F$. 
+for $x, y > 0$ 
+
+\[\pp = \px (1 - e^{-x^2}) \py (1 - e^{-y^2})\]
+so 
+\[\pp = 2xe^{-x^2}(2ye^{-y^2})\]
+
+Then the joint PDF is $f(x, y) = 2xe^{-x^2}(2ye^{-y^2})I\{x > 0, y > 0\}$.
+
+\question
+We just use the definiton of the marginal distribution of $X$ discussed in class. That is, 
+\[f_X(x) = \int_{-\infty}^{\infty} f(x, y) \dif y \] 
+
+so plugging in given values gives 
+
+\[f_X(x) = \int_0^2 \tfrac{1}{4}(2x + y) \dif y \]
+\[ = \tfrac{1}{4}(4x + 2) = x + \tfrac{1}{2} \] 
+
+and so 
+
+\[ f_X(x) =\tfrac{1}{4}(4x + 2) = x + \tfrac{1}{2} \]
+
+\end{document}
