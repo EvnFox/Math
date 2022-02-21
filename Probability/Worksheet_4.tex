@@ -1,0 +1,79 @@
+\documentclass[11pt,largemargins]{homework}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\ran}{\operatorname{ran}}
+\newcommand{\dom}{\operatorname{dom}}
+\newcommand{\eps}{\varepsilon}
+\newcommand{\ssd}{\bigtriangleup}
+\newcommand{\pow}{\mathcal{P}}
+\usepackage{qtree}
+\usepackage{commath}
+
+% TODO: replace these with your information
+% TODO: replace these with your information
+\newcommand{\hwname}{Evan Fox}
+\newcommand{\hwemail}{efox20@uri.edu}
+\newcommand{\hwtype}{Worksheet}
+\newcommand{\hwnum}{4}
+\newcommand{\hwclass}{MTH 451}
+\newcommand{\hwlecture}{}
+\newcommand{\hwsection}{}
+
+\begin{document}
+\maketitle
+
+\question
+We must find a value of $c$ such that $f$ is a PDF. 
+
+First we compute $\int_S f(x, y) \dif x \dif y = 1$. 
+
+\[\iint_0^\infty ce^{-(\tfrac{x}{2} + \tfrac{y}{4})} \dif x \dif y = c \int_0^\infty \int_0^\infty e^{-\tfrac{x}{2}}e^{-\tfrac{y}{4}} \dif x \dif y\] 
+\[= c \int_0^\infty -2e^{-\tfrac{x}{2}}e^{-\tfrac{y}{4}} \big|_0^\infty \dif y = c \int_0^\infty 2e^{-\tfrac{y}{4}} \dif y= c[-8e^{-\tfrac{y}{4}} \big|_0^\infty]  \]
+
+so $8c = 1$ and thus $c = 1/8$. Then it is clear that $f$ is always non-negative and less than one, so $f$ is a PDF. 
+\newpage
+\question
+
+\begin{alphaparts}
+\questionpart 
+Consider the region $R = [x_1, x_2] \times [y_1, y_2]$(for $x_i, y_i$ in the support). Then 
+\[P((x, y) \in R) = \iint_R f(x, y) dxdy = \iint_R 2 dxdy \] 
+intergrating this gives 
+\[ P((x, y) \in R) = 2(x_2 - x_1)(y_2 - y_1) \] 
+but note that $(x_2 - x_1)(y_2 - y_1) = Area(R)$ and the result follows. 
+
+\questionpart 
+for $P(X \leq \tfrac{1}{2}, Y \leq \tfrac{1}{2})$ we have the region $ 0 \leq x \leq 1/2$ and $0 \leq y \leq 1/2$ so $Area(R) = 1/4$ 
+Then multipling by 2 gives $P(x \leq \tfrac{1}{2}, y \leq \tfrac{1}{2}) = 1/2$. 
+
+\questionpart 
+$P(X + Y > 2/3)$ To find the area of this region we graph the line $y = -x + 2/3$, then we see the desired region is the difference between the 
+triangle with vertices $\{(1,0), (0, 1), (0, 0)\}$ and the triangle with vertices $\{(\tfrac{2}{3},0), (0, \tfrac{2}{3}), (0, 0)\}$. Using the formula 
+for the area of a triangle ($1/2bh$) we get $Area(R) = \frac{2}{9}$ and so $P(x + Y > 2/3)  = \frac{4}{9}$. 
+
+\questionpart 
+$P(X > 2Y)$ we graph the function $\frac{1}{2}x = y$ and note we want the reqion enclosed by this line and the x-axis. The base of 
+this trianlge is $b = 1$ and we can find the hight by calculating the intersection between $\frac{1}{2}x = y$ and $y = -x + 1$. We get the 
+hight as $h = \frac{2}{3}$ so $P(x > 2Y) = 2 * \frac{1}{2}(1 * \frac{2}{3}) = \frac{1}{3}$. 
+
+
+    
+\end{alphaparts}
+\newpage
+\question 
+We want the region $1 < x < \infty$ and $1 < y < 2x$. So we want to compute the intergral 
+
+\[P(Y \geq 2X) = \int_1^\infty \int_1^{2x} x^{-2}y^{-2} \dif y \dif x = \int_1^\infty -x^{-2}y^{-1} \big|_1^{2x} \dif x = I \] 
+\[ I = \int_1^\infty x^{-2} - \frac{1}{2}x^{-3} \dif x = \frac{1}{4x^2}-\frac{1}{x} \Big|_1^\infty = 0 - [\frac{1}{4}-1] = \frac{3}{4} \] 
+\newpage
+\question 
+Since $x + y < 1$ we have 
+\[f_X(x) = \int_0^{1 - x} 24y - 24yx - 24y^2 \dif y = 12y^2 - 12y^2x - 8y^3 \big|_0^{1 - x}\]
+\[ = 12(1 - x)^2 - 12x(1- x)^2 - 8(1 - x)^3\]
+
+Then 
+\[ f_Y(y) = \int_0^{1 - y}24y - 24yx - 24y^2 \dif x = 24yx - 12yx^2 - 24y^2x \big|_0^{1-y} \]
+\[= 24y(1 - y)- 12y(1 - y)^2 - 24y^2(1 - y) \]
+\end{document}
