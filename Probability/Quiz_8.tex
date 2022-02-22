@@ -1,0 +1,67 @@
+\documentclass[11pt,largemargins]{homework}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\ran}{\operatorname{ran}}
+\newcommand{\dom}{\operatorname{dom}}
+\newcommand{\eps}{\varepsilon}
+\newcommand{\ssd}{\bigtriangleup}
+\newcommand{\pow}{\mathcal{P}}
+\usepackage{qtree}
+\usepackage{commath}
+
+% TODO: replace these with your information
+% TODO: replace these with your information
+\newcommand{\hwname}{Evan Fox}
+\newcommand{\hwemail}{efox20@uri.edu}
+\newcommand{\hwtype}{Quiz}
+\newcommand{\hwnum}{8}
+\newcommand{\hwclass}{MTH 451}
+\newcommand{\hwlecture}{}
+\newcommand{\hwsection}{}
+
+\begin{document}
+\maketitle
+
+\question
+In order to be independant we must have that for all $x, y$ in the support, the value of the joint density function must equal the 
+product of the marginal distributions. Observe $f(2,1) = 0$ but $f_X(2)f_Y(1) = \frac{1}{4} * \frac{1}{4} \neq 0$, hence we have 
+a counter example. 
+
+
+\question 
+\begin{alphaparts}
+    \questionpart 
+    We calculate the marginal distributions and check to see if their product is equalivalent to the density function. 
+
+    \[f_X(x) = \frac{1}{96} \int_o^\infty e^{-(\tfrac{x}{8} + \tfrac{y}{12})} \dif y = \frac{1}{96}[-12e^{-(\tfrac{x}{8} + \tfrac{y}{12})}\big|_0^\infty] \] 
+    \[ \frac{1}{96} 12e^{-\frac{x}{6}} \] 
+
+    Now we do the same for $Y$ 
+
+    \[f_Y(y) = \frac{1}{96}\int_0^\infty e^{-(\tfrac{x}{8} + \tfrac{y}{12})} \dif x =  \frac{1}{96}[-8e^{-(\tfrac{x}{8} + \tfrac{y}{12})}\big|_0^\infty] \] 
+    \[\frac{1}{96}8e^{-\frac{y}{12}} \] 
+
+
+    Then when we multiply these together we get 
+
+    \[ f_X(x) \times f_Y(y) = \frac{1}{96}e^{-(\tfrac{x}{8} + \tfrac{y}{12})} \] 
+
+    So yes they are independant. 
+
+    \questionpart 
+    we have that $\sigma_{XY} = E(XY) - E(X)E(Y)$ But since $X, Y$ are independant we can split $E(XY) = E(X)E(Y)$. Hence 
+    $\sigma_{XY} = 0$. 
+
+
+
+    
+\end{alphaparts}
+
+\question
+Since we are assume $X$ and $Y$ to be independant we can get the joint probablity function by multiplying the marginal distributions. 
+We find $P(X + Y = 3) = f(2, 1) + f(1, 2) = f_X(2)f_Y(1) + f_X(1)f_Y(2) = \frac{1}{6} + \frac{2}{6} = \frac{1}{2}$. 
+
+
+\end{document}
