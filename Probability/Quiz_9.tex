@@ -1,0 +1,78 @@
+\documentclass[11pt,largemargins]{homework}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\ran}{\operatorname{ran}}
+\newcommand{\dom}{\operatorname{dom}}
+\newcommand{\eps}{\varepsilon}
+\newcommand{\ssd}{\bigtriangleup}
+\newcommand{\pow}{\mathcal{P}}
+\usepackage{qtree}
+\usepackage{commath}
+
+% TODO: replace these with your information
+% TODO: replace these with your information
+\newcommand{\hwname}{Evan Fox}
+\newcommand{\hwemail}{efox20@uri.edu}
+\newcommand{\hwtype}{Quiz}
+\newcommand{\hwnum}{1}
+\newcommand{\hwclass}{MTH 451}
+\newcommand{\hwlecture}{}
+\newcommand{\hwsection}{}
+
+\begin{document}
+\maketitle
+
+\question
+We have that $\sigma_{XY} = E(XY) -E(X)E(Y) $ and $E(X) = \sum_{x \in X} x f_X(x)$. We calculate the marginals for $X$ and $Y$ first. 
+
+\[f_X(0) = \frac{6}{23},f_X(1) = \frac{10}{23}, f_X(2) = \frac{5}{23}, f_X(3) = \frac{2}{23} \]
+
+and 
+
+\[ f_Y(0) = \frac{10}{23}, f_Y(1) = \frac{10}{23}, f_Y(2) = \frac{3}{23}, \]
+
+so then 
+
+\[E(X) = 0 * \frac{6}{23} + 1 * \frac{10}{23} + 2 * \frac{5}{23} + 3*\frac{2}{23} = \frac{26}{23} \] 
+
+and 
+\[E(Y) = 0 * \frac{10}{23} + 1 * \frac{10}{23} + 2 * \frac{3}{23} = \frac{16}{23} \] 
+
+Then we have $E(XY) = \sum \sum_{(x, y) \in S} xyf(x, y)$. Note there is no positive contribution from any point containg a zero and 
+hence we only need to consider $\{(1,1), (1,2), (2,1) \}$. Then 
+
+\[E(XY) = 1*1*\frac{5}{23} +  1*2*\frac{2}{23} +  1*2*\frac{1}{23} = \frac{11}{23} \] 
+
+Then $\sigma_{XY} = \frac{11}{23} - \frac{26}{23}(\frac{16}{23}) = -17.6 $. 
+
+\question
+Since we have that independant random variables have a covarience of 0, $X$ and $Y$ cannot be independant since they have 
+a non zero covarience. 
+
+\question 
+$E(X | Y = 1) = \sum_{x \in X} x f_{X|Y}(x | 1)$. We first find $f_{X|Y}(x |1)$.
+
+\[f_{X|Y}(x |1) = \frac{f(x, 1)}{f_Y(1)} = \frac{f(x, 1)}{\frac{10}{23}} = \frac{23}{10}f(x, 1) \] 
+
+then 
+
+\[E(x |Y = 1) = \tfrac{23}{10}[0*f(0,1) + 1*f(1,1) + 2*f(2,1) ] = \frac{9}{10} \] 
+
+\question 
+We have $V(X | Y = 1) = E(x^2 | Y = 1) - E(x | Y = 1)^2$. We have the first moment from the previous calculation, now we compute 
+the second moment. 
+
+\[ E(x^2 | Y = 1) = \sum_{x \in X} x^2 f_{X|Y}(x, 1) = I \] 
+
+We already have $f_{X|Y}(x, 1) = \frac{23}{10}f(x, 1)$. So
+
+\[ I =\tfrac{23}{10}[0^2*f(0,1) + 1^2*f(1,1) + 2^2*f(2,1)] = \frac{13}{10}   \] 
+
+Then using the short-cut formula for conditional varience we get 
+
+\[V(x | Y = 1) = \frac{13}{10} - \frac{9^2}{10} = \frac{13}{10} - \frac{81}{10} = \frac{-68}{10}\]
+
+
+\end{document}
