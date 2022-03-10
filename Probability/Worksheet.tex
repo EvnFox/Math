@@ -1,0 +1,97 @@
+\documentclass[11pt,largemargins]{homework}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\ran}{\operatorname{ran}}
+\newcommand{\dom}{\operatorname{dom}}
+\newcommand{\eps}{\varepsilon}
+\newcommand{\ssd}{\bigtriangleup}
+\newcommand{\pow}{\mathcal{P}}
+\usepackage{qtree}
+\usepackage{commath}
+
+% TODO: replace these with your information
+% TODO: replace these with your information
+\newcommand{\hwname}{Evan Fox}
+\newcommand{\hwemail}{efox20@uri.edu}
+\newcommand{\hwtype}{Worksheet}
+\newcommand{\hwnum}{6}
+\newcommand{\hwclass}{MTH 451}
+\newcommand{\hwlecture}{}
+\newcommand{\hwsection}{}
+
+\begin{document}
+\maketitle
+
+\question
+We have 
+\[M_X(t) = \sum_{x=1}^{\infty}2(\frac{1}{3}^xe^{tx}) = 2\sum_{x = 1}^{\infty} \left(\frac{e^t}{3}^x \right) = \frac{-2e^t}{e^t-3} \] 
+
+This is vaild as long as $t \neq ln(3)$. 
+
+To find the mean we compute 
+
+\[E(X = M_X^\prime(0) = \left(\frac{-2e^t}{e^t - 3} \right)^\prime = \frac{6e^t}{(e^t - 3)^2}\big|_{t=0} = \frac{6}{4}\]
+
+Then to find the second moment we take the second derivitive of the MGF
+
+\[E(X^2) = M_X^{(2)}(0) = \left( \frac{6e^t}{(e^t - 3)^2} \right)^\prime\big|_{t=0} = 3  \]
+
+\newpage
+
+\question
+\begin{alphaparts}
+    \questionpart 
+    To find $c$ we sum over the natural numbers union $0$ and choose $c$ such that the summation is equal to $1$. 
+
+    \[\sum_{x = 0}^\infty \frac{c}{x!} = c\sum_{x = 0}^\infty \frac{1}{x!} = c(1 + 1 + \frac{1}{2!}+...) = ce = 1\]
+    hence $c = e^{-1}$. 
+
+    \questionpart 
+    \[M_X(t) = e^{-1}\sum e^{xt}\frac{1}{x!} = e^{-1} \times (1 + e^t + \frac{e^{2t}}{2!} + \frac{e^{3t}}{3!}+...) \]
+
+    which gives
+
+    \[e^{-1} e^{e^t} = e^{e^t - 1}\]
+    
+\end{alphaparts}
+
+\newpage 
+
+\question 
+We use the given formulas. 
+
+\[E(X) = [ln(e^{4(e^t - 1)})]^\prime \big|_{t=0} = 4e^0 = 4\]
+
+Then 
+
+\[E(X^2) = [ln(e^{4(e^t - 1)})]^{\prime \prime}\big|_{t=0} = 4e^0 = 4\]
+
+Then using the fact that varience is given by second moment subtract the square of the first moment we get 
+
+\[V(X) = 4 - 4^2 = -12 \]
+
+\newpage
+We have that 
+
+\[M_Z(t) =E(e^{tZ}) = E(e^{t(\tfrac{x - 3}{4})}) = e^{-3/4}E(e^{\tfrac{1}{4}tX}) =e^{-3/4}M_X(\tfrac{1}{4}t) \]
+
+so then 
+
+\[M_Z(t) = e^{-3/4}((e^{3/4t+2t^2})) = (e^{3/4t+2t^2 - \tfrac{3}{4}})\]
+
+Then 
+
+\[E(Z) = \left( e^{3/4(t-1) + 2t^2 })\right)^\prime \big|_{t = 0} = (3/4 + 4t)e^{3/4(t-1) + 2t^2} = 3/4e^{-3/4}\] 
+
+and 
+
+\[E(Z^2) = \left( (3/4 + 4t)e^{3/4(t-1) + 2t^2} ) \right)^\prime \big|_{t = 0} = \] 
+\[=(3/4)e^{3/4(t-1) + 2t^2} + (3/4 + 4t)^2e^{3/4(t-1) + 2t^2} = (3/4)e^{-3/4} + (3/4)^2e^{-3/4}\]
+
+Hence 
+
+\[v(Z) = (3/4)e^{-3/4} + (3/4)^2e^{-3/4} - (3/4e^{-3/4})^2\]
+
+\end{document}

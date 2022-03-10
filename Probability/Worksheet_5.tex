@@ -1,0 +1,120 @@
+\documentclass[11pt,largemargins]{homework}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\ran}{\operatorname{ran}}
+\newcommand{\dom}{\operatorname{dom}}
+\newcommand{\eps}{\varepsilon}
+\newcommand{\ssd}{\bigtriangleup}
+\newcommand{\pow}{\mathcal{P}}
+\usepackage{qtree}
+\usepackage{commath}
+
+% TODO: replace these with your information
+% TODO: replace these with your information
+\newcommand{\hwname}{Evan Fox}
+\newcommand{\hwemail}{efox20@uri.edu}
+\newcommand{\hwtype}{Workseet}
+\newcommand{\hwnum}{5}
+\newcommand{\hwclass}{MTH 451}
+\newcommand{\hwlecture}{}
+\newcommand{\hwsection}{}
+
+\begin{document}
+\maketitle
+
+\question
+We need to solve $.9 = F(X)$ for $x$. We have 
+
+\[ F(x) = 2 \int_0^{x} e^{-2x} \dif x = 2(\tfrac{-1}{2}e^{-2x} + \frac{1}{2}) = -e^{-2x} + 1\]
+
+Then solving $F(x) = .9$ gives 
+
+\[ .1 = e^{2x} \]
+\[x = \frac{\ln(.1)}{2} \approx 1.15\]
+
+\newpage 
+
+\question 
+We will make use of the short-cut formula $\sigma_{XY} = E(XY) - E(X)E(Y)$. We will ned the marginal distribution 
+for $X$ and $Y$ so we calculate those first. 
+
+\[f_X(x) = \frac{4}{3}\int_0^1 1 - xy \dif y = \frac{4}{3}[y - \frac{1}{2}xy^2 \big|_0^1] = \frac{4}{3} [1 - \frac{1}{2}x] \] 
+
+and 
+
+\[f_Y(y) = \frac{4}{3} \int_0^1 1 - xy \dif x = \frac{4}{3}[1-\frac{1}{2}y^2]\]
+
+Then we have that $E(X) = \int x f_X(x) \dif x$ so we calculate the expected value for $X$ and $Y$. 
+
+\[E(X) = \frac{1}{3} \int_0^1 4x - 2x^2 \dif x = \frac{1}{3} (2x^2 - \frac{2}{3}x^3 \big|0^1) = \frac{4}{9} \]
+
+and 
+
+\[E(Y) \frac{1}{3} \int_0^1 4y - 2y^2 \dif y = \frac{1}{3} (2y^2 - \frac{2}{3}y^3 \big|0^1) = \frac{4}{9}\]
+
+Then $E(XY)$ is given by $\iint_R xyf(x, y) \dif x \dif y$. Computing this gives 
+
+\[\frac{4}{3} \int_0^1 \int_0^1 xy - x^2y^2 \dif x \dif y = \frac{4}{3}\int_0^1 \frac{1}{2}x^2y - \frac{1}{3}x^3y^2 \big|_0^1 \dif y =\]
+\[\frac{4}{3} \int_0^1 \frac{1}{2}y - \frac{1}{3}y^2 \dif y = \frac{4}{3}(\frac{1}{4}y^2 - \frac{1}{9}y^3\big|_0^1) = \frac{5}{27}\]
+
+Then we are ready to use $\sigma_{XY} = E(XY) - E(X)E(Y)$ and get 
+
+\[\sigma_{XY} \frac{5}{27} - \frac{16}{81} = \frac{-1}{81}\]
+
+Since the covarience is non-zero they cannot be independant. 
+
+\newpage
+\question
+We first make use of the lineararity of $E(X)$ 
+
+\[E(X + Y) = E(X)+E(Y) = 3.3\]
+
+This gives use the expected value for the outer diamiter. Then using the short-cut formula for varience it is easy to see that 
+\[V(X+Y) = E((X+Y)^2) -E(X + Y)^2 = \] 
+\[E(X^2)+E(2XY)+E(Y^2) - E(X+Y)^2 = \]
+\[E(X^2) - E(X)^2 + E(Y^2) - E(Y)^2 +2\left(E(XY) - E(X)E(Y)\right)= V(X)+V(Y) \]
+
+Where the last step follows from the fact that $X$ and $Y$ are independant.  
+Then we want the standard deviation so we must find the square root of the varience. 
+
+\[\sqrt{V(X + Y)} = \sqrt{.02^2 + .005^2 }  \approx .0206 \] 
+
+\newpage
+\question
+We have that $f_{X|Y}(x|2) = \frac{f(x, 2)}{f_Y(2)}$. We fist calculate the marginal distribution of $Y$. 
+
+\[f_Y(y) = \int_0^\infty e^{-x}e^{-\tfrac{y}{2}} \dif x = -e^{-x}e^{-\tfrac{y}{2}}\big|_0^\infty = e^{-\tfrac{y}{2}}\]
+
+then we have $f_Y(2) = e^{-1}$. Then 
+
+\[f_{X|Y}(x|2) = \frac{e^{-x}e^{-1}}{e^{-1}} = e^{-x}\]
+
+and we are done. 
+
+\newpage
+\question 
+We begin by finding the marginal distribution of $Y$. 
+
+\[f_Y(y) = 24 \int_0^{1 - y} y - xy -y^2 \dif x = 24[xy - \frac{1}{2}x^2y - xy^2 \big|_0^{1-y}] = \]
+\[= 24[y(1 - y) - \frac{1}{2}y(1 - y)^2 - y^2(1 - y)]\]
+
+some algebra gives 
+
+\[f_Y(y) = 24y(1 - y)(\frac{1}{2} - \frac{1}{2}y) \] 
+
+We then have that 
+
+\[ f_{X|Y}(x|y) = \frac{1 - x - y}{(1 - y)(\tfrac{1}{2} - \tfrac{1}{2}y)} \]
+
+as the PDF for $X$ given $Y = y$. Now to calculate $P(X < \frac{1}{4} | y = \frac{1}{2})$ we need to calculate 
+a CDF. 
+
+\[F_{X|Y}(\tfrac{1}{4}|\tfrac{1}{2}) = \int_0^{\tfrac{1}{4}} f_{X|Y}(x|\tfrac{1}{2}) = I\]
+\[I = \int_0^{\tfrac{1}{4}} 4 - 8x \dif x = 4x - 4x^2 \big|_0^{\tfrac{1}{4}} = \frac{3}{4}\]
+
+So we have $P(X < \tfrac{1}{4}|\tfrac{1}{2}) = \frac{3}{4}$. 
+
+
+\end{document}
