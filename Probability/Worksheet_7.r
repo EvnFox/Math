@@ -1,4 +1,4 @@
-
+# Evan Fox
 n <- 100000 #create variable
 sum_3 <- 1:n #vector to recored the sums of elements.
 for (i in 1:n) {
