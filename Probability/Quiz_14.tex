@@ -1,0 +1,66 @@
+\documentclass[11pt,largemargins]{homework}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\ran}{\operatorname{ran}}
+\newcommand{\dom}{\operatorname{dom}}
+\newcommand{\G}{\operatorname{Geom}}
+\newcommand{\eps}{\varepsilon}
+\newcommand{\ssd}{\bigtriangleup}
+\newcommand{\pow}{\mathcal{P}}
+\usepackage{qtree}
+\usepackage{commath}
+
+% TODO: replace these with your information
+% TODO: replace these with your information
+\newcommand{\hwname}{Evan Fox}
+\newcommand{\hwemail}{efox20@uri.edu}
+\newcommand{\hwtype}{Quiz}
+\newcommand{\hwnum}{14}
+\newcommand{\hwclass}{MTH 451}
+\newcommand{\hwlecture}{}
+\newcommand{\hwsection}{}
+
+\begin{document}
+\maketitle
+
+\question
+\begin{alphaparts}
+    \questionpart
+    Find $P(X \geq k)$. 
+
+    Let $X \sim \G(p)$. Then the PMF is $f(x) = p(1 - p)^x$ for $x = 0, 1, 2, 3, ...$. Then we have the CMF given by 
+    $F(X) = \sum_0^x p(1 - p)^i$. It is clear that 
+
+    \[P(X \geq k) = 1 - F(x) = 1 - \sum_{i = 0}^{k - 1} p(1 - p)^i = \sum_{i = k}^\infty p(1 - p)^i =   \]
+    Now since our index starts at $k$ each summand will contain a copy of $(1 - p)^k$ which we can factor out giving,
+    \[ = (1 - p)^k \sum_{i = k}^\infty p(1 - p)^{i - k} = (1 - p)^k \sum_{i = 0}^\infty p(1 - p)^{i} = (1 - p)^k\]
+    Where the last equality follows since $\sum_{i = 0}^\infty p(1 - p)^{i}$ is just a sum of the PDF over the support. So we have 
+
+    \[P(X \geq k) = (1 - p)^k\]
+
+
+    \questionpart 
+    \begin{proof}
+    We can prove this with a string of equalitys(recall def of conditional probability), Observe
+    \[P(X \geq m + n| X \geq n) = \frac{P(X \geq m + n \& X \geq n)}{P(X \geq n)} = \frac{P(X \geq m + n)}{P(X \geq n)}\]
+    where the third equality follows since if the random variable $X$ is greater than $m + n$ it is necessarly greater than $n$. 
+    Now using the formula derived in part (a) we get 
+    \[\frac{P(X \geq m + n)}{P(X \geq n)} = \frac{(1 - p)^{m + n}}{(1 - p)^n} = (1 - p)^m = P(X \geq m)\]
+    and this completes the proof. 
+    \end{proof}
+    
+\end{alphaparts}
+
+\question
+The probility of 3 coins being heads is $.5^3 = 1/8$. Now define a random variable $X \sim \G(1/8)$ as the number of attempts until all 
+three are heads. We then define the random variable $Y = 70 - 10(X - 1)$ as the amount of winnings. We want to find the expectation of 
+$Y$. 
+\[E(Y) = E(70 - 10(X - 1)) = 60 - 10E(X) \]
+by linearity of expectation. Then from class we have $E(X) = (1 - p)/p = \frac{7/8 }{ 1/8 } = 7$. so 
+\[E(Y) = 60 - 10(7) = -10\]
+Since the expectation is negitive you should not take the bet. 
+
+
+\end{document}
