@@ -1,0 +1,111 @@
+\documentclass[11pt,largemargins]{homework}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\ran}{\operatorname{ran}}
+\newcommand{\dom}{\operatorname{dom}}
+\newcommand{\eps}{\varepsilon}
+\newcommand{\ssd}{\bigtriangleup}
+\newcommand{\pow}{\mathcal{P}}
+\usepackage{qtree}
+\usepackage{commath}
+
+% TODO: replace these with your information
+% TODO: replace these with your information
+\newcommand{\hwname}{Evan Fox}
+\newcommand{\hwemail}{efox20@uri.edu}
+\newcommand{\hwtype}{Worksheet}
+\newcommand{\hwnum}{8}
+\newcommand{\hwclass}{MTH 451}
+\newcommand{\hwlecture}{}
+\newcommand{\hwsection}{}
+
+\begin{document}
+\maketitle
+
+\question
+Let $X$ be a random variable that counts the number of sixes. Then $X$ is a binomial random variable. 
+$X \sim binom(20, 1/6)$. We want the probability that $X$ is a most $2$. The PDF of $X$ is given by 
+\[P(X = x) = f(x) = {20 \choose x}(\tfrac{1}{6})^x(1 - \tfrac{1}{6})^{20 - x}\]
+Now we must use the CDF to calculate 
+\[P(X \leq 2) = \sum_{x =0}^2 f(x) = (1 - \tfrac{1}{6})^{20} + 20(\tfrac{1}{6})^1(1 - \tfrac{1}{6})^{19}\]
+\[ + {20 \choose 2}(\tfrac{1}{6})^2(1 - \tfrac{1}{6})^{18}\]
+
+The R command that we would use is pbinom(2, size=20, prob=(1/6)). When we put this into 
+R we get  0.3287. 
+
+\newpage
+\question
+
+Test Size: 
+The test size $\alpha$ is given by the probability we reject the null hypothesis given it is true. So assume $p = .02$ and we 
+want to find the probability that at most one subject contracts shingles within five years. The probability that 0 people contract shingles 
+out of 300 is $(1 - .02)^{300} = 0.00233$; then the probability that one person contracts shingles is ${300 \choose 1}(0.02)(1 - .02)^{299} = 0.0142$. Now 
+to find the test size we add the previous two calculations and get 
+\[\alpha = .0166\]
+
+Power: 
+The power is very similar to the test size. We want to find the probability that we reject the null hypothesis given it is false. 
+So let $p = .01$ then we want the probability that at most one subject contracts shingles within 5 years. The calculations are very 
+similar 
+
+\[ \beta = (1 - 0.01)^{300} + (300 \choose 1)(.01)(1 - .01)^{300} = 0.1961 \]
+
+
+Let $X$ be a random variable that counts the number of patients that contract shingles within 5 years of getting the vaccine. 
+Then it is clear that X will have a binomial distribution where the chance of success is $p = 0.02$ and the number of trials is 
+$n = 300$. Thus $X \sim binom(300, .02)$. 
+
+\[P(X = x) = {300 \choose x}(.02)^x(1 - .02)^{300 - x} \] 
+
+I am not sure which probability you want the R command for, but to calculate the probability that at most 1 gets shingles 
+I would use pbinom(1, size=300, prob = 0.02); this gives $\alpha = .01661$ as expected. 
+
+\newpage
+\question 
+
+Let $X$ be a random variable that counts the number of licensed drivers who get into an accident. We have 
+$X \sim binom(150, .04)$. Let $\lambda = 150*.04 = 6$. Then by the possion approximation distribution $X \sim pois(6)$
+\[P(X \leq\, 3) \approx \sum_0^3 \frac{e^{ - 6} 6^x}{x!} \]
+
+
+The R command will be ppois(3, 6) = 0.1512
+
+
+\newpage
+\question
+
+Let $X$ be a random variable that counts the number of hurricanes that hit the US. Then $X \sim pois(1.8)$. To find the p - value 
+we want the probability that $X$ is greater than or equal to $7$ given that $H_0$ is true. 
+\[P(x \geq\, 7) = 1 - P(x \leq 6) = 1 - F(6)\] 
+where $F(x)$ is the CDF, i.e. 
+\[F(x) = \sum_0^6 f(x) = \sum_0^6 \frac{e^{ - 1.8}(1.8)^x}{x!} \]
+So we have 
+\[P(x \geq\, 7) = 1 - \sum_{x =0 }^6 \frac{e^{ - 1.8}(1.8)^x}{x!}\]
+
+The R command will be (1 - ppois(6, 1.8)) = 0.0026
+
+\newpage
+\question
+
+Let $X$ be a random variable that counts the number of bee stings per student. Then $X \sim pois(0.8)$
+\begin{alphaparts}
+    \questionpart
+    To find the test size $\alpha$ we want to find the probability that $5$ randomly selected campers have each had 
+    at least one bee sting given that $X \sim pois(0.8)$. Since $X$ counts the number of stings per kid we are looking for 
+    \[P(X \geq 1) = 1 - P(x = 0 ) = 1 - \frac{e^{ - .8}}{1}  \]
+    
+    The R command gives 1 - ppois(0, .8) =  0.5506
+
+    \questionpart 
+    To find the power assume $X \sim pois(1.2)$ and we want to find the probability we reject the null hypothesis under 
+    this distribution. 
+    \[P(X \geq 1) = 1 - P(x = 0 ) = 1 - \frac{e^{ - 1.2}}{1}\]
+    The R command gives 1 - ppois(0, 1.2) =  0.6988
+
+\end{alphaparts}
+
+
+
+\end{document}
