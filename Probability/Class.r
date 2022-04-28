@@ -57,5 +57,7 @@ for (i in 1:n) {
 sum(numhead == 3)/n
 
 
+1-(pexp(10,1/2.4))^12
+
 
 
