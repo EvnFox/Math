@@ -10,3 +10,6 @@ for (i in 1:n) {
 #hist(smean, br <- 150)
 sum(smean == 0) / n
 (19/20)^51
+
+
+1 - pexp(1,1/28.8)
