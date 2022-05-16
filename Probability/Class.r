@@ -60,4 +60,10 @@ sum(numhead == 3)/n
 1-(pexp(10,1/2.4))^12
 
 
+pnorm(54.75, 56, 1/2)
 
+pnorm(60, 50 , 5) - pnorm(40, 50, 5)
+
+pbinom(51, 100,.5) - pbinom(49, 100, .5)
+
+1 - pnorm(2.5, 2 , 1/sqrt(10))
