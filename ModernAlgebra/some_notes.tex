@@ -3,6 +3,7 @@
 \newcommand{\R}{\mathbb{R}}
 \newcommand{\N}{\mathbb{N}}
 \newcommand{\Q}{\mathbb{Q}}
+\newcommand{\F}{\mathbb{F}}
 \newcommand{\Z}{\mathbb{Z}}
 \newcommand{\ran}{\operatorname{ran}}
 
@@ -184,10 +185,71 @@ conjectures:
    
 \end{enumerate}
 
+
 \begin{theorem}
-    $\hom(\Z_n, \Z_m) = \Z_{\gcd(m, n)}$
+    If $R$ is a boolean ring i.e. $(x^2 = x)$ for all $x$ then $R$ is communitive.
 \end{theorem}
 
+\begin{proof}
+    Let $a, b \in R$ and we have $(a + b)^2 = a + b = a^2 + b^2$. But by the distributive
+    property we have $(a + b )^2 = a^2 + ab + ba + b^2$. So we see 
+    \[a^2 + b^2 = a^2 + ab + ba + b^2\]
+    \[ab = - ba \] 
+    Now we prove that in a boolen ring every element has order 2 under addition. 
+    \[2x = (2x)^2 = 4x^2 = 4x\]
+    which implies 
+    \[ 0 = 2x\]
+\end{proof}
+
+Let $R$ be a ring with ideal $I$. Let $M_n(I)$ be a subset of the matrix ring $M_n(R)$ consisting on those matrices 
+whose elements are in $I$. It is easy to check that this forms an ideal of the ring $M_n(R)$. Now prove that every
+ideal of $M_n(R)$ has this form. 
+
+\begin{proof}
+    First we check that $M_n(I)$ is an ideal. Associativity and communitivity of addition follows since these are 
+    matrices. Since the elements of the matrices in $M_n(I)$ are in $I$ when we add to matrices component wise 
+    we get elements of the form $a + b$ for $a, b \in I$ and so $a + b \in I$. Hence all elements of the sum of two matrices 
+    are in $I$ and so the sum of the matrices is in $M_n(I)$. This shows that we have an abelian group under addition. 
+    Now we need to show that it is closed under left and right multiplication by elements of $R$. Again since all elements 
+    in a given matrix $A \in M_n(I)$ are in an ideal, thier multiplication by any element of $R$ must again be in $I$. The argument
+    is very similiar to the first part of the proof. 
+
+    Now let $U$ be an ideal of $M_n(R)$. Let $U^\prime$ be the subset of $R$ given by $x \in U^\prime$ if $x$ is an element 
+    of a matrix in $U$. Then, $a, b \in U^\prime$ implies there exists a matrix $A$ with $(A)_{1,1} = a$ and $B$ such that $(B)_{1,1} = b$
+    Then the matrix $A + B $ contains $a + b$ so $a + b \in U^\prime$. The rest of the group axioms follow in a similar manner. Then we must 
+    show that $U^\prime$ is closed under multiplication by elements of $R$. This again follows since for $a \in U$ we have $(A)_{1,1} = a$ and 
+    since $U$ is an ideal of $M_n(R)$ we fix a matrix that has $r$ in the 1,1 component. Then the mutplication of the matrices must be contained in 
+    the ideal $U$ and it has entries $ra$ so $ra \in U^\prime$ when $a \in U^\prime$. 
+\end{proof}
 
 
+let $a^3 = a$ for all $a \in R$. Prove that $R$ is communitive. 
+
+\begin{proof}
+    \[a^2 + ab + ba + b^2 (a + b) = a^3 + a^2b + aba + ab^2 + ba^2 + bab + b^2a + b^3\] 
+    How do I show that $a$ and $b$ commute?
+\end{proof}
+\begin{theorem}
+    $\hom(\Z_n, \Z_m) = \Z_{\gcd(m, n)}$ 
+\end{theorem}
+
+The only ideals of a field are $\{0\}$ and the field itself. 
+
+\begin{proof}
+    Let $U$ be an ideal of a field $\F$ and suppose that $U \neq \{0\}$. Then we may fix 
+    $a \in U$ such that $a \neq 0$. Since $\F^*$ forms a group we know there exists $a^{-1} \in \F$ and 
+    since $U$ is an ideal it must be closed under multiplication by elements of $\F$. Hence $aa^{-1} = 1 \in \F$. 
+    Now we apply the same argument again, since $U$ is closed under multiplication by elements of $\F$ for any $x \in \F$
+    we have $1 \cdot x = x \in U$; thus, $U = \F$. 
+\end{proof}
+
+consider the quaternions with interger coefficents. Prove this forms a ring and that it's only ideals are $\{0\} $ and 
+the ring itself. Then prove that the quaternions with interger coefficents do not form a field. 
+
+
+
+maximal ideal: 
+An ideal $M$ is said to be maximal if and only for any ideal $U$ such that $M \subseteq U$
+we have $U = M$ or $U = R$. That is, $M$ is a maximal ideal if it is impossible to fit an ideal between 
+it and the entire ring. It is possible to have more than one maximal ideal. 
 \end{document}
