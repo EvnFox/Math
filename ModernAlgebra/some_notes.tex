@@ -244,12 +244,51 @@ The only ideals of a field are $\{0\}$ and the field itself.
 \end{proof}
 
 consider the quaternions with interger coefficents. Prove this forms a ring and that it's only ideals are $\{0\} $ and 
-the ring itself. Then prove that the quaternions with interger coefficents do not form a field. 
+the ring itself. Then prove that the quaternions with interger coefficents do not form a field, they are not communitive! 
 
+$\Z_7[\sqrt{3}]$ is a field. determine necessary and sufficient conditions for $Z_p[\sqrt{k}]$ to be a field for prime $p$ 
+and integer $k$. 
 
+\[\frac{1}{a + b \sqrt{3}} \cdot \frac{a - b \sqrt{3}}{a - b \sqrt{3}} = \frac{a - b \sqrt{ 3}}{a^2 - 3b^2} = \]
 
 maximal ideal: 
 An ideal $M$ is said to be maximal if and only for any ideal $U$ such that $M \subseteq U$
 we have $U = M$ or $U = R$. That is, $M$ is a maximal ideal if it is impossible to fit an ideal between 
 it and the entire ring. It is possible to have more than one maximal ideal. 
+
+
+Let $I = \langle 2 \rangle $ and note that this is a maximal ideal of $\Z$ but $I[x]$ is not a maximal ideal 
+of $\Z[x]$. 
+
+\begin{proof}
+    Let $U \subseteq \Z$ an an ideal properly conatining $\langle 2 \rangle$. Then fix $a \in U$ with $a \notin \langle 2 \rangle$. 
+Since $\gcd(a, 2) = 1$ we are permitted to fix $s, t \in \Z$ such that $sa + t2 = 1$. Then it since $U$ is an ideal containg the identity 
+it must be the ring itself. Now we want to find a proper ideal of $\Z[x]$ containing $I[x]$. Suppose $I[x] \subset U[x] \subseteq z[x]$. Then 
+in particular, there exists a polynomial with odd coeficeint. 
+\end{proof}
+
+
+
+A communitive ring with the cancellation property has no zero-divisors 
+
+\begin{proof}
+    Let $R$ be communitive with cancellation. Then suppose $ab = 0$. 
+    We have 
+    \[ab = 0b \] 
+    
+\end{proof}
+
+Let $G$ be a cyclic group and $H \leq G$. Since $G$ is cyclic, we have 
+\[ G = \{g^{ - 1}, 0, g^{1}, g^{2}, \dots \} = \langle g \rangle\]
+and $H$ contains some subcollection of these elements. Let $S = \{a | a \in \N, g^a \in H \}$. Let $s$ be the least 
+element of $S$. Let $g^n \in H$ and use the division algrothim to fix $g, r \in \Z$ such that 
+\[n = qs + r \text{ with } 0 < r < s\]
+Then since $s$ is the least element of $S$ greater than 0, $r = 0$. 
+\[g^n = g^{qs + r} = g^qs g^r = g^qs\]
+so that every element of $H$ is a multiple of $g^s$, so then $H = \langle g^s \rangle$.
+
+
+
+
+
 \end{document}
