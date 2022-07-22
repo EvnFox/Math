@@ -16,6 +16,7 @@
 \newcommand{\eps}{\varepsilon}
 \newcommand{\ssd}{\bigtriangleup}
 \newcommand{\pow}{\mathcal{P}}
+\newcommand{\B }{\backslash}
 
 \newtheoremstyle{break}%
 {}{}%
@@ -191,7 +192,7 @@ A field is a very important structure in mathematics and we will have much more 
     We may want to test wether or not a given subset is a subring, here we show a way of doing that (we have basicaly just stolen the 
     subgroup test.)
     
-    \begin{thm}{Subring test}
+    \begin{thm}[Subring test]
         $S \subseteq R$ is a subring if 
         
         \begin{enumerate}
@@ -209,7 +210,7 @@ A field is a very important structure in mathematics and we will have much more 
     $R$ is abealian), but what should we require of multiplication? We will soon see that the next deffinition is the correct one. 
 
     
-    \begin{defn}{Ideals of a ring}
+    \begin{defn}[Ideals of a ring]
         Let $R$ be a ring. A (two-sided) ideal of $R$ is a subring $U$ such that for all $r \in R$ and all $u \in U$ 
         $ru \in U$ and $ur \in U$.  
     \end{defn}
@@ -221,14 +222,14 @@ A field is a very important structure in mathematics and we will have much more 
         a communitive ring a left and right ideal concided and there is no difference. 
     \end{rem}
 
-    Now given an ideal $U$ we know that the cosets $a + U$ for all $a \in R$ partition $R$ and we know how to turn $R\\U$ into a group. 
-    Now we need to define a multiplication on $R\\U$ to turn it into a ring. Obviously we would like 
+    Now given an ideal $U$ we know that the cosets $a + U$ for all $a \in R$ partition $R$ and we know how to turn $R\B U$ into a group. 
+    Now we need to define a multiplication on $R\B U$ to turn it into a ring. Obviously we would like 
     \[(a + U)(b + U) = (ab) + U\]
     lets show that our defintion of ideal ensures that this will work 
 
     
     \begin{prop}
-        $R\\U$ with the above operations is a ring
+        $R\B  U = \{a + U| a \in R \}$ with the above operations is a ring
     \end{prop}
     \begin{proof}
         we must show that the definition of multiplicatin is well defined. Let $a, a^\prime, b, b^\prime \in U$ and assume 
@@ -249,14 +250,14 @@ A field is a very important structure in mathematics and we will have much more 
     consider two more types of ideals, prime ideals and maximal ideals. 
 
     
-    \begin{defn}{Prime Ideals}
+    \begin{defn}[Prime Ideals]
         Let $I$ be an ideal of a ring $R$, we say $I$ is a prime ideal if all $a, b \in R$ we have 
         $ab \in I$ implies $a \in I$ or $b \in I$. 
     \end{defn}
 
     Prime ideals get there name from the ideals $p\Z \subseteq \Z$. An easy exercise is to show that for all prime $p$, $p\Z$ is prime. 
 
-    \begin{defn}{Maximal Ideals}
+    \begin{defn}[Maximal Ideals]
         Let $M$ be an ideal. We say that $M$ is maximal if $M \subseteq U \subseteq R$ implies $M = U$ or $M = R$. 
     \end{defn}
     An ideal is maximal when it is impossible to fit another ideal between it and the entire ring. 
@@ -265,22 +266,58 @@ A field is a very important structure in mathematics and we will have much more 
 
     
     \begin{thm}
-        $I$ is a prime ideal of a ring $R$ iff $R\\I$ is an integral domain 
+        $I$ is a prime ideal of a ring $R$ iff $R\B  I$ is an integral domain 
     \end{thm}
 
     \begin{proof}
         Suppose that $I$ is a prime ideal then  $(a + I)(b + I) = I = (ab) + I$ hence $a$ or $b$ is in $I$ so either $(a + I) = I$ or 
-        $b + I = I$. Conversly let $R$ be a ring and $I$ an ideal. Now suppose $R\\I$ is an integral domain. Now assume $ab \in I$. 
-        Then $I = (ab) + I = (a + I)(b + I)$ and since $R\\I$ is an integral domain one of $a + I$ or $b + I$ must equal $I$ and it follows 
+        $b + I = I$. Conversly let $R$ be a ring and $I$ an ideal. Now suppose $R\B  I$ is an integral domain. Now assume $ab \in I$. 
+        Then $I = (ab) + I = (a + I)(b + I)$ and since $R\B  I$ is an integral domain one of $a + I$ or $b + I$ must equal $I$ and it follows 
         from this that either $a \in I$ or $b \in I$. 
     \end{proof}
 
-    For maximal ideals we see an even stronger result 
+    For maximal ideals we see an even stronger result, but first we prove a lemma. 
+    
+    \begin{lem}
+        Let $k$ be a communitive ring with unit. Then $k$ is a field if and only if the only ideals 
+        of $k$ are the trivial ring and $k$ itself. 
+    \end{lem}
+
+    \begin{proof}
+        Assume $k$ is a field and $U$ a non trival ideal. Then for $a \neq 0 \in U$ and $a^{-1}, x \in k$ 
+        we have 
+
+        \[a(a^{-1} \cdot x) = 1 \cdot x  = x\in U \]
+
+        so $k = U$. Conversly, assume $k$ is a communitive ring whose only ideals are 
+        trivial and $k$ itself. For $a \neq 0 \in k$ we have the non trival ideal $\langle a \rangle = \{ar | r \in k\}$, 
+        by assumtion this ideal must necessarily be $k$ itself, in particular it must contain $1$. But this means 
+        there exist $b \in k$ with $ab = 1$. Since $a$ was an arbitrary non zero element we have that $k^*$ is an 
+        abelian group and from this the result follows. 
+    \end{proof}
 
     
     \begin{thm}
-        $M$ is a maximal ideal if and only if $R\\M$ is a field. 
+        $M$ is a maximal ideal if and only if $R\B M$ is a field. 
     \end{thm}
+
+    
+    \begin{proof}
+        Consider the map $\phi: R \to R\B M$ defined by 
+        $r \mapsto r+ M$. Now let $U$ be an ideal containg $M$ then 
+        \[\phi(U) = \{u + M| u \in U\} \] 
+         Since $M \subseteq U$ we know $M \in \phi(U)$. Now for $a, b \in U$ we have $a + M, b + M \in \phi(U)$ so 
+         \[a + M - b + M = (a -b )+ M \in \phi(U)\]
+         since $a-b \in U$. Now for $r \in R$ we have $r + M \in \phi(R)$ and 
+         \[(a + M)(r + M) = (ar) + M \in \phi(U)\]
+         hence $\phi(U)$ is an ideal of $R \B M$. 
+         Now consider an ideal of $R \B M$, say $I$. Then $\bigcup I$ is an ideal of $R$ which maps to 
+         $I$ under $\phi$. Hence there is a one to one corospondence between ideals of $R$ containg $M$ and 
+         ideals in $R \B M$. $M$ maps to the trivial ideal and $R$ maps to $R \B M$. So then if $M$ is maximal 
+         the only ideals of $R \B M$ are trivial and itself, so it is a field. If $R \B M$ is a field, then 
+         the only ideals contain $M$ are $M$ and $R$, so $M$ is maximal. 
+
+    \end{proof}
 
     
 \end{section}
