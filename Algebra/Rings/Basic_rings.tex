@@ -1,0 +1,294 @@
+\documentclass[11pt,largemargins]{homework}
+\usepackage{commath}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\F}{\mathbb{F}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\ran}{\operatorname{ran}}
+
+\newcommand{\dom}{\operatorname{dom}}
+\newcommand{\eps}{\varepsilon}
+\newcommand{\ssd}{\bigtriangleup}
+\newcommand{\pow}{\mathcal{P}}
+
+% TODO: replace these with your information
+% TODO: replace these with your information
+\newcommand{\hwname}{Evan Fox}
+\newcommand{\hwemail}{efox20@uri.edu}
+\newcommand{\hwtype}{Homework}
+\newcommand{\hwnum}{1}
+\newcommand{\hwclass}{MTH 316}
+\newcommand{\hwlecture}{}
+\newcommand{\hwsection}{}
+\newtheorem{theorem}{Theorem}
+
+\newtheorem{corollary}{Corollary}[theorem]
+
+\begin{document}
+\maketitle
+\begin{theorem}
+    \begin{enumerate}
+        \item Let $u \in R$, $u$ is a left unit if and only if left multiplication by $u$ is surjective
+        \item If $u$ is a left unit, then right multiplication by $u$ is injective
+        \item A two-sided unit is unique
+        \item The two sided units of R form a group
+    \end{enumerate}
+\end{theorem}
+
+\begin{proof}
+    For (1) first assume that $u$ is a left unit of $R$. Then there exists $v \in R$ such that 
+    $uv = 1$. Then for $x \in R$ it we have 
+    \[u (vx) = (uv) x = 1x = x\]
+    since multiplication is associative. Conversly, if left multiplication by $u$ is surjective then 
+    there must exist $v \in R$ satisfying $uv = 1$ by the defintion of surjectivity. 
+    For (2) assume that $u \in R$ is a left unit. We want to show that right multiplcation by $u$ is injective, i.e. 
+    \[xu = yu \implies x = y\]
+    Since $u$ is a left unit, we fix $v \in R$ satisfying $uv = 1$ then by right multiplying both sides of the above by $v$ we get 
+    \[x (uv) = y(uv) \]
+    \[x = y \]
+    For (3) let $u$ be a two sided unit, then fix $v \in R$ such that $vu = uv = 1$. 
+    suppose $v^\prime $ is another inverse of $u$ satisfying $uv^\prime = 1$. 
+    Then, we have $uv = uv^\prime$. multiplying on the left by $v$ gives 
+    \[vuv = vuv^\prime\]
+    \[v = v^\prime\]
+    and we are done. Note that we could fist prove that the two sided units for a group and then 
+    this result would follow.  
+    For (4) we need to show the four group axioms. Associativity follows from the fact that $R$ is a ring. Now we show closure under multiplication. if $u, v$ are two unints
+    then $uv$ is also a unit with inverse $(v^{-1}u^{-1})$. Since $1$ is a unit (by definition) we have we have identity.
+    and we know that the inverse of $uv$ is a two sided unit with inverse $uv$. 
+
+\end{proof}
+
+\question
+Find a sutiable multiplication on $\Z / 2\Z \oplus \Z / 2\Z$ that turns it into 
+a field. 
+
+\begin{proof}
+    We let $(1, 1)$ be the identity. Then let $(1, 0) * (0, 1) = (1,1)$ and 
+    let the squares of $(1, 0)$ and $(0, 1)$ map to each other. We claim this gives a field. 
+    A routine verification shows this to be the case. A good follow up question is 
+    whether or not this multiplication is unique. 
+\end{proof}
+
+% Your content
+\question 
+prove that $\Z(\sqrt{2}) = \{a + b\sqrt{2} | a, b \in \Z \} $ forms a ring. 
+
+\begin{proof}
+    First we must show that it is an abelian group under addition, we let addition be defined as addition of 
+    real numebers, then associativity and communitivity follows. We see that $0 \in \Z(\sqrt{2})$ is the identity. And for any element 
+    $z \in \Z(\sqrt{2})$ with $z = a + b(\sqrt{2})$ the additive inverse is found by taking the inverses of $a, b$ in 
+    the intergers. Clousre will follow by an application of the distributuive property. 
+
+    Next we define multiplication in $\Z(\sqrt{2}) $ as multiplication of real numbers, so associativity is clear. Then this ring clearly has unit by 
+    taking $a = 1, b = 0$. For $z, z^\prime \in \Z(\sqrt{2})$ we have 
+    \[ z \cdot z^\prime = (a + b \sqrt{2})(a^\prime + b^\prime \sqrt{2}) = a a^\prime + 2b b^\prime + (a b^\prime + a^\prime b) \sqrt{2}\]
+    so it is closed under multiplication. 
+\end{proof}
+
+is $\Z(\sqrt{2})$ a intergral domain? is it a field? It is definily an intergral domain since the intergers are an intergral domain.
+is it a field? What would a multiplicitive inverse look like? We would need $ab^\prime + a^\prime b = 0$. Which is possible but then 
+$a a\prime + 2 b b^\prime \neq 1$, so we do not get multiplicitive inverses. We know that each element has an inverse in $\R$ the question is can 
+this be written in the form we are looking for? $\frac{1}{a + b\sqrt{2}} $ The question is can I prove that this cannot be written as 
+$c + d\sqrt{2}$? Suppose that I can for all $a, b , c, d \in \Z$. 
+
+\[\frac{1}{a + b \sqrt{2}} = c + d \sqrt{2} \]
+\[1 = ac + 2bd + (ad + bc) \sqrt{2} \] 
+so 
+\[ac + 2bd = 1 \text{ and } ad + bc = 0\]
+
+Then we note that if $a$ is even then $\gcd(a, 2b) \neq 1$ and thus the existance of $c$ and $d$ gives a contradiction. 
+
+\begin{theorem}
+    For $a, b, d \in \Z$ we have $\gcd(a, b) = d$ implies that there exists $s, t \in \Z$ which satisfy the equation 
+    $as + bt = d$. 
+\end{theorem}
+
+\begin{proof}
+    First assume that $\gcd(a, b) = d$. Then let $S = \{ ax + by > 0 |x, y \in \Z$ \}. Since this is a subset of the 
+    natural numbers we can fix $\alpha = as + bt $ as the least element. We want to show that this is the $GCD$ of $a$ and $b$. First 
+    we show that if $d^\prime$ is a common divisor the $d^\prime | \alpha$. Since $d^\prime$ is a common divisor we can write 
+    $dx = a$ and $dy = b$. Then 
+    \[ \alpha = as + bt = d^\prime xs + dyt = d^\prime (xs + yt) \] 
+    hence $d^\prime | \alpha$. Now we shoe that $\alpha$ itself is a common divisor, let 
+    \[ a = q_0\alpha + r_0 \text{ and } b = q_1 \alpha + r_1\] 
+    with $0 \leq r_0 < \alpha$ ad $0 \leq r_1 < \alpha$ 
+    \[a = q_0 (\alpha ) + r_0 = q_0(as + bt) + r_0\]
+    \[a - q_0as - q_0bt = r_0 \] 
+    \[ a(1 - q_0s) + b( - q_0t) = r_0\] 
+    So that $r_0 = 0$ and then it follows that $\alpha | a$; a simillar argument works for $b$. So we have that 
+    $\alpha$ is a common divisor of $a$ and $b$ and that if $d^\prime $ is an arbitrary common divisor it divides $\alpha$. 
+    It now follows that $\alpha = \gcd(a, b)$.
+
+\end{proof}
+
+\begin{corollary}
+    If $GCD(a, b) = 1$ then there exists $s, t \in \Z$ such that $as + bt = 1$. 
+\end{corollary}
+
+\begin{corollary}
+    If there exists $s, t \in Z$ such that $as + bt = 1$ then $\gcd(a, b) = 1$. 
+\end{corollary}
+
+
+So now we know that $\Z(\sqrt{2}) $ is not a field. But it is an intergral domain. 
+
+What else can I figure out about this ring. What are the ideals of this ring? 
+
+
+
+Let $T$ be a ring without unit, then define $R = \Z \times T$ and define the operations of addition and multiplication 
+on $R$ as follows 
+\[ (k, l) + (s, t) = (k + s, l + t) \] 
+and 
+\[(k, l) \cdot (s, t) = (ks, kt + sl + lt)\]
+
+\begin{theorem}
+    $R$ as defined above is a ring with unit $1_R = (1_\Z, 0_T)$. 
+\end{theorem}
+
+\begin{proof}
+    Our first order of buisness is to prove that $R$ forms a abelian group under addition. 
+    \begin{enumerate}
+        \item $[(a, b) + (c, d)] +(e, f) = (a+c, b+d) + (e, f) = (a + c + e, b + d + f) = (a, b) + [(c, d) + (e, f)]$
+        the addition is associative. 
+        \item $\Z$ and $T$ are both groups so $(a, b) + (c, d) = (a + c, b+ d) \in \Z \times T$.  
+        \item $0_\Z \in \Z$ and $0_T \in T$ so $(0, 0) + (a, b ) = (0 + a, 0 + b) = (a, b)$; thus an additive identity exists. 
+        \item For $(a, b) \in \Z \times T$ we have $-a \in \Z$ and $-b \in T$. Then $(a, b) + (-a, -b) = (a + (-a), b + (-b)) = (0, 0)$
+        \item $\Z$ and $T$ are rings so their addition commutes giving $(a, b) + (c, d) = (a + c, b + d) = (c + a, d + b) = (c, d) + ( a, d)$
+    \end{enumerate}
+    Now we show that the defined multiplication gives $R$ a ring structure. The clousure of this operation follows from the fact that 
+    $T$ and $\Z$ are rings. We first show that $(1_\Z, 0_T)$ is the multiplicitive identity. Let $(a, b) \in R$ and 
+    \[ (a, b) \cdot (1, 0) = (1a, a(0) + 1b + b \cdot (0)) = (a, b) \]
+    and 
+    \[(1, 0) \cdot (a, b) = (1a, 1b + a(0) + 0 \cdot (b))\] 
+    So we have a unit element. To see that the multiplication on $R$ is associative. 
+    \[[(a, b) \cdot (c, d)] \cdot (e, f) = (ac, ad + c b + b \cdot d) \cdot (e, f) =\, \] 
+    \[ = (ace, acf + ead + ec b + e(b \cdot d) +  (ad + c b + b \cdot d) \cdot f )\]
+    and then 
+    \[(a, b) \cdot [(c, d) \cdot (e, f)] = (a, b) \cdot (ce,cf + ed + d \cdot f) = \] 
+    \[ =(ace, acf + aed + a(d \cdot f) + ce b + b \cdot (cf + ed + d \cdot f))\]
+    and we can see that the product is associative. Lastsly we need to show that the distributive property holds. 
+    This will follow from the ring structure of $T$ and the fact that addition was defined component wise. 
+\end{proof}
+We say that this is an embedding of $T$ into the ring $R$. 
+By embedding a rint $T$ into a larger ring with unit enables us to study the ring $T$ more readily. What is presevered by 
+this embedding? They are not isomophic since $|R| > |T|$. 
+
+conjectures:
+\begin{enumerate}
+    \item communitivity
+    \item if the group structure of $T$ is cyclic then so is $R$. 
+    \item If $U$ is an ideal of $T$ then $U^\prime = \{ (0_\Z, x) | x \in U \} $ is an ideal in $R$.
+    \item $T \cong U = \{(0_\Z, x)|x \in T \}$ with $t \mapsto (0_\Z, t)$. 
+   
+\end{enumerate}
+
+
+\begin{theorem}
+    If $R$ is a boolean ring i.e. $(x^2 = x)$ for all $x$ then $R$ is communitive.
+\end{theorem}
+
+\begin{proof}
+    Let $a, b \in R$ and we have $(a + b)^2 = a + b = a^2 + b^2$. But by the distributive
+    property we have $(a + b )^2 = a^2 + ab + ba + b^2$. So we see 
+    \[a^2 + b^2 = a^2 + ab + ba + b^2\]
+    \[ab = - ba \] 
+    Now we prove that in a boolen ring every element has order 2 under addition. 
+    \[2x = (2x)^2 = 4x^2 = 4x\]
+    which implies 
+    \[ 0 = 2x\]
+\end{proof}
+
+Let $R$ be a ring with ideal $I$. Let $M_n(I)$ be a subset of the matrix ring $M_n(R)$ consisting on those matrices 
+whose elements are in $I$. It is easy to check that this forms an ideal of the ring $M_n(R)$. Now prove that every
+ideal of $M_n(R)$ has this form. 
+
+\begin{proof}
+    First we check that $M_n(I)$ is an ideal. Associativity and communitivity of addition follows since these are 
+    matrices. Since the elements of the matrices in $M_n(I)$ are in $I$ when we add to matrices component wise 
+    we get elements of the form $a + b$ for $a, b \in I$ and so $a + b \in I$. Hence all elements of the sum of two matrices 
+    are in $I$ and so the sum of the matrices is in $M_n(I)$. This shows that we have an abelian group under addition. 
+    Now we need to show that it is closed under left and right multiplication by elements of $R$. Again since all elements 
+    in a given matrix $A \in M_n(I)$ are in an ideal, thier multiplication by any element of $R$ must again be in $I$. The argument
+    is very similiar to the first part of the proof. 
+
+    Now let $U$ be an ideal of $M_n(R)$. Let $U^\prime$ be the subset of $R$ given by $x \in U^\prime$ if $x$ is an element 
+    of a matrix in $U$. Then, $a, b \in U^\prime$ implies there exists a matrix $A$ with $(A)_{1,1} = a$ and $B$ such that $(B)_{1,1} = b$
+    Then the matrix $A + B $ contains $a + b$ so $a + b \in U^\prime$. The rest of the group axioms follow in a similar manner. Then we must 
+    show that $U^\prime$ is closed under multiplication by elements of $R$. This again follows since for $a \in U$ we have $(A)_{1,1} = a$ and 
+    since $U$ is an ideal of $M_n(R)$ we fix a matrix that has $r$ in the 1,1 component. Then the mutplication of the matrices must be contained in 
+    the ideal $U$ and it has entries $ra$ so $ra \in U^\prime$ when $a \in U^\prime$. 
+\end{proof}
+
+
+let $a^3 = a$ for all $a \in R$. Prove that $R$ is communitive. 
+
+\begin{proof}
+    \[a^2 + ab + ba + b^2 (a + b) = a^3 + a^2b + aba + ab^2 + ba^2 + bab + b^2a + b^3\] 
+    How do I show that $a$ and $b$ commute?
+\end{proof}
+\begin{theorem}
+    $\hom(\Z_n, \Z_m) = \Z_{\gcd(m, n)}$ 
+\end{theorem}
+
+The only ideals of a field are $\{0\}$ and the field itself. 
+
+\begin{proof}
+    Let $U$ be an ideal of a field $\F$ and suppose that $U \neq \{0\}$. Then we may fix 
+    $a \in U$ such that $a \neq 0$. Since $\F^*$ forms a group we know there exists $a^{-1} \in \F$ and 
+    since $U$ is an ideal it must be closed under multiplication by elements of $\F$. Hence $aa^{-1} = 1 \in \F$. 
+    Now we apply the same argument again, since $U$ is closed under multiplication by elements of $\F$ for any $x \in \F$
+    we have $1 \cdot x = x \in U$; thus, $U = \F$. 
+\end{proof}
+
+consider the quaternions with interger coefficents. Prove this forms a ring and that it's only ideals are $\{0\} $ and 
+the ring itself. Then prove that the quaternions with interger coefficents do not form a field, they are not communitive! 
+
+$\Z_7[\sqrt{3}]$ is a field. determine necessary and sufficient conditions for $Z_p[\sqrt{k}]$ to be a field for prime $p$ 
+and integer $k$. 
+
+\[\frac{1}{a + b \sqrt{3}} \cdot \frac{a - b \sqrt{3}}{a - b \sqrt{3}} = \frac{a - b \sqrt{ 3}}{a^2 - 3b^2} = \]
+
+maximal ideal: 
+An ideal $M$ is said to be maximal if and only for any ideal $U$ such that $M \subseteq U$
+we have $U = M$ or $U = R$. That is, $M$ is a maximal ideal if it is impossible to fit an ideal between 
+it and the entire ring. It is possible to have more than one maximal ideal. 
+
+
+Let $I = \langle 2 \rangle $ and note that this is a maximal ideal of $\Z$ but $I[x]$ is not a maximal ideal 
+of $\Z[x]$. 
+
+\begin{proof}
+    Let $U \subseteq \Z$ an an ideal properly conatining $\langle 2 \rangle$. Then fix $a \in U$ with $a \notin \langle 2 \rangle$. 
+Since $\gcd(a, 2) = 1$ we are permitted to fix $s, t \in \Z$ such that $sa + t2 = 1$. Then it since $U$ is an ideal containg the identity 
+it must be the ring itself. Now we want to find a proper ideal of $\Z[x]$ containing $I[x]$. Suppose $I[x] \subset U[x] \subseteq z[x]$. Then 
+in particular, there exists a polynomial with odd coeficeint. 
+\end{proof}
+
+
+
+A communitive ring with the cancellation property has no zero-divisors 
+
+\begin{proof}
+    Let $R$ be communitive with cancellation. Then suppose $ab = 0$. 
+    We have 
+    \[ab = 0b \] 
+    
+\end{proof}
+
+Let $G$ be a cyclic group and $H \leq G$. Since $G$ is cyclic, we have 
+\[ G = \{g^{ - 1}, 0, g^{1}, g^{2}, \dots \} = \langle g \rangle\]
+and $H$ contains some subcollection of these elements. Let $S = \{a | a \in \N, g^a \in H \}$. Let $s$ be the least 
+element of $S$. Let $g^n \in H$ and use the division algrothim to fix $g, r \in \Z$ such that 
+\[n = qs + r \text{ with } 0 < r < s\]
+Then since $s$ is the least element of $S$ greater than 0, $r = 0$. 
+\[g^n = g^{qs + r} = g^qs g^r = g^qs\]
+so that every element of $H$ is a multiple of $g^s$, so then $H = \langle g^s \rangle$.
+
+
+
+
+
+\end{document}

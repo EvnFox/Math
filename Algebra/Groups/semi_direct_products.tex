@@ -1,0 +1,91 @@
+\documentclass[11pt]{homework}
+\usepackage{commath}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\ran}{\operatorname{ran}}
+\newcommand{\dom}{\operatorname{dom}}
+\newcommand{\eps}{\varepsilon}
+\newcommand{\ssd}{\bigtriangleup}
+\newcommand{\pow}{\mathcal{P}}
+\newcommand{\semi}{\rtimes_\phi}
+
+% TODO: replace these with your information
+% TODO: replace these with your information
+\newcommand{\hwname}{Evan Fox}
+\newcommand{\hwemail}{efox20@uri.edu}
+\newcommand{\hwtype}{Notes}
+\newcommand{\hwnum}{}
+\newcommand{\hwclass}{MTH 316}
+\newcommand{\hwlecture}{}
+\newcommand{\hwsection}{}
+
+\begin{document}
+\maketitle
+
+\question
+Let $H$, $G$ be groups. Show that $H \semi G$ is a group. 
+
+\begin{proof}
+    It is clear that the operation is closed since $g_1 \phi_{h_1}(g_2) \in G$ and $h_1 h_2 \in H$ which gives $(g_1 \phi_{h_1}(g_2), h_1 h_2) \in G \times H$. 
+    Simillarly it is clear that the opperation will be associative since $G$ and $H$ are groups. Now we prove $(e_G, e_H)$ is the idenitity, note that 
+    $\phi_e$ must be the idenitity automorphism .
+    \[(e, e) \star (g, h) = (e \phi_e (g), e h) = (eg, h) = (g, h)\] 
+    Now we must find the inverse of an arbitrary element $(g, h) \in G \semi H$. A calculation shows 
+    \[(\phi_{h^{ - 1}}(g^{ - 1}), h^{-1}) \star (g, h) = (\phi_{h^{ - 1}}(g^{-1}) \phi_{h^{ - 1}}(g), h^{-1}h ) \] 
+    Now we can use the properties of homomorphisms to get $\phi_{h^{ - 1}}(g^{-1}) \phi_{h^{ - 1}}(g) = \phi_{h^{ - 1}}(e) = e $. 
+    So we get 
+    \[ (\phi_{h^{ - 1}}(g^{ - 1}), h^{-1}) \star (g, h) = (e, e) \]
+    And we are done. 
+    
+\end{proof}
+\question
+let $n \geq 2$ show $\Z_n \semi \Z_2 \cong D_n$. Where $\phi(0) = id$ and $\phi(1)$ is the 
+automorphism $k \mapsto -k$. 
+
+
+I will use the presentation of $D_n$ given in Dummit and Foote as the definiton of $D_n$. 
+That is 
+\[D_n = \langle r,s | r^n = s^2 = e ,s r = r^{-1}s \rangle \]
+where r is a notation of $2\pi /n$ radians and $s$ is the flip across the axis intersecting the vertcie labeled 1 and the origin. 
+I note now that $D_n$ is never cyclic since $s \neq r^i $ for any $i$, to see this notice that $s \neq e$ but it fixes $1$ and 
+every rotation does not fix $1$. 
+
+
+\begin{proof}
+    Note is is clear $|\Z_n \semi \Z_2| = 2n = |D_n|$. We need to use the condition $n \geq 2$ to 
+    ensure that $|\Z_n \semi \Z_2|$ is at least 4, since $D_n$ must be non-cyclic it can only be defined
+    for $n \geq 2$ (since all groups of lower order are cyclic). Now we define the map 
+    \[ \psi : \Z_n \semi \Z_2 \to D_n \]
+    \[ \psi(m,n) = r^m s^n \] 
+    Since $D_n$ has $n$ rotations $r$ (counting id as a rotation) and since s is cyclic of order 2, it is 
+    clear this map must be surjective; then since we know $\Z_n \semi \Z_2$ and $D_n$ have the same order, 
+    $\psi$ must necessarily be injective as well, hence $\psi$ is a bijection. Now to show that the mapping 
+    will preserve group structure we consider two cases.
+    
+    Case I: 
+    Let $(a, 0), (c, d) \in \Z_n \semi \Z_2$ then 
+    \[\psi \left((a,0) \star (c, d) \right) = \psi (a + c, d) = r^{a + c} s^d = r^a (r^c s^d) = \psi(a, 0) \psi (c,d) \]
+
+    Case II: 
+    Let $(a, 1), (c, d) \in \Z_n \semi \Z_2$ then 
+    \[\psi \left((a,1) \star (c, d) \right) = \psi (a - c, 1 + d) = r^{a - c} s^{1 + d} = r^a r^ {-c} s^{1}  s^{d} = \] 
+    \[ (r^a s^1)  (r^c s^d) = \psi(a, 1) \psi (c,d)\]
+
+    Thus $\Z_n \semi \Z_2 \cong D_n$ as desired. 
+\end{proof}
+
+\question
+If $\phi$ is not trivial, prove that $G \semi H$ is not abelian. 
+
+\begin{proof}
+    if $G$ or $H$ are not abelian then we are done. So assume they are both abelian. Then since $\phi$ is not trivial, we fix 
+    $h \in H$ such that $\phi_h \neq id$. Then for $g, g_1, h \notin \{e\}$,
+    \[ (g, h) * (g_1, e) = (g \phi_h(g_1), h ) \] 
+    \[ (g_1, e) * (g, h) = (g_1 \phi_e(g), h) = (g_1 g , h) \] 
+    so if $G \semi H$ is abelian $g \phi_h(g_1) = g_1 g$ thus $\phi_h$ is the idenitity automorphism, a contradiction. 
+    
+\end{proof}
+
+\end{document}

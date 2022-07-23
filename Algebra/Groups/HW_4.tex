@@ -1,0 +1,69 @@
+\documentclass[11pt]{homework}
+\usepackage{commath}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\ran}{\operatorname{ran}}
+\newcommand{\dom}{\operatorname{dom}}
+\newcommand{\eps}{\varepsilon}
+\newcommand{\ssd}{\bigtriangleup}
+\newcommand{\pow}{\mathcal{P}}
+
+% TODO: replace these with your information
+% TODO: replace these with your information
+\newcommand{\hwname}{Evan Fox}
+\newcommand{\hwemail}{efox20@uri.edu}
+\newcommand{\hwtype}{Homework}
+\newcommand{\hwnum}{1}
+\newcommand{\hwclass}{MTH 316}
+\newcommand{\hwlecture}{}
+\newcommand{\hwsection}{}
+
+\begin{document}
+\maketitle
+
+\question
+Prove that the function $\phi : G \to G$ defined by $\phi (g) = g^{-1}$ is an automorphism of 
+$G$ iff $G$ is Abelian. 
+
+\begin{proof}
+    First Assume that $G$ is Abelian, then define the function $\phi(g) = g^{-1}$ for all $g \in G$. Then it is clear that $\phi$ is 
+    a injection since if $\phi(g_1) = \phi(g_2)$ then $g_1^{-1} = g_2^{-1}$; thus $g_1 = g_2$. To see surjectivity let $h \in G$ and it 
+    is clear $\phi(h^{-1}) = h$. It then follows that $\phi$ is a bijection. We now must show that $\phi$ is an isomorphism. Observe 
+    \[ \phi(ab) = (ab)^{-1} = b^{-1}a^{-1} = a^{-1}b^{-1} = \phi(a)\phi(b). \]  
+    Where the third equality is justified since $G$ is abelian by assumption. Thus $\phi$ is an automorphism of $G$.  
+    Conversly, Assume that $\phi$ as defined above is an automorphism of $G$. Then for all $a, b \in G$ we have $\phi(ab) = \phi(a)\phi(b)$. 
+    Then consider 
+    \[ ab = \phi((ab)^{-1}) = \phi(b^{-1}a^{-1}) = \phi(b^{-1})\phi(a^{-1}) = ba \]
+    Thus $G$ is Abelian and we are done. 
+    
+\end{proof}
+
+\question 
+Let $\phi$ and $\psi$ be isomorphisms from $G$ to $\bar{G}$. Define 
+
+\[H = \{ g \in G | \phi(g) = \psi(g) \}\]
+
+show $H \leq G$. 
+
+\begin{proof}
+We use the two step subgroup test. Notice that since all isomorphisms map the identity in $G$ to the identity in $\bar{G}$, we know 
+$e \in H$. Now suppose $a, b \in H$. Then 
+\[\phi(a) = \psi(a) \textit{ and } \phi(b) = \psi(b)\]
+
+Then we must have 
+
+\[ \phi(ab) = \phi(a)\phi(b) = \psi(a)\psi(b) = \psi(ab)\]
+
+so $ab \in H$. Now
+
+\[ \phi(a^{-1}) = \phi(a)^{-1} = \psi(a)^{-1} = \psi(a^{-1}) \] 
+
+Thus $a^{-1} \in h$ and this completes the proof. 
+
+
+    
+\end{proof}
+
+\end{document}

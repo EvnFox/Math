@@ -1,0 +1,85 @@
+\documentclass[11pt,largemargins]{homework}
+\usepackage{commath}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\ran}{\operatorname{ran}}
+\newcommand{\dom}{\operatorname{dom}}
+\newcommand{\st}{\operatorname{stab}}
+\newcommand{\eps}{\varepsilon}
+\newcommand{\ssd}{\bigtriangleup}
+\newcommand{\pow}{\mathcal{P}}
+
+% TODO: replace these with your information
+% TODO: replace these with your information
+\newcommand{\hwname}{Evan Fox}
+\newcommand{\hwemail}{efox20@uri.edu}
+\newcommand{\hwtype}{Homework}
+\newcommand{\hwnum}{3}
+\newcommand{\hwclass}{MTH 316}
+\newcommand{\hwlecture}{}
+\newcommand{\hwsection}{}
+
+\begin{document}
+\maketitle
+
+
+\question
+Let $G$ be a group of permutations on a set A. For $a \in A$ define $\st(a) = \{ \sigma \in G | \sigma(a) = a \} $. Prove 
+$\st(a) \leq G$. 
+
+\begin{proof}
+    It is clear that $\epsilon(a) = a$ for all $a \in A$; thus $\epsilon \in \st(a)$. Now we use the two step subgroup test so let 
+    $\sigma, \tau \in \st(a)$. Then 
+    \[(\sigma \circ \tau)(a) = \sigma(\tau(a)) = \sigma(a) = a \] 
+    since both $\sigma$ and $\tau$ fix $a$. Now we need to show that if $\sigma$ fixes $a$ then $\sigma^{-1}$ also fixes $a$. 
+    since 
+
+    \[ \sigma(a) = a \] 
+
+    we can take $\sigma^{-1}$ of both sides 
+
+    \[ \sigma^{-1}(\sigma(a)) = \sigma^{-1}(a) \] 
+    \[ a = \sigma^{-1}(a) \] 
+    and this completes the proof. 
+    
+\end{proof}
+\newpage
+
+\question 
+Let $\sigma, \tau$ be permutations. Prove $\sigma \tau$ is even if and only if $\sigma$ and $\tau$ are both 
+even or both odd. 
+
+\begin{proof}
+    ($\Leftarrow$) Assume that $\sigma$ and  $\tau$ are both even or both odd. We have 
+    \[ \sigma = \alpha_1 \alpha_2 . . . \alpha_s \] 
+    and 
+    \[\tau = \gamma_1 \gamma_2 . . . \gamma_t \] 
+
+    Where $\alpha_i$ and $\gamma_i$ are two cycles and $s, t$ have the same parity. We can write $\sigma \tau $ as
+
+    \[ \sigma \tau = \alpha_1 . . . \alpha_s \gamma_1 . . . \gamma_t \]
+
+
+    then it is clear that $\sigma \tau$ can be written as a product of $t + s$ two cycles. Since an even number plus an even number is 
+    even and an odd number plus an odd number is also even, $\sigma \tau$ can be written as an even number of two cylces. 
+
+    ($\Rightarrow$) To prove the opposite direction we use the contrapositive, so assume without loss of generality that $\sigma$ is even 
+    and $\tau$ is odd; we prove that $\sigma \tau$ is odd. Just like before we can decompose $\sigma$ and $\tau$ into two cycles of the form 
+    \[ \sigma = \alpha_1 \alpha_2 . . . \alpha_s \] 
+    and 
+    \[\tau = \gamma_1 \gamma_2 . . . \gamma_t \] 
+    where $s$ is even and $t$ is odd. We may then write $\sigma \tau$ 
+
+    \[ \sigma \tau = \alpha_1 . . . \alpha_s \gamma_1 . . . \gamma_t \]
+
+    So $\sigma \tau$ can be written as a product of $s + t$ two cycles where $s$ is even and $t$ is odd. Since an odd number 
+    plus an even number is odd the result follows. 
+    
+\end{proof}
+
+
+% Your content
+
+\end{document}

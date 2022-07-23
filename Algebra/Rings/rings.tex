@@ -1,0 +1,327 @@
+\documentclass[11pt]{report}
+
+%\usepackage{ntheorem}
+\usepackage{amssymb, graphicx, amsmath, amsthm}
+\RequirePackage{graphicx}
+\RequirePackage{hyperref}
+\usepackage{commath}
+\usepackage{mathtools}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\ran}{\operatorname{ran}}
+\newcommand{\dom}{\operatorname{dom}}
+\newcommand{\eps}{\varepsilon}
+\newcommand{\ssd}{\bigtriangleup}
+\newcommand{\pow}{\mathcal{P}}
+\newcommand{\B }{\backslash}
+
+\newtheoremstyle{break}%
+{}{}%
+{\itshape}{}%
+{\bfseries}{}% % Note that final punctuation is omitted. 
+{\newline}{}
+
+\theoremstyle{break}
+\newtheorem{thm}{Theorem}[section]
+\newtheorem{defn}[thm]{Definition}
+\newtheorem{lem}[thm]{Lemma}
+\newtheorem{cor}[thm]{Corollary}
+\newtheorem{prop}[thm]{Proposition}
+\newtheorem{rem}[thm]{Remark}
+\newtheorem{ex}{Exercise}[section]
+
+
+% TODO: replace these with your information
+% TODO: replace these with your information
+\author{Evan Fox}
+\title{Algebra}
+
+\begin{document}
+\maketitle
+\begin{chapter}{Rings}
+
+\begin{section}{Integral domains and division rings}
+
+    
+    \begin{defn}
+        Let $R$ be a set and define $+:R \times R \to R$ denoted $(a, b) \mapsto a + b$ and $\cdot: R \times R \to R$ denoted $(a, b) \mapsto ab$
+        and assume 
+        
+        \begin{enumerate}
+            \item $(R, +)$ is an abelian group 
+            \item $(R, \cdot)$ is associative and closed 
+            \item $a(b + c) = ab + ac$ and $(b + c)a = ba + ca$
+        \end{enumerate}
+
+        Then $R$ is a ring. 
+    \end{defn}
+If the multiplication on $R$ is communitive then we say that $R$ is a communitive ring. Note in general there need not exist $1 \in R$ satisfying $1 \cdot a = a$ for all $a \in R$, 
+since $(R, \cdot)$ is not necessarily a group. An informal way of defining a ring is just to consider a set where addition, subtraction, and multiplication make sense. 
+
+    
+    \begin{rem}
+        Let $R$ be a ring, for $a, b \in R$ we have 
+        
+        \begin{enumerate}
+            \item $0b = 0$ 
+            \item $(-a) \cdot b = -(a \cdot b)$
+            \item $(-a) \cdot (-b) = ab $
+        \end{enumerate}
+    \end{rem}
+    
+    
+    \begin{proof}
+        For the first statement note 
+        \[0b = (0 + 0)b = 0b = 0b + 0b\]
+        since $R$ is a group under addition we may make full use of the cancelation property which gives $0 = 0b$. 
+        Next observe, 
+        \[(-a)b + ab = ((-a) + a)b = 0b = 0 \]
+        so that $ab$ is the additive inverse of $(-a)b$. The proof of the last result is simillar. 
+
+    \end{proof}
+
+The definition of a ring is very general, some classic examples are the integers (mod n), matrices, and continous functions. Showing these are rings is easy. 
+    
+    \begin{rem}
+        Let $R$ be a ring and $S$ a non-empty set. Recall $R^S$ denotes the set of functions $f: S \to R$. Give a addition and multiplication that turns 
+        $R^S$ into a ring such that if $|S| = 1$ we have $R^S \sim R$. 
+    \end{rem}
+
+    
+    \begin{proof}
+        exercise.
+    \end{proof}
+
+
+Now we will introduce a very important type of ring called an integral domain. First we must consider the concept of a zero divisor. 
+
+\begin{defn}
+    Let $R$ be a ring and $a \in R$ with $a \neq 0$. If there exists non-zero $b \in R$ such that $ab = 0$, then $a$ is a 
+    zero divisor. 
+\end{defn}
+
+
+\begin{defn}{Integral Domain}
+    A ring $R$ is an integral domain if  
+    
+    \begin{enumerate}
+        \item $R$ is communitive and $1 \in R$.
+        \item $R$ has no zero divisiors. 
+    \end{enumerate}
+    
+\end{defn}
+
+An obvious example of an integral domain is the integers. One can show that that the deffinition of an integral domain is equivalent to 
+a communitive ring where multiplicitive cancelation holds. 
+
+
+\begin{prop}
+    Let $R$ be a communitive ring, then $R$ is an integral domain iff $ab = ac \implies b = c$ for all $a, b, c\in R$ with $a$ non-zero. 
+\end{prop}
+
+
+\begin{proof}
+    For the first direction assume that $R$ is an integral domain and let $a \neq 0, b , c \in R$ satisfy $ab = ac$. Then 
+    \[ab - ac = 0 \implies a(b - c) = 0\]
+    and since $a$ is non zero and $R$ has no zero divisiors we have $b - c = 0$ so $b = c$. 
+
+    Conversly, assume that the cancellation property holds in $R$. We need to prove that $ab = 0$ implies $a =0 $ or $b= 0$; so it 
+    is sufficient to assume $ab = 0$ and that $a \neq 0$ and show $b = 0$. We know that 
+    \[ab = a0 = 0 \] 
+    and the cancellation property shows that  $b = 0$. 
+\end{proof}
+
+
+\begin{defn}
+    A ring $R$ (not necessarily communitive) is a division ring if $(R^*, 0)$ is a group
+\end{defn}
+
+If $R$ is a communitive  division ring then we say that $R$ is a field. Common examples of fields are $\Q, \R,$ and $\C$. A more 
+exotic example is the quadradic field $\Q(\sqrt{D}) \coloneq \{a + b\sqrt{D}| a, b \in \Q\}$ where 
+$D$ is a non-square rational number. The proof that this is a field is left as an exercise.  
+
+
+
+\begin{thm}
+    A finite integral domain is a field. 
+\end{thm}
+
+
+\begin{proof}
+    Let $R$ be a finite integral domain and let $x_1, ..., x_n$ be a list of all elements. Fix $a \neq 0 \in R$ and consider the list 
+    \[S = ax_1, ..., ax_n\]
+    Since $R$ is an integral domain if there exists $i, j \in \{1, ..., n\}$ such that $ax_i = ax_j$ we have 
+    \[a(x_i - x_j) = 0 \implies x_i = x_j.\]
+    Hence every element in $S$ is distinct, then since the lenght of $S$ is the same as the cardinality $R$ we see that every element of $R$ appears in 
+    $S$. Cleary $a$ appears in this list, hence there must exist $x_{j_0}$ such that $ax_{j_0} = a$. Now note that for any $r \in R$ we can write 
+    $r = ax_k$ and 
+    \[rx_{j_0} = ax_{j_0}x_k = ax_k = r\] 
+    so $x_{j_0}$ is the unit of $R$. Now we must find the multiplicative inverse of $a$, since $x_{j_0} \in R$ it appears in $S$. Hence there exist 
+    $X_{i_0} \in R$ such that $ax_{i_0} = x_{j_0}$; it follows that every non zero element of $R$ has a multiplicitive inverse.
+    Thus $R$ is a field 
+\end{proof}
+
+The above theorem is clearly false in the infinite case (consider the integers), however an interesting note is where the above proof breaks down. 
+In the finite case the function $\cdot_a: R \to R$ defined by $r \mapsto a \cdot r$ is an injective mapping from $R$ to $R$ and is then necessarily 
+a bijection. However for sets with infinite cardinality, you can have a injective map from a set to inself that is not surjective; and this is where the 
+logic of the above breaks down.
+
+
+A field is a very important structure in mathematics and we will have much more to say about them later. 
+
+    
+    \end{section}
+
+
+\begin{section}{Ideals and Quotients}
+    In group theory we had subgroups, to extend this to rings we simply require clousure of multiplication. 
+
+    
+    \begin{defn}
+        Let $R$ be a ring and suppose $S \subseteq R$. We say $S$ is a subring og $R$ if 
+        
+        \begin{enumerate}
+            \item $S$ is a subgroup of $R$ when considered under addition 
+            \item $S$ is closed under multiplication
+        \end{enumerate}
+    \end{defn}
+
+    We may want to test wether or not a given subset is a subring, here we show a way of doing that (we have basicaly just stolen the 
+    subgroup test.)
+    
+    \begin{thm}[Subring test]
+        $S \subseteq R$ is a subring if 
+        
+        \begin{enumerate}
+            \item $a, b \in S \implies a - b \in S$ and $ab \in S$
+        \end{enumerate}
+        
+    \end{thm}
+    
+    \begin{proof}
+        exercise
+    \end{proof}
+    We will find that the concept of subrings is not so important. What we really want to study are the ideals of a ring. 
+    In group theory we found the concept of a normal subgroup to be extremly usefull, so it is natural to ask if we can produce a similar concept for rings 
+    such that we may bring over many of our previous results. If we consider $R$ as a group it is clear that every subgroup is normal (since 
+    $R$ is abealian), but what should we require of multiplication? We will soon see that the next deffinition is the correct one. 
+
+    
+    \begin{defn}[Ideals of a ring]
+        Let $R$ be a ring. A (two-sided) ideal of $R$ is a subring $U$ such that for all $r \in R$ and all $u \in U$ 
+        $ru \in U$ and $ur \in U$.  
+    \end{defn}
+
+    
+    \begin{rem}
+        Technically we may speak of left ideals and right ideals, were $U$ would only be closed under multiplication on the left or right, this 
+        is why we must add the condition of a two sided ideal. In these notes we will only consider the notion of two sided ideals. Note in 
+        a communitive ring a left and right ideal concided and there is no difference. 
+    \end{rem}
+
+    Now given an ideal $U$ we know that the cosets $a + U$ for all $a \in R$ partition $R$ and we know how to turn $R\B U$ into a group. 
+    Now we need to define a multiplication on $R\B U$ to turn it into a ring. Obviously we would like 
+    \[(a + U)(b + U) = (ab) + U\]
+    lets show that our defintion of ideal ensures that this will work 
+
+    
+    \begin{prop}
+        $R\B  U = \{a + U| a \in R \}$ with the above operations is a ring
+    \end{prop}
+    \begin{proof}
+        we must show that the definition of multiplicatin is well defined. Let $a, a^\prime, b, b^\prime \in U$ and assume 
+        $a + U = a^\prime + U$ and $b + U = b^\prime + U$. We need to show that 
+
+        \[(ab) + U = (a^\prime b^\prime) + U\]
+
+        Note $a \in a + U$ so $a = a^\prime + u_s$ and the same argument shows $b = b^\prime + u_t$ for $u_s, u_t \in U$. 
+        Now for $x \in (ab)+U$ we have 
+        \[ x = ab + u_1 = (a^\prime + u_2)(b^\prime + u_3) + u_1   \]
+        \[= a^\prime b^\prime + a^\prime u_3  + u_2b^\prime + u_2 u_3 = a^\prime b^\prime + u_4 \in (a^\prime b^\prime) + U.\] 
+
+        Which shows $(ab) + U \subseteq (a^\prime b^\prime) + U$. The converse is simillar and this completes the proof. 
+        
+    \end{proof}
+
+    Hence multiplication works as expected. The above proof also makes clear why we defined ideals the way we did. Now we move on to 
+    consider two more types of ideals, prime ideals and maximal ideals. 
+
+    
+    \begin{defn}[Prime Ideals]
+        Let $I$ be an ideal of a ring $R$, we say $I$ is a prime ideal if all $a, b \in R$ we have 
+        $ab \in I$ implies $a \in I$ or $b \in I$. 
+    \end{defn}
+
+    Prime ideals get there name from the ideals $p\Z \subseteq \Z$. An easy exercise is to show that for all prime $p$, $p\Z$ is prime. 
+
+    \begin{defn}[Maximal Ideals]
+        Let $M$ be an ideal. We say that $M$ is maximal if $M \subseteq U \subseteq R$ implies $M = U$ or $M = R$. 
+    \end{defn}
+    An ideal is maximal when it is impossible to fit another ideal between it and the entire ring. 
+
+    We imeaditly see two results 
+
+    
+    \begin{thm}
+        $I$ is a prime ideal of a ring $R$ iff $R\B  I$ is an integral domain 
+    \end{thm}
+
+    \begin{proof}
+        Suppose that $I$ is a prime ideal then  $(a + I)(b + I) = I = (ab) + I$ hence $a$ or $b$ is in $I$ so either $(a + I) = I$ or 
+        $b + I = I$. Conversly let $R$ be a ring and $I$ an ideal. Now suppose $R\B  I$ is an integral domain. Now assume $ab \in I$. 
+        Then $I = (ab) + I = (a + I)(b + I)$ and since $R\B  I$ is an integral domain one of $a + I$ or $b + I$ must equal $I$ and it follows 
+        from this that either $a \in I$ or $b \in I$. 
+    \end{proof}
+
+    For maximal ideals we see an even stronger result, but first we prove a lemma. 
+    
+    \begin{lem}
+        Let $k$ be a communitive ring with unit. Then $k$ is a field if and only if the only ideals 
+        of $k$ are the trivial ring and $k$ itself. 
+    \end{lem}
+
+    \begin{proof}
+        Assume $k$ is a field and $U$ a non trival ideal. Then for $a \neq 0 \in U$ and $a^{-1}, x \in k$ 
+        we have 
+
+        \[a(a^{-1} \cdot x) = 1 \cdot x  = x\in U \]
+
+        so $k = U$. Conversly, assume $k$ is a communitive ring whose only ideals are 
+        trivial and $k$ itself. For $a \neq 0 \in k$ we have the non trival ideal $\langle a \rangle = \{ar | r \in k\}$, 
+        by assumtion this ideal must necessarily be $k$ itself, in particular it must contain $1$. But this means 
+        there exist $b \in k$ with $ab = 1$. Since $a$ was an arbitrary non zero element we have that $k^*$ is an 
+        abelian group and from this the result follows. 
+    \end{proof}
+
+    
+    \begin{thm}
+        $M$ is a maximal ideal if and only if $R\B M$ is a field. 
+    \end{thm}
+
+    
+    \begin{proof}
+        Consider the map $\phi: R \to R\B M$ defined by 
+        $r \mapsto r+ M$. Now let $U$ be an ideal containg $M$ then 
+        \[\phi(U) = \{u + M| u \in U\} \] 
+         Since $M \subseteq U$ we know $M \in \phi(U)$. Now for $a, b \in U$ we have $a + M, b + M \in \phi(U)$ so 
+         \[a + M - b + M = (a -b )+ M \in \phi(U)\]
+         since $a-b \in U$. Now for $r \in R$ we have $r + M \in \phi(R)$ and 
+         \[(a + M)(r + M) = (ar) + M \in \phi(U)\]
+         hence $\phi(U)$ is an ideal of $R \B M$. 
+         Now consider an ideal of $R \B M$, say $I$. Then $\bigcup I$ is an ideal of $R$ which maps to 
+         $I$ under $\phi$. Hence there is a one to one corospondence between ideals of $R$ containg $M$ and 
+         ideals in $R \B M$. $M$ maps to the trivial ideal and $R$ maps to $R \B M$. So then if $M$ is maximal 
+         the only ideals of $R \B M$ are trivial and itself, so it is a field. If $R \B M$ is a field, then 
+         the only ideals contain $M$ are $M$ and $R$, so $M$ is maximal. 
+
+    \end{proof}
+
+    
+\end{section}
+    
+    \end{chapter}
+    
+\end{document}

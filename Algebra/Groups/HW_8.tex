@@ -1,0 +1,83 @@
+\documentclass[11pt]{homework}
+\usepackage{commath}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\ran}{\operatorname{ran}}
+\newcommand{\dom}{\operatorname{dom}}
+\newcommand{\eps}{\varepsilon}
+\newcommand{\ssd}{\bigtriangleup}
+\newcommand{\pow}{\mathcal{P}}
+
+% TODO: replace these with your information
+% TODO: replace these with your information
+\newcommand{\hwname}{Evan Fox}
+\newcommand{\hwemail}{efox20@uri.edu}
+\newcommand{\hwtype}{Homework}
+\newcommand{\hwnum}{8}
+\newcommand{\hwclass}{MTH 316}
+\newcommand{\hwlecture}{}
+\newcommand{\hwsection}{}
+
+\begin{document}
+\maketitle
+
+\question
+Let $\phi: G \to H$ and $\psi: H \to K$ be homomorphisms. 
+
+\begin{alphaparts}
+    \questionpart
+    Prove that $\psi \circ \phi: G \to K$ is a homomorphism 
+
+    \begin{proof}
+        It is clear that the composistion is a function from $G$ to $K$ so we must show that it is a homomorphism. Let 
+        $a, b \in G$ and using the fact that $\phi$ and $\psi$ are both homomorphisms we get, 
+        \[\psi \circ \phi (ab) = \psi(\phi(ab)) = \psi(\phi(a)\phi(b)) = \psi(\phi(a))\psi(\phi(b))\]
+        This completes the proof. 
+    \end{proof}
+
+    \questionpart
+    Prove that $\ker \phi \leq \ker(\psi \circ \phi)$. 
+
+    \begin{proof}
+        Since we have established $\psi \circ \phi$ is a homomorphism, we know that its kernel forms a subgroup. 
+        By definition if $a \in \ker \phi$ then $\phi(a) = e_H$, recalling the fact that $\psi$ is a homomorphism, 
+        we know that it must map $e_H$ to $e_K$.  So for $a \in \ker \phi$ we have 
+        \[(\psi \circ \phi)(a) = \psi(\phi(a)) = \psi(e_H) = e_K\]
+        then it is clear $a \in \ker \psi \circ \phi$, but this is exactly what we needed to show. 
+    \end{proof}
+    
+\end{alphaparts}
+
+\question 
+Ler $G$ and $H$ be groups with idenities $e_G$ and $e_H$. 
+
+\begin{alphaparts}
+    \questionpart
+    Prove that $\phi: G \oplus H \to H$ defined by $\phi(g,h) = h$ is a homomorphism 
+
+    \begin{proof}
+        Define $\phi$ as above. Then all we need to show is that it preserves group structure. 
+
+        \[\phi(g_1 g_2, h_1 h_2) = h_1 h_2 = \phi(g_1, h_1) \phi(g_2, h_2)\]
+
+        as desired. 
+    \end{proof}
+
+    \questionpart 
+    Prove that $(G \oplus H) / (G \oplus \{e_H\}) \cong H$
+
+    \begin{proof}
+        We will use the first isomorphism theorem. We have in the last part established a homomorphism $\phi$ from 
+        $G \oplus H$ to $H$, we define $\phi$ here as it is defined above. We want to find the kernel of this homomorphism; 
+        since $\phi$ maps the ordered pair $(g, h)$ to $h$, we see that any element of the form $(g, e_H)$ where 
+        $g$ is arbitrary will map to the idenity in $H$. So $\ker \phi = \{(g, e_H) | g \in G \} = G \oplus \{e_H\}$. 
+        Then the result will follow directly from the first isomorphism theorem. 
+    \end{proof}
+
+
+\end{alphaparts}
+
+
+\end{document}

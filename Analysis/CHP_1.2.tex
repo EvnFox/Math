@@ -1,0 +1,233 @@
+\documentclass[11pt,largemargins]{homework}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\ran}{\operatorname{ran}}
+\newcommand{\dom}{\operatorname{dom}}
+
+\newcommand{\eps}{\varepsilon}
+\newcommand{\ssd}{\bigtriangleup}
+\newcommand{\pow}{\mathcal{P}}
+
+% TODO: replace these with your information
+% TODO: replace these with your information
+\newcommand{\hwname}{name}
+\newcommand{\hwemail}{email}
+\newcommand{\hwtype}{Chapter}
+\newcommand{\hwnum}{1.2}
+\newcommand{\hwclass}{Understanding Analysis}
+\newcommand{\hwlecture}{}
+\newcommand{\hwsection}{}
+
+\begin{document}
+\maketitle
+
+\question
+Give a definition for greatest lower bound and prove a lemma analagous to 1.3.8 
+
+\newtheorem{definition}{Definition}
+\begin{definition}
+    
+ Let $A \subseteq \R$ and let $l \in \R$. We say that $l = \inf(A)$ if and only if 
+\begin{enumerate}
+    \item $l$ is a lower bound for $A$ (i.e. $l \leq a$ for all $a \in A$).
+    \item For an arbitrary lower bound $L$, we have that $L \leq l$. 
+\end{enumerate}
+\end{definition}
+\newtheorem{lemma}{Lemma}[definition]
+\begin{lemma}
+    Assume that $l \in \R$ is a lower bound for a set $A \subseteq \R$. Then, $l = \inf(A)$ if and only if, for all choices $\eps > 0$, we have that 
+    $l + \eps > a$ for some $a \in A$. 
+\end{lemma}
+
+
+\begin{proof}
+    Assume $l = \inf(A)$. Then note for all $\eps \geq 0$ that $l < l + \eps$. Then since $l$ is the greatest lower bound for $A$
+    by definiton, we have that $l + \eps$ is not a lower bound. But then there must exist $a \in A$ such that $l + \eps > a$. 
+
+    To prove the other direction assume we have $l \in \R$ such that $l$ is a lower bound for $A$ with the property that 
+    for all $\eps > 0$ we have $l + \eps > a$ for some $a \in A$. For the sake of contradiction assume that we have $L \in \R$ such that $L > l$ and that $L = \inf(A)$. Then we note that by choosing $\eps = -l + L$
+    we get that $L > a$ for some $a \in A$. Hence $L$ is not a lower bound for $A$ contradicting our assumtion. Hence $l = \inf(A)$.  
+\end{proof}
+
+\question
+For each part either given an example or state that the request is impossible. 
+
+\begin{alphaparts}
+    \questionpart
+        A set B with $\inf(B) \geq \sup(B)$. 
+
+        Consider the set $B = \{0\}$. It is clear that $B \subset \R$ and that $\inf(B) = \sup(B) = 0$. 
+
+    \questionpart
+        A set that contains its infinium but not it's supprenum. 
+
+        Consider the set $[0, 1)$. 
+
+    \questionpart
+        A set $B \subseteq \Q$ that contains its supprenum but not its infinium. 
+
+        Consider the set $B = \{x \in \Q | 0 < x \leq 1 \} $. 
+
+\end{alphaparts}
+
+\question 
+
+\begin{alphaparts}
+    \questionpart 
+    Let $A$ be non-empty and bounded below. Then
+    Define $B = \{ b \in \R | \text{ b is a lower bound for A} \}$. Prove that 
+    $\sup(B) = \inf(A)$. 
+
+    \begin{proof}
+        We fix $s \in \R$ such that $s = \inf(A)$. Then we know the $s \in B$ since $s$ is a lower bound for $A$. We also have that 
+        for an arbitrary element $l \in B$, $s \geq l$; then $s$ is an upper bound for $B$ and must be the least upper bound since 
+        $s \in B$ and any arbitrary upper bound $S$ must then satisfy $s \leq S$. 
+    \end{proof}
+
+    \questionpart 
+    Use the result from (a) to argue why there is no need to assert that greatest lower bounds exist in the axiom of completness. 
+
+    The result from part (a) shows shows us that we can define the greatest lower bound as the supprenum of the set of lower bounds. 
+    Hence the assertion that all sets bounded above have a least upper bound implys that all sets bounded below have a greatest lower bound. 
+\end{alphaparts}
+
+\question 
+Let $A_1, A_2, A_2, ... $ be a collection of non empty sets that are bounded above. 
+
+\begin{alphaparts}
+    \questionpart
+    Find a formula for $\sup(A_1 \cup A_2)$ and extend it to finite unions 
+
+    Claim: $\sup(A_1 \cup A_2) = \sup(\{\sup(A_1), \sup(A_2)\})$
+
+    \begin{proof}
+        Note that either $\sup(A_1) \leq \sup(A_2)$ or $\sup(A_2) \leq \sup(A_1)$ must hold. If we are in the first cases then 
+        it is clear that $\sup(A_2)$ is the supprenum of $A_1 \cup A_2$ and if we are in the latter case then $\sup(A_1)$ will be the supprenum. 
+        Hence the supprenum of the union will be the largest supprenum of the sets being unioned. 
+    \end{proof}
+
+    To extend this to finite unions we claim 
+
+    \[\sup(\bigcup_{i = 0}^n A_i) = \sup(S) \] 
+
+    where $S = \{ \sup(A_i) | i \leq n \}$. 
+\end{alphaparts}
+
+
+\question
+Let $A \in \R$ be bounded above and let $c \in \R$. Then define $cA = \{ ca | a \in A \} $. 
+
+\begin{alphaparts}
+    \questionpart
+    For $c \geq 0$, prove $\sup(cA) = c\sup(A)$. 
+
+    \begin{proof}
+        Let $c  \geq 0$ and fix $s \in \R$ such that $s = \sup(A)$. Then $cs \geq ca $ for all $a \in A$. Then if $b$ is an arbitrary upper bound of $A$ then 
+        $s \leq b$, hence $cs \leq cb$ where $cb$ is an arbitrary upper bound of $cA$. So  $cs = c\sup(A) = \sup(cA)$.
+    \end{proof}
+
+    \questionpart
+    For $c < 0$, prove $\sup(cA) = c\inf(A)$. 
+
+    \begin{proof}
+        Assume $c < 0 $ and fix $s, i \in \R$ such that $s = \sup(cA)$ and $i = \inf(A)$. Then since $i \leq a$ for all $a \in A$ we have 
+        $ci \geq ca$ for all $a \in A$. Hence $i$ is a upper bound for $cA$. To prove $s = ci$ first suppose that $s < ci$; then
+        for all $a \in A$ we have $ci > s \geq ca$ which is equivalent to $i < s \leq a$, contradicting $i = \inf(A)$. Now suppose that 
+        $s > ci$; since we already know that $ci \geq ca$ for all $a \in A$ we see this contradicts $s = \sup(cA)$. Hence we must have $s = ci$. 
+
+    \end{proof}
+
+    Below is my attempt to shorten the argument and do a direct proof. In general I feel like using contradiction is easier for me. 
+    \begin{proof}
+        Assume $c < 0$ and let $L \in \R$ be an arbitrary lower bound for $A$, then we note that since $L \leq a$ for all $a \in A$, we have that 
+        $cL \geq ca$ for all $a \in A$; therefore $cL$ is an arbitrary upper bound for $cA$. Now we fix $i \in \R$ such that $i = \inf(A)$, then for our arbitrary lower bound L we have $i \geq L$ and $ci \leq cL$. Hence, $ci = sup(cA)$. 
+    \end{proof}
+\end{alphaparts}
+
+\question
+Prove that if $a \in A$ and $a$ is an upper bound for $A$, then $a = \sup(A)$. 
+
+\begin{proof}
+    Fix $a \in \R$ such that $a \in A$ and $a$ is an upper bound for $a$. Then to prove that $a = \sup(A)$, note that 
+    if $b$ is an arbitrary upper bound for $A$ then $x \leq b$ for all $x \in A$. Then since $a \in A$ it is clear that $a \leq b$. 
+    Hence, $a$ satisfys the definition of a least upper bound. 
+\end{proof}
+
+\question
+    if $\sup(A) < \sup(B)$ then there is some element $b \in B$ that is an upperbound for $A$.
+
+    \begin{proof}
+        We use the contrapostive. Assume that there is no $b \in B$ that bounds $A$ above. Then $\sup(A) > b$ for all $b \in B$. Hence $\sup(A)$ is an upper bound for $B$ and so 
+        $\sup(B) \leq \sup(A)$. 
+    \end{proof}
+
+
+\question
+
+\begin{definition}[The Cut Property]
+    If $A, B \subseteq \R$ such that $A \cap B = \varnothing$ and $A \cup B = \R$ and for all $a \in A $ and $b \in B$ we have $a < b$ then then there exists $c \in \R$ such that 
+    $c \geq a$ for all $a \in A$ and $c \leq b$ for all $b \in B$. 
+\end{definition}
+
+Prove that the cut property is equivalent to the axiom of completness (i.e. prove that they imply each other).
+
+\begin{proof}
+    We begin by assuming the cut property so suppose that we have $A \subseteq \R$ then define $B = \{x \in \R | (\forall a \in A)(x > a) \}$. Then we may fix $c \in \R$ such that $a \leq c \leq b$ for all $a \in A$ and all $b \in B$. 
+    Then it is clear that $c$ is an upper bound for $A$. Then to prove that $c$ is the least upper bound we first condsider the case where $c \in A$ then by previous result it follows that $c = \sup(A)$. If $c \notin A$ then $B$ must be the set of all upper bounds; then since
+    we have $c \leq b$ for all $b \in B$ we see that $c = \sup(A)$ as desired. 
+
+    To prove the other direction we assume the axiom of completness, that is, assume every bounded subset of $\R$ has a least upper bound. Then let $A \subseteq \R$ that is bounded above. Then we may fix $\alpha \in \R$ such that $a \leq \alpha$ for all $a \in A$. Now we define  $B = \{x \in \R | (\forall a \in A)(x > a) \}$. 
+    then since every element of $B$ is an upper bound for $A$ we must have $a \leq \alpha \leq b$ for all $a \in A$ and all $b \in B$. 
+\end{proof}
+
+
+\question
+Prove or disprove the following 
+
+\begin{alphaparts}
+    \questionpart
+    Let $A$ and $B$ be nonempty subsets of $\R$ such that $A \subseteq B$. Then $\sup(A) \leq \sup(B)$. 
+
+    \begin{proof}
+        Note that since $A \subseteq B$ we must have $\sup(B) \geq a$ for all $a \in A$; so $\sup(B)$ is an upper bound for $A$. Then $\sup(A) \leq \sup(B)$ by definition. 
+    \end{proof}
+
+    \questionpart
+    if $\sup(A) < \inf(B)$ then there exists $c \in \R$ satisfying $a < c < b$ for all $a \in A$ and all $b \in B$. 
+
+    \begin{proof}
+        Since $\sup(A) < \sup(B)$ there exists $\eps \in \R$ such that $\sup(A) +  \eps = \sup(B)$. Then consider $\sup(A) + \frac{\epsilon}{2}$; it is clear that $\sup(A) < \sup(A) + \frac{\epsilon}{2} < \sup(B)$
+    \end{proof}
+
+    \questionpart
+    if there exists $c \in \R$ satisfying $a < c < b$ for all $a \in A$ and all $b \in B$ then  $\sup(A) < \inf(B)$. 
+
+    This is false
+    \begin{proof}
+        Consider the counter example $A = (0, 2)$ and $B = (2, 4)$. 
+    \end{proof}
+\end{alphaparts}
+
+\question
+Let $A$ and $B$ be nonempty subsets of $\R$. Define $A + B = \{a + b| a \in A \text{and} b \in B \}$. Prove that 
+$\sup(A  + B) = \sup(A) + \sup(B)$. 
+
+\begin{proof}
+    Let $s_a = \sup(A)$ and $s_b = \sup(B)$. Then $s_a + s_b \geq a + b$ for all $a \in A $ and $b \in B$; so $s_a + s_b$ is an upper bound for $A + B$. 
+    Then let $u$ be an arbitrary upper bound for $A + B$ so that $u \geq a + b$ for all $a$ and $b$. We then fix $a \in A$ 
+    such that for all $\eps > 0$, $s_a - \eps < a$. Then 
+
+    \[u - a \geq b\] 
+    \[u - a \geq s_b\] 
+    \[u - \eps > s_b + s_a\] 
+
+    which implys
+
+    \[u \geq s_b + s_a \] 
+
+    hence it follows that $s_a + s_b = \sup(A + B)$. 
+\end{proof}
+
+\end{document}
