@@ -11,6 +11,7 @@
 \newcommand{\Z}{\mathbb{Z}}
 \newcommand{\ran}{\operatorname{ran}}
 \newcommand{\dom}{\operatorname{dom}}
+\newcommand{\stab}{\operatorname{stab}}
 \newcommand{\eps}{\varepsilon}
 \newcommand{\ssd}{\bigtriangleup}
 \newcommand{\pow}{\mathcal{P}}
@@ -86,6 +87,25 @@ This is often called the A, B, Cs in finite group theory and one of the biggest 
      \[ro(H) = o(G)\]
     
 \end{proof}
+
+
+\begin{thm}[Orbit stabilizer]
+
+    Let $G$ be a group acting on a set $A$. Then define for all $a \in A$ the set  $\stab(a) = \{g \in G| g \cdot a = a\}$
+    and $orb(a) = \{b \in A| g \in G \text{ s.t. } g \cdot a = b\}$. Then $\stab(a)$ is a normal 
+    subgroup and $|G| = |\stab(a)||orb(a)|$. 
+\end{thm}
+
+
+\begin{proof}
+    Consider the map $\phi: G \backslash \stab(a) \to orb(a)$ wehre 
+    $g \stab(a) \mapsto g \cdot a$. So if $g \stab(a) = g^\prime \stab(a)$. 
+    then $g^{-1}g^\prime \in \stab(a)$ and hence $(g^{-1}g^\prime) \cdot a = a$
+    which implies $g^\prime \cdot a = g^{-1} \cdot a$ and so our mapping is well defined. 
+    Now we show that $\phi$ is a isomorphism. 
+
+\end{proof}
+
 
 
 \end{document}

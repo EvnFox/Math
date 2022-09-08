@@ -319,9 +319,58 @@ A field is a very important structure in mathematics and we will have much more 
 
     \end{proof}
 
+    The previous two theorems show that a maximal ideal is always prime. The converse does not hold in an arbitrary ring however. 
+    For example $3\Z[x]$ is a prime ideal of $\Z[x]$ but is not maximal. Infact one can prove that if $R$ is a ring and $I$ a prime ideal 
+    then $I[x]$ is a prime ideal of $R[x]$ but this does not hold for maximal ideals. 
+
     
 \end{section}
+
+
+\begin{section}{Ring Homomorphism}
+    In group theory we found the concept of a homomorphism to be very useful, so we will define the obvious extension to rings. 
+
     
-    \end{chapter}
+    \begin{defn}
+        Let $R$ and $S$ be rings. A function $\phi: R \to S$ is a ring homomorphism if 
+        
+        \begin{enumerate}
+            \item $\phi(a + b) = \phi(a) + \phi(b)$. 
+            \item $\phi(ab) = \phi(a)\phi(b)$. 
+        \end{enumerate}
+    \end{defn}
+
+    just like in group theory, we say that to rings are isomorphic if there exists a bijective homomorphism between them. 
+    It is clear that every ring homomorphism is a group homomorphism if we consider the rings as groups and so our knowelge of 
+    group homomorphism carrys over. If $R, S$ both have a uinty, then $\phi(1_R) = 1_S$. It follows that if $R$ is a ring with unity, 
+    then no homomorphic image of $R$ is a ring without unity. 
+\end{section}   
     
+\begin{section}{PID and UFD}
+    In this section we explore the relation ship between principal ideal domains and unique factorization domains.
+    
+    \begin{proof}
+        Let $a \in R$ be a nonzero nonunit. We first show that $a$ has a irriducible factor, if $a$ is irriducible we are done so 
+        suppose not. Then $a$ must be reducible so we can write $a = a_1b_1$. where $a_1, b_1$ are both nonunits. 
+        we can repeat the same argument on $a_1$ to produce 
+        \[a = a_1 \cdot b_1 \]
+        \[a_1 = a_2 \cdot b_2 \]
+        \[a_2 = a_3 \cdot b_3 \]
+        \[ \cdot \]
+        \[\cdot \]
+        \[ \cdot \] 
+        Then $a_{n+1} | a_n$ and $\langle a_n \rangle \subset \langle a_{n+1} \rangle$. Then since PIDs are noetherian, 
+        this chain of ideals must become constant for some $a_m$. Then $a_m$ must be an irriducible factor of $a$. We relable 
+        $a_m = p_1$ and write $a = p_1 \cdot c$. $c$ must be a nonunit lest we have a contradiction on our assumtion on $a$, so 
+        we can repeat the above process on $c$ to obtain an irriducible factor of $c$, hence $a = p_1p_2c_1$ and 
+        $\langle c \rangle \subset \langle c_1 \rangle$. Iterating as above gives 
+        \[a = p_1 \cdot p_2 \cdot ... \cdot c_k \]
+        where $\langle c_k \rangle = \langle c_{k+i} \rangle$. Thus $c_k$ must be irriducible since reduciblity would furnish an ideal 
+        proplery containg $c_k$. This completes the existence portion of the argument.  
+
+    \end{proof}
+\end{section}
+    
+\end{chapter}
+
 \end{document}
