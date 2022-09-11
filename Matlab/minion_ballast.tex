@@ -1,0 +1,128 @@
+\documentclass[11pt]{article}
+
+%\usepackage{ntheorem}
+\usepackage{amssymb, graphicx, amsmath, amsthm}
+\RequirePackage{graphicx}
+\RequirePackage{hyperref}
+\usepackage{commath}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\ran}{\operatorname{ran}}
+\newcommand{\dom}{\operatorname{dom}}
+\newcommand{\eps}{\varepsilon}
+\newcommand{\ssd}{\bigtriangleup}
+\newcommand{\pow}{\mathcal{P}}
+\newcommand{\Pk}{P_\text{k}}
+\newcommand{\Ck}{C_\text{k}}
+\newcommand{\fit}{\operatorname{fit}}
+
+\newtheoremstyle{break}%
+{}{}%
+{\itshape}{}%
+{\bfseries}{}% % Note that final punctuation is omitted. 
+{\newline}{}
+
+\theoremstyle{break}
+\newtheorem{thm}{Theorem}[section]
+\newtheorem{defn}[thm]{Definition}
+\newtheorem{lem}[thm]{Lemma}
+\newtheorem{cor}[thm]{Corollary}
+\newtheorem{prop}[thm]{Proposition}
+\newtheorem{rem}[thm]{Remark}
+\newtheorem{ex}{Exercise}[section]
+
+
+% TODO: replace these with your information
+% TODO: replace these with your information
+\author{Evan Fox}
+\title{Minion Ballast Scripts}
+
+\begin{document}
+\maketitle
+\tableofcontents
+\begin{abstract}
+    This short report gives a detailed discription of the Minion Ballasting matlab scripts. 
+    
+\end{abstract}
+
+
+
+\begin{section}{Introduction}
+    The Minion is a subsurface float designed to sit at specific depths without needing to use any active form of propuslion. 
+    In order to achive this the Minions need to be ballasted for the correct depth; initial ballast experiments are run in 
+    a custom pressure tank and the height of the minion off the bottom is recored for each pressure. This data is necessary in order 
+    to use the minion scripts because we need to estimate the compressability of the Minion. In general we use two kinds of metal to ballast, 
+    lead and 316 stainless steel. Since it is easier to get very low mass 316, we get as close to the correct ballast weight with lead as we can, 
+    then use 316 to make up the rest. There are 3 main scripts 
+    \begin{enumerate}
+        \item Minion Ballast Master
+        \item Minion Ballast inLab
+        \item Minion Ballast atSea
+    \end{enumerate} 
+    The inLab and atSea scripts just contain functions called in the master script. 
+
+\end{section}
+
+\begin{section}{Minion Ballast Master}
+    \subsection{Minion Parameters}
+        There are several Minion parameters that need to be set before the main ballast script can be run. 
+        The user needs to input 
+        \begin{enumerate}
+            \item 'm nolead' - air weight of Minion, g No lead 
+            \item 'lead air' - air weight of lead added in tank, g
+            \item 'T tank' - tank temperature, C 
+            \item 'S tank' - tank salinity, psu 
+            \item 'pvec' - vector of pressures 
+            \item 'cvec' - vector of links raised   
+        \end{enumerate}
+
+        Futher the user may ajust the bounds for $Pkeek$ and $ckeep$, which 
+        are bounds for the data to be used for curve fitting. After all of the 
+        approprate info has been entered, the ballast master script should be run 
+        for the first time. There will be three variables output but at this point 
+        only 'b lead' is of concern. Lead should be massed out as close to this value as 
+        possible, then enter the amount of lead being added to 'lead sea' and run the program 
+        again; this time the 'stainless sea' output is of interest. this is the amount of 
+        316 stainless needed to complete in lab ballasting. The actuall amount of 316 added should 
+        be as close to this value as possible without going over. However much is added should be 
+        recorded in 'stainless sea'. This completes in lab ballasting. When at sea the script will 
+        have to be run one last time with the appropiate condidtions set for 'P targ', 'T targ',  and 'S targ'.
+        Then when the script is run the 'nuts' output is how much the 316 ballast needs to change 
+        for the current condidtions. 
+        
+    \subsection{Screw-up Factor}
+        The screw-up factor should be commented out by defualt. It exists so that if the mass 
+        of the minion changes slightly after ballasting, the need to re ballast can be avoided. 
+        For example, if some of the sensors on the minion are changed after ballasting, screw-up factor 
+        can be uncommented and used to calculate the correct ballast. To use this part of the code, 
+        simply uncomment it and set 'm nolead ini' to the inital mass without lead of the minion. 
+        then simply use the code as before. 
+    
+\end{section}
+
+\begin{section}{Minion Ballast inLab}
+    
+    $P$ and $C$ are vectors containg pressure and height data such that $(P_i, C_i)$ is the
+    $i^{\text{th}}$ data point.  
+    We let $\Pk$ be the vector whos entries are an appropraite restriction of $P$ we wish to fit and 
+    define $\Ck$ simillarly.
+    First we fit a linear polynomial $\fit(x)$ such that $\fit({\Pk}_i) \approx {\Ck}_i$.
+    (more precisly the matlab function $\operatorname{polyfit}(\Pk,\Ck, n)$ returns a list of coefficients of a polynomial of degree $n$, so in the matlab script 
+    $\fit(P_i)$ would be written $P_i \cdot \fit(1) + \fit(2)$ where $\fit(i)$ is the coefficient of $x^{n+1-i}$.)
+
+    We let $p_1 = 150$ and $p_2 = 300$ then $c_1 = (ml) \cdot \fit(p_1)$ 
+    and $c_2 = (ml) \cdot \fit(p_2)$ gives the water of the suspened chain. 
+
+    Let $\rho_{t1}$, $\rho_{t2}$ be the tank water density at $p_1$ and $p_2$ respectivily (in matlab $\rho_{ti} = \operatorname{sw dens}(S_t, T_t, p_i)$).
+
+    Now we wish to calculate the water weight of the temporary ballast given its weight in air $b_{temp}$,
+    \[b_t = b_{temp} \cdot (\frac{\rho_{316} - \rho_{t1}}{\rho_{316}}) + c_{\text{extra}} \]
+\end{section}
+
+\begin{section}{Minion Ballast atSea}
+    
+\end{section}
+
+\end{document}

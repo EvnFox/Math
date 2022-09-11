@@ -1,0 +1,34 @@
+\begin{chapter}{Introduction}
+    \section{Algebraic and Order properties}
+    The Real numbers, denoted $\R$ form a field, that is $\R$ is an Abelian group under addition and multiplication that 
+    has distinct identites and satisfies the distributive property.
+
+    Aside from the algebraic structure we also have a total order on $\R$ that turns it into an orderd field. 
+    
+    \begin{enumerate}
+        \item Tricotomy: For $x, y \in \R$ exactly one of $a=y$, $x<y$, or $x>y$ holds
+        \item For $x,y,z \in \R$ if $x < y$ then $x + z < y + z$ 
+        \item For $x, y \in \R_{>0}$ we have $xy > 0$. 
+        \item Transitivity: For $x, y, z \in \R$ if $x < y$ and $y < z$ then $x < z$. 
+    \end{enumerate}
+
+    These are the properties of an ordered field and from them we can prove other familliar facts about real numbers, for example 
+
+    
+    \begin{lem}
+        Let $x, y \in \R$ and $x < y$ then if $z > 0$ we have 
+        \[xz < yz\]
+        if $z < 0$ we have 
+        \[xz > yz\]
+    \end{lem}
+
+    
+    \begin{proof}
+        $x < y$ implies $0 < y - x$ by subtracting $x$ from both sides. Then we use the 3rd axiom to multipliy by $z$ and get 
+        \[0 < (y - x)z \implies xz < yz\]
+        after an application of the distrubutive property and adding $xz $ to both sides. 
+    \end{proof}
+
+    
+
+\end{chapter}
