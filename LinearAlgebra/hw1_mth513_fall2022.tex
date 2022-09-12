@@ -530,6 +530,18 @@
 	\end{equation} 
 
 	
+	\begin{proof}
+		We proceed with induction, the base case for $k = 2$ is given. Now for the induction step assume for some 
+		$k \geq 2$ we have $\Big(A_1A_2\cdots A_{k-1} A_k \Big)^T \, = \, A_k^TA_{k-1}^T \cdots A_2^T A_1^T \,$ 
+		Then we use the base case and our induction hypothesis to get
+		
+			\[\Big(A_1A_2\cdots A_{k} A_{k+1} \Big)^T \, = \, A_{k+1}^T \cdot \Big(A_1A_2\cdots A_{k} \big)^T \, \]
+			\[= A_{k+1}^TA_k^T \cdots A_2 A_1\]
+		as desired. 
+
+	\end{proof}
+
+	
 {\bf Remark:} 
 This is essentially just asking you 
 to set up {\em proof by induction} correctly. 
@@ -597,18 +609,105 @@ b & a
 \item 
 Show that $\phi$ is an injective (or one-to-one) function. 
 
+
+\begin{proof}
+	Let $a = x + y{\tt i},  b = w + z{\tt i} \in \bC$ and assume $\phi(a) = \phi(b)$. 
+	then by definition, 
+	
+	\begin{equation}
+		\mat{rr}
+		x & -y \\
+		y & x 
+		\rix \, 
+		\, = \, 
+		\mat{rr}
+		w & -z \\
+		z & w
+		\rix
+	\end{equation}
+
+	Now since $2 \times 2$ matrices form a vector space, they form an Abelian group so we may subtract either matrix from both sides; this 
+	gives $x - w = 0$ and $y - z = 0$, which is to say that the real and imaginary parts of $a$ and $b$ are the same, but then $a = b$. 
+	Thus, $\phi$ is an injection. 
+\end{proof}
+
 \item 
 Describe the range/image of $\phi$, that is, 
 describe the set $\phi(\bC) = \left\{ \phi(z) \, | \, z \in \bC \right\}$. 
+
+$\phi(\bC)$ forms a field since $\phi$ is a injective homomorphism (proven below) but it is clearly not surjective (consider any matrix $A$ s.t $A_{1,1} \neq A_{2,2}$). Another way of seeing that we will have multiplicative inverses is to note 
+for $M \in \phi(\bC)$, $\det(M) = a^2 + b^2$, which is zero iff $a$ and $b$ are zero.  
+
+$\phi(\bC)$ is the group of transformations that act on $\bR^2$ in the same way complex multiplication acts on $\bC$. By this I mean we could associate each matrix $M$ with a function $f:\bC \to \bC$ 
+such that $f(x) = zx$  such that $\phi(z) = M$. 
 
 \item 
 Prove or disprove: $\phi (z_1 + z_2) \, = \, \phi(z_1) + \phi(z_2)$ 
 for all $z_1, z_2 \in \bC$. 
 
+
+\begin{proof}
+	Let $z_1, z_2 \in \bC$ then let $z_1 = a_1 + b_1{\tt i}$ and $z_2 = a_2 + b_2{\tt i}$. 
+	It follows that, 
+	
+	\begin{equation}
+		\phi(z_1 + z_2) 
+		\, = \, 
+		\mat{rr}
+		a_1 + a_2 & -(b_1 + b_2) \\
+		b_1 + b_2 & a_1 + a_2
+		\rix 
+		\, = \, 
+		\mat{rr}
+		a_1 & -b_1 \\
+		b_1 & a_1 
+		\rix
+		\, + \, 
+		\mat{rr}
+		a_2 & -b_2 \\
+		b_2 & a_2
+		\rix 
+		\, = \, 
+		\phi(z_1) + \phi(z_2)
+	\end{equation}
+	as desired. 
+\end{proof}
+
 \item 
 Prove or disprove: $\phi (z_1 \cdot z_2) \, = \, \phi(z_1) \cdot \phi(z_2)$ 
 for all $z_1, z_2 \in \bC$. 
 
+\begin{proof}
+	Let $z_1, z_2 \in \bC$ then let $z_1 = a_1 + b_1{\tt i}$ and $z_2 = a_2 + b_2{\tt i}$. 
+	Then $z_1z_2 = a_1a_2 - b_1b_2 + (a_1b_2 + a_2b_1){\tt i}$. Using the definiton of matrix multiplication 
+	in reverse gives,
+	
+	\begin{equation}
+		\phi(z_1z_2) 
+		\, = \, 
+		\mat{rr}
+		a_1a_2 - b_1b_2 & -(a_1b_2 + a_2b_1) \\
+		a_1b_2 + a_2b_1 & a_1a_2 - b_1b_2 
+		\rix 
+		\, = \, 
+		\mat{rr}
+		a_1 & -b_1 \\ 
+		b_1 & a_1 
+		\rix 
+		\, \cdot \, 
+		\mat{rr}
+		a_2 & -b_2 \\ 
+		b_2 & a_2 
+		\rix 
+		= \phi(z_1) \cdot \phi(z_2)
+	\end{equation}
+
+	completing the argument that $\phi$ is injective homomorphism. Given the above results we see that the vector space of $1 \times 1$ complex matrices is isomorphic 
+	to a subspace of the vector space of $2 \times 2$ real matrcies, this can be generalized to say that 
+	$\mathcal{M}_{n \times n}(\bC)$ is isomorphic to a subspace of $\mathcal{M} _{2n \times 2n}(\bR)$, thus we can always rewrite complex matrices as 
+	real matrices. 
+
+\end{proof}
 
 \end{enumerate} 
 
