@@ -1,34 +1,195 @@
 \begin{chapter}{Introduction}
     \section{Algebraic and Order properties}
     The Real numbers, denoted $\R$ form a field, that is $\R$ is an Abelian group under addition and multiplication that 
-    has distinct identites and satisfies the distributive property.
+    has distinct identites and satisfies the distributive property. All important algebraic properties can be derivied from the fact 
+    that $\R$ is a field. 
 
-    Aside from the algebraic structure we also have a total order on $\R$ that turns it into an orderd field. 
     
-    \begin{enumerate}
-        \item Tricotomy: For $x, y \in \R$ exactly one of $a=y$, $x<y$, or $x>y$ holds
-        \item For $x,y,z \in \R$ if $x < y$ then $x + z < y + z$ 
-        \item For $x, y \in \R_{>0}$ we have $xy > 0$. 
-        \item Transitivity: For $x, y, z \in \R$ if $x < y$ and $y < z$ then $x < z$. 
-    \end{enumerate}
+    \begin{defn}
+        Let $P \neq \varnothing$ be a subset of $\R$ not containg $0$. We say $P$ is the set of positive real numbers and it satisfies 
+        
+        \begin{enumerate}
+           \item  $a, b \in  P \implies a + b \in P$
+           \item $a,b \in P \implies ab \in P$ 
+           \item $a \in P \implies a \in P \vee -a \in P \vee  a = 0$
+            
+        \end{enumerate}
+    \end{defn}
 
-    These are the properties of an ordered field and from them we can prove other familliar facts about real numbers, for example 
+    We are now in a posistion to define the ordering we wish to place on $\R$ 
+
+    
+    \begin{defn}
+        For $a, b \in \R$ such that $b - a \in P$ then we say $a < b$. 
+        If $b -a \in P \cup \{0\}$ then $a \leq b$
+    \end{defn}
+
+    It follows imeditly from tricotomy that exactly one of $a < b, a = b, a > b$ must hold. 
+    It is also clear that this is a total ordering on $\R$, but we must check that this turns $\R$ into an ordered field. 
 
     
     \begin{lem}
-        Let $x, y \in \R$ and $x < y$ then if $z > 0$ we have 
-        \[xz < yz\]
-        if $z < 0$ we have 
-        \[xz > yz\]
+        The ordering defined above is a strict total order. 
     \end{lem}
 
     
     \begin{proof}
-        $x < y$ implies $0 < y - x$ by subtracting $x$ from both sides. Then we use the 3rd axiom to multipliy by $z$ and get 
-        \[0 < (y - x)z \implies xz < yz\]
-        after an application of the distrubutive property and adding $xz $ to both sides. 
+        The order is irreflexive since $a-a = 0 \notin P$, then if $a - b \in P$ and $b - a \in P$ we can add to get 
+        $0 \in P$ a contradiction. Now we must prove the transitive property, suppose $a, b, b \in \R$ satisfy 
+        $a < b $ and $b < c$, then $b - a, c - b \in P$ thus so is their sum, $c - a \in P$ which implies $a < c$ as desired. 
     \end{proof}
 
     
+    \begin{lem}
+        The ordering defined above turns $\R$ into an ordered field, let $a, b, c \in \R$.
+        
+        \begin{enumerate}
+            \item if $a < b$ then $a + c < a + b$
+            \item if $c > 0 $ and $a < b$ then $ac < bc$
+            \item if $c < 0$ and $ a < b$ then $ac > bc$
+        \end{enumerate}
+    \end{lem}
 
+    
+    \begin{proof}
+        For the first item, we have $b - a > 0$ then by adding and subtracting $c$ we get 
+        \[ 0 < b - a - c + c \] 
+        \[a + c < b + c\]
+        Next assume $c > 0$, then we have $0 < b - a$, since both of theses are positive, so is their product, 
+        \[0 < c(b - a) \implies  0 < cb - ca \implies ca < cb.\]
+        Now let $c < 0$, then $-c >0$ and the argument is the same as above.  
+    \end{proof}
+
+    Thus we have turned $\R$ into an ordered field. 
+
+    
+    \begin{thm}
+        The natural numbers are all positive, we will prove this in the following steps. 
+        \begin{enumerate}
+            \item If $a \in \R$ with $a \neq 0$ then $a^2 > 0$
+            \item $1 > 0$
+            \item $\N \subset P$ 
+        \end{enumerate}
+        
+    \end{thm}
+
+    
+    \begin{proof}
+        If $a > 0$ we are done, suppose $a < 0$, then $-a \in P$ and since 
+        $a^2 = (-a)(-a) \in P$ we have $a^2 \in P$. Now note $1^2 = 1$ so $1 \in P$, 
+        then since we definied the natural number $n$ as $1 + \cdots + 1, n$ times, 
+        we see that all natural numbers are positive. 
+    \end{proof}
+
+    
+    \begin{thm}
+        If $a \in \R$ satisfies $0 \leq a < \epsilon$ for all $\epsilon > 0$, then $a = 0$
+    \end{thm}
+
+    
+    \begin{proof}
+        Suppose $a > 0$, then let $\epsilon_0 = a/2$, then 
+        \[0 < \epsilon_0 < a < \epsilon\]
+        a contradiction.
+    \end{proof}
+
+    
+    \begin{thm}
+        If $ab > 0$ then $a, b$ are both posistive or both negitive. 
+
+    \end{thm}
+
+    
+    \begin{proof}
+        Suppose $ab > 0$ and that at least one is negative, without loss of generality say $a < 0$, then if $b > 0$, we have 
+        $-ab > 0$ so $-(ab) \in P$ but we assumed $ab \in P$; a contradiction, thus $b$ is negitive. 
+    \end{proof}
+
+    \section{Absoulte Value}
+    Next we define a function of great importance on $\R$. 
+
+    
+    \begin{equation}
+        |a| \, = \, 
+        \left\{
+        \begin{array}{lr}
+             a, & \textit{if }  a > 0 \\ 
+             0, & \textit{if } a = 0 \\ 
+            -a, & \textit{if } a < 0 
+        \end{array}
+        \right\}
+    \end{equation}
+
+    Now we prove some basic properties of the absoulte value function, 
+
+    
+    \begin{thm}
+        Basic properties of the absoutle value. 
+        \begin{enumerate}
+            \item $|ab| = |a||b|$
+            \item $|a|^2 = a^2 $
+            \item If $c  > 0$ then $|a| \leq c \Leftrightarrow -c \leq a \leq c$
+            \item $-|a| \leq a \leq |a|$
+        \end{enumerate}
+    \end{thm}
+
+    
+    \begin{proof}
+        To prove $(1)$ first note that if $a$ or $b$ is zero we are done. Then we just consider the four possible cases on the signs of $a$ and $b$. For example if $a > 0$ and $b < 0$, 
+        we have $|ab| = -ab$ and $|a| = a, |b| = -b$ so $|a||b| = -ab$. The rest are left as an exercise. 
+        Proving $(2)$ is simillar, if $a > 0$ we are done and if $a < 0$, then $|a|^2 = (-a)^2 = a^2$. 
+        Now suppose $c > 0$ and $|a| \leq c$, if $a \leq 0$, then the result is clear. If $a < 0$ we have $|a| = -a$, so 
+        $-a < c$, rearranging gives $-c < a$. So we are finished. Now suppose $-c \leq a \leq c$, then $-a \leq c$ and $a \leq c$. But the absoute value maps to 
+        $a$ or $-a$ so in either case we are done. 
+        Now for $(4)$ we let $c = |a|$ and apply $(3)$ to get the result. 
+    \end{proof}
+
+    
+    \begin{thm}[Triangle Inequality]
+        For all $a, b \in \R$ 
+        
+        \begin{equation}
+            |a + b| \, \leq \, |a| + |b|
+        \end{equation}
+    \end{thm}
+
+    
+    \begin{proof}
+        By the above, we have that
+        \[-|a| -|b| \leq a + b \leq |a| + |b| \] 
+        implies 
+        \[|a + b| \leq |a| + |b|\]
+        as desired. 
+    \end{proof}
+
+    The Triangle inequality is very important and equality hold only when $a, b$ have the same sign. 
+
+    
+    
+    \begin{thm}
+        The following two inequalitys hold for all $a, b \in \R$
+        
+        \begin{enumerate}
+            \item $|a - b| \leq |a| + |b|$
+            \item $||a| -|b|| \leq |a - b|$
+        \end{enumerate}
+    \end{thm}
+
+    
+    \begin{proof}
+        Proof of $(1)$ follows from subing $-b$ into the triangle inequality. 
+        To prove $(2)$ start my applying the triangle inequality to $a = a - b + b$ to get 
+        $|a| \leq |a - b| + |b| $, and $b = b - a + a$ to get $|b| \leq |b-a| + |a|$,
+        then subtracting gives 
+        \[|a| - |b| \leq |a - b| \] 
+        and 
+        \[|b| - |a| \leq |a - b|.\]
+        We may multiply by $-1$ to get 
+        \[-|b| + |a| \geq -|a-b|\] 
+        and it follows, 
+        \[-|a-b| \leq |a| - |b| \leq |a - b|.\]
+        Now we let $|a - b| = c$ and use the third result from theorem 1.2.1, to get 
+        \[|a|- |b| \leq |a - b|\]
+
+    \end{proof}
 \end{chapter}
