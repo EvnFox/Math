@@ -259,5 +259,61 @@
     \end{proof}
 
 
+    Now we may look at the algebraic properties of $\sup$ 
+
+    
+    \begin{thm}
+        let $S, A, B$ be sets and $r \in \R$
+        \begin{enumerate}
+            \item $\sup(r + S) = r + \sup(S)$
+            \item $\sup(A + B) = \sup(A) + \sup(B)$
+            \item if $a \leq b$ for all $a \in A, b \in B$ then $\sup(A) \leq \inf(B)$.
+        \end{enumerate}
+    \end{thm}
+
+    
+    \begin{proof}
+        exercise. See HW1
+    \end{proof}
+
+
+    
+    
+    \begin{defn}
+        A function $f: D \to \R$ is bounded in $\R$ is there exists $M \in \R$ such that 
+        \[-M \leq f(x) \leq M \, \forall x \in D\]
+    \end{defn}
+
+    
+    \begin{lem}
+        if $f, g$ are bounded functions such that $f(x) \leq g(x)$ then $\sup(f(x)) \leq \sup(g(x))$, but 
+        $\sup(f(x)) \nleqslant \inf(g(x))$ in general. 
+    \end{lem}
+
+    
+    \begin{proof}
+        The first part is easy. To see that the second statement is false consider $f:[0,1] \to \R$ as $f(x) = x^2$ and 
+        $g: [0, 1] \to \R$ as $f(x) = x$. Then $g(x) \geq f(x)$ but $\sup(f(x)) = 1 > 0 = \inf(g(x))$. 
+    \end{proof}
+
+
+    
+    \begin{thm}
+        For $x, y \in \R$ with $x < y$ there exists $m, n \in \Z$ such that 
+        \[x < \frac{m}{n} < y\]
+        That is $\Q$ is $\emph{dense}$ in $\R$. 
+    \end{thm}
+
+    
+    \begin{proof}
+        Let $x, y \in \R$ with $x , y$. By the archimeadian property fix $n \in \N$ such that $\frac{1}{n} < y - x$. This gives 
+        
+        \[0 < 1 + nx < y \] 
+
+        Now fix $m \in \Z$ such that $xn < m \leq xn + 1$. Then from $eq(1)$ it follows 
+        \[nx< x < nx + 1 < ny \implies nx < m < ny \implies x < \frac{m}{n} < y. \]
+
+    \end{proof}
+
 
 \end{chapter}
