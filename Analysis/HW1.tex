@@ -13,8 +13,8 @@ Show that there doesn't exist a rational number $s$ such that $s^2 = 6$.
     appear in $a^2 = p_1^2 p_2^2 \dots p_n^2$, hence $6$ does not devide $a^2$. It now follows by contrapositive that 
     if $6|a^2$ then $6|a$. 
 
-    Now assume there exists $a, b \in \N$ such that 
-    \[6 = (\frac{a}{b})^2 \]
+    Now assume there exists $a, b \in \Z$ such that 
+    \[6 = \left(\frac{a}{b}\right)^2 \]
     If $a$ and $b$ have any common factors we may cancel them out, so we assume $(a, b) = 1$. 
     Then $6b^2 = a^2$ implies $6|a$ so we may fix $m \in \Z$ such that $6m = a$. Then 
     $6b^2 = (6m)^2$ implies $b^2 = 6m^2$ and $6|b$; thus $a$ and $b$ share a common factor, 
@@ -58,9 +58,9 @@ Find all $x \in \R$ that satisfy the inequality
     \[4 < |2x + 1| \implies 4 < 2x + 1 \vee 2x + 1 < -4\]
     which gives $3/2 < x$ and $x < -5/2$; written in interval notation as $(-\infty, -5/2) \cup (3/2, \infty)$. 
     Now for 
-    \[|2x + 1| < 5 \implies -5 < 2x + 1 < 5 \implies -6/2 < x < 4 = (-6/2, 4)\]
+    \[|2x + 1| < 5 \implies -5 < 2x + 1 < 5 \implies -6/2 < x < 4 = (-3, 2)\]
     We need both conditions to be satisfied so we must take the intersection over our two solutions, 
-    \[(-\infty, -5/2) \cup (3/2, \infty) \cap (-6/2, 4) = (-6/2, -5/2) \cup (3/2, 4)\]
+    \[(-\infty, -5/2) \cup (3/2, \infty) \cap (-3, 2) = (-3, -5/2) \cup (3/2, 2)\]
 \end{proof}
 
 \question 
@@ -97,9 +97,9 @@ Then $b < a$ and $b < c$ is the same as above.
 \question 
 
 \begin{proof}
-$\inf S_4 = \frac{1}{2}$, $\frac{1}{2}$ is an element of $S_4$ that occurs for $n = 2$, for $n \neq 2$, if $n$ is odd we will be adding 1 which 
-gives $\frac{1}{2} < 1 + 1/n$. If $n>2$ is even we have $1/n < 1/2$ which implies $1 - 1/2 < 1 - 1/n$, so $1/2$ is the minimal element. It follows that 
-if a set contains a minimal element it is the infium since we have $1/2 < x$ for all $x \in S_4$ it is a lower bound and since it is an element of $S_4$, given any lower bound $l$, we must 
+$\inf S_4 = \frac{1}{2}$, $\frac{1}{2}$ is an element of $S_4$ that occurs for $n = 2$, for $n \neq 2$, if $n$ is odd we will be adding to 1 which 
+gives $\frac{1}{2} < 1 + 1/n$. If $n>2$ is even we have $1/n < 1/2$ which implies $1 - 1/2 < 1 - 1/n$, so $1/2$ is the minimal element of $S_4$. It follows that 
+if a set contains a minimal element it is the infinium since we have $1/2 < x$ for all $x \in S_4$ it is a lower bound and since it is an element of $S_4$, given any lower bound $l$, we must 
 have $l \leq 1/2$. 
 
 $\sup S_4 = 2$, I proceed with a very simillar argument as above, $2$ appears in $S_4$ when $n=1$, for any $n>1$ either we are subtracting from $1$, or adding a number smaller than $1$ to $1$, in either case 
@@ -108,18 +108,18 @@ we get somthing less than $2$. Thus $2$ is the maximal element of the set and he
 
 
 \question 
-Let $A$ and $B$ be bounded nonempty subsets of $\R$, and let $A + B = \{a + b: a \in A, b\ in B\}$. 
-Prove that $\sup(A+B) = \sup(a) + \sup(B)$ 
+Let $A$ and $B$ be bounded nonempty subsets of $\R$, and let $A + B = \{a + b: a \in A, b \in B\}$. 
+Prove that $\sup(A+B) = \sup(A) + \sup(B)$ 
 
 \begin{proof}
     Let $\alpha = \sup (A)$ and $\beta = \sup (B)$. Then for all $a, b$ we have 
-    $a \leq \alpha$ and $b \leq B$, thus 
+    $a \leq \alpha$ and $b \leq \beta$, thus 
     \[a + b \leq \alpha + \beta, \forall a \in A, b \in B. \] 
-    So $\alpha + \beta $ is an upperbound. But then for $\epsilon > 0$ there exists $b_0 \in B$ such that 
+    So $\alpha + \beta $ is an upperbound for the set $A + B$. But then for $\epsilon > 0$ there exists $b_0 \in B$ such that 
     $ \beta - \frac{1}{2}\epsilon < b_0$ and $a_0 \in A$ such that $a - \frac{1}{2}\epsilon < a_0$, so $\alpha + \beta - \epsilon < a_0 + b_0$,
     Thus $\alpha + \beta = \sup( A + B)$. 
     A very simillar argument works for infinium. Let $a = \inf(A)$ and $b = \inf(B)$. Then $a + b$ is a lower bound for $A + B$ for the same reasons stated above. 
-    But then given $\epsilon > 0$ I can find elements $a_0, b_0$ in $A$ and $B$ respectivly such that $a + b + \epsilon > a_0 + b_0$, so 
+    But then given $\epsilon > 0$, I can find elements $a_0, b_0$ in $A$ and $B$ respectivly such that $a + b + \epsilon > a_0 + b_0$, so 
     $a + b = \inf(A + B)$. 
 \end{proof}
 
