@@ -80,10 +80,13 @@ place holder
 \end{proof}
 
 \questionpart 
-
+Prove $\min\{a, b, c\} = \min\{\min\{a, b\}, c\}$
 
 \begin{proof}
-    The minimum of $a, b, c$ must be one of them, the minimum of $a, b$ must be $a$ or $b$, so 
+    Note $\min\{a, b\}$ is either $a$ or $b$, then if $c$ where such that $c < a$ and $c < b$, it is clear. Now suppose $a < b$ and $a < c$. then 
+\[ \min\{a, b, c\} = a = \min\{a, c \] 
+\[ = \min\{\min\{a, b\}, c\}.\]
+Then $b < a$ and $b < c$ is the same as above.
 
 \end{proof}
 
@@ -92,8 +95,6 @@ place holder
 
 
 \question 
-Let $S_4 = \{1 - (-1)^n/n: n \in \N\}$ find inf and sup
-
 
 \begin{proof}
 $\inf S_4 = \frac{1}{2}$, $\frac{1}{2}$ is an element of $S_4$ that occurs for $n = 2$, for $n \neq 2$, if $n$ is odd we will be adding 1 which 
@@ -123,6 +124,33 @@ Prove that $\sup(A+B) = \sup(a) + \sup(B)$
 \end{proof}
 
 \question 
+place holder 
 
+I first reprove a result from class. If every element of a set $B$ is an upperbound for a set $A$, then $\inf(B)$ is an upperbound for $A$. 
+\begin{proof}
+    Assume every element of $B$ is an upper bound for $A$, then if $\inf(B) < a$ for some $a \in A$, there exists $\epsilon = a - \inf(B) > 0$ such that $\inf(B) + \epsilon = a$, but 
+    by the epsilon formulation of infinium, we have there exists an element of $b$ with $b < a$, a contradiction. 
+\end{proof}
+
+\begin{proof}
+    We prove that every element of $F = \inf\{f(x) | x \in X\}$ is an upperbound for the set $G = \{g(y)| y \in Y\}$, then it will follow $\sup(G) \leq \inf(F)$. 
+    Let $y_0 \in Y$ be arbitrary, then for all $x \in X$ we have 
+    \[g(y_0) \leq h(x, y_0) \leq f(x).\]
+    The first inequality holds since $g(y)$ is the infinium over all choices of $x$ and the second holds since for each $x \in X$ we have defined $f(x)$ to be the suppremum over $y \in Y$. 
+    Then for each $g(y) \in G$, we have $g(y) \leq f(x)$ for all $x \in X$, thus each element of $F$ is an upperbound for $G$ and by the above, the result follows. 
+\end{proof}
+
+\question 
+If $u > 0$ and $x < y$ show there exists a rational number $x < ru< y$. 
+
+
+\begin{proof}
+    Let $x, y \in \R$ with $x < y$. Then fix $n \in \N$ such that $\frac{1}{n} < y - x$, from this we imeiditly get $0 < 1 + xn < yn$. Now choose 
+    $m \in \N$ to be the intger such that $xn < m \leq xn + 1$. Then we have 
+    \[xn < m \leq xn + 1 < yn \implies xn < m < yn \implies x < \frac{m}{n} < y.\]
+    Now note $\frac{x}{u}, \frac{y}{u} \in \R$ so there exists $s, t \in \Z$ such that 
+    \[\frac{x}{u} < \frac{s}{t} < \frac{y}{u} \implies x < \frac{su}{y} < y \]
+    and we are done. 
+\end{proof}
     
 \end{document}
