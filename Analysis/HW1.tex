@@ -96,17 +96,33 @@ Let $S_4 = \{1 - (-1)^n/n: n \in \N\}$ find inf and sup
 
 
 \begin{proof}
-$inf S_4 = \frac{1}{2}$, $\frac{1}{2}$ is an element of $S_4$ that occurs for $n = 2$, for $n \neq 2$, if $n$ is odd we will be adding 1 which 
+$\inf S_4 = \frac{1}{2}$, $\frac{1}{2}$ is an element of $S_4$ that occurs for $n = 2$, for $n \neq 2$, if $n$ is odd we will be adding 1 which 
 gives $\frac{1}{2} < 1 + 1/n$. If $n>2$ is even we have $1/n < 1/2$ which implies $1 - 1/2 < 1 - 1/n$, so $1/2$ is the minimal element. It follows that 
 if a set contains a minimal element it is the infium since we have $1/2 < x$ for all $x \in S_4$ it is a lower bound and since it is an element of $S_4$, given any lower bound $l$, we must 
 have $l \leq 1/2$. 
 
-$sup S_4 = 2$, I proceed with a very simillar argument as above, $2$ appears in $S_4$ when $n=1$, for any $n>1$ either we are subtracting from $1$, or adding a number smaller than $1$ to $1$, in either case 
+$\sup S_4 = 2$, I proceed with a very simillar argument as above, $2$ appears in $S_4$ when $n=1$, for any $n>1$ either we are subtracting from $1$, or adding a number smaller than $1$ to $1$, in either case 
 we get somthing less than $2$. Thus $2$ is the maximal element of the set and hence it must be the supremum. 
 \end{proof}
 
 
 \question 
-Let 
+Let $A$ and $B$ be bounded nonempty subsets of $\R$, and let $A + B = \{a + b: a \in A, b\ in B\}$. 
+Prove that $\sup(A+B) = \sup(a) + \sup(B)$ 
+
+\begin{proof}
+    Let $\alpha = \sup (A)$ and $\beta = \sup (B)$. Then for all $a, b$ we have 
+    $a \leq \alpha$ and $b \leq B$, thus 
+    \[a + b \leq \alpha + \beta, \forall a \in A, b \in B. \] 
+    So $\alpha + \beta $ is an upperbound. But then for $\epsilon > 0$ there exists $b_0 \in B$ such that 
+    $ \beta - \frac{1}{2}\epsilon < b_0$ and $a_0 \in A$ such that $a - \frac{1}{2}\epsilon < a_0$, so $\alpha + \beta - \epsilon < a_0 + b_0$,
+    Thus $\alpha + \beta = \sup( A + B)$. 
+    A very simillar argument works for infinium. Let $a = \inf(A)$ and $b = \inf(B)$. Then $a + b$ is a lower bound for $A + B$ for the same reasons stated above. 
+    But then given $\epsilon > 0$ I can find elements $a_0, b_0$ in $A$ and $B$ respectivly such that $a + b + \epsilon > a_0 + b_0$, so 
+    $a + b = \inf(A + B)$. 
+\end{proof}
+
+\question 
+
     
 \end{document}
