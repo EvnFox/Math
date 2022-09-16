@@ -192,4 +192,72 @@
         \[|a|- |b| \leq |a - b|\]
 
     \end{proof}
+
+
+    \section{Archimeadian Property and Completness} 
+
+    The completness axiom is the last thing that we need in order to call are a complete ordered field. 
+
+
+    
+    \begin{defn}
+        A subset $A \subset \R$ is bounded is above if there exists $u \in \R$ such that for all $a \in A$ we have 
+        $a \leq u$, we say $A$ is bounded below if the other inequality holds. We call $u$ an upper bound or lower bound 
+        for the set $A$. 
+    \end{defn}
+
+    We say a set is bounded if it is bounded above and below. 
+
+    
+    \begin{defn}
+        We say that an upper bound $\alpha \in \R$ is a least upper bound if 
+        \begin{enumerate}
+            \item $\alpha $ is an upper bound. 
+            \item For an arbitrary upper bound $u$, we have $\alpha \leq u$.
+        \end{enumerate}
+    \end{defn}
+
+    
+    \begin{defn}
+        Every subset $A \subset \R$ that is bounded above has a least upper bound. 
+    \end{defn}
+
+    We will see that this property is very important. 
+
+    
+    
+    \begin{thm}
+        Let $A \subset \R$, an upper bound $\alpha \in \R$ satisfies $\alpha = \sup(A)$ if and only if for all $\epsilon > 0$ there exists $a \in A$ such that $\alpha - \epsilon < a$
+    \end{thm}
+
+    
+    \begin{proof}
+        Let $\alpha = \sup(A)$ then for all $\epsilon > 0$, $\alpha - \epsilon < \alpha$ so it cannot be an upper bound. Conversly, let $\alpha $ be an upper bound with the desired property 
+        and let $u$ be an upper bound, then if $u < \alpha$ we have $u = \alpha - \epsilon$ for some $\epsilon > 0$, but then by assumtion there is an $a \in A$ such that $u < a$; 
+        a contradiction. 
+    \end{proof}
+
+
+    \begin{lem}
+        $\N$ is not bounded above in $\R$
+    \end{lem}
+
+    
+    \begin{proof}
+        Assume that $\N$ is bounded, then there exists a least upper bound, let $\alpha = \sup(A)$, then there exists $n \in \N$ such that $\alpha - 1 < n$, but then 
+        $\alpha < n + 1$; a contradiction. 
+    \end{proof}
+
+    
+    \begin{thm}
+        For all $\epsilon \in \R_{>0}$ there exists $n \in \N$ such that $\frac{1}{n} < \epsilon$.
+    \end{thm}
+
+    
+    \begin{proof}
+        By the unboundedness of $n$, we may choose $n \in \N$ such that $\frac{1}{e} < n$, then $\frac{1}{n} < \epsilon$. 
+    \end{proof}
+
+
+
 \end{chapter}
