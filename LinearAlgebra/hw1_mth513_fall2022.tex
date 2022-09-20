@@ -531,12 +531,14 @@
 
 	
 	\begin{proof}
-		We proceed with induction, the base case for $k = 2$ is given. Now for the induction step assume for some 
+		We proceed with induction, the base case for $k \leq 2$ is given. Now for the induction step assume for some 
 		$k \geq 2$ we have $\Big(A_1A_2\cdots A_{k-1} A_k \Big)^T \, = \, A_k^TA_{k-1}^T \cdots A_2^T A_1^T \,$ 
 		Then we use the base case and our induction hypothesis to get
 		
-			\[\Big(A_1A_2\cdots A_{k} A_{k+1} \Big)^T \, = \, A_{k+1}^T \cdot \Big(A_1A_2\cdots A_{k} \big)^T \, \]
-			\[= A_{k+1}^TA_k^T \cdots A_2 A_1\]
+			\[\Big(A_1A_2\cdots A_{k} A_{k+1} \Big)^T \, = \, \Big[\Big(A_1A_2\cdots A_{k} \Big) \Big( A_{k+1}\Big)\Big]^T \] 
+			\[\, = A_{k+1}^T \cdot \Big(A_1A_2\cdots A_{k} \big)^T \, \]
+
+			\[= A_{k+1}^TA_k^T \cdots A_2^T A_1^T\]
 		as desired. 
 
 	\end{proof}
@@ -635,11 +637,7 @@ Show that $\phi$ is an injective (or one-to-one) function.
 Describe the range/image of $\phi$, that is, 
 describe the set $\phi(\bC) = \left\{ \phi(z) \, | \, z \in \bC \right\}$. 
 
-$\phi(\bC)$ forms a field since $\phi$ is a injective homomorphism (proven below) but it is clearly not surjective (consider any matrix $A$ s.t $A_{1,1} \neq A_{2,2}$). Another way of seeing that we will have multiplicative inverses is to note 
-for $M \in \phi(\bC)$, $\det(M) = a^2 + b^2$, which is zero iff $a$ and $b$ are zero.  
-
-$\phi(\bC)$ is the group of transformations that act on $\bR^2$ in the same way complex multiplication acts on $\bC$. By this I mean we could associate each matrix $M$ with a function $f:\bC \to \bC$ 
-such that $f(x) = zx$  such that $\phi(z) = M$. 
+$\phi(\bC) $ contains all matrices of the form $\Big\{ \mat{rr} x & -y \\ y & x \rix \, | \, x, y \in \bR$ \Big\} 
 
 \item 
 Prove or disprove: $\phi (z_1 + z_2) \, = \, \phi(z_1) + \phi(z_2)$ 
@@ -789,6 +787,18 @@ Write the product $q\, w$ in the
 form $z_0 + z_1 {\tt i} + z_2 {\tt j} + z_3 {\tt k}$, 
 where $z_1, z_2, z_3, z_4 \in \bR$.  
 
+
+
+We just multiply normally (i.e just use the distributive property) and treat $\tt i^2 =  \tt j^2 = \tt k^2$ as $-1$. 
+\[ qw = aw + b{\tt i}w + c{\tt j}w + d{\tt k}w = \] 
+then 
+\[ aw = ae + af{\tt i} + ag{\tt j} + ah{\tt k} \]
+\[ b{\tt i}w = b{\tt i}e - bf + bg{\tt k} - bh{\tt j}\]
+\[c{\tt j}w = c{\tt j}e - cf{\tt k} - cg + ch{\tt i}\]
+\[d{\tt k}w = d{\tt k}e + df{\tt j} - dg{\tt i} - dh\]
+then collecting like terms shows 
+\[qw = (ae - bf - cg - dh) + (af + be + ch - dg){\tt i} + (ag - bh + ce + df ){\tt j} + (ah + bg -cf + de){\tt k}\]
+
 \item 
 Find $A \in \bR^{4 \times 4}$ and $\bfb \in \bR^4$ 
 (both obviously related to $q$ and/or $w$) such that 
@@ -798,6 +808,12 @@ A \, \bfb \, = \,
 z_1 \\ z_2 \\ z_3 \\ z_4
 \rix \,.
 \]
+
+
+Let $\bfb = \mat{r} e \\ f \\ g \\ h \rix \, $ and 
+$A = \mat{rrrr} a & - b & -c & -d \\ b & a & -d & c \\ c & d & a & - d \\ d & -c & b & a \rix \, \newline $
+Then computing the matrix vector product, gives the desired result. 
+
 
 {\bf Remark:} Part (b) may have to wait until the second homework, 
 but we can discuss it in class on Tuesday. 
@@ -826,8 +842,19 @@ x & + & y & + & z & = & 1
 
 \begin{enumerate}
 	\item  What is the reduced row echelon form of the associated augmented matrix? Write down the sequence of operations you performed to obtain the reduced row echelon form. 
-	
+	\[ \mat{rrrr} 1 & 2 & 1 & 1 \\ 1 & 0 & 1 & 1 \\ 1 & 1 & 1 & 1 \rix \, \xrightarrow[2\rho_1 + \rho_3]{2\rho_1 + \rho_2} \, \mat{rrrr} 1 & 2 & 1 & 1 \\ 0 & 1 & 0 & 0 \\ 0 & 2 & 0 & 0 \rix \, \xrightarrow{\rho_2 + \rho_3} \, \mat{rrrr} 1 & 2 & 1 & 1 \\ 0 & 1 & 0 & 0 \\ 0 & 0 & 0 & 0 \rix \]
+	\[ \, \xrightarrow{\rho_2 + \rho_1} \, \mat{rrrr} 1 & 0 & 1 & 1 \\ 0 & 1 & 0 & 0 \\ 0 & 0 & 0 & 0 \rix \,\]
+
+
 	\item Clearly describe the solution set and state how many different solutions are there. 
+	
+	The above reduced echelon form shows that $x_1 = 1 + 2x_3 \, , x_2 = 0$ and that $x_3$ is free. 
+		 
+	\[ x = \mat{r} x_1 \\ x_2 \\ x_3 \rix \, = \, \mat{r} 1 +  2x_3 \\ 0 \\ x_3 \rix  = \mat{r} 1 \\ 0 \\ 0 \rix + x_3 \mat{r} 2 \\ 0 \\ 1 \rix \, | \, x_3 \in \bZ_3. \] 
+	
+	 Since there are only $3$ elements in $\bZ_3$, we can just write out the enitre solution set but subing into $x_3$. Let $S$ be the set of solutions, then 
+
+	 \[S \, = \, \Big\{ \mat{r} 1 \\ 0 \\ 0 \rix, \mat{r} 2 \\ 0 \\ 2 \rix,\mat{r} 0 \\ 0 \\ 1 \rix, \Big\}\]
 \end{enumerate}
 
 \end{enumerate}
