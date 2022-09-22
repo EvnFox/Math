@@ -1,12 +1,12 @@
 \begin{chapter}{Introduction}
     \section{Algebraic and Order properties}
     The Real numbers, denoted $\R$ form a field, that is $\R$ is an Abelian group under addition and multiplication that 
-    has distinct identites and satisfies the distributive property. All important algebraic properties can be derivied from the fact 
+    has distinct identities and satisfies the distributive property. All important algebraic properties can be derived from the fact 
     that $\R$ is a field. 
 
     
     \begin{defn}
-        Let $P \neq \varnothing$ be a subset of $\R$ not containg $0$. We say $P$ is the set of positive real numbers and it satisfies 
+        Let $P \neq \varnothing$ be a subset of $\R$ not containing $0$. We say $P$ is the set of positive real numbers and it satisfies 
         
         \begin{enumerate}
            \item  $a, b \in  P \implies a + b \in P$
@@ -16,7 +16,7 @@
         \end{enumerate}
     \end{defn}
 
-    We are now in a posistion to define the ordering we wish to place on $\R$ 
+    We are now in a position to define the ordering we wish to place on $\R$ 
 
     
     \begin{defn}
@@ -24,7 +24,7 @@
         If $b -a \in P \cup \{0\}$ then $a \leq b$
     \end{defn}
 
-    It follows imeditly from tricotomy that exactly one of $a < b, a = b, a > b$ must hold. 
+    It follows immediately from tricotomy that exactly one of $a < b, a = b, a > b$ must hold. 
     It is also clear that this is a total ordering on $\R$, but we must check that this turns $\R$ into an ordered field. 
 
     
@@ -77,7 +77,7 @@
     \begin{proof}
         If $a > 0$ we are done, suppose $a < 0$, then $-a \in P$ and since 
         $a^2 = (-a)(-a) \in P$ we have $a^2 \in P$. Now note $1^2 = 1$ so $1 \in P$, 
-        then since we definied the natural number $n$ as $1 + \cdots + 1, n$ times, 
+        then since we defined the natural number $n$ as $1 + \cdots + 1, n$ times, 
         we see that all natural numbers are positive. 
     \end{proof}
 
@@ -95,17 +95,17 @@
 
     
     \begin{thm}
-        If $ab > 0$ then $a, b$ are both posistive or both negitive. 
+        If $ab > 0$ then $a, b$ are both positive or both negative. 
 
     \end{thm}
 
     
     \begin{proof}
         Suppose $ab > 0$ and that at least one is negative, without loss of generality say $a < 0$, then if $b > 0$, we have 
-        $-ab > 0$ so $-(ab) \in P$ but we assumed $ab \in P$; a contradiction, thus $b$ is negitive. 
+        $-ab > 0$ so $-(ab) \in P$ but we assumed $ab \in P$; a contradiction, thus $b$ is negative. 
     \end{proof}
 
-    \section{Absoulte Value}
+    \section{Absolute Value}
     Next we define a function of great importance on $\R$. 
 
     
@@ -120,11 +120,11 @@
         \right\}
     \end{equation}
 
-    Now we prove some basic properties of the absoulte value function, 
+    Now we prove some basic properties of the absolute value function, 
 
     
     \begin{thm}
-        Basic properties of the absoutle value. 
+        Basic properties of the absolute value. 
         \begin{enumerate}
             \item $|ab| = |a||b|$
             \item $|a|^2 = a^2 $
@@ -137,9 +137,9 @@
     \begin{proof}
         To prove $(1)$ first note that if $a$ or $b$ is zero we are done. Then we just consider the four possible cases on the signs of $a$ and $b$. For example if $a > 0$ and $b < 0$, 
         we have $|ab| = -ab$ and $|a| = a, |b| = -b$ so $|a||b| = -ab$. The rest are left as an exercise. 
-        Proving $(2)$ is simillar, if $a > 0$ we are done and if $a < 0$, then $|a|^2 = (-a)^2 = a^2$. 
+        Proving $(2)$ is similar, if $a > 0$ we are done and if $a < 0$, then $|a|^2 = (-a)^2 = a^2$. 
         Now suppose $c > 0$ and $|a| \leq c$, if $a \leq 0$, then the result is clear. If $a < 0$ we have $|a| = -a$, so 
-        $-a < c$, rearranging gives $-c < a$. So we are finished. Now suppose $-c \leq a \leq c$, then $-a \leq c$ and $a \leq c$. But the absoute value maps to 
+        $-a < c$, rearranging gives $-c < a$. So we are finished. Now suppose $-c \leq a \leq c$, then $-a \leq c$ and $a \leq c$. But the absolute value maps to 
         $a$ or $-a$ so in either case we are done. 
         Now for $(4)$ we let $c = |a|$ and apply $(3)$ to get the result. 
     \end{proof}
@@ -167,7 +167,7 @@
     
     
     \begin{thm}
-        The following two inequalitys hold for all $a, b \in \R$
+        The following two inequalities hold for all $a, b \in \R$
         
         \begin{enumerate}
             \item $|a - b| \leq |a| + |b|$
@@ -177,7 +177,7 @@
 
     
     \begin{proof}
-        Proof of $(1)$ follows from subing $-b$ into the triangle inequality. 
+        Proof of $(1)$ follows from substituting $-b$ into the triangle inequality. 
         To prove $(2)$ start my applying the triangle inequality to $a = a - b + b$ to get 
         $|a| \leq |a - b| + |b| $, and $b = b - a + a$ to get $|b| \leq |b-a| + |a|$,
         then subtracting gives 
@@ -194,9 +194,9 @@
     \end{proof}
 
 
-    \section{Archimeadian Property and Completness} 
+    \section{Archimedean Property and Completeness} 
 
-    The completness axiom is the last thing that we need in order to call are a complete ordered field. 
+    The completeness axiom is the last thing that we need in order to call are a complete ordered field. 
 
 
     
@@ -232,8 +232,8 @@
 
     
     \begin{proof}
-        Let $\alpha = \sup(A)$ then for all $\epsilon > 0$, $\alpha - \epsilon < \alpha$ so it cannot be an upper bound. Conversly, let $\alpha $ be an upper bound with the desired property 
-        and let $u$ be an upper bound, then if $u < \alpha$ we have $u = \alpha - \epsilon$ for some $\epsilon > 0$, but then by assumtion there is an $a \in A$ such that $u < a$; 
+        Let $\alpha = \sup(A)$ then for all $\epsilon > 0$, $\alpha - \epsilon < \alpha$ so it cannot be an upper bound. Conversely, let $\alpha $ be an upper bound with the desired property 
+        and let $u$ be an upper bound, then if $u < \alpha$ we have $u = \alpha - \epsilon$ for some $\epsilon > 0$, but then by assumption there is an $a \in A$ such that $u < a$; 
         a contradiction. 
     \end{proof}
 
@@ -309,7 +309,7 @@
 
     
     \begin{proof}
-        Let $x, y \in \R$ with $x , y$. By the archimeadian property fix $n \in \N$ such that $\frac{1}{n} < y - x$. This gives 
+        Let $x, y \in \R$ with $x , y$. By the archimedean property fix $n \in \N$ such that $\frac{1}{n} < y - x$. This gives 
         
         \[0 < 1 + nx < y \] 
 
@@ -318,5 +318,108 @@
 
     \end{proof}
 
+    \section{Intervals}
+
+    
+    \begin{defn}
+        An interval on $\R$ is a set of one of the following forms. Let $a < b$ be real numbers 
+        
+        \begin{enumerate}
+            \item $(a, b) = \{x | a < x < b\}$ 
+            \item $(a, b] = \{x | a < x \leq b\}$ 
+            \item $[b, a ) = \{x | a \leq x < b\}$ 
+            \item $[a, b] = \{x | a \leq x \leq b \}$ 
+        \end{enumerate}
+    \end{defn}
+
+
+    We also alow rays, which start from a real number and go to positive or negative infinity. We will see in many theorems will 
+    will need to use facts about intervals, namely that they are connected topologically, this means that there is no separation of 
+    an interval into two disjoint open sets. 
+
+    Now given an arbitrary subset of $\R$ we would like to be able to tell if it is an interval or not. The following theorem will 
+    help us in this regarded.  
+    
+    \begin{thm}
+        Let $S \subset \R$ with at least two points $x, y \in S$ such that $x < y$ implies $(x, y) \subset S$.
+        Then $S$ is an interval.  
+    \end{thm}
+
+    
+    \begin{proof}
+        We consider several cases 
+        
+        \begin{enumerate}
+            \item Assume that $S$ is bounded, then fix $a = \sup(S)$ and $b = \inf(S)$. We prove that $S = (a, b)$ or $S = [a, b]$. So assume that $S$ does not contain its maximal and minimal elements. We have clearly, $S \subset (a, b)$ since $a, b \notin S$. 
+                    Now let $x \in (a, b)$, then $a < x < b$, but then we may fix $s, t \in S$ such that $a < s < x < t < b$, then by hypothesis $x \in (s, t) \subset S$.
+            \item Now Assume that $S$ is bounded only above, then fix $a = \sup(S)$ and assume $a \notin S$, then $S \subset (-\infty, a)$. 
+            Take $x \in (-\infty, a)$ since this set is not bounded below I can fix $s, t \in \R$ such that $s < x < t$ then $x \in (s, t) \subset S$, by our assumption. 
+        \end{enumerate}
+        The other two cases where $S$ is bounded above or is unbounded are similar. 
+    \end{proof}
+
+    \section{Nested Interval Property}
+    Now we will look at a very important and useful property of closed sets in $\R$. 
+
+    
+    \begin{defn}
+        A set of closed intervals of the form $I_n = [a_n, b_n]$ are nested if $I_{n+1} \subset I_n$ for all $n \in \N$. 
+    \end{defn}
+    
+    
+    \begin{ex}
+        Consider the sets defined by $I_n = [\frac{-1}{n}, \frac{1}{n}]$. Then by computing the first few values we see 
+        $I_1 \supset I_2 \supset \dots \supset I_n \supset \dots $
+    \end{ex}
+    Note that that the decision to force our sets to be closed is very important, and the property we are after doesn't hold in general for open intervals. 
+    \begin{thm}
+    If $I_n$ is a sequence of nested intervals then there exists $\xi \in \bigcap_{i \in \N}I_n$. 
+    \end{thm}
+
+    
+    \begin{proof}
+        Note that $b_1$ is an Upper bound for the set $A = \{a_k \, | \, k \in \N\}$ so that we may fix $\xi = \sup(A)$. Now 
+        we want to prove $\xi < b_n$ for all $n \in \N$. But since the intervals are nested if $b_n < a_k$ we will get a contradiction, so every $b_n$ is a upper bound 
+        for $A$. 
+    \end{proof}
+
+    Now we have a special case, that is if the diameter of the interval goes to $0$ then $\xi$ is unique. 
+
+    
+    \begin{cor}
+        If $\inf\{b_n - a_n\} = 0$ then $\xi$ is unique.
+    \end{cor}
+
+
+    Now we will demonstrate an application of the Nested Interval Property by proving the real numbers are uncountable. We do this by first 
+    showing that the interval $I = [0,1]$ is uncountable, then since $\R$ contains $I$ we must have that $I$ is uncountable. It is also possible to 
+    exhibit a bijection between $I$ and $\R$. 
+
+    
+    \begin{thm}
+        $I$ is uncountable.
+    \end{thm}
+
+    
+    \begin{proof}
+
+        Suppose not, then we may list the elements of $I$, say 
+        \[I = \{x_1, x_2, \dots , x_n, \dots \}\]
+
+        Not we construct intervals $I_n$ such that $x_n \notin I_n$ and $I_{n+1} \subset I_n$. Then 
+        applying the nested interval property gives $\xi \in \bigcap_{i \in \N} I_n$, but $\xi \neq x_n$ for any $n$ so 
+        our list is incomplete.         
+    \end{proof}
+
+    
+    \begin{cor}
+        $\R$ is uncountable.
+    \end{cor}
+
+    The assumption that we have made on $\R$, that every nonempty set that is bounded above has a least upper bound was all we needed 
+    to prove the nested interval property, and from that we see that we can show the real numbers are uncountable, this shows that the assumption 
+    that $\R$ is a complete metric space is what forces us to be uncountable. 
+    One may wonder, can one assume the nested interval property and prove that every nonempty set that is bounded above has a least upper bound? 
+    I leave it as a exercise. 
 
 \end{chapter}
