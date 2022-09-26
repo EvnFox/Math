@@ -9,7 +9,7 @@ Show that there doesn't exist a rational number $s$ such that $s^2 = 6$.
 
 \begin{proof}
     First we prove that $6|a^2 \implies 6|a$. Suppose that $6$ does not divide $a$ and let $a = p_1p_2 \dots p_n$ 
-    be the prime factorization of $6$, then we know that $3$ and $2$ cannot both be common factors,  
+    be the prime factorization of $a$, then we know that $3$ and $2$ cannot both be common factors,  
     But then since $2$ and $3$ are prime they cannot be the square of a prime number, hence $2$ and $3$ cannot both 
     appear in $a^2 = p_1^2 p_2^2 \dots p_n^2$, hence $6$ does not divide $a^2$. It now follows by contrapositive that 
     if $6|a^2$ then $6|a$. 
@@ -69,7 +69,7 @@ Find all $x \in \R$ that satisfy the inequality
 \questionpart
 
 \begin{proof}
-    Assume without loss of generality that $b < a$, then $|a - b| = a - b$. 
+    Assume without loss of generality that $b \leq a$, then $|a - b| = a - b$. 
     Thus 
     \[\frac{1}{2}(a + b + |a - b|) = \frac{1}{2}(a + b + a -b ) = \frac{1}{2}(2a) = a\]
     We also have 
