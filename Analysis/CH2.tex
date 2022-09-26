@@ -1,0 +1,72 @@
+\begin{chapter}{Topology}
+    We will discuss topology in metric spaces such as $\R$ and in $\R^n$. Topology gives us the language we need to properly discuss the theorems of analysis. You will 
+    find later that it makes alot of things much more clear. 
+
+
+    \section{Euclidean Space}
+    First we must define and discuss the elements of $\R^n$. We write the elements as ordered $n$-tuples. Addition and scalar multiplication are defined component wise and this turns 
+    the Euclidean space $\R^n$ into a vector space. Infact we can go further and turn $\R^n$ into an inner-product space by defining the following inner-product on $\R^n$. 
+    We will use boldface to denote vectors. Let $\bfv = (v_1, \dots, v_n) $ and $\bfw = (w_1, \dots , w_n)$. We define the $\emph{dot}$ product of $\bfv $ and $bfw$ as 
+    \begin{equation} 
+        \bfv \cdot \bfw = \sum_{i \leq n} v_iw_i.
+    \end{equation} 
+
+    One can now check that $\Rn $ equipped with this product becomes an inner product space. We are now in a place to define the $\emph{norm}$ of a vector 
+
+    \begin{defn}
+        Let $\bfv \in \Rn$, we define the $\emph{norm}$ of $\bfv$ as follows  
+        \[\norm{\bfv} = (\bfv \cdot \bfv)^{\frac{1}{2}}.\]
+    \end{defn}
+
+    Lets look at an example in $\R^2$
+    \begin{ex}
+        Let $\bfv = (3, 4)$ then the norm of $\bfv$ is given by 
+
+        \[\norm{\bfv} = (\bfv \cdot \bfv)^{\frac{1}{2}} = \left(\sum_{i \leq 2}v^2_i\right)^{\frac{1}{2}} = \sqrt{3^2 + 4^2}.\]
+
+        Which is clearly just the Pythagorean theorem. 
+    \end{ex}
+
+    The norm just defined is often reffered to as the Euclidean norm. Now we have turned $\Rn$ into a normed inner product space. 
+    for vectors $\bfv, \bfw \in \Rn$ we define $\| \bfv - \bfw \| $ to be the distance from $\bfv $ to $\bfw$. 
+    
+    \begin{thm}
+        Let $\bfv, \bfw \in \Rn$ and denote by  $\|\bfv\|$ the norm of $\bfv$, then the following hold. 
+        \begin{enumerate}
+            \item $\norm{\bfv} \geq 0$ with equality iff $\bfv = \vec{0}$.
+            \item $\| \bfv - \bfw \| = \| \bfw - \bfv \|$.
+            \item $\| a\bfv \| = |a| \| \bfv \|$.
+            \item $|\bfv \cdot \bfw | \leq \|\bfv \| \|\bfw \|$. 
+            \item $\|\bfv + \bfw \| \leq \|bfv\| + \| \bfw \|$. 
+        \end{enumerate}
+
+
+    \end{thm}
+
+
+    \begin{proof}
+        The first three are just applications of the definition of the norm. 
+        To prove the fourth statement (which is called the Cauchy-Swartz inequality) we first agree that for 
+        $\bfa = (a_1, \dots, a_n)$ and $\bfb = (b_1, \dots, b_n)$
+        \begin{equation}
+            \left(\sum_{i\leq n} a_ib_i \right)^2 \leq \left(\sum_{i \leq n} a^2_i \right) \left(\sum_{i \leq n}b^2_i \right)
+        \end{equation}
+        is equal to what we want to prove. Now 
+        \[\sum_k (a_kx + b_k)^2 \geq 0\]
+        since it is a sum of squares. Now multiplying out and factoring gives 
+        \[\left(\sum_k a_k^2\right)x^2 + 2\left(\sum_k a_kb_k\right)x + \left(\sum_k b^2_k\right) \geq 0.\]
+        Introduce the substition $A = \sum_k a_k^2, B = \sum_k a_kb_k, C = \sum_k c^2_k$. This transforms the above into 
+        \[Ax^2 + Bx + C \geq 0.\]
+        If $A = 0$ we are done so we may assume that $A > 0$. Then take $X = \frac{-B}{A}$, we get 
+        \[\frac{-B^2}{A} + C \geq 0\]
+        and with some rearranging we see 
+        \[AC \geq B^2\]
+        which is what we wanted to prove. 
+
+        Now the proof of the triangle inequality follows easily, since we have 
+        \[\| \bfv + \bfw \|^2 = \sum_k (\bfv + \bfw)^2 = \sum_k \bfv^2_k + 2 \bfv \cdot \bfw + \sum_k \bfw^2_k\]
+        which is less than or equal to 
+        \[\|\bfv \|^2 + \| \bfv \| \|\bfw\| + \|\bfw\|^2\]
+        and factoring finishes the proofs. 
+    \end{proof}
+\end{chapter}
