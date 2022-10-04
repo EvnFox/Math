@@ -73,12 +73,75 @@
     Results:
 
     maximal intervals 
+    
+    \begin{defn}
+        Given a subset $S \subset \R$, we say that $S$ is a maximal interval if 
+        \[S \subset J \subsetneq \R\]
+        implies $S = J$. 
+    \end{defn}
+
+    
+    \begin{thm}
+        Let $S \subset \R$ be open. Then each $x \in S$ can belong to only one maximal interval.
+    \end{thm}
+
+    
+    \begin{proof}
+        For each $x \in S$ we define the following functions 
+        \[a(x) = \inf\{x \, | \, (x, a) \subset S\}\]
+        and 
+        \[b(x) = \sup\{x \, | \, (b, x) \subset S\}\]
+
+        Then $x \in (a(x), b(x))$ and if another interval with $x \in I$ contains $(a(x), b(x))$ it is clear the must be equal. 
+    \end{proof}
+
 
     any element belongs to one and only one maximal interval
+
+
     
     any open subset can be written as a union of disjoint maximal intervals 
 
+    
+    \begin{thm}
+        Let $S$ be an open subset of $\R$, then $S$ can be written as a union of a countable collection of disjoint maximal intervals. 
+    \end{thm}
+
+    
+    \begin{proof}
+        If two maximal intervals share an element $x$, $I_x$ and $I_y$ by maximality we have, $I_x \cup I_y = I_x$ and 
+        $I_x \cup I_y = I_y$ so they are disjoint and form an open cover of $S$. 
+
+        need to think about this part of the argument more
+
+        To show that this collection is countable, consider the countable collection of rationals 
+        \[\Q = \{x_1, x_2, \dots\}\]
+        while each maximal interval of $S$ will contain infinitely many rationals, it only has one whose index is minimal. Construct the function $\phi$ from the collection of all maximal
+        intervals to $\N$ which takes the interval $I_n$ to $n$ when $n$ is the minimal index in $I$; if $\phi(I_m) = \phi(I_n) = n$ then they must share the rational whose index is $n$ so 
+        $\phi$ is an injection into the natural numbers.   
+    \end{proof}
     bolzano-weierstrass 
 
     
+    
+    \begin{thm}[Bolzano-weierstrass]
+        let $S \subset \R$ be infinite and bounded, then it contains a limit point. 
+    \end{thm}
+
+    \begin{proof}
+        Since $S$ is bounded it lies in some closed interval $[-a, a]$, either $[-a, 0]$ or $[0, a]$ must contain infinitely many points of $S$. 
+        Without loss of generality we may assume that it is $[-a, 0]$. We proceed with the same trick and again partition $[-a, 0]$ into 
+        $[-a, \frac{-a}{2}]$ and $[\frac{-a}{2}, 0]$ and assume that the first interval contains infinitely many points of $S$. 
+        repeating this gives us a sequence of nested intervals which then produces a unique element in the intersection $\xi$ since the diameter of 
+        the intervals goes to zero. Then any nbhd of $\xi$ will intersect $S$ in infinitely many points. Thus $\xi$ is a limit point. 
+        Then we have that 
+    \end{proof}
+
+    This theorem is extremely useful, for example we can use this to show that every convergent sequence contains a convergent subsequence. 
+    We may use the Bolzano-weierstrass theorem to prove the cantor intersection theorem. 
+
+    
+    \begin{thm}[Cantor Intersection]
+        place holder.
+    \end{thm}
 \end{chapter}
