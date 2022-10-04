@@ -1,0 +1,975 @@
+%\documentclass[10pt,table]{article}
+\documentclass[11pt,table]{article}
+%
+%		
+%		Last Modified:	Sept 20, 2022
+
+
+%\documentclass[10pt]{article}
+\usepackage{latexsym, amssymb, amsmath, amscd, amsthm, verbatim, lscape, xcolor, mathtools}
+\usepackage{enumerate, collcell, array}
+
+\usepackage{tcolorbox} %for making colored boxes 
+
+\setlength{\textwidth}{6.5in}
+\setlength{\textheight}{9.2in}
+\setlength{\topmargin}{-.6in}
+\hoffset -1.1in
+
+\usepackage{hyperref}
+\hypersetup{
+	colorlinks   = true, %Colours links instead of ugly boxes
+	urlcolor     = blue, %Colour for external hyperlinks
+	linkcolor    = blue, %Colour of internal links
+	citecolor   = red %Colour of citations
+} 
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%   THEOREMS AND PROOFS  %%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%\numberwithin{equation}{section}
+%\numberwithin{table}{section}
+%\numberwithin{figure}{section}
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{algorithm}[theorem]{Algorithm}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%\theoremstyle{definition}
+\newtheorem{definition}[theorem]{Definition}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%\theoremstyle{definition}
+\newtheorem{example}[theorem]{Example}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%\theoremstyle{remark}
+\newtheorem{remark}[theorem]{Remark}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%    MATRIX CONSTRUCTIONS     %%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\newcommand {\mat}  [1] {\left[\begin{array}{#1}}
+\newcommand {\rix}      {\end{array}\right]}
+
+
+\def\bmatrix#1{\left[\matrix{#1}\right]}
+\def\kbyk{k \times k}
+\def\mbym{m \times m}
+\def\mbyn{m \times n}
+\def\nbyn{n \times n}
+\def\pbyp{p \times p}
+\def\pbyn{p \times n}
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%     OCCASIONAL USE    %%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\newcommand{\<}				{\langle}
+\renewcommand{\>}      		{\rangle}
+\newcommand{\nin}			{\noindent}
+\newcommand{\tensor}        {\otimes}
+\newcommand{\dsum}          {\oplus}
+\newcommand{\adj}			{{\textstyle \star}}
+	
+\def\wt{\widetilde}
+\def\wh{\widehat}
+\def\ov{\overline}
+	
+\newcommand{\vareps}   		{\varepsilon}
+\renewcommand{\l}       	{\ensuremath{\lambda}}
+\newcommand{\la}        	{\ensuremath{\lambda}}
+	
+\renewcommand{\a}       	{\ensuremath{\alpha}}
+\renewcommand{\b}			{\ensuremath{\beta}}
+\newcommand{\g}       		{\ensuremath{\gamma}}
+\renewcommand{\d}			{\ensuremath{\delta}}
+\newcommand{\e}				{\ensuremath{\eta}}
+\renewcommand{\k}       	{\ensuremath{\kappa}}
+\newcommand{\f}       		{\ensuremath{\phi}}
+\newcommand{\s}       		{\sigma}  
+\renewcommand{\t}       	{\tau}	
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%    NORM SHORTCUTRS     %%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\def\normt#1{\|#1\|_2}
+\def\normp#1{\|#1\|_p}
+\def\normtq#1{\|\,#1\,\|_2}
+\def\normo#1{\|#1\|_\infty}
+\def\norm#1{\|#1\|}
+\def\normF#1{\|#1\|_F}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%     MATH OPERATORS   %%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\def\max{\mathop{\rm max}}
+\def\rank{\mathop{\rm rank}}
+\def\min{\mathop{\rm min}}
+\def\rev{\mathop{\rm rev}}
+\def\diag{\mathop{\rm diag}}
+\def\det{\mathop{\rm det}}
+\def\grade{\mathop{\rm grade}}
+\def\ord{\mathop{\rm ord}}
+\def\deg{\mathop{\rm deg}}
+\def\trace{\mathop{\rm trace}}
+\def\sign{\mathop{\rm sign}}
+%\def\span{\mathop{\sf span}}
+\def\colsp{\mathop{\sf ColSp}}
+\def\rowsp{\mathop{\sf RowSp}}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%     MACROS   %%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+	
+\def\mystrut#1{\rule{0cm}{#1}}  % E.g. 0.4cm % adds vspace after rule
+	
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% For fine-tuning spacing in \sqrt etc=.  From \cite[p.~155]{knut99}.
+% In math mode, @ will act as a macro that adds 1 unit of space.
+	\mathcode`@="8000 % Make @ behave as per catcode 13 (active).  TeXbook p. 155.
+	{\catcode`\@=\active\gdef@{\mkern1mu}}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%  Uppercase GREEK Characters Italic   %%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% Make uppercase Greek characters italic.
+% Copied from latex.ltx and changed second digit from 0 (roman font)
+% to 1 (math italic).
+\mathchardef\Gamma="7100
+\mathchardef\Delta="7101
+\mathchardef\Theta="7102
+\mathchardef\Lambda="7103
+\mathchardef\Xi="7104
+\mathchardef\Pi="7105
+\mathchardef\Sigma="7106
+\mathchardef\Upsilon="7107
+\mathchardef\Phi="7108
+\mathchardef\Psi="7109
+\mathchardef\Omega="710A
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%     SCRIPT LETTERS   %%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\newcommand{\cA}{{\cal A}}
+\newcommand{\cB}{{\cal B}}
+\newcommand{\cC}{{\cal C}}
+\newcommand{\cD}{{\cal D}}
+\newcommand{\cE}{{\cal E}}
+\newcommand{\cF}{{\cal F}}
+\newcommand{\cG}{{\cal G}}
+\newcommand{\cH}{{\cal H}}
+\newcommand{\cI}{{\cal I}}
+\newcommand{\cJ}{{\cal J}}
+\newcommand{\cK}{{\cal K}}
+\newcommand{\cL}{{\cal L}}
+\newcommand{\cM}{{\cal M}}
+\newcommand{\cN}{{\cal N}}
+\newcommand{\cO}{{\cal O}}
+\newcommand{\cP}{{\cal P}}
+\newcommand{\cQ}{{\cal Q}}
+\newcommand{\cR}{{\cal R}}
+\newcommand{\cS}{{\cal S}}
+\newcommand{\cT}{{\cal T}}
+\newcommand{\cU}{{\cal U}}
+\newcommand{\cV}{{\cal V}}
+\newcommand{\cW}{{\cal W}}
+\newcommand{\cX}{{\cal X}}
+\newcommand{\cY}{{\cal Y}}
+\newcommand{\cZ}{{\cal Z}}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%     BLACKBOARD LETTERS  %%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newcommand{\bA}{\mathbb{A}}
+\newcommand{\bB}{\mathbb{B}}
+\newcommand{\bC}{\mathbb{C}}
+\newcommand{\bD}{\mathbb{D}}
+\newcommand{\bE}{\mathbb{E}}
+\newcommand{\bF}{\mathbb{F}}
+\newcommand{\bG}{\mathbb{G}}
+\newcommand{\bH}{\mathbb{H}}
+\newcommand{\bI}{\mathbb{I}}
+\newcommand{\bJ}{\mathbb{J}}
+\newcommand{\bK}{\mathbb{K}}
+\newcommand{\bL}{\mathbb{L}}
+\newcommand{\bM}{\mathbb{M}}
+\newcommand{\bN}{\mathbb{N}}
+\newcommand{\bO}{\mathbb{O}}
+\newcommand{\bP}{\mathbb{P}}
+\newcommand{\bQ}{\mathbb{Q}}
+\newcommand{\bR}{\mathbb{R}}
+\newcommand{\bS}{\mathbb{S}}
+\newcommand{\bT}{\mathbb{T}}
+\newcommand{\bU}{\mathbb{U}}
+\newcommand{\bV}{\mathbb{V}}
+\newcommand{\bW}{\mathbb{W}}
+\newcommand{\bX}{\mathbb{X}}
+\newcommand{\bY}{\mathbb{Y}}
+\newcommand{\bZ}{\mathbb{Z}}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%     SANS SERIF LETTERS  %%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newcommand{\sA}{\mathsf{A}}
+\newcommand{\sB}{\mathsf{B}}
+\newcommand{\sC}{\mathsf{C}}
+\newcommand{\sD}{\mathsf{D}}
+\newcommand{\sE}{\mathsf{E}}
+\newcommand{\sF}{\mathsf{F}}
+\newcommand{\sG}{\mathsf{G}}
+\newcommand{\sH}{\mathsf{H}}
+\newcommand{\sI}{\mathsf{I}}
+\newcommand{\sJ}{\mathsf{J}}
+\newcommand{\sK}{\mathsf{K}}
+\newcommand{\sL}{\mathsf{L}}
+\newcommand{\sM}{\mathsf{M}}
+\newcommand{\sN}{\mathsf{N}}
+\newcommand{\sO}{\mathsf{O}}
+\newcommand{\sP}{\mathsf{P}}
+\newcommand{\sQ}{\mathsf{Q}}
+\newcommand{\sR}{\mathsf{R}}
+\newcommand{\sS}{\mathsf{S}}
+\newcommand{\sT}{\mathsf{T}}
+\newcommand{\sU}{\mathsf{U}}
+\newcommand{\sV}{\mathsf{V}}
+\newcommand{\sW}{\mathsf{W}}
+\newcommand{\sX}{\mathsf{X}}
+\newcommand{\sY}{\mathsf{Y}}
+\newcommand{\sZ}{\mathsf{Z}}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%       COLORS      %%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\usepackage{colortbl}
+% \usepackage{xcolor}
+%
+\definecolor{lightgrey}{rgb}{.9,.9,.9}
+\definecolor{mediumgrey}{rgb}{.6,.6,.6}
+\definecolor{darkgrey}{rgb}{.3,.3,.3}
+%
+\definecolor{lightgreen}{rgb}{0.7,1.0,0.7}
+\definecolor{mediumgreen}{rgb}{0.3,1.0,0.3}
+\definecolor{darkgreen}{rgb}{0.0,0.7,0.0}
+%
+\definecolor{lightred}{rgb}{1.0,0.6,0.6}
+\definecolor{mediumred}{rgb}{1.0,0.3,0.3}
+\definecolor{darkred}{rgb}{0.8,0.0,0.0}
+%
+\definecolor{lightblue}{rgb}{0.8,0.8,1.0}
+\definecolor{mediumblue}{rgb}{0.5,0.5,1.0}
+\definecolor{darkblue}{rgb}{0.1,0.1,0.9}
+%
+\definecolor{green}{rgb}{0.0,0.7,0.0}
+\definecolor{red}{rgb}{1.0,0.0,0.0}
+%
+\definecolor{magenta}{rgb}{.75,0,.75}
+\definecolor{hotpink}{rgb}{0.9,0,0.5}
+\definecolor{cyan}{rgb}{0,0.8, .8}
+%
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%      VP-Added Shortcuts      %%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%% Constant matrices 
+\def\Fn{\mathbb{F}^{n}}
+\def\Fm{\mathbb{F}^{m}}
+\def\Fp{\mathbb{F}^{p}}
+
+\def\Fnn{\mathbb{F}^{n\times n}}
+\def\Fmm{\mathbb{F}^{m\times m}}
+\def\Fpp{\mathbb{F}^{p\times p}}
+
+\def\Fmn{\mathbb{F}^{m\times n}}
+\def\Fnm{\mathbb{F}^{n\times m}}
+
+\def\Fmp{\mathbb{F}^{m\times p}}
+\def\Fpm{\mathbb{F}^{p\times m}}
+
+\def\Fnp{\mathbb{F}^{n\times p}}
+\def\Fpn{\mathbb{F}^{p\times n}}
+
+%%%%% Constant matrices over R
+\def\Rn{\mathbb{R}^{n}}
+\def\Rm{\mathbb{R}^{m}}
+\def\Rp{\mathbb{R}^{p}}
+
+\def\Rnn{\mathbb{R}^{n\times n}}
+\def\Rmm{\mathbb{R}^{m\times m}}
+\def\Rpp{\mathbb{R}^{p\times p}}
+
+\def\Rmn{\mathbb{R}^{m\times n}}
+\def\Rnm{\mathbb{R}^{n\times m}}
+
+\def\Rmp{\mathbb{R}^{m\times p}}
+\def\Rpm{\mathbb{R}^{p\times m}}
+
+\def\Rnp{\mathbb{R}^{n\times p}}
+\def\Rpn{\mathbb{R}^{p\times n}}
+
+
+
+%%%%% Constant matrices over C
+\def\Cn{\mathbb{C}^{n}}
+\def\Cm{\mathbb{C}^{m}}
+\def\Cp{\mathbb{C}^{p}}
+
+\def\Cnn{\mathbb{C}^{n\times n}}
+\def\Cmm{\mathbb{C}^{m\times m}}
+\def\Cpp{\mathbb{C}^{p\times p}}
+
+\def\Cmn{\mathbb{C}^{m\times n}}
+\def\Cnm{\mathbb{C}^{n\times m}}
+
+\def\Cmp{\mathbb{C}^{m\times p}}
+\def\Cpm{\mathbb{C}^{p\times m}}
+
+\def\Cnp{\mathbb{C}^{n\times p}}
+\def\Cpn{\mathbb{C}^{p\times n}}
+
+%%%%% Polynomial matrices 
+\def\pFnn{\mathbb{F}^{n\times n}[\lambda]}
+\def\pFmm{\mathbb{F}^{m\times m}[\lambda]}
+\def\pFpp{\mathbb{F}^{p\times p}[\lambda]}
+
+\def\pFmn{\mathbb{F}^{m\times n}[\lambda]}
+\def\pFnm{\mathbb{F}^{n\times m}[\lambda]}
+
+\def\pFmp{\mathbb{F}^{m\times p}[\lambda]}
+\def\pFpm{\mathbb{F}^{p\times m}[\lambda]}
+
+\def\pFnp{\mathbb{F}^{n\times p}[\lambda]}
+\def\pFpn{\mathbb{F}^{p\times n}[\lambda]}
+
+%%%%% Rational matrices 
+\def\rFnn{\mathbb{F}^{n\times n}(\lambda)}
+\def\rFmm{\mathbb{F}^{m\times m}(\lambda)}
+\def\rFpp{\mathbb{F}^{p\times p}(\lambda)}
+
+\def\rFmn{\mathbb{F}^{m\times n}(\lambda)}
+\def\rFnm{\mathbb{F}^{n\times m}(\lambda)}
+
+\def\rFmp{\mathbb{F}^{m\times p}(\lambda)}
+\def\rFpm{\mathbb{F}^{p\times m}(\lambda)}
+
+\def\rFnp{\mathbb{F}^{n\times p}(\lambda)}
+\def\rFpn{\mathbb{F}^{p\times n}(\lambda)}
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%     BOLDFACE VECTROS     %%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\def\bfa{\mathbf{a}}
+\def\bfb{\mathbf{b}}
+\def\bfc{\mathbf{c}}
+\def\bfd{\mathbf{d}}
+\def\bfe{\mathbf{e}}
+\def\bfo{\mathbf{0}}
+\def\bfp{\mathbf{p}}
+\def\bfq{\mathbf{q}}
+\def\bfr{\mathbf{r}}
+\def\bfs{\mathbf{s}}
+\def\bft{\mathbf{t}}
+\def\bfu{\mathbf{u}}
+\def\bfv{\mathbf{v}}
+\def\bfw{\mathbf{w}}
+\def\bfx{\mathbf{x}}
+\def\bfy{\mathbf{y}}
+\def\bfz{\mathbf{z}}	
+
+\newcommand{\zvec}    {\ensuremath{\mathbf{0}}}
+
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+    \renewcommand{\l}       {\ensuremath{\lambda}}
+    \renewcommand{\d}		{\ensuremath{\delta}}
+    \renewcommand{\a}       {\ensuremath{\alpha}}
+    \renewcommand{\b}		{\ensuremath{\beta}}
+    
+                                 
+
+   
+
+\setlength{\parindent}{2em}
+\setlength{\parskip}{.5em}
+%\renewcommand{\baselinestretch}{1.2}   
+     
+     
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%      SHORTCUTS TO COLORED BOXES     %%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+%%% This commands end the {tcolorbox}
+\newcommand {\overbox}      {\end{tcolorbox}}
+
+%%% This commands starts {tcolorbox} for Definitions - green color scheme
+\newcommand {\defbox}  [1]		{\begin{tcolorbox}[width=\textwidth,colback={black!1},title={\large \bf Definition:\; #1}, colbacktitle=green!30,coltitle=black]}
+	
+	
+%%% This commands starts {tcolorbox} for Theorems - blue color scheme
+\newcommand {\thmbox}  [1]		{\begin{tcolorbox}[width=\textwidth,colback={black!1},title={\large \bf Theorem:\;#1}, colbacktitle=royalblue!30,coltitle=black]}
+		
+%%% This command makes a basic gray box 
+\newcommand {\basicbox} 		{\begin{tcolorbox}[width=\textwidth,colback={black!1}]}
+			
+%%% This command makes a redish titled box with text in title
+	\newcommand {\titledbox}  [1]		{\begin{tcolorbox}[width=\textwidth,colback={black!1},title={\large \bf #1}, colbacktitle=red!15,coltitle=black]}
+
+
+
+ 
+      
+
+%%%%
+%%%%
+%%%%		DOCUMENENT BEGINS
+%%%%
+%%%%           
+                     
+\begin{document}
+
+
+
+
+\thispagestyle{empty}
+
+\begin{center}
+	{\bf MTH 513  $\cdot$ LINEAR ALGEBRA}
+	
+	\medskip
+	
+	Problem Set 2
+	
+\end{center}
+
+\basicbox
+	
+	\noindent
+	{\bf POSTED} on Tuesday, 20 September, 2022. 
+	
+	\bigskip
+	
+	\noindent
+	{\bf DUE} by 11:59pm on Sunday, 2 October 2022, via Brightspace.
+	
+	\bigskip
+	
+
+\noindent {\bf SUBMISSION GUIDELINES / INSTRUCTIONS:} 
+
+%\smallskip
+
+\begin{itemize}
+	\item Review {\em general submission guidelines} before submitting your assignment, in particular how to create a single pdf document from multiple handwritten pages, page numbering, problem statements, etc. 
+	
+	\item Make this ``cover page'' the first page in your submitted pdf file. 
+		
+	\item When you are done with your work, rename the document as specified below and submit it via Brightspace. 
+	
+	\begin{center} 
+		{\em YOURLASTNAME--hw2--mth--513} 
+	\end{center} 
+\end{itemize} 
+
+
+
+
+
+\overbox
+
+
+	\bigskip
+	\bigskip
+	
+	\noindent 
+	By \textcolor{red}{{\em signing your name below} (or {\em submitting this page as your cover page})}
+	you are confirming that 
+	you are aware of and understand
+	the policies and procedures in the University Manual that pertain to Academic Honesty.
+	These policies include cheating, fabrication, falsification and forgery, multiple submission,
+	plagiarism, complicity and computer misuse. 
+	Further information can be found in the UNIVERSITY MANUAL sections on Plagiarism and Cheating~at
+	\begin{center}
+		\url{http://web.uri.edu/manual/chapter-8/chapter-8-2/}
+	\end{center}
+
+
+	\vspace*{9mm}
+	
+	\noindent
+	{\bf Name:} \line(1,0){250}  \\
+%		\hspace*{1.75in}{\footnotesize {\em Please \emph{SIGN} clearly}} \\
+
+	\vspace*{8mm}
+
+%	\noindent
+%	{\bf Name:} \line(1,0){250}  \\
+%	\hspace*{1.125in}{\footnotesize {\em {(only applicable if working with a partner)}} \\
+
+
+\vspace{5mm}
+
+
+
+
+\newpage
+
+
+\newpage
+
+
+
+% Problems begin here
+
+\begin{enumerate}
+
+%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%              Problem 1
+%%%%%%%%%%%%%%%%%%%%%%%%
+\item 
+Consider the function ${\tt trace}: \Rnn \rightarrow \bR$ 
+defined by 
+\begin{equation} \label{eq:trace-def} 
+	{\tt trace}(A) 
+	\,\, := \,\, 
+	\sum_{i=1}^n \, \, a_{ii} \, , \qquad \forall  A \, \in \,  \Rnn \, ,
+\end{equation} 
+that is, ${\tt trace}(A)$ is the sum of diagonal entries of $A$. 
+
+\medskip
+
+{\bf Prove} that if  $\delta \in \bR$ and $A, B \in \Rnn$ 
+are all arbitrary, then 
+\begin{equation} \label{eq:trace-property}
+	{\tt trace}(\delta A \, + \, B) \,\,  = \,\, \delta {\tt trace}(A) \, + \, {\tt trace}(B)\, .
+\end{equation} 
+
+
+\begin{proof}
+	Let $\delta \in \bR$ and $A, B \in \Rnn$. Then by the above definition, we have 
+	that 
+	\[{\tt trace}(\delta A + B) = \sum_{i = 1}^n [\delta A + B]_{ii}\]
+	Then since $[\delta A + B]_{ii} = [\delta A]_{ii} + [B]_{ii}$ and $[\delta A]_{ii} = \delta [A]_{ii}$, it follows that 
+	\[\sum_{i = 1}^n [\delta A + B]_{ii} = \sum_{i = 1}^n \delta [A]_{ii} + [B]_{ii} \]
+	now we may split this sum and factor out $\delta$ to get 
+	\[{\tt trace}(\delta A + B) = \delta \sum_{i = 1}^n [A]_{ii} + \sum_{i = 1}^n [B]_{ii}.\]
+	But the left hand side of the last equation is precisely $\delta {\tt trace}(A) + {\tt tarce}(B)$ which is what we wanted to prove. 
+\end{proof}
+\medskip
+
+{\bf Remark:} You should be using definitions of addition 
+and scalar multiplication on pages 82-83 of our textbook. 
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%              Problem 2
+%%%%%%%%%%%%%%%%%%%%%%%%
+\item 
+\textcolor{red}{\bf (Optional)} Consider the function $
+		\texttt{vec} : 
+		\Cmn \rightarrow \bC^{mn} 		
+	$
+	such that for any $A \in \Cmn$ 
+	\begin{equation} \label{prob1-eqn-vec-definition}
+		\texttt{vec}(A) \, = \, 
+		\left[ 
+			\begin{array}{c}
+				A_{*1} \\ 
+				A_{*2} \\
+				\vdots \\
+				A_{*n}
+			\end{array}
+		\right] 
+		\, .
+	\end{equation} 
+	Prove that for arbitrary $A, B \in  \Cmn$ and $\delta \in \bC$, we have 
+	\begin{equation} \label{prob1-eqn2}
+		\texttt{vec}(\delta A + B) 
+		\,\, = \,\, 
+		\delta \, \texttt{vec}(A) 
+		\, + \, 
+		\texttt{vec}(B) \, .
+	\end{equation} 
+
+\begin{proof}
+	Considering the image as a block matrix we will have that $\texttt{vec}(\delta A + B)_{i \ast} = [\delta A + B]_{\ast i}$, where on the left side, $i$ denotes the $i^{th}$ block and on the right, $i$ denotes the $i^{th}$ column. Then a simple appliction of the definition of matrix addition and scalar multiplictation, we get 
+	$[\delta A + B]_{\ast i} = \delta [A]_{\ast i} + [B]_{\ast i}= \delta \texttt{vec}(A)_{i \ast} + \texttt{vec}(B)_{i \ast}$. So, ${\tt vec}(\delta A + B) = \delta {\tt vec}(A) + {\tt vec}(B)$. 
+
+\end{proof}
+
+\smallskip
+%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%              Problem 3
+%%%%%%%%%%%%%%%%%%%%%%%%
+\item 
+{\bf Definition:} 
+The {\em tensor product} of matrices $A_{m \times n}$ and $B_{p \times q}$ is denoted 
+by $A \otimes B$ and is defined to be the block matrix 
+\begin{equation} \label{prob2-eqn-tensor-prod-def}
+	A \otimes B \, := \, 
+	\left[
+		\begin{array}{cccc}
+			a_{11}B & a_{12}B & \cdots & a_{1n}B \\ 
+			a_{21}B & a_{22}B & \cdots & a_{2n} B \\
+			\vdots & \vdots & \ddots & \vdots \\
+			a_{m1} B & a_{m2} B & \cdots & a_{mn}B
+		\end{array}
+	\right]_{mp \times nq} .
+\end{equation}
+
+	
+\begin{enumerate}
+	\item Let $A_{m \times n}$, $B_{p \times q}$, $C_{n \times k}$, and $D_{q \times r}$. 
+		Prove that $(A \otimes B)(C \otimes D) \, = \, AC \otimes BD$. 
+		
+		\begin{proof}
+			We will show that the corosponding blocks are equivalent. It follows from our definition of matrix multiplication that 
+			\[ [(A \tensor B)(C \tensor D)]_{ij} = [(A \tensor B)]_{i \ast} [C \tensor D]_{\ast j}\] 
+			which is simply 
+			\[ \mat{rrr} a_{i1}B & \dots & a_{in}B \rix \mat{c} c_{1j}D \\ \vdots \\ c_{nj}D \rix \]
+			Multiplying this out using the definition of matrix multiplication gives the sum
+			\[ a_{i1}c_{1j}BD + \dots + a_{in}c_{nj}BD = [AC]_{ij} \cdot BD = [(AC) \tensor (BD)]_{ij}.\]
+			Thus, the corrosponding blocks in $(A \tensor B)(C \tensor D) $and $(AC) \tensor (BD)$ are equal, which is precisely what we wanted to show. 
+
+		\end{proof}
+
+
+	\item Prove that if $A_{m \times m}$ and $B_{n \times n}$ are 
+		nonsingular matrices, then so is $A \otimes B$. 
+		What is the inverse of $A \otimes B$? 
+
+		\begin{proof}
+			We prove that $A^{-1} \tensor B^{-1}$ is the inverse. Using the above result, we have 
+			\[(A \tensor B)(A^{-1} \tensor B^{-1}) = (AA^{-1}) \tensor (BB^{-1}) = I \tensor I = I.\]
+			Hence the matrix $A \tensor B$ is invertible with invese $A^{-1} \tensor B^{-1}$.
+		\end{proof}
+		
+	\item Prove that for any two square matrices $A_{m \times m}$ and $B_{n \times n}$ the following equality holds 
+		\[
+			\operatorname{trace}(A \otimes B) = \trace(A) \cdot \trace(B) \, .
+		\]
+		
+
+		\begin{proof}
+			We begin by noting that the diagonal elements of $A \tensor B$ are the diagonal elements of the diagonal blocks when we consider $A \tensor B$ as a block matrix. 
+			So it is clear that the ${\tt trace}(A \tensor B)$ is equal to the sum of the trace of the diagonal blocks. By our definiton of tensor product we have 
+			\[{\tt trace}(A \tensor B) = {\tt trace}(a_{11}B) + \dots +{\tt trace}(a_{mm}B) \]
+			Now using the linearity of trace proved above we may take out the scalars $a_{ii}$. 
+			\[{\tt trace}(A \tensor B) = \sum_{i = 1}^m a_{ii} \cdot {\tt trace}(B) = \left(\sum_{i = 1}^m a_{ii} \right) \cdot {\tt trace}(B)  = {\tt trace}(A) \cdot {\tt trace}(B) \]
+			as desired. 
+		\end{proof}
+
+
+	\end{enumerate}
+
+
+\bigskip
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%              Problem 4
+%%%%%%%%%%%%%%%%%%%%%%%%
+\item 
+Let $A \in \Cmn$, $B\in \bC^{p \times q}$, and $C \in \bC^{m \times q}$ be given 
+	and let $X \in \bC^{n \times p}$ be unknown. Show that the {\em matrix equation} 
+	\begin{equation} \label{eqn-prob3-mat-eqn}
+		AXB \, = \, C
+	\end{equation}
+	is equivalent to the linear system of $qm$ equations in $np$ unknowns given by 
+	\begin{equation} \label{eqn-prob3-lin-sys}
+		(B^T \otimes A) \texttt{vec}(X) \, = \, \texttt{vec}{(C)}\, ,
+	\end{equation}
+	that is, $\texttt{vec}(AXB) \, = \, (B^T \otimes A)\texttt{vec}{(X)}$. 
+
+
+
+	\begin{proof}
+		Let $A \in \bC^{m \times n} $, $B \in \bC^{p \times q} $, and $C \in \bC^{m \times q}$ and let $X \in \bC^{n \times p}$ be unkown. We prove that $AXB = C$ is equivalent to 
+		$(B^T \tensor A){\tt vec}(X) = {\tt vec}(AXB)$. First we note that by viewing the matrix vector product as a linear combintions of the columns, it is clear that
+		\begin{equation}
+			XB_{\ast j} = \sum_{k = 1}^p b_{kj}X_{\ast k}
+		\end{equation}
+		Now we want to show 
+		\[(B^T \tensor A){\tt vec}(X) = {\tt vec}(AXB)\]
+		which can be written as 
+		\begin{equation}
+			\mat{rrr} 
+			b_{11}A & \dots & b_{p1}A \\ 
+			\vdots & \ddots & \vdots \\ 
+			b_{1q}A & \dots & b_{pq}A 
+			\rix 
+			\,\cdot \, 
+			\mat{r}
+			X_{\ast 1}\\ 
+			\vdots \\ 
+			X_{\ast p}
+			\rix
+			\, = \, 
+			\mat{r}
+			(AXB)_{\ast 1} \\
+			\vdots \\
+			(AXB)_{\ast q}
+			\rix 
+		\end{equation}
+
+		Then it is sufficient to prove that the $i^{th}$ row of the product $(B^T \tensor A){\tt vec}(X)$ (considering the product as a block matrix) is equal to the $i^{th}$ column of $AXB$. In symbols we want to show, 
+		\[\sum_{k = 1}^p b_{ki}A X_{\ast k} = (AXB)_{\ast i}\]
+		Now it follows using equations $8$ and $9$, that 
+		\[(AXB)_{\ast i} = A(XB)_{\ast i} = A(XB_{\ast i}) = A\left(\sum_{k=1}^p b_{ki}X_{\ast i}\right) = \sum_{k = 1}^p b_{ki} A X_{\ast i}\]
+		Where is the last step we may commute $A$ with $b_{ki}$ since it is a scaler. But shown above is exactly what we needed to prove. 
+
+	\end{proof}
+
+
+\bigskip
+%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%              Problem 5
+%%%%%%%%%%%%%%%%%%%%%%%%
+\item 
+{\bf Definition:}
+Matrix $A \in \Cmn$ is said to be \textcolor{blue}{\bf right invertible} 
+if there exists a matrix $A^{-R}$ such that $A\cdot A^{-R} = I_m$. 
+Similarly, $A \in \Cmn$ is said to be \textcolor{blue}{\bf left invertible} 
+if there exists a matrix $A^{-L}$ such that $A^{-L}\cdot A = I_n$. 
+Matrices $A^{-R}$ and $A^{-L}$ are referred to 
+as a {\em right inverse} and a {\em left inverse} of $A$, respectively. 
+
+\begin{enumerate}
+	\item Let $
+		A 
+		\, = \, 
+		\mat{rrr}
+			2 & 1 & 0 \\
+			0 & 0 & 3 
+		\rix
+	$. 
+	If possible, find a right inverse of $A$.	
+
+
+	It is easy to find such an inverse, we want $a, b, c, d, e, f$ such that 
+	\[\mat{rrr} 2 & 1 & 0 \\ 0 & 0 & 3 \rix \cdot \mat{rr} a & d \\ b & e \\ c & f \rix = \mat{rr} 1 & 0 \\ 0 & 1 \rix. \]
+	Multiplying out, shows we want $2a + b = 1$, $2d + e = 0$, $3c = 0$, and $3f = 1$. So we may choose $c = 0$ and $f = \frac{1}{3}$, 
+	then choose $a = 0$. $b = 1$ and $d = 0$, and $e = 0$, then we we the matrix 
+	\[\mat{rr} 0 & 0 \\ 1 & 0 \\ 0 & \frac{1}{3} \rix\]
+	multplying the given matrix on the right shows that this is indeed a right inverse.
+
+	
+	\bigskip
+	
+
+
+	\item Give an example of {\em nonzero} matrices $C_0, C_1, C_2 \in \bR^{3 \times2}$ 
+	such that any matrix $R$ of the form 
+	\[
+		R \, = \, 
+		C_0 
+		\, + \, 
+		\alpha C_1 
+		\, + \, 
+		\beta C_2 , \qquad 
+	\]
+	is a right inverse of $A$, for all $\alpha, \beta \in \bR$.
+	
+
+	We use our result in the last problem. Note that $2d + e = 0$ shows us that $d$ can be solved for directly in therms of $e$, In general we use the relations on $a, b, c, d, f$ to write down a general solution.
+	\[\mat{rr} a & d \\ b & e \\ c & f \rix = \mat{rr} a & \frac{-e}{2} \\ b & e \\ c & f \rix = \mat{rr} \frac{1 - b}{2} & \frac{-e}{2} \\ b & e \\ 0 & \frac{1}{3} \rix\]
+	Since $c = 0 $ and $f = \frac{1}{3}$ are unqiuely determined. Now we can have the matrix in terms of $b, e$, these are the two degrees of fredom we need to produce the solution, now we just seperate the matrices under addition. 
+	\[\mat{rr} a & d \\ b & e \\ c & f \rix = \mat{rr} \frac{1 - b}{2} & \frac{-e}{2} \\ b & e \\ 0 & \frac{1}{3} \rix = \mat{rr} \frac{1}{2} & 0\\ 0 & 0\\ 0 & \frac{1}{3} \rix + e \mat{rr} 0 & \frac{-1}{2} \\ 0 & 1 \\ 0 & 0 \rix + b\mat{rr} \frac{-1}{2}&0 \\1 & 0 \\ 0 & 0 \rix\]
+\end{enumerate}
+
+
+\smallskip
+%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%              Problem 6
+%%%%%%%%%%%%%%%%%%%%%%%%
+\item 
+\begin{enumerate}
+
+	\item {\bf Prove/Disprove:} If $A$ is an $m \times n$ matrix that is right invertible, then $\rank(A)=m$. 
+	\begin{proof}
+		Assume $A$ is right invertable and suppose $\rank(A) < m$. If $A$ already has a row of all zeros, it is quickly seen 
+		that $A$ cannot be right invertable since the product with any other matrix will contain a row of zeros. 
+		If not, then by one of our charactizations of rank, $A$ can be reduced to a matrix with a row of all zeros, $A_z$.  Now this reduced matrix is clearly singular with respect to right multiplication, since 
+		comuputing $A_z \cdot X$ for any conformable $X$, will get a row of all zeros in the product so it cannot be the identity. But since $PA = A_z$, and $PA$ is the product of right invertable matrices we get that $A_z$ is  is right invertable, a contradiction.
+		So the rank cannot be less than $m$, but it also cannot be greater than $m$, since we have $\rank(A) \leq \min\{m, n\} $. So $\rank(A) = m$. 
+	\end{proof}
+
+	I  use the fact the product of right ivertable matrices is right invertable without justification, but it is clear $(AB)(B^{-r}A^{-r}) = I$. 
+	
+	\bigskip
+	
+	\item Show that if $A$ is an $n \times n$ matrix with a {\em unique right inverse} $A^{-R}$, then $A$ is invertible and $A^{-R}=A^{-1}$. 	
+	
+	
+	\medskip
+	
+	{\bf Possible Hint (but not required):} Consider the expression $A(A^{-R}+A^{-R}A-I)$.
+
+
+	\begin{proof}
+		The hint makes it trivial, note by matrix algebra, 
+		\[ A(A^{-R} + A^{-R}A - I) + AA^{-R} + AA^{R}A - I= I + IA - I = A\]
+		so that $(A^{-R}+A^{-R}A-I)$ is a right inverse of $A$, by uniqueness, $A^{-R} = A^{-R}+A^{-R}A-I$ and solving with matrix algebra shows 
+		\[A^{-R} = A^{-R}+A^{-R}A-I\]
+		\[A^{-R} - A^{-R} = A^{-R}A-I\]
+		\[0 = A^{-R}A - I\]
+		\[I = A^{-R}A\]
+		then, $A^{-R}$ is a left inverse of $A$ and by definition $A$ is invertable with unique inverse $A^{-R}$. 
+
+
+		I aslo tried to get an argument like this to work, 
+		assume $BA = I$, then 
+		\[AB = AIB = ABAB\]
+		Then I want to say that there is some cancelation law, and that $I$ is the only matrix satisfying $X^2 = X$. But this is only true if there are no zero divisors, which I cant assume without restricting to invertable matrices, but if 
+		I do that then there is nothing to prove, so this doesn't seem to quite work. 
+	\end{proof}
+	
+\end{enumerate}
+
+\bigskip
+%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%              Problem 7
+%%%%%%%%%%%%%%%%%%%%%%%%
+\item 
+Let $C$ be an $n \times n$ upper triangular matrix. 
+Show that if $CC^T = C^T C$, then $C$ is a diagonal matrix. 
+
+\begin{proof}
+	We will proceed with induction, for $n =1$ there is nothing to prove, so we start with $n = 2$. Let $A_{2 \times 2}$ be upper triangular, 
+	then 
+	\[A = \mat{rr} a & b \\ 0 & c \rix\]
+	Then computing $AA^T = A^TA$ we get 
+	\[\mat{rr} a^2 + b^2 & bc \\ bc & c^2 \rix = \mat{rr} a^2 & ab \\ ab & b^2 + c^2 \rix \]
+	Now subtracting shows that $b^2 = 0$ , hence $b = 0$ and $A$ was diagonal. This completes the base case, now suppose 
+	that for some $n \geq 2$ that if $A$ is triangular and $AA^T = A^TA$ then $A$ is diagonal. Now consider an $A_{n + 1 \times n+ 1}$. 
+	We may consider $A$ as a block matrix, in the following form,
+	\[A = \mat{rr} B_{n \times n} & \bfx \\ \vec(0)^T & b \rix \]
+	Taking the transpose gives 
+	\[A^T = \mat{rr} B^T & \vec(0) \\ \bfx^T & b \rix\]
+	After multiplying $AA^T = A^TA$ we get 
+
+	\[\mat{rr} BB^T + \bfx \bfx^T & b \bfx \\ b \bfx^T & b^2 \rix = \mat{rr} B^TB  & B^T \bfx \\ \bfx^T B & \bfx^T \bfx + b^2 \rix \]
+
+
+	Now subtracting both sides and looking into the bottom right entry, we see $b^2 - \bfx^T \bfx - b^2 = 0$ which implies $\bfx^T \bfx = \sum_{i= 1}^n x_i^2 = 0$ and thus $\bfx = \vec{0}$. 
+	Now we may use this restiction on $\bfx$ to show $B^TB = BB^T$, which now gives all the conditions we need to use our induction hypothesis on $B$, thus $B$ is diagonal, then since we also know that 
+	$\bfx$ was the zero vector, we can see that $A$ is diagonal. Hence by the principal of mathematical induction, we have proven the desired result. 
+\end{proof}
+
+\bigskip
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%              Problem 8
+%%%%%%%%%%%%%%%%%%%%%%%%
+\item 
+Let $\mathbb{R}[x]$ denote the set of all {\em polynomials} in 
+variable $x$ with real coefficients. 
+Further, let $\mathbb{R}(x)$ be the set of all 
+{\em rational functions} over $\mathbb{R}$, that is, 
+\begin{equation} \label{eq:field-of-rational-functions}
+\mathbb{R}(x) 
+\,\, := \,\, 
+\left\{ 
+	\dfrac{\, p(x) \,}{\, q(x) \,} 
+	\,\, : \,\, 
+	p(x), q(x) \in \mathbb{R}[x] \, , \, q(x) \not \equiv 0
+\right\}.
+\end{equation}
+Clearly $\bR[x] \subsetneq \bR(x)$. Finally, recall from the first class that $\bR(x)$ is a field. 
+
+\bigskip
+
+Let $A(x)$ be a $3\times 3$ matrix with entires from $\mathbb{R}(x)$ given by 
+\[
+	A(x) 
+	\, = \, 
+	\mat{rrr}
+		-1 & x & 2 + x\\ 
+		-x & -1 + x^2 & -3 + 3 x + x^2\\ 
+		x^2 &  -1 - x - 
+  x^3 & -2 x - x^2 - x^3
+	\rix \, . 
+\]		
+
+Determine if $A(x)$ is nonsingular/invertible over $\bR(x)$, and if so, then find $A^{-1}(x)$. 
+
+I just use standard elimination and carefully did my arthimitic.
+Below are the row operations used. 
+
+\begin{enumerate}
+	\item $R_2 \leftarrow -xR_1 + R_2 $
+	\item $R_3 \leftarrow x^2R_1 + R_3$ 
+	\item $R_3 \leftarrow (-1 -x)R_2 + R_3$
+	\item $R_3 \leftarrow \frac{1}{3}R_3 $
+	\item $R_2 \leftarrow (3 -x )R_3 + R_2$
+	\item $R_1 \leftarrow (-2 - x)R_3 + R_1$ 
+	\item $R_1 \leftarrow xR_2 + R_1$ 
+	\item $R_2 \leftarrow -R_2$ 
+	\item $R_1 \leftarrow -R_1$
+\end{enumerate}
+
+\begin{equation}
+	A^{-1}(x) \, = \, \mat{rrr} -1 + \frac{2}{3}x + \frac{5}{3}x^2 -x^3 + \frac{2}{3}x^4 & \frac{-2}{3}- x + \frac{1}{3}x^2 - \frac{1}{3}x^3 & \frac{2}{3} - \frac{2}{3}x + \frac{1}{3}x^2 \\ 
+	\frac{-5}{3}x^2 + \frac{2}{3}x^3 & \frac{2}{3}x - \frac{1}{3}x^2 & -1 + \frac{1}{3}x \\ 
+	\frac{1}{3}x + \frac{2}{3}x^2 & \frac{-1}{3} - \frac{1}{3}x & \frac{1}{3}
+\rix
+\end{equation}
+
+I realize after typing this I could have factored out a 1/3 and saved myself many frac commands. 
+\medskip
+
+{\bf Remark:} 
+When typing your answer, you do NOT need to give me all intermediate steps. 
+Only include the sequence of row operations that helps you obtain the answer. 
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%              Problem 9
+%%%%%%%%%%%%%%%%%%%%%%%%
+
+\item 
+\textcolor{blue}{\Large The problem I had in mind for here 
+will now be a part of your third homework 
+(last updated on September 21, 2022).}
+
+\medskip
+
+
+
+
+\end{enumerate}
+\end{document}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%f
