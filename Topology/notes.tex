@@ -1,10 +1,27 @@
 \documentclass[11pt]{report}
 
-%\usepackage{ntheorem}
 \usepackage{amssymb, graphicx, amsmath, amsthm}
+\usepackage{latexsym,amscd, }
+\usepackage{verbatim, lscape, xcolor, mathtools}
+\usepackage{enumerate, collcell, array}
+\usepackage{commath}
+
+\setlength{\textwidth}{6.5in}
+\setlength{\textheight}{9.2in}
+\setlength{\topmargin}{-.6in}
+\hoffset -1.1in
+
+\usepackage{hyperref}
+\hypersetup{
+	colorlinks   = true, %Colour links instead of ugly boxes
+	urlcolor     = blue, %Colour for external hyperlinks
+	linkcolor    = blue, %Colour of internal links
+	citecolor   = red %Colour of citations
+} 
 \RequirePackage{graphicx}
 \RequirePackage{hyperref}
-\usepackage{commath}
+
+
 \newcommand{\R}{\mathbb{R}}
 \newcommand{\N}{\mathbb{N}}
 \newcommand{\Q}{\mathbb{Q}}
@@ -30,13 +47,17 @@
 
 \theoremstyle{break}
 \newtheorem{thm}{Theorem}[section]
-\newtheorem{defn}[thm]{Definition}
+
 \newtheorem{lem}[thm]{Lemma}
 \newtheorem{cor}[thm]{Corollary}
 \newtheorem{prop}[thm]{Proposition}
-\newtheorem{rem}[thm]{Remark}
+
+\theoremstyle{remark}
+\newtheorem{rem}{Remark}
 \newtheorem{ex}{Example}[section]
 
+\theoremstyle{definition}
+\newtheorem{defn}{Definition}[section]
 % TODO: replace these with your information
 % TODO: replace these with your information
 \author{Evan Fox}
@@ -45,6 +66,6 @@
 \begin{document}
 \maketitle
 \tableofcontents
-\include{Topology_and_basis.tex}
+\include{CH1.tex}
 \include{Order_Product_topology.tex}
 \end{document}

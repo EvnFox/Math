@@ -513,8 +513,94 @@
     it contains $x$, but intersects $A$ nowhere, contradicting the fact that $x$ is a limit point. 
    \end{proof}
 
-   A corollary of the last result is that in finite spaces every Hausdorff topology in the discrete topology, and futher, there are no limit points. 
+   A corollary of the last result is that in finite spaces every Hausdorff topology in the discrete topology, and further, there are no limit points. 
 
 
-   \section{Continous Functions}
+   \section{Continuous Functions}
+
+   Continuous functions are of extreme importance in analysis and at a basic level they can be defined as functions which preserve limits of sequences. More generally 
+   we must realize that continuity is as much a property of functions as it is of general spaces. That is, whether a function is continuous or not depends on the space it 
+   is in. 
+
+   
+   \begin{defn}
+    A function $f: X \to Y$ is said to be $\emph{continuous}$ if the preimage of every open set in $Y$ is open in $X$. 
+   \end{defn}
+
+
+   From analysis we recall the epsilon delta definition of continuity, we will find that in a metric space, that definition is equivalent to ours. 
+   However, the definition just given has the advantage of being much more general. 
+
+   We proved a different order in class. 
+   \begin{thm}
+    Let $f$ be a continuous function, then the following are all equivalent. 
+    \begin{enumerate}
+        \item $B \subset Y$ closed, $f^{-1}(B)$ closed. 
+        \item For $A \subset X$, we have $f(\bar{A}) \subset \bar{f(A)}$. 
+        \item (local formulation of continuity) For every $x \in X$ then for all nbhds of $f(x)$, $V \subset Y$, there exists $U \subset X$ such that $f(U) \subset V$. 
+    \end{enumerate}
+   \end{thm}
+
+   \begin{proof}
+    $(1)$ is clear, then since $\bar{f(A)}$ is closed its pre-image is a closed set containing $A$, so $\bar{A} \subset f^{-1}(\bar{f(a)})$; from this 
+    $(2)$ follows. 
+    
+    \medskip
+    then let $A \subset X$, Then for $a \in \bar{A}$ we want to show $f(a) \in \bar{f(A)}$. Then consider a nbhd of $f(a)$, $V$, its preimage 
+    must both be open and contain $a$, thus $f^{-1}(V) \cap A$ is non-empty. But from this if follows 
+    \[f(f^{-1}(V) \cap A) \subset V \cap f(A)\]
+    so $V$ intersects $f(A)$, thus $f(a)$ belongs to the closure. 
+   \end{proof}
+
+
+   equivalence with $\epsilon-\delta$. 
+
+   
+   \begin{defn}
+    Let $X, Y$ be spaces, and let $f:X \to Y$ be a continuous injection. Then we call $f$ an $\emph{embedding}$ 
+    of $X$ into $Y$. 
+   \end{defn}
+
+   \begin{defn}
+    A function $f:X \to Y$ is a homeomorphism, if it is a continuous bijection with a continuous inverse. 
+   \end{defn}
+
+   
+   \begin{ex}
+    A function can we a continuous bijection without having a continuous inverse. for example 
+    consider the function ${\tt id}:\R_l \to \R$. The mapping is continuous since the lower limit topology 
+    is finer than the standard topology on $\R$ but its inverse will not be continuous since there exists 
+    an open set of $\R_l$ whos pri image is not open in $\R$. 
+   \end{ex}
+
+
+    Homeomorphisms are important because they preserve the topology of a set, that is, a homeomorphism induces a bijection 
+    between the open sets of two spaces. 
+
+   state and prove thm abt this. 
+
+   In general given continuous functions there are many  ways we may go about constructing more. 
+
+
+
+
+   
+   \begin{thm}[Pasting Lemma]
+    let $X, Y$ be spaces and let $A,B$ be closed subsets of $X$ with $X = A \cup B$
+    \[f:A \to Y \, \, \, g:B \to Y\]
+    such that $f$ and $g$ agree on the intersection of $A$ and $B$, 
+    then we can construct a continuous function $h:X \to Y$. 
+   \end{thm}
+
+
+   \begin{thm}[Maps into products]
+    $f:X \to A \times B$ where $x \mapsto (f_1(x), f_2(x))$ 
+    is continuous if and only if $f_i$ is continuous. 
+   \end{thm}
+
+   \section{Product Topology}
+   In this section we will generalize our results on the product topology to arbitrary cartesian products. 
+
+
+    
 \end{chapter}
