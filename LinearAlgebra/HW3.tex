@@ -37,7 +37,7 @@ Let $C \in \R^{n \times n}$ be a matrix such that $x^TCx>0$ for all non-zero $x 
         \[= \sum_{i = 1}^n \Big[(z^T)_i \left(\sum_{j = 1}^k C_{ij} y_j\right)\Big] = S\]
         were the last step follows since everything after the $j^{th}$ index of $z$ is zero and $z$ and $y$ agree of the first $k$ indices. Then appling the same logic again,
         \[S = \sum_{i = 1}^k \Big[(y^T)_i \left(\sum_{j = 1}^k C_{ij} y_j\right)\Big] = y^TC_ky \leq 0\]
-        a contradiction; so the result follows, using part $(a)$, we see that every principal submatrix is invertable and thus $C$ has an $LU$ factorization.
+        a contradiction; so the result follows, using part $(a)$, we see that every principal submatrix is invertible and thus $C$ has an $LU$ factorization.
     \end{proof}
 
 \end{alphaparts}
@@ -66,10 +66,10 @@ The following are equivalent.
     hence if a element of the diagonal $D_{ii} $ is not positive, we can choose $b = (0, \dots, 1, \dots 0)$ where $1$ is in the $i^{th}$ position. This will give us a product that is not positive. 
 
 
-    Then going back to  $ (L^Tx)^T D (L^Tx)$, since $L^T$ is upper triangluar with $1$'s on the diagonal it is invertable, from this it follows that $L^Tx = 0$ iff $x = 0$ and that $L^Tx = b$ is always consistent. Thus if any element of on the diagonal 
+    Then going back to  $ (L^Tx)^T D (L^Tx)$, since $L^T$ is upper triangular with $1$'s on the diagonal it is invertible, from this it follows that $L^Tx = 0$ iff $x = 0$ and that $L^Tx = b$ is always consistent. Thus if any element of on the diagonal 
     of $D$, say $D_{ii}$ is not greater than 
-    $0$ I choose an $x$ such that $L^Tx = b$ where $b$ is a vector of all zeros execpt for the $i^{th}$ posisiton. Then it will follow that $x^TAx \leq 0$; a contradiction. Hence the diagonal of $D$ is positive 
-    and we have shown that $(3) \implies (1)$. This proves that all the statements are equalivalent. 
+    $0$ I choose an $x$ such that $L^Tx = b$ where $b$ is a vector of all zeros except for the $i^{th}$ position. Then it will follow that $x^TAx \leq 0$; a contradiction. Hence the diagonal of $D$ is positive 
+    and we have shown that $(3) \implies (1)$. This proves that all the statements are equivalent 
 
 \end{proof}
 
@@ -144,7 +144,7 @@ Let $A$ be a symmetric matrix given by
     0 & -1 & 2
     \rix
 \end{equation}
-Find an upper triangular matrix $R$ with positive diagonal entries such that $A = R^TR$ or jusitfy why such $R$ doesn't exist. 
+Find an upper triangular matrix $R$ with positive diagonal entries such that $A = R^TR$ or justify why such $R$ doesn't exist. 
 
 \begin{proof}
     We compute an $LDV$ factorization, since $A$ is symmetric, this will alow us to produce such an $R$. Applying the row operations 
