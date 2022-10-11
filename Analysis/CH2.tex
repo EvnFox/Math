@@ -142,6 +142,33 @@
 
     
     \begin{thm}[Cantor Intersection]
-        place holder.
+        Let $Q_1 \supset Q_2 \supset \dots$ be decreasing chain of non-empty sets where $Q_1$ is bounded and $Q_k$ is closed. 
+        Then the intersection is closed and non-empty
     \end{thm}
+
+    \begin{proof}
+        We will use the Bolzano-weierstrass thm, since if the $Q_i$'s are finite, then the result is clear since the are decreasing and non-empty. 
+        Now, since we may assume that they are infinte and bounded, 
+    \end{proof}
+
+    \begin{thm}[Lindelof Covering Theorem]
+        If $S$ is a closed and bounded subset of $\R^n$, then every open cover $F$ contains a countable subcover. 
+    \end{thm}  
+
+    The biggest use the the above theorem is to help us prove and even stronger result about closed and bounded sets in $\R^n$.
+
+    \begin{thm}[Hine-Borel Theorem]
+        If $S \subset \R$ is closed and bounded, then every open cover $F$ of $S$ contains 
+        a finite subcover. 
+    \end{thm}
+
+    \begin{defn}
+        Let $X$ be a topological space, $S \subset X$ is compact if every open cover contains a finite subcover.
+    \end{defn}
+
+    The Hine-Borel theorem tells us that every closed and bounded subset of $\R^n$ is compact, it happens to be true that 
+    in $\R^n$, the converse also holds so that the only compact sets are closed and bounded. Note that these notions do not 
+    generalize to abstract spaces since boundedness is not a topological property (see topology notes). 
+
+
 \end{chapter}
