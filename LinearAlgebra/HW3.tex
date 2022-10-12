@@ -4,7 +4,7 @@
 \begin{document}
 \maketitle 
 
-I worked with Kyle and Carmine and also spoke breifly with Hannah and Karrisa. 
+I worked with Kyle and Carmine and also spoke briefly with Hannah and Karrisa. 
 \question 
 Let $C \in \R^{n \times n}$ be a matrix such that $x^TCx>0$ for all non-zero $x \in \R^n$. 
 
@@ -20,7 +20,7 @@ Let $C \in \R^{n \times n}$ be a matrix such that $x^TCx>0$ for all non-zero $x 
         \[w^T E_c w = (w^T E_c) w = (0 E_{C,1 \ast} + \dots + w_i E_{C,i \ast} + \dots + 0) w = \vec{0}^T w = 0.\] 
         hence taking $x = P^T w$ gives
         \[x^TCx = w^T P C P^Tw = w^T E_C P^Tw = 0 \]
-        and since $w \neq 0$ and $P$ is invertable, $P^Tw \neq 0$. Hence we have found an $x$ contradicting our assumption. 
+        and since $w \neq 0$ and $P$ is invertible, $P^Tw \neq 0$. Hence we have found an $x$ contradicting our assumption. 
     \end{proof}
 
     \questionpart 
@@ -37,39 +37,39 @@ Let $C \in \R^{n \times n}$ be a matrix such that $x^TCx>0$ for all non-zero $x 
         \[= \sum_{i = 1}^n \Big[(z^T)_i \left(\sum_{j = 1}^k C_{ij} y_j\right)\Big] = S\]
         were the last step follows since everything after the $j^{th}$ index of $z$ is zero and $z$ and $y$ agree of the first $k$ indices. Then appling the same logic again,
         \[S = \sum_{i = 1}^k \Big[(y^T)_i \left(\sum_{j = 1}^k C_{ij} y_j\right)\Big] = y^TC_ky \leq 0\]
-        a contradiction; so the result follows, using part $(a)$, we see that every principal submatrix is invertable and thus $C$ has an $LU$ factorization.
+        a contradiction; so the result follows, using part $(a)$, we see that every principal submatrix is invertible and thus $C$ has an $LU$ factorization.
     \end{proof}
 
 \end{alphaparts}
 
 \newpage
 \question
-For a symmetric matrix $A$, $A$ is posisitive definite if $A = LU$ where the diagonal of $U$ is positive. 
-The following are equalivalent. 
+For a symmetric matrix $A$, $A$ is positive definite if $A = LU$ where the diagonal of $U$ is positive. 
+The following are equivalent. 
 \begin{enumerate}
     \item $A$ is $\emph{positive definite}$
-    \item $A$ can be factored as $A = R^TR$ where $R$ is upper triangluar with positive entries on its diagonal. 
+    \item $A$ can be factored as $A = R^TR$ where $R$ is upper triangular with positive entries on its diagonal. 
     \item $x^TAx > 0$ for all $x \neq 0$.
     
 \end{enumerate}
 
 \begin{proof}
     $(1) \iff (2)$ was done in class. 
-    We first prove $(2) \implies (3)$. So assume that $A = R^TR$ where $R$ is upper triangluar and has positive diagonal entries. 
+    We first prove $(2) \implies (3)$. So assume that $A = R^TR$ where $R$ is upper triangular and has positive diagonal entries. 
     Then consider a nonzero $x$. We have 
     \[x^TAx = x^T (R^TR) x = (Rx)^T(Rx) \geq 0\]
     since this is just a dot product, it is zero if and only if $Rx = 0$ but the assumptions on $R$ show that it has a row echelon form  with a pivot in every column and 
-    thus is invertable, it follows that the only $x$ for which $Rx = 0$ is the zero vector. Hence $(Rx)^T(Rx) \neq 0$ for our choice of $x$ and then 
+    thus is invertible, it follows that the only $x$ for which $Rx = 0$ is the zero vector. Hence $(Rx)^T(Rx) \neq 0$ for our choice of $x$ and then 
     $x^TAx > 0$. Now, assume that $x^TAx > 0$ for all nonzero $x$. Then by problem $(1)$ we know that $A = LU$ so we only need to show that the diagonal entries on $U$ are all posistive. 
     Since $A$ is symmetric we may write $A = LDL^T$, so $x^TAx = x^TL D Lx = (L^Tx)^T D (L^Tx)$. Then note for any diagonal matrix $D$ and vector $b$, we have 
     \[b^TDb = b_1^2 D_{11} + \dots b_n^2 D_{nn}\]
     hence if a element of the diagonal $D_{ii} $ is not positive, we can choose $b = (0, \dots, 1, \dots 0)$ where $1$ is in the $i^{th}$ position. This will give us a product that is not positive. 
 
 
-    Then going back to  $ (L^Tx)^T D (L^Tx)$, since $L^T$ is upper triangluar with $1$'s on the diagonal it is invertable, from this it follows that $L^Tx = 0$ iff $x = 0$ and that $L^Tx = b$ is always consistent. Thus if any element of on the diagonal 
+    Then going back to  $ (L^Tx)^T D (L^Tx)$, since $L^T$ is upper triangular with $1$'s on the diagonal it is invertible, from this it follows that $L^Tx = 0$ iff $x = 0$ and that $L^Tx = b$ is always consistent. Thus if any element of on the diagonal 
     of $D$, say $D_{ii}$ is not greater than 
-    $0$ I choose an $x$ such that $L^Tx = b$ where $b$ is a vector of all zeros execpt for the $i^{th}$ posisiton. Then it will follow that $x^TAx \leq 0$; a contradiction. Hence the diagonal of $D$ is positive 
-    and we have shown that $(3) \implies (1)$. This proves that all the statements are equalivalent. 
+    $0$ I choose an $x$ such that $L^Tx = b$ where $b$ is a vector of all zeros except for the $i^{th}$ position. Then it will follow that $x^TAx \leq 0$; a contradiction. Hence the diagonal of $D$ is positive 
+    and we have shown that $(3) \implies (1)$. This proves that all the statements are equivalent 
 
 \end{proof}
 
@@ -87,7 +87,7 @@ Show that the given matrix is not positive definite,
 \end{equation}
 
 \begin{proof}
-    The clear way of doing this is to compute a $LU$ factorization and see if $A$ has an appropiate $LU$ factorization.
+    The clear way of doing this is to compute a $LU$ factorization and see if $A$ has an appropriate $LU$ factorization.
     Preforming the row operations $-2R_1 + R_2 \to R_2$ and $-R_2 + R_3 \to R_3$ shows that 
     \begin{equation}
         A = 
@@ -122,7 +122,7 @@ Let $A$ be positive definite. Show that $A^{-1}$ and $A^2$ are also positive def
     \[x^T A^{-1} x =  (A^{-1}x)^T A (A^{-1}x) \]
     Since $x$ is nonzero and $A^{-1}$ is nonsingular $A^{-1}X > 0$ so that the whole expression 
     \[x^T A^{-1}x > 0\]. 
-    Thus $A^{-1}$ is posisitive definite. 
+    Thus $A^{-1}$ is positive definite. 
 
     Now for $A^2$ note that 
     \[x^TA^2x = x^TA^TAx = (Ax)^T(Ax)\]
@@ -144,7 +144,7 @@ Let $A$ be a symmetric matrix given by
     0 & -1 & 2
     \rix
 \end{equation}
-Find an upper triandular matrix $R$ with positive ddiagonal entries such that $A = R^TR$ or jusitfy why such $R$ doesn't exist. 
+Find an upper triangular matrix $R$ with positive diagonal entries such that $A = R^TR$ or justify why such $R$ doesn't exist. 
 
 \begin{proof}
     We compute an $LDV$ factorization, since $A$ is symmetric, this will alow us to produce such an $R$. Applying the row operations 
@@ -173,15 +173,15 @@ Find an upper triandular matrix $R$ with positive ddiagonal entries such that $A
     \begin{equation}
         R \, = \, 
         \mat{rrr}
-        1 & 0 & 0 \\ 
-        -\frac{1}{2} & 1 & 0 \\
-        0 & -\frac{2}{3} & 1 
-        \rix 
-        \, \cdot \, 
-        \mat{rrr}
         \sqrt(2) & 0 & 0 \\ 
         0 & \sqrt(3) & 0 \\
         0 & 0 & \frac{2 \sqrt(3)}{3}
+        \rix
+        \, \cdot \, 
+        \mat{rrr}
+        1 & -\frac{1}{2} & 0 \\ 
+        0 & 1 & -\frac{2}{3} \\ 
+        0 & 0 & 1 
         \rix
     \end{equation}
     As described in class. 
