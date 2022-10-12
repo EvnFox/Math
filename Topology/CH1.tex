@@ -601,6 +601,18 @@
    \section{Product Topology}
    In this section we will generalize our results on the product topology to arbitrary cartesian products. 
 
+   \newpage
+   \begin{proof}
+    We prove $X -S$ is open. If it is empty we are done, so suppose there exists $x_0 \in X - S$, i.e. assume 
+    $f(x_0) > g(x_0)$. Since $Y$ is in the order topology, it is Hausdorff, thus there exists disjoint nbhd's $V_1, V_2$ with 
+    $f(x_0) \in V_1$ and $g(x_0) \in V_2$. Since $f$ and $g$ are continuous functions, there exists $U_1, U_2 \subset X$ around $x_0$ such that 
+    \[f(U_1) \subset V_1 \, \text{ and } \, g(U_2) \subset V_2\]
+    Now take $U = U_1 \cap U_2$. Then for $x \in U$, we have $f(x) \in V_1 $ and $g(x) \in V_2$, since $f(x_0)> g(x_0)$ and $V_1 \cap V_2 = \varnothing$, 
+    it follows $f(x) > g(x)$ hence there is a nbhd around $x_0$ contained in $X-S$, so $x_0$ is an interior point. Since it was chosen arbitrarily, it follows that 
+    $X - S$ is open. 
+    
+    
 
+   \end{proof}
     
 \end{chapter}
