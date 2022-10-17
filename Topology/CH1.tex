@@ -598,6 +598,12 @@
     is continuous if and only if $f_i$ is continuous. 
    \end{thm}
 
+   \begin{proof}
+    Suppose that $f$ is continuous, then $f_i(x) = (\pi_i \circ f )(x)$ is a composisition of continuous functions. 
+    Conversly, suppose $f_i$ is continous and let $U \times V \subset A \times B$ be open. 
+    Then $f^{-1}(U \times V) = f_1(U) \cap f_2^{-1}(V)$. 
+   \end{proof}
+
    \section{Product Topology}
    In this section we will generalize our results on the product topology to arbitrary cartesian products. 
    The book gives a nice definition of how we should think of arbitrary cartesian products. 
@@ -614,15 +620,7 @@
    We have more to say about box and product topologies when we talk about metric spaces. 
 
    \newpage
-   \begin{proof}
-    We prove $X -S$ is open. If it is empty we are done, so suppose there exists $x_0 \in X - S$, i.e. assume 
-    $f(x_0) > g(x_0)$. Since $Y$ is in the order topology, it is Hausdorff, thus there exists disjoint nbhd's $V_1, V_2$ with 
-    $f(x_0) \in V_1$ and $g(x_0) \in V_2$. Since $f$ and $g$ are continuous functions, there exists $U_1, U_2 \subset X$ around $x_0$ such that 
-    \[f(U_1) \subset V_1 \, \text{ and } \, g(U_2) \subset V_2\]
-    Now take $U = U_1 \cap U_2$. Then for $x \in U$, we have $f(x) \in V_1 $ and $g(x) \in V_2$, since $f(x_0)> g(x_0)$ and $V_1 \cap V_2 = \varnothing$, 
-    it follows $f(x) > g(x)$ hence there is a nbhd around $x_0$ contained in $X-S$, so $x_0$ is an interior point. Since it was chosen arbitrarily, it follows that 
-    $X - S$ is open. 
-   \end{proof}
+   
    \newpage 
 
    \section{Metric spaces I }
