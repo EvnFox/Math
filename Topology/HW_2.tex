@@ -29,7 +29,7 @@
 
         (2) Let $x \in \overline{A \cup B}$ and suppose $x \notin \overline{B}$, then (since $x$ is not a limit point) there exists a neigborhood of $x$, $U$ which does not intersect $B$, now if there also exists a neighborhood $V$ which doesn't intersect $A$ in a point 
         other than $x$, taking the intersection $U \cap V$ furnishes an open set containg $x$ which doesn't intersect $A \cup B$ (in a point other than $x$), which is a contradiction. Hence every neighborhood or $x$ must intersect $A$ so that $x$ belongs to the 
-        closure of $A$. Conversly,  let $x \in \overline{A} \cup \overline{B}$, then suppose $x \in \overline{A} = A \cup A^prime$, if $x \in A$, then we are done so assume that $x$ is a limit point of $A$. Then every neighborhood will intersect $A$ in a point other than $x$, so 
+        closure of $A$. Conversely,  let $x \in \overline{A} \cup \overline{B}$, then suppose $x \in \overline{A} = A \cup A^prime$, if $x \in A$, then we are done so assume that $x$ is a limit point of $A$. Then every neighborhood will intersect $A$ in a point other than $x$, so 
         every neighborhood intersects $A \cup B$ in a point other than $x$ so that $x$ belongs to the closure of $A \cup B$. If $x \in \overline{B}$, the argument is similliar. 
 
         (3)Let $x \in \bigcup \overline{A_\alpha}$, then $x \in \overline{A_\alpha}$ for some $\alpha$, hence every neighborhood intersects $A_\alpha$ and thus intersects $\bigcup A_\alpha$, hence $x \in overline{\bigcup A_\alpha}$. 
@@ -51,23 +51,24 @@
 
     \begin{proof}
         (1) Let $x \in \overline{A \cap B}$, if $x \in A \cap B$ the result is clear so suppose that $x$ is a limit point; then every neighborhood of $x$ intersects $A \cap B$. 
-        Hence every neighborhood will intersect $A$ and $B$, thus $x$ is a limit point of $A$ and $B$ so $x \in \overline{A} \cap \overline{B}$. Now suppose 
-        $x \in \overline{A} \cap \overline{B}$, then $x$ belongs to the closure of $A$ and $B$ so that every neighborhood of $x$ intersects $A$ and every neighborhood must also intersect $B$. 
-        Hence, every neighborhood intersects $A \cap B$, so $x \in \overline{A \cap B}$. 
+        Hence every neighborhood will intersect $A$ and $B$, thus $x$ is a limit point of $A$ and $B$ so $x \in \overline{A} \cap \overline{B}$. Hence $\overline{A \cap B} \subset \overline{A} \cap \overline{B}$. 
+        The converse is false since $1 \in \overline{(0,1)}$ and $1 \in \overline{(1, 2)}$ But $1 \notin \overline{(0,1) \cap (1, 2)}$. 
         
-        (2) Suppose that $x \in \bigcap \overline{A_\alpha}$, then $x$ is in the closure of $A_\alpha$ for all $\alpha$. Then every neighborhood of $x$ intersects $A_\alpha$ for all $\alpha$. 
-        Thus every neighborhood must intersect $\bigcap A_\alpha$, so $x \in \overline{\bigcap A_\alpha}$. Now conversly let $x \in \overline{\bigcap A_\alpha}$, then an arbitrary neighborhood $U$
+        (2) Let $x \in \overline{\bigcap A_\alpha}$, then an arbitrary neighborhood $U$
         of $x$ intersects $\bigcap A_\alpha$, and so $U$ intersects each $A_\alpha$, thus $x \in \overline{A_\alpha}$ and so it belongs to $\bigcap \overline{A_\alpha}$. 
+        The converse is false since it was false in the finite case. For example let $A_1 = (0,1)$ and $A_n = (1, n)$. Then $1 \in \bigcap \overline{A_k}$, but not 
+        in $\overline{\bigcap A_k}$.
+
 
         (3) We prove $\overline{A} \setminus \overline{B} \subset \overline{A \setminus B}$. Let $x \in \overline{A} \setminus \overline{B}$. Then $x \notin B$. If $x \in A$, then 
         $x \in A \setminus B \subset \overline{A \setminus B}$, so assume that $x$ is a limit point of $A$. It follows that every neighborhood of $x$ intersects $A$ in a point not in $B$, since otherwise
-        if such a neighborhood existed it would contradict our assumption on $x$. Then every neighborhood intersects $A \setminus B$ so $x \in \overline{A \setminus B}$. 
+        it would contradict our assumption on $x$. Then every neighborhood intersects $A \setminus B$ so $x \in \overline{A \setminus B}$. The converse is false. 
     \end{proof}
 
 
 
     \question 
-    Let $X$ and $X^\prime$ denote a single set in the teo topologies $\T$ and $\T^\prime$, respectiviely. 
+    Let $X$ and $X^\prime$ denote a single set in the two topologies $\T$ and $\T^\prime$, respectively. 
     Let $i: X^\prime \to X$ be the identity function. 
     \begin{enumerate}
         \item Show that $i$ is continuous iff $\T^\prime$ is finer than $\T$
@@ -76,19 +77,19 @@
 
 
     \begin{proof}
-        (1) Assume that $i$ is continous, then let $U$ be open in $X$ (i.e, $U \in \T$). It follows from continuity that $i^{-1}(U) = U \subset X^\prime$ is open, thus 
-        $\T \subset \T^\prime$. Conversly, assume that $\T^\prime $ is finer than $\T$. Then let $U$ be open in $X$, since $\T^\prime$ is finer than $\T$, we know that the primage of $U$, 
-        is open in $X^\prime$, hence $i$ is continous. 
+        (1) Assume that $i$ is continuous, then let $U$ be open in $X$ (i.e, $U \in \T$). It follows from continuity that $i^{-1}(U) = U \subset X^\prime$ is open, thus 
+        $\T \subset \T^\prime$. Conversely, assume that $\T^\prime $ is finer than $\T$. Then let $U$ be open in $X$, since $\T^\prime$ is finer than $\T$, we know that the preimage of $U$, which is itself, 
+        is open in $X^\prime$, hence $i$ is continuous. 
 
-        (2) If $i$ is a homeomorphism, we know that it and its inverse are continous, 
-        so we simply apply (1) in both directions to get $\T^\prime \subset \T$ and $\T \subset \T^\prime$ and hence $\T^\prime = \T$. Now conversly, assume $\T^\prime = \T$. Again by applying (1) in both directions 
-        we will get that $i:X^prime \to X$ is continous and $i^{-1}:X \to X^\prime$ is continous, it is a homeomorphism. The fact that $i$ is a bijection follows since the identity map from a space to its self is always a bijection.  
+        (2) If $i$ is a homeomorphism, we know that it and its inverse are continuous, 
+        so we simply apply (1) in both directions to get $\T^\prime \subset \T$ and $\T \subset \T^\prime$ and hence $\T^\prime = \T$. Now conversely, assume $\T^\prime = \T$. Again by applying (1) in both directions 
+        we will get that $i:X^\prime \to X$ is continuous and $i^{-1}:X \to X^\prime$ is continuous, since it is also bijective, it is a homeomorphism. 
     \end{proof}
 
 
 
     \question 
-    Let $Y$ be an ordered set in the order topology. Let $f,g:X \to Y$ be continous. 
+    Let $Y$ be an ordered set in the order topology. Let $f,g:X \to Y$ be continuous. 
     \begin{enumerate}
         \item Show that the set $\{x|f(x) \leq g(x) \} $ is closed in $X$
         \item Show that $h(x) = min\{f(x), g(x) \}$ is continuous.
@@ -113,15 +114,15 @@
     \question 
     Let $F: \R \times \R \to \R$ be defined by the equation ... 
     \begin{enumerate}
-        \item Show that $F$ is continous in each variable separately
+        \item Show that $F$ is continuous in each variable separately
         \item Compute $g(x) = F(x \times x)$ 
-        \item show that $F$ is not continous
+        \item show that $F$ is not continuous
     \end{enumerate}
 
 
     \begin{proof}
-        (1) Without loss of generality fix $y \in \R$, if $y = 0$ the function just becomes the zero function which is continous. If $y \neq 0$, then the function will never have a denominator of $0$ since $x^2 + y^2 > 0$ for all $x$ given $y \neq 0$. Then $F$ 
-        just becomes a quotient of two continous functions (polynomials are continuous) with a nonzero denominator on its domain and therefore is continous. We can ingore that it was defined peicewise since it will be zero iff $x = 0$. The situation for a fixed $X$ is the same since there is clearly some symmetry with the variables, 
+        (1) Without loss of generality fix $y \in \R$, if $y = 0$ the function just becomes the zero function which is continuous. If $y \neq 0$, then the function will never have a denominator of $0$ since $x^2 + y^2 > 0$ for all $x$ given $y \neq 0$. Then $F$ 
+        just becomes a quotient of two continuous functions (polynomials are continuous) with a nonzero denominator on its domain and therefore is continuous. We can ignore that it was defined piecewise since the function will be zero iff $x = 0$. The situation for a fixed $x$ is the same since there is clearly some symmetry with the variables, 
         the proof would just be a relabeling of the above. 
 
         (2) if $y = x$ then $\frac{xy}{x^2 + y^2} = \frac{x^2}{2x^2} = \frac{1}{2}$ so
@@ -133,10 +134,10 @@
                 \end{array}\right\}
         \end{equation}
 
-        Note that $g$ is not continous at $0$.
+        Note that $g$ is not continuous at $0$.
 
-        (3) Define $h: \R \to \R^2$ such that $h(x) = (x, x)$. Then since maps into products are continous iff the coordinate functions are continuous, we see that $h$ is continuous. 
-        Now assume that $F$ is conintinous, then $F \circ h:\R \to \R$ is continuous (composistion of continuous functions), but $F \circ h = F(x \times x) = g(x)$ is discontinuous at $0$; a contradiction. Hence, $F$ is not continuous. 
+        (3) Define $h: \R \to \R^2$ such that $h(x) = (x, x)$. Then since maps into products are continuous iff the coordinate functions are continuous, we see that $h$ is continuous. 
+        Now assume that $F$ is continuous, then $F \circ h:\R \to \R$ is continuous (composition of continuous functions), but $F \circ h = F(x \times x) = g(x)$ is discontinuous at $0$; a contradiction. Hence, $F$ is not continuous. 
 
     \end{proof}
 
@@ -146,7 +147,7 @@
     box topology instead of the product topology? 
 
     \begin{proof}
-        Suppose $(x_n) \rightarrow x$, let $V_\alpha \subset X_\alpha$ be a nbhd around $\pi_\alpha(x)$. Then the preimage $\pi_\alpha^{-1}(x) \subset \Pi X_\alpha$ is an open set containing $x$, and thus contains all but finitely many points 
+        Suppose $(x_n) \rightarrow x$, let $V_\alpha \subset X_\alpha$ be a nbhd around $\pi_\alpha(x)$. Then the preimage $\pi_\alpha^{-1}(V_\alpha) \subset \Pi X_\alpha$ is an open set containing $x$, and thus contains all but finitely many points 
         of the sequence $(x_n)$. But then $V_\alpha$ must contain all but finitely many points of the sequence $(\pi_\alpha(x_n))$. Hence $(\pi_\alpha(x_n)) \rightarrow \pi_\alpha(x)$. Since I only used the fact that projections are continous 
         this direction is true in the product or box topology. The converse is only true in the product topology. Assume that $(\pi_\alpha(x_n)) \rightarrow \pi_\alpha(x)$ for all $\alpha$. Then let $U = {U_\alpha}_1 \times \dots {U_\alpha}_m \times X \times \dots$. 
         be a neighborhood around $x$. Then for each $\alpha_i$ there exists a $k_i$ such that for all $k > k_i$, ${\pi_\alpha}_i(x_k) \in {U_\alpha}_i$. Now take $K = {\tt max}\{k_1, \dots k_m\}$, then for $k > K$, 
@@ -164,7 +165,7 @@
     \begin{proof}
         First consider the product topology. Let $x \in \R^\omega$ and let $U = {U_\alpha}_1 \times \dots \times {U_\alpha}_n \times \R \times \dots$ be an open set 
         of $x$. Then it is clear that $U$ contains an element of $\R^\infty$, we can pick any element from each ${U_\alpha}_i$ for $i = 1, \dots n$ and then just pick zeros for the rest. 
-        Hence every $x$ is a limit point and thus $\R^\infty $ is dense in $\R^omega$ so its closure is the whole space. 
+        Hence every $x$ is a limit point and thus $\R^\infty $ is dense in $\R^\omega$ so its closure is the whole space. 
 
 
         Now we consider the box topology. Let $x$ be a limit point of $\R^\infty$ and assume that $x \notin \R^\infty$. We write $x = (x_\alpha)_{\alpha \in J}$. Since this sequence is never eventually zero, 
@@ -176,12 +177,31 @@
     \question 
 
     \begin{proof}
-        To show that $h$ is a bijection, Let $(x_1, x_2, \dots) \in \R^\omega$, then let $x = (\frac{x_1 - b_1}{a_1}, \frac{x_2-b_2}{a_2})$. Since $a_i > 0$ each term is well defined. Then it is clear that $h(x) = (x_1, \dots)$, hence 
+        To show that $h$ is a bijection, Let $(x_1, x_2, \dots) \in \R^\omega$, then let $x = (\frac{x_1 - b_1}{a_1}, \frac{x_2-b_2}{a_2}, \dots)$. Since $a_i > 0$ each term is well defined. Then it is clear that $h(x) = (x_1, \dots)$, hence 
         $h$ is a surjection. Now suppose that $h(x_1, x_2, \dots) = h(x_1^\prime, x_2^\prime, \dots)$. Then 
-        \[(a_1x_1 + b_1, a_2x_2 + b_2, \dots) = (a_1x_1^\prime + b_1, a_2x_2^\prime + b_2)\]
-        so $a_ix_i + b_i = a_ix_i^\prime + b_i$ with $a_i \neq 0$, so $x_i = x_i^\prime$. Thus $h$ is a bijection. Now we must show that $h$ is continuous with a continuous inverse. Let $f_i(x) = a_ix + b_i$, then we can write $h$ 
-        as $h(x) = ((f_1 \circ \pi_1)(x), (f_2 \circ \pi_2)(x), \dots )$, then each coordinate function is continuous since it is the composistion of two continuous functions. Then since maps into products under the product topology are continuous 
-        if and only if the coordinate functions are continuous, we see that $h$ is a continuous function. To see that the inverse is continuous we can do the same thing since each of the coordinate functions of the inverse are of the form 
-        $\frac{x_i}{a_i} + \frac{b_i}{a_i}$. 
+        \[(a_1x_1 + b_1, a_2x_2 + b_2, \dots) = (a_1x_1^\prime + b_1, a_2x_2^\prime + b_2, \dots)\]
+        so $a_ix_i + b_i = a_ix_i^\prime + b_i$ with $a_i \neq 0$, so $x_i = x_i^\prime$. Thus $h$ is a bijection. 
+        Now we must show that $h$ is continuous with a continuous inverse. 
+        
+        Let $U = \Pi U_\alpha = U_{\alpha 1} \times \dots \times  U_{\alpha n} \times \R \times \dots$. Be an open set in 
+        the product topology and let $f_i(x) = a_i x + b_i$. Then 
+        \[h^{-1}(U) = f^{-1}_1(U_{\alpha 1}) \times \dots \times f^{-1}_n(U_{\alpha n}) \times f^{-1}_{n+1}(\R) \times \dots\]
+        Since $a_i \neq 0$ each $f_i$ is a bijection, and thus for $k > n$ we have $f^{-1}_k(\R) = \R$ and 
+        by continuity of each polynomial $f_i$, each preimage is open. Hence $h^{-1}(U)$ is open in $\R^\omega$ under the product topology. 
+        To prove that the inverse is also continuous, we can write 
+        \[h^{-1}(x_1, x_2, \dots) = \left(\frac{x_1 - b_1}{a_1}, \frac{x_2 - b_2}{a_2}, \dots \right)\]
+        again using the fact that $a_i \neq 0$. Theses are all bijective polynomials and so nothing stops us from just 
+        reapplying the above argument. 
+
+
+        In the box topology, let $U = \Pi U_\alpha$ be an open set. Then if 
+        \[h(x_1, x_2, \dots ) = (f_1(x), f_2(x), \dots )\]
+        then $h^{-1}(U) = f^{-1}_1(U_\alpha) \times f_2^{-1}(U_\beta) \times \dots $ as above.
+        Since each $f_i$ is continuous, we have that each preimage is open, thus the product is open in the box topology 
+        and $h$ is continuous. To prove that the inverse of $h$ is continuous, by computing a formula for the inverse 
+        as in the previous paragraph, we will again see that each component function is continuous and make a similar argument. 
     \end{proof}
+
+   
+
 \end{document}
