@@ -1,0 +1,111 @@
+\input{HW_preamble.tex}
+
+\begin{document}
+    \maketitle 
+
+    \question
+    Determine all accumulation points of the following sets in $\R$ and decide if 
+    the sets are open or closed
+    \begin{alphaparts}
+        \questionpart 
+        All numbers of the form $\frac{1}{n}$ for $n \in \N$ 
+
+        ans: There is only one accumulation point, $0$. Since 
+        by the archimedean property, each nbhd around $0$ will contain 
+        a point of the form $\frac{1}{k}$ for a large enough choice of $k$. 
+        The set is not closed since it does not contain all its limit points, 
+        it is also not open since every point is isolated. 
+
+        \questionpart 
+        All numbers of the form $2^{-n} + 5^{-m}$ for $n,m \in \N$. 
+
+        Ans: Let $A = \{2^{-n} + 5^{-m} \, | \, n, m \in \N \}$. 
+       $A$ has accumulation points, $s = \frac{1}{2^{m}}$ and $t = \frac{1}{5^{n}}$ for $n,m \in \N$
+       Consider a nbhd $B(s, \epsilon)$ for  $\epsilon > 0$ around $\frac{1}{2^{-m}}$, then there exists $N \in \N$ such that $\frac{1}{n} < \epsilon$ 
+       by the archimedean property. Then $\frac{1}{5^n} < \epsilon$ for $n > N$. Hence $s + 5^{-n} \in B(s, \epsilon)$; 
+       so $s = \frac{1}{2^m}$ is a limit point for every choice of $m \in \N$. 
+
+       Now fix a nbhd $B(t, \epsilon)$, since $n > N \implies \frac{1}{n} < \epsilon$ we again 
+       have $\frac{1}{2^n} < \frac{1}{n} < \epsilon$ so $t + \frac{1}{2^n} \in B(t, \epsilon)$, 
+       so that $t$ is a limit point. 
+
+       This set does not contain all of its limit points so it cannot be closed. Further since $A \subset \Q \subset \R$, 
+       all of its points are isolated, so it is not open. 
+
+       \questionpart 
+       $A = \{(-1)^n + \frac{1}{m} \, | \, n, m \in \N\}$.
+       
+       Ans: $A$ has limit points $1, -1$. Let $\epsilon > 0$, and consider $B(1,\epsilon)$. 
+       then by the archimedean property, we fix $M \in \N$ such that $m > M \implies \frac{1}{m} < \epsilon$. 
+       Then $1 + \frac{1}{m} \in B(1, \epsilon)$. Hence $1$ is a limit point, the argument for $-1$ is the same. 
+
+
+       This set also fails to contain its limit points so it cannot be closed and again it is a subset set of $\R$ completely contained 
+       in the rationals, so it cannot be open. 
+
+    \end{alphaparts}
+
+    \question 
+    The same as Exercise 3l2 for the following sets in $\R^2$ 
+
+    \begin{alphaparts}
+        \questionpart 
+        All complex numbers of the form $\frac{1}{n} + \frac{i}{m}$ for $n, m \in \N$ 
+
+        Ans: 
+        All limit points are of the form $\frac{1}{n}$ for any $n \in \N$ or $\frac{i}{m}$ for any $m \in \N$. 
+        
+
+
+        \questionpart 
+        All points $(x, y) $ such that $x^2 - y^2 < 1$ 
+
+        Claim: Let $S = \{(x, y) | x^2 - y^2 < 1\}$. 
+         $T = \{(x, y) | x^2 + y^2 \leq 1\}$.
+         Then $S^\prime = T$
+
+
+         \begin{proof}
+            Let $t \in T$, $t = (x, y)$. Then fix $\epsilon > 0$ and consider $B(t, \epsilon)$. 
+            Then if $y > 0$, note that the point $(x, y + \frac{\sqrt{\epsilon}}{2}) \in B(t, \epsilon)$, 
+            since 
+            \[ \| (x, y) - (x, y + \frac{\sqrt{\epsilon}}{2}) \| = \frac{\epsilon}{4} < \epsilon \]
+            and then 
+            \[x^2 - (y + \frac{\sqrt{\epsilon}}{2})^2 = x^2 - y^2 - \sqrt{\epsilon}y - \frac{\sqrt{\epsilon}}{2}\]
+            \[\leq 1 - \sqrt{\epsilon}y - \frac{\sqrt{\epsilon}}{2} < 1\]
+            since $y > 0$. If $y < 0$, consider $(x, y - \frac{\sqrt{\epsilon}}{2})$. 
+            Then $t$ is a limit point of $S$. Hence $T \subset S^\prime$. 
+            Now if we take a limit point of $S$ and suppose its not in $T$ we will quickly get a contradiction 
+            since we are in $\R^2$, and $x^2 + y^2 > 1$ we can fix a ball around $(x, y)$ that doesnt contain a point 
+            satisfying $x^2 + y^2 < 1$. 
+
+            This set is not closed since it does not contain all its limit points. It is however an open set, 
+            since for every point in $S$, one can fix a $\epsilon$ ball such that all points in the ball satisfy our condition. 
+
+         \end{proof}
+
+        \questionpart 
+        All points $(x, y)$ such that $x > 0$. 
+
+        Claim: limit points are all points such that $x \geq 0$. 
+
+        \begin{proof}
+            Let $(x, y) \in \R^2$ such that $x \geq 0$, then let $\epsilon > 0$. 
+            Then $(x + \epsilon/2, y)$ is contained in the $\epsilon$ ball around 
+            $(x, y)$ and satisfies the condition that the first coordinate be greater than $0$. 
+            hence $(x, y)$ is a limit point. 
+
+
+            The set does not contain all its limit points so it is not closed. 
+            It is open, for $(x, y)$ with $x > 0$, take $r = \frac{1}{2} \| x \|$ and 
+            consider the ball $B((x, y), r)$. This clearly, every point in this set satisfies 
+            our requirement. Then let $(a, b) \in B((x, y), r)$ and let $\| (a, b) - (x, y) \| = h$, then take $l = \frac{1}{2}(r - h) \|$. 
+            Then for any point $z \in B((a, b), l)$, by the triangle inequality we have 
+            \[ \|z - (x, y) \| \leq \|z - (a, b) \| + \| (a, b) - (x, y) \| \]
+            \[ < r - h + h = r\]
+            Hence $z \in B((x, y), r)$. Thus there is a  nbhd around $(a, b)$ completely contained in $B((x, y), r)$, and thus $(a, b)$ is an interior 
+            point. Since $(a, b)$ was arbitrary it follows that every point is interior and so the ball is open. Then for every point $(x, y)$ with $x > 0$, 
+            we have a ball with all points having the same property, and thus the original set in question is open.
+        \end{proof}
+    \end{alphaparts}
+\end{document}
