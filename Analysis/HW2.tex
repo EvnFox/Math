@@ -82,8 +82,11 @@
             satisfying $x^2 + y^2 < 1$. 
 
             This set is not closed since it does not contain all its limit points. It is however an open set, 
-            since for every point in $S$, one can fix a $\epsilon$ ball such that all points in the ball satisfy our condition. 
-            
+            since for every point in $S$, one can fix a $\epsilon$ ball such that all points in the ball satisfy our condition. Let 
+            $(x, y)$ be in the set. Then 
+            let $\epsilon = \frac{1}{2}\inf{\|(x, y) - v \|}$ for all $v = (x_0, y_0)$ satisfying $x_0^2 + y_0^2 = 1$. 
+            Then any element in the ball $B((x, y), \epsilon)$ has distance less than $\epsilon$ from $(x, y)$ and so also satisfies 
+            our condition. Thus we have an open neighborhood around $x$ which is contained in the set. Hence the set is open. 
 
          \end{proof}
 
