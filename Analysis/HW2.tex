@@ -54,10 +54,12 @@
 
         Ans: 
         All limit points are of the form $\frac{1}{n}$ for any $n \in \N$ or $\frac{i}{m}$ for any $m \in \N$. 
+        For an element of the form $\frac{1}{n}$ fix an arbitrary epsilon nbhd around it the by choosing $m$ such that 
+        $\frac{1}{m} < \epsilon$ we will have $\frac{1}{n} + \imath \frac{1}{m}$ in the epsilon ball. And the argument for 
+        elements of the form $\frac{\imath}{m}$ is similar. Since the set of complex numbers of the desired form does not contain all of 
+        its limit points it is not closed. And again it is a subset of the rationals in $\C$ so it is not open. 
         
-
-
-        \questionpart 
+        \questionpart
         All points $(x, y) $ such that $x^2 - y^2 < 1$ 
 
         Claim: Let $S = \{(x, y) | x^2 - y^2 < 1\}$. 
@@ -108,4 +110,103 @@
             we have a ball with all points having the same property, and thus the original set in question is open.
         \end{proof}
     \end{alphaparts}
+
+
+    \question 
+    Prove that the interior of a set in $\R^n$ is open 
+
+    \begin{proof}
+        let $A^\circ $ be the interior, We prove that $A^\circ$ is the union of all open sets contained in $A$. Indeed, consider an element of the union of 
+        all open sets contained in $A$, then since it is in the union it is in an open set contained in $A$, but this is the definition of being in the interior. 
+        Now conversely, consider an element in the interior of $A$. Then there exists a open set contained in $A$ containing it. But then 
+        this element must appear in the union of all open sets contained in $A$. Hence $A^\circ = \bigcup U$ where $U$ runs over all open sets $U \subset A$. 
+        Since the interior is an arbitrary union of open sets, it must be open.  
+    \end{proof}
+
+
+    \question
+    let $S^\prime$ denote the erived set and $\overline{S}$ the closure of a set $S$ n $\R^n$. Prove the 
+    following 
+
+    \begin{alphaparts}
+        \questionpart 
+        $S^\prime$ is closed in $\R^n$; that is $(s^\prime)^\prime \subset S^\prime$ 
+
+        \begin{proof}
+            Let $x$ be a limit point of the derived set of $S$. Then every nbhd of $x$ contains a limit 
+            point of $S$. Since a nbhd is by definition open, there is a another nbhd around each limit point 
+            of $S$ contained in the nbhd around $x$, these then must contain elements of $S$, and so every nbhd around $x$ 
+            contains points of $S$ and as such $x \in S^\prime$. As desired. 
+        \end{proof}
+
+        \questionpart 
+        If $S \subset T$, then $S^\prime \subset S^\prime$ 
+
+        \begin{proof}
+            Suppose $x$ is a limit point of $S$, then every nbhd contains a point of $S$, 
+            since $S \subset T$, each nbhd around $x$ contains a point of $T$, so $x$ is a limit point of $T$. 
+
+        \end{proof}
+
+        \questionpart 
+        $(S \cup T)^\prime = S^\prime \cup T^\prime$
+
+        \begin{proof}
+            If $x \in (S \cup T)^\prime$ then every nbhd intersects $S \cup T$, 
+            then we prove that every nbhd either intersects $S$ or every nbhd intersects $T$. Suppose 
+            not, then there exists $U, V$, open around $x$ where $U$ intersects $S$ but not $T$ is the reverse holds for $V$. 
+            Then taking the intersection $U \cap V$ gives a nbhd around $x$ which intersects $S \cup T$ nowhere, a contradiction. 
+            Then WLOG assume every nbhd intersects $S$, then $x \in S^\prime \cup T^\prime$. 
+
+            The converse is easy since if $x \in S^\prime \cup T^\prime$ then either $x$ is a limit point of $S$ or $T$. 
+            if $x$ is a limit point of $S$, then every nbhd of $x$ must intersect $S \cup T$ so that $x \in (S \cup T)^\prime$. 
+
+        \end{proof}
+
+        \questionpart
+        $\overline{(S^\prime)} = S^\prime$. 
+
+        \begin{proof}
+            Per an earlier result (a), we know that $S^\prime$ contains all of its limit points. Hence 
+            it is closed. 
+        \end{proof}
+
+
+        \questionpart 
+        $\overline{S}$ closed in $\R^n$
+
+        \begin{proof}
+            Taking an element in the complement $x \in \R^n \setminus \overline{S}$, we know that $x$ cannot adhere to $S$, 
+            so there must exists a nbhd of $x$ which does not contain a point of $S$, And if a nbhd of $x$ contained a point of $s^\prime$, 
+            then we already know that would imply $x$ is a limit point which would be a contradiction. Hence  a nbhd around $x$ does not 
+            contain a point of $S \cup S^\prime = \overline{S}$, and thus is an interior point. Since $x$ was arbitrary, we have that 
+            $\R^n \setminus \overline{S}$ is open and so $\overline{S}$ is closed. 
+
+        \end{proof}
+
+        \questionpart 
+        Let $x$ be in the intersection of all closed sets containing $S$. Now suppose that $x \notin S$  and that $x$ is not a limit point, 
+        then fix a nbhd $U$ around $x$ that doesn't intersect $S$. Then $\R^n \setminus U$ is a closed set containing $S$ which does not contain $x$, a contradiction. 
+        Hence either $x \in S$ or $x$ is a limit point and in either case $x$ is in the closure of $S$. 
+
+        Now let $x$ be in the closure. Suppose there existed a closed set $C \supset A$ that did not contain $x$. 
+        then $\R^n - C$ is an open nbhd of $x$ which does not intersect $A$ so that $x$ is not in the closure; a contradiction. 
+        hence $x$ must be in every closed set containing $A$ and then it follows that $x$ will be in the intersection. 
+        \begin{proof}
+            
+        \end{proof}
+    \end{alphaparts}
+
+    \question 
+    Prove that $\overline{A \cap B} \subset \overline{A} \cap \overline{B}$ and $A \cap \overline{B} \subset \overline{A \cap B}$ if $A$ is open. 
+    \begin{proof}
+        Let $x \in \overline{A \cap B}$ then every neighborhood of $x$, intersects $A$ and $B$. Since every nbhd intersects $A$, 
+        $x \in \overline{A}$ and since every nbhd intersects $B$, $x \in \overline{B}$. Hence $x \in \overline{A} \cap \overline{B}$. 
+
+        Let $A$ be open and let $x \in A \cap \overline{B}$. Then there exists a nbhd $U$ of $x$ completely contained in $A$, since $A$ is open. 
+        Then for an arbitrary nbhd $V$ of A, taking $W = U \cap V \subset V$ is completely contained in $A$. But since $x \in \overline{B}$, 
+        $W$ must also contain a point of $B$ that lies in $A$. Hence $W$ is a nbhd around $x$ that contains a point of $A \cap B$. 
+        Since $W \subset V$, it follows that the arbitrary nbhd $V$ also contains a point of $A \cap B$. Thus $x \in \overline{A \cap B}$. 
+
+    \end{proof}
 \end{document}
