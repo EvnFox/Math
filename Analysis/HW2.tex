@@ -57,7 +57,7 @@
         For an element of the form $\frac{1}{n}$ fix an arbitrary epsilon neighborhood around it the by choosing $m$ such that 
         $\frac{1}{m} < \epsilon$ we will have $\frac{1}{n} + \imath \frac{1}{m}$ in the epsilon ball. And the argument for 
         elements of the form $\frac{\imath}{m}$ is similar. Since the set of complex numbers of the desired form does not contain all of 
-        its limit points it is not closed. And again it is a subset of the rationals in $C$ so it is not open. 
+        its limit points it is not closed. And again it is a subset of the rationals in the complex numbers so it is not open. 
         
         \questionpart
         All points $(x, y) $ such that $x^2 - y^2 < 1$ 
@@ -83,6 +83,7 @@
 
             This set is not closed since it does not contain all its limit points. It is however an open set, 
             since for every point in $S$, one can fix a $\epsilon$ ball such that all points in the ball satisfy our condition. 
+            
 
          \end{proof}
 
@@ -125,7 +126,7 @@
 
 
     \question
-    let $S^\prime$ denote the erived set and $\overline{S}$ the closure of a set $S$ n $\R^n$. Prove the 
+    let $S^\prime$ denote the derived set and $\overline{S}$ the closure of a set $S$ in $\R^n$. Prove the 
     following 
 
     \begin{alphaparts}
@@ -140,7 +141,7 @@
         \end{proof}
 
         \questionpart 
-        If $S \subset T$, then $S^\prime \subset S^\prime$ 
+        If $S \subset T$, then $S^\prime \subset T^\prime$ 
 
         \begin{proof}
             Suppose $x$ is a limit point of $S$, then every neighborhood contains a point of $S$, 
@@ -168,7 +169,8 @@
 
         \begin{proof}
             Per an earlier result (a), we know that $S^\prime$ contains all of its limit points. Hence 
-            it is closed. 
+            it is closed. So since $\overline{S^\prime} = S^\prime \cup (S^\prime)^\prime$ and $(S^\prime)^\prime \subset S$, $S^\prime$ is equal to 
+            its closure. 
         \end{proof}
 
 
@@ -190,7 +192,7 @@
         Hence either $x \in S$ or $x$ is a limit point and in either case $x$ is in the closure of $S$. 
 
         Now let $x$ be in the closure. Suppose there existed a closed set $C \supset A$ that did not contain $x$. 
-        then $\R^n - C$ is an open neighborhood of $x$ which does not intersect $A$ so that $x$ is not in the closure; a contradiction. 
+        then $\R^n \setminus C$ is an open neighborhood of $x$ which does not intersect $A$ so that $x$ is not in the closure; a contradiction. 
         hence $x$ must be in every closed set containing $A$ and then it follows that $x$ will be in the intersection. 
         \begin{proof}
             
