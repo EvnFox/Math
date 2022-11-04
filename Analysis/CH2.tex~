@@ -163,7 +163,7 @@
 
     \begin{proof}
 	    This will follow since we know that $\R$ has a countable basis. Given a basis $\mathfrak{B}$ given by balls 
-	    with rational radii, forms a basis for the standard topology on $\R$. It is then a trival result that a basis for $\R \times \R$ is given by $\mathfrak{B} \times \mathfrak{B}$. 
+	    with rational radii, forms a basis for the standard topology on $\R$. It is then a trival result that a basis for $\R \times \R$ is given by $\mathfrak{b} \time \mathfrak{B}$. 
     \end{proof}
 
     The biggest use the the above theorem is to help us prove and even stronger result about closed and bounded sets in $\R^n$.

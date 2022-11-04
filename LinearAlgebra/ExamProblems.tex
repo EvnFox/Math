@@ -1,0 +1,111 @@
+\input{HW_preamble.tex}
+
+
+\begin{document}
+    \maketitle 
+
+    \question 
+
+    \begin{proof}
+        Let $X$ and $Y$ be subspaces and assume that $X \cap Y = \{0_v\}$. Let $v \in V$, by assumption we have that $X + Y = V$, thus $v$ can be represented as a linear combiniation 
+        of a vector in $X$ plus a vector in $Y$. Now suppose that $v = x_1 + y_1 $ and $v = x_2 + y_2$. Then $v - v = 0_V$, so $(x_1 - x_2) + (y_1 - y_2) = 0_V$. Since 
+        $X$ and $Y$ are subspaces $x_1 - x_2 \in X$ and $y_1- y_2 \in Y$. Since $x_1 - x_2 = y_1 - y_2 \in X \cap Y$ we have $x_1 - x_2 = 0$ and $y_1 - y_2 = 0$ so $y_1 = y_2$ and $x_1 = x_2$. 
+        Hence the representation is unique. 
+
+        Conversly assume that every vector in $V$ can be expressed uniquely as a sum of a vector in $X$ and a vector in $Y$. Then let $w \in X \cap Y$. Since $w \in X$ we have $w = w + 0$ where $w \in X$ and $0 \in Y$ and since $w \in Y$ we have 
+        $w = 0 + w$ where $0 \in X$ and $w \in Y$. By assumption we know that the representation is unique; then we must thave $w = 0$, since if not we have found two different ways of writting $w$ as a sum of a vector in $X$ and a vector in $Y$. 
+        Hence $w = 0$ and since $w$ was arbitrary, $X \cap Y = \{0_V\}$.
+    \end{proof}
+
+    \newpage 
+    \question 
+    $BT$ 
+
+\newpage
+    \question 
+\begin{alphaparts}
+    \questionpart 
+    \begin{proof}
+        By definition, we have 
+        \begin{equation}
+            {\tt trace}(AB) = \sum_{i = 1}^n(AB)_{ii} = \sum_{i = 1}^n \sum_{j = 1}^k a_{ik}b_{ki} = S
+        \end{equation}
+    
+        Then since $a_{ik}, b_{ki} \in \mathbb{F}$, they commute. 
+        \[S = \sum_{i = 1}^n \sum_{j = 1}^k b_{ki}a_{ik} = \]
+        \[\sum_{i = 1}^n(b_{1i}a_{i1} + \dots + b_{ni}a_{ni}) = \]
+        \[(b_{11}a_{11} + \dots b_{n1}a_{1n}) + \dots + (b_{1n}a_{1n} +  \dots + b_{nn}a_{nn})\]
+        Then using associativity and communitivity we may write, 
+        \[S = (b_{11}a_{11} \dots b_{1n}a_{n1}) + \dots + (b_{n1} a_{1n} + \dots + b_{nn}a_{nn})\]
+        \[= \sum_{i = 1}^n b_{1i}a_{1i} + \dots + \sum_{i = 1}^n b_{ni}a_{ni}\]
+        \[= \sum_{k = 1}^n \sum_{i= 1}^n b_{ki}a_{ki} = {\tt trace}(BA)\]
+        as desired. 
+        \end{proof}
+    
+
+    \questionpart 
+    \begin{proof}
+        Note that by assumptions on $S$ and $K$ we have 
+        \[(SK)^T = K^TS^T = - KS \]
+        Then ${\tt trace}(SK) = {\tt trace}((SK)^T) = {\tt trace}(-KS) = - {\tt trace}(KS) = {\tt trace}(SK)$, by part (a) and the fact that trace is linear. 
+        Thus $2{\tt trace}(SK) = 0$ and so ${\tt trace}(SK) = 0$. 
+    \end{proof}
+\end{alphaparts}
+
+\newpage
+\question 
+\begin{proof}
+    Let $v \in \spa (E)$, then $v = \alpha_1 w_1 + \alpha_2 w_2 + \alpha_3 w_3$ then by substituting in the definitions of $w_i$ we get 
+    \[\alpha_1 (x + y + z) + \alpha_2(x - y + z) + \alpha_3 (x - y - z)\]
+    and after distributing and re arranging, it is clear we get a linear combinition in terms of $x, y, z$. 
+    \[v = (\alpha_1 + \alpha_2 + \alpha_3)x + (\alpha_1 - \alpha_2 + \alpha_3)y + (\alpha_1 - \alpha_2 - \alpha_3)z\]
+    hence $v \in \spa(S)$. Conversly let $v \in \spa(S)$ and let $v = \beta_1 x + \beta_2 y + \beta_3 z$, we want to find 
+    $\alpha_1, \alpha_2, \alpha_3$ such that $v = \alpha_1 w_1 + \alpha_2 w_2 + \alpha_3 w_3$. 
+    Equivalently, 
+    \begin{equation}
+        v = \alpha_1 
+        \mat{r} x \\ 
+        y \\ 
+        z 
+        \rix +  
+        \alpha_2 \mat{r} 
+        x \\ 
+        -y \\ 
+        z 
+        \rix +  \alpha_3 
+        \mat{r} 
+        x \\
+        -y \\
+        -z 
+        \rix = 
+        \mat{r} 
+        \beta_1x \\ 
+        \beta_2y \\ 
+        \beta_3z 
+        \rix
+    \end{equation}
+
+    So we may solve the augmented system system 
+    \begin{equation}
+        \mat{rrrr} 
+        1 & 1 & 1 & \beta_1 \\ 
+        1 & -1 & - 1 & \beta_2 \\ 
+        1 & 1 & -1 & \beta_3 
+        \rix
+    \end{equation}
+    By adding $-1$ times row 1 to rows one and two, we see that the echelon form of this matrix is 
+    \begin{equation}
+        \mat{rrr} 
+        1 & 1 & 1  \\ 
+        0 & -2 & -2  \\ 
+         0& 0 & -2 
+        \rix
+    \end{equation}
+    which is consistent for any choice of $\beta$'s. Hence $v \in \spa(E)$. 
+\end{proof}
+
+\newpage 
+
+
+
+\end{document}
