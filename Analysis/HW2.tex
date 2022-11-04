@@ -1,0 +1,217 @@
+\input{HW_preamble.tex}
+
+\begin{document}
+    \maketitle 
+
+    \question
+    Determine all accumulation points of the following sets in $\R$ and decide if 
+    the sets are open or closed
+    \begin{alphaparts}
+        \questionpart 
+        All numbers of the form $\frac{1}{n}$ for $n \in \N$ 
+
+        ans: There is only one accumulation point, $0$. Since 
+        by the archimedean property, each neighborhood around $0$ will contain 
+        a point of the form $\frac{1}{k}$ for a large enough choice of $k$. 
+        The set is not closed since it does not contain all its limit points, 
+        it is also not open since every point is isolated. 
+
+        \questionpart 
+        All numbers of the form $2^{-n} + 5^{-m}$ for $n,m \in \N$. 
+
+        Ans: Let $A = \{2^{-n} + 5^{-m} \, | \, n, m \in \N \}$. 
+       $A$ has accumulation points, $s = \frac{1}{2^{m}}$ and $t = \frac{1}{5^{n}}$ for $n,m \in \N$
+       Consider a neighborhood $B(s, \epsilon)$ for  $\epsilon > 0$ around $\frac{1}{2^{-m}}$, then there exists $N \in \N$ such that $\frac{1}{n} < \epsilon$ 
+       by the archimedean property. Then $\frac{1}{5^n} < \epsilon$ for $n > N$. Hence $s + 5^{-n} \in B(s, \epsilon)$; 
+       so $s = \frac{1}{2^m}$ is a limit point for every choice of $m \in \N$. 
+
+       Now fix a neighborhood $B(t, \epsilon)$, since $n > N \implies \frac{1}{n} < \epsilon$ we again 
+       have $\frac{1}{2^n} < \frac{1}{n} < \epsilon$ so $t + \frac{1}{2^n} \in B(t, \epsilon)$, 
+       so that $t$ is a limit point. 
+
+       This set does not contain all of its limit points so it cannot be closed. Further since $A \subset \Q \subset \R$, 
+       all of its points are isolated, so it is not open. 
+
+       \questionpart 
+       $A = \{(-1)^n + \frac{1}{m} \, | \, n, m \in \N\}$.
+       
+       Ans: $A$ has limit points $1, -1$. Let $\epsilon > 0$, and consider $B(1,\epsilon)$. 
+       then by the archimedean property, we fix $M \in \N$ such that $m > M \implies \frac{1}{m} < \epsilon$. 
+       Then $1 + \frac{1}{m} \in B(1, \epsilon)$. Hence $1$ is a limit point, the argument for $-1$ is the same. 
+
+
+       This set also fails to contain its limit points so it cannot be closed and again it is a subset set of $\R$ completely contained 
+       in the rationals, so it cannot be open. 
+
+    \end{alphaparts}
+
+    \question 
+    The same as Exercise 3l2 for the following sets in $\R^2$ 
+
+    \begin{alphaparts}
+        \questionpart 
+        All complex numbers of the form $\frac{1}{n} + \frac{i}{m}$ for $n, m \in \N$ 
+
+        Ans: 
+        All limit points are of the form $\frac{1}{n}$ for any $n \in \N$ or $\frac{i}{m}$ for any $m \in \N$. 
+        For an element of the form $\frac{1}{n}$ fix an arbitrary epsilon neighborhood around it the by choosing $m$ such that 
+        $\frac{1}{m} < \epsilon$ we will have $\frac{1}{n} + \imath \frac{1}{m}$ in the epsilon ball. And the argument for 
+        elements of the form $\frac{\imath}{m}$ is similar. Since the set of complex numbers of the desired form does not contain all of 
+        its limit points it is not closed. And again it is a subset of the rationals in the complex numbers so it is not open. 
+        
+        \questionpart
+        All points $(x, y) $ such that $x^2 - y^2 < 1$ 
+
+        Claim: Let $S = \{(x, y) | x^2 - y^2 < 1\}$. 
+         $T = \{(x, y) | x^2 + y^2 \leq 1\}$.
+         Then $S^\prime = T$
+
+
+         \begin{proof}
+            Let $t \in T$, $t = (x, y)$. Then fix $\epsilon > 0$ and consider $B(t, \epsilon)$. 
+            Then if $y > 0$, note that the point $(x, y + \frac{\sqrt{\epsilon}}{2}) \in B(t, \epsilon)$, 
+            since 
+            \[ \| (x, y) - (x, y + \frac{\sqrt{\epsilon}}{2}) \| = \frac{\epsilon}{4} < \epsilon \]
+            and then 
+            \[x^2 - (y + \frac{\sqrt{\epsilon}}{2})^2 = x^2 - y^2 - \sqrt{\epsilon}y - \frac{\sqrt{\epsilon}}{2}\]
+            \[\leq 1 - \sqrt{\epsilon}y - \frac{\sqrt{\epsilon}}{2} < 1\]
+            since $y > 0$. If $y < 0$, consider $(x, y - \frac{\sqrt{\epsilon}}{2})$. 
+            Then $t$ is a limit point of $S$. Hence $T \subset S^\prime$. 
+            Now if we take a limit point of $S$ and suppose its not in $T$ we will quickly get a contradiction 
+            since we are in $\R^2$, and $x^2 + y^2 > 1$ we can fix a ball around $(x, y)$ that doesn't contain a point 
+            satisfying $x^2 + y^2 < 1$. 
+
+            This set is not closed since it does not contain all its limit points. It is however an open set, 
+            since for every point in $S$, one can fix a $\epsilon$ ball such that all points in the ball satisfy our condition. Let 
+            $(x, y)$ be in the set. Then 
+            let $\epsilon = \frac{1}{2}\inf{\|(x, y) - v \|}$ for all $v = (x_0, y_0)$ satisfying $x_0^2 + y_0^2 = 1$. 
+            Then any element in the ball $B((x, y), \epsilon)$ has distance less than $\epsilon$ from $(x, y)$ and so also satisfies 
+            our condition. Thus we have an open neighborhood around $x$ which is contained in the set. Hence the set is open. 
+
+         \end{proof}
+
+        \questionpart 
+        All points $(x, y)$ such that $x > 0$. 
+
+        Claim: limit points are all points such that $x \geq 0$. 
+
+        \begin{proof}
+            Let $(x, y) \in \R^2$ such that $x \geq 0$, then let $\epsilon > 0$. 
+            Then $(x + \epsilon/2, y)$ is contained in the $\epsilon$ ball around 
+            $(x, y)$ and satisfies the condition that the first coordinate be greater than $0$. 
+            hence $(x, y)$ is a limit point. 
+
+
+            The set does not contain all its limit points so it is not closed. 
+            It is open, for $(x, y)$ with $x > 0$, take $r = \frac{1}{2} \| x \|$ and 
+            consider the ball $B((x, y), r)$. This clearly, every point in this set satisfies 
+            our requirement. Then let $(a, b) \in B((x, y), r)$ and let $\| (a, b) - (x, y) \| = h$, then take $l = \frac{1}{2}(r - h) \|$. 
+            Then for any point $z \in B((a, b), l)$, by the triangle inequality we have 
+            \[ \|z - (x, y) \| \leq \|z - (a, b) \| + \| (a, b) - (x, y) \| \]
+            \[ < r - h + h = r\]
+            Hence $z \in B((x, y), r)$. Thus there is a  neighborhood around $(a, b)$ completely contained in $B((x, y), r)$, and thus $(a, b)$ is an interior 
+            point. Since $(a, b)$ was arbitrary it follows that every point is interior and so the ball is open. Then for every point $(x, y)$ with $x > 0$, 
+            we have a ball with all points having the same property, and thus the original set in question is open.
+        \end{proof}
+    \end{alphaparts}
+
+
+    \question 
+    Prove that the interior of a set in $\R^n$ is open 
+
+    \begin{proof}
+        let $A^\circ $ be the interior, We prove that $A^\circ$ is the union of all open sets contained in $A$. Indeed, consider an element of the union of 
+        all open sets contained in $A$, then since it is in the union it is in an open set contained in $A$, but this is the definition of being in the interior. 
+        Now conversely, consider an element in the interior of $A$. Then there exists a open set contained in $A$ containing it. But then 
+        this element must appear in the union of all open sets contained in $A$. Hence $A^\circ = \bigcup U$ where $U$ runs over all open sets $U \subset A$. 
+        Since the interior is an arbitrary union of open sets, it must be open.  
+    \end{proof}
+
+
+    \question
+    let $S^\prime$ denote the derived set and $\overline{S}$ the closure of a set $S$ in $\R^n$. Prove the 
+    following 
+
+    \begin{alphaparts}
+        \questionpart 
+        $S^\prime$ is closed in $\R^n$; that is $(s^\prime)^\prime \subset S^\prime$ 
+
+        \begin{proof}
+            Let $x$ be a limit point of the derived set of $S$. Then every neighborhood of $x$ contains a limit 
+            point of $S$. Since a neighborhood is by definition open, there is a another neighborhood around each limit point 
+            of $S$ contained in the neighborhood around $x$, these then must contain elements of $S$, and so every neighborhood around $x$ 
+            contains points of $S$ and as such $x \in S^\prime$. As desired. 
+        \end{proof}
+
+        \questionpart 
+        If $S \subset T$, then $S^\prime \subset T^\prime$ 
+
+        \begin{proof}
+            Suppose $x$ is a limit point of $S$, then every neighborhood contains a point of $S$, 
+            since $S \subset T$, each neighborhood around $x$ contains a point of $T$, so $x$ is a limit point of $T$. 
+
+        \end{proof}
+
+        \questionpart 
+        $(S \cup T)^\prime = S^\prime \cup T^\prime$
+
+        \begin{proof}
+            If $x \in (S \cup T)^\prime$ then every neighborhood intersects $S \cup T$, 
+            then we prove that every neighborhood either intersects $S$ or every neighborhood intersects $T$. Suppose 
+            not, then there exists $U, V$, open around $x$ where $U$ intersects $S$ but not $T$ is the reverse holds for $V$. 
+            Then taking the intersection $U \cap V$ gives a neighborhood around $x$ which intersects $S \cup T$ nowhere, a contradiction. 
+            Then without loss of generality assume every neighborhood intersects $S$, then $x \in S^\prime \cup T^\prime$. 
+
+            The converse is easy since if $x \in S^\prime \cup T^\prime$ then either $x$ is a limit point of $S$ or $T$. 
+            if $x$ is a limit point of $S$, then every neighborhood of $x$ must intersect $S \cup T$ so that $x \in (S \cup T)^\prime$. 
+
+        \end{proof}
+
+        \questionpart
+        $\overline{(S^\prime)} = S^\prime$. 
+
+        \begin{proof}
+            Per an earlier result (a), we know that $S^\prime$ contains all of its limit points. Hence 
+            it is closed. So since $\overline{S^\prime} = S^\prime \cup (S^\prime)^\prime$ and $(S^\prime)^\prime \subset S$, $S^\prime$ is equal to 
+            its closure. 
+        \end{proof}
+
+
+        \questionpart 
+        $\overline{S}$ closed in $\R^n$
+
+        \begin{proof}
+            Taking an element in the complement $x \in \R^n \setminus \overline{S}$, we know that $x$ cannot adhere to $S$, 
+            so there must exist a neighborhood of $x$ which does not contain a point of $S$, And if a neighborhood of $x$ contained a point of $s^\prime$, 
+            then we already know that would imply $x$ is a limit point which would be a contradiction. Hence  a neighborhood around $x$ does not 
+            contain a point of $S \cup S^\prime = \overline{S}$, and thus is an interior point. Since $x$ was arbitrary, we have that 
+            $\R^n \setminus \overline{S}$ is open and so $\overline{S}$ is closed. 
+
+        \end{proof}
+
+        \questionpart 
+        Let $x$ be in the intersection of all closed sets containing $S$. Now suppose that $x \notin S$  and that $x$ is not a limit point, 
+        then fix a neighborhood $U$ around $x$ that doesn't intersect $S$. Then $\R^n \setminus U$ is a closed set containing $S$ which does not contain $x$, a contradiction. 
+        Hence either $x \in S$ or $x$ is a limit point and in either case $x$ is in the closure of $S$. 
+
+        Now let $x$ be in the closure. Suppose there existed a closed set $C \supset A$ that did not contain $x$. 
+        then $\R^n \setminus C$ is an open neighborhood of $x$ which does not intersect $A$ so that $x$ is not in the closure; a contradiction. 
+        hence $x$ must be in every closed set containing $A$ and then it follows that $x$ will be in the intersection. 
+        \begin{proof}
+            
+        \end{proof}
+    \end{alphaparts}
+
+    \question 
+    Prove that $\overline{A \cap B} \subset \overline{A} \cap \overline{B}$ and $A \cap \overline{B} \subset \overline{A \cap B}$ if $A$ is open. 
+    \begin{proof}
+        Let $x \in \overline{A \cap B}$ then every neighborhood of $x$, intersects $A$ and $B$. Since every neighborhood intersects $A$, 
+        $x \in \overline{A}$ and since every neighborhood intersects $B$, $x \in \overline{B}$. Hence $x \in \overline{A} \cap \overline{B}$. 
+
+        Let $A$ be open and let $x \in A \cap \overline{B}$. Then there exists a neighborhood $U$ of $x$ completely contained in $A$, since $A$ is open. 
+        Then for an arbitrary neighborhood $V$ of A, taking $W = U \cap V \subset V$ is completely contained in $A$. But since $x \in \overline{B}$, 
+        $W$ must also contain a point of $B$ that lies in $A$. Hence $W$ is a neighborhood around $x$ that contains a point of $A \cap B$. 
+        Since $W \subset V$, it follows that the arbitrary neighborhood $V$ also contains a point of $A \cap B$. Thus $x \in \overline{A \cap B}$. 
+
+    \end{proof}
+\end{document}
