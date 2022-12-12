@@ -1,0 +1,181 @@
+\documentclass[11pt,largemargins]{homework}
+\usepackage{commath}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\ran}{\operatorname{ran}}
+\newcommand{\dom}{\operatorname{dom}}
+\newcommand{\eps}{\varepsilon}
+\newcommand{\ssd}{\bigtriangleup}
+\newcommand{\pow}{\mathcal{P}}
+
+% TODO: replace these with your information
+% TODO: replace these with your information
+\newcommand{\hwname}{Evan Fox}
+\newcommand{\hwemail}{efox20@uri.edu}
+\newcommand{\hwtype}{HW}
+\newcommand{\hwnum}{1}
+\newcommand{\hwclass}{MTH 435: Analysis}
+\newcommand{\hwlecture}{}
+\newcommand{\hwsection}{}
+
+
+\begin{document}
+    \maketitle 
+
+    \question 
+    Let $a_n = \frac{1}{2}(a_{n-1} - a_{n - 2})$ find the limit of $a_n$ 
+
+    \begin{proof}
+        Let $b_n = a_n - a_{n-1}$ be the nth difference in the sequence. Then observe that by the defining property of the sequence 
+        we have 
+        \begin{equation}
+            b_n = \frac{-1}{2}b_{n-1} = \dots = (-1)^{n-1}\frac{1}{2^{n-1}} b_2
+        \end{equation}
+        Now it follows that 
+        \[a_n = a_n - a_{n-1} + a_{n-1} = b_n + a_{n-1} \]
+        We can then apply the same step to $a_{n-1}$ to get $a_{n-1} = b_{n-1} + a_{n-2}$ so repeating $n-1$ times gives 
+        \[a_n = b_n + b_{n-1} + \dots + b_2 + a_1\]
+        Now using eq(1) we have 
+        \[a_n = \sum_{k = 1} (-1)^{k-1} \frac{1}{2^{k-1}} b_2 + a_1\]
+        which is equivalent to 
+        \[a_n = (a_2 - a_1)(1 - \frac{1 - \frac{1}{4^n}}{3} ) + a_1\]
+        taking a limit of $a_n$ gives 
+        \[\lim_{n \to \infty} a_n = (a_2 - a_1)\frac{2}{3} + a_1\]
+
+        as desired.
+    \end{proof}
+
+    \question
+
+    \begin{proof}
+        let $(S, d)$ be compact, then let $(x_n)$ be a sequence. If $(x_n)$ is eventually constant then it converges so suppose 
+        that it is not eventually constant. Then the set of all distinct values of the sequence is an infinite subset of $S$ and as such it 
+        has a limit point $a$. We prove that there is a subsequence in $(x_n)$ which converges to $a$. To see this take nbhds around $a$ 
+        of the form $B(a, \frac{1}{n})$ then in each nbhd take a point of the sequence $(x_n)$, such a point will exist since $a$ is a limit point. 
+        then it is clear that this gives a subsequence of $(x_n)$ which converges. 
+    \end{proof}
+
+    \question 
+
+    \begin{proof}
+        We prove that a $\implies$ b. Assume that $\lim_{h \to 0} |f(x + h) - f(x)| = 0$ Then by letting $x = x -h $
+        we have $\lim_{h \to 0}|f(x) - f(x - h)| = 0$. Now compute 
+        \[\lim_{h \to 0 } |f(x + h) - f(x - h)| \leq \lim_{h \to 0} |f(x + h) - f(x)| + \lim_{h \to 0} |f(x) - f(x - h)| = 0\]
+        but since the limit is in absolute value bars it cannot be less than $0$, hence the limit must be zero. 
+        To see that the converse is false, consider the function 
+        \begin{equation}
+            f(x) = 
+            \begin{array}{cc}
+                {\tt sin}(|\frac{1}{x}|) & x \neq 0 \\
+                0 & x = 0
+            \end{array}
+        \end{equation}
+
+        Then at $x = 0$, $\lim_{h \to 0}|f(0 + h) - f(0-h)| = 0$ since $f(h)  - f(-h) = 0$ for all $h$. But 
+        $lim_{h \to 0} |f(h) - 0| = \lim_{h \to 0}|sin(|\frac{1}{h}|) \neq 0$. 
+
+
+    \end{proof}
+
+    \question
+
+    \begin{proof}
+       We write $\lim_{x \to a}[\lim_{y \to b}f(x, y)]$ as a sequence, 
+       \[L_n = (\lim_{y \to b}f(x_1, y), \lim_{y \to b}f(x_2, y), \dots )\]
+       where $(x_n)$ converges to $a$. Each limit in this sequence exists by assumption. 
+       Now let $\epsilon > 0$ And fix $N \in \N$ such that $m \geq N$ satisfies
+       $f(x_m, y_m) - L < \epsilon$. Such an $N$ exists by assumption that $\lim_{(x, y) \to (a, b)} f(x, y) = L.$
+        Then choose $x_k \in (x_n)$ such that $x_m < x_k < a$. Then 
+        \[L_k - L =  \lim_{y \to b}f(x_k, y) - L < \epsilon\]. The other case is similar. 
+
+    \end{proof}
+
+    a) 
+    The first to limits exist for function (a) and the last on does not. 
+    The first limit ($y \to 0$ then x) is 1, and the second limit is -1, since these disagree the last limit cannot exist by 
+    the result proved above. 
+
+    d)none converge for example if you take the limit in the $y$ direction with fixed $x$, as $y \to 0$ we seem to be approaching $x \sin(\frac{1}{x})$ but the $\sin(\frac{1}{y})$ term 
+    will continue to oscillate forever from 1 to -1 and so the limit will never converge. Similarly the limit will not converge in the $x$ direction either. Hence none of the requested limits exists. 
+
+
+    \question 
+    Consider a point $x \in [0, 1] \cap \Q$ then let $\epsilon = 1/2$ and note that for all $\delta$ there exists $\xi \in (x- \delta, x+\delta)$ irrational. Hence $|f(x) - f(\xi)| = 1 > 1/2 = \epsilon$. So $f$ is not continuous at any rational point $x$. 
+    To show $f$ is not continuous at irrational points one can just flip the proof and do it the opposiate way. 
+
+
+    Now we show that $g$ is continuous at $0$, Let $\epsilon > 0$ and 
+    let $\delta < \epsilon$, Then if $x \in \Q$ we have 
+    \[|0 - x| = |x| < \delta \implies |g(0) - g(x)| = |0 - x| = x < \epsilon.\]
+    and if $x \notin \Q$ then $|g(0) - g(x)| = 0 - 0 = 0 < \epsilon.$. 
+    Hence $g$ is continuous at 0. 
+
+    Now at any rational point $p \neq 0$, Let $\epsilon < p$, for all $\delta$ we have that there exists $x_0$ 
+    irrational in the delta nbhd around $p$ so that $|p - x_0| < \delta \implies |g(p) - 0| = p > \epsilon$. 
+    Conversely given an irrational point and a $\epsilon$ less than it, for all delta nbhds there exists rationals 
+    just a little larger so that the image under $g$ is greater than epsilon. 
+    Thus $g$ is not continuous at any other point than $0$. 
+    
+    
+    To see that $h$ is continuous at every irrational number $\xi$, remember that 
+    as rational approximations to irrational numbers get better, the numerator and denominator grow, hence for any epsilon greater than zero, 
+    fix $N$ st $n > N$ implies $\frac{1}{n} < \epsilon$, Then the appropriate delta nbhd, 
+    is the one where all rational numbers around $\xi$ are better approximations than $m/n$ for any $m$. Then they will have larger denominators and their map under $h$ will be less than $\epsilon$. 
+    To prove that it is discontinuous at rationals, note that since $h(m/n) = 1/n$, in any nbhd on $m/n$ I can find a irrational that will map to 0. So then 
+    we will have $|\xi - m/n| < \delta $ but $|0 - 1/n|$, then we see the function is not continuous when we select $\epsilon < 1/n$. 
+
+
+    \question 
+    \begin{proof}
+        Restrict $f$ to $[x_1, x_2]$ since this is closed subset of a compact space, it is compact. 
+        Then since $f$ is continuous we may apply the extreme value thm to obtain that $f$ must achieve a minimum 
+        on its image. This cannot be $x_1$ or $x_2$ since if it were we would contradict the existence 
+        of a nbhd where $f(x_1)$ or $f(x_2)$ is a local max. Then since this is a minimum for all $x \in [x_1, x_2]$ there will exist a nbhd making this $x_3$ 
+        a local minimum. 
+    \end{proof}
+
+
+    \question 
+    Consider the sequence $(1/2^n)$ in the metric space $(0, \infty)$. This is cauchy, but its image 
+    under $f(x) = 1/x$ is not cauchy. And it is clear that $f$ is continuous on $(0, \infty)$ because it 
+    it the quotient of two continuous functions.
+
+    \question 
+    \begin{proof}
+        note that $(0, 1)$ is connected and the function given is continuous restricted to this domain so the image is connected. 
+        the interval $[-1, 0]$ is also connected. hence we at least have two connected components. So our only hope is that the two 
+        sets them self form a separation, but $[-1,0]$ is not open in the subspace topology induced on our set 
+        so there can be no separation
+
+    \end{proof}
+
+    \question
+    \begin{proof}
+        Let $(x_n)$ be cauchy, Let $\epsilon > 0$ and then there exits $\delta$ such that 
+        \[|a - b| < \delta \implies |f(a) - f(b)| < \epsilon\]
+        
+        using the fact that $(x_n)$ is cauchy, 
+        fix $N \in \N$ such that $n, m > N$ implies $|x_m - x_m| < \delta$, 
+        Then we will have $|f(x_n) - f(x_m)| < \epsilon$. Hence it is cauchy. 
+    \end{proof}
+
+
+    \question 
+    \begin{proof}
+        Let $m$ be large enough such that $\alpha_m < 1$, $\alpha_{m+1} < 1$, and $\alpha_{m^2 + m} < 1$. Then $f^m$ and $f^{m+1}$ are contraction mappings and 
+        by the fixed point thm we have a fixed point $p$ of $f^m$ and $q$ of $f^{m+1}$. We show $p = q$. 
+        Since $f^m(p) = p$ we have 
+        \[f^{m^2 + m}(p) = f^m(f^m(\dots f^m(p))) = p \]
+        and 
+        \[f^{m^2 + m}(q) = f^{m+1}(f^{m+1}(\dots f^{m+1}(q))) = q\]
+
+        but since $f^{m^2+m}$ is also a contraction mapping, there is a unique fixed point, so $p = q$. 
+        Then 
+        \[p = f^m(p)\]
+        \[f(p) = f(f^m(p)) = p\]
+        So $p$ is a fixed point of $f$. 
+    \end{proof}
+\end{document}
+
