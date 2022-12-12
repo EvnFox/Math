@@ -1,0 +1,127 @@
+\input{HW_preamble.tex}
+
+\begin{document}
+    \maketitle 
+
+    \question 
+    Show that a first countable $T_1$ space is $G_\delta$. 
+
+    \begin{proof}
+        Let $X$ be first countable and $T_1$ and let $x \in X$. Then let $\cal A$ be a countable basis at $x$. 
+        Then let $B = \cap_{A \in \cal A}A$, clearly $B$ is a countable intersection of open sets, we show that $B = \{x\}$. 
+        Clearly $x \in B$, now suppose that $y \neq x$ and $y \in B$, then note that since $X$ is a $T_1$ space, $X \setminus \{y\}$, 
+        is an open set around $x$. Now there must exist a basis element containing $x$ contained in $X \setminus \{y\}$, hence 
+        there is an open set $A \in \cal A$ such that $x \in A$ and $y \notin A$, so that $y \notin B$ a contradiction. Hence $B = \{x\}$.  
+    \end{proof}
+
+    For an example consider $\R^\omega$ in the box toplogy, this space is not first countable, since given a countable collection of open sets about a point $x$, $\{U_n\}_{n \in \N}$. 
+    We start by selection an open set $V_1 \subset \pi_1(U_1)$ such that $x_1 \in V_1$, then we select $V_2 \subset \pi_2(U_2)$ with $x_2 \in V_2$ and so on, then the open set 
+    $V = \bigtimes_{i = 1}^\infty V_i$ is an open set but does not contain any element $U_i$ since $\pi_i(V) \subset \pi_i(U_i)$. Hence $\R^\omega$ is not first countable. 
+    On the other hand given $x$, the sets  $ A_n = \bigtimes_{i = 1}^\infty (x_i - \frac{1}{n}, x_i + \frac{1}{n})$. It is clear that this gives a countable collection and that $x$ is the only element of the intersection. 
+
+
+    \question 
+    Show that $\R_{\ell}$ and $I^2_o$ are not metrizable 
+
+    \begin{proof}
+        Note that $\R_{\ell}$ is not second countable, since given any countable collection of open sets of the form $[a_i, b_i)$ we can find a reall number $\xi \notin \{x | x = a_i \}$ since $\R$ is uncountable. Then the set $[\xi, b)$ is open by the definition of lower limit topology, but there is no basis element containing 
+        $\xi$ contained in this open set, a contradiction. However $\R_{\ell}$ does have a countable dense subset, $\Q$, not that for an arbitrary $x \in \R$, every nbhd of $x$, $[a, b)$ will contain rational points, hence every real number is a limit point of $\Q$, hence $\Q$ is dense. 
+        We know that if a space is metrizable then second countable is equivalent to having a countably dense subset. Since this is not the case for $\R_{\ell}$, it must be the case that $\R_{\ell}$ is not metrizable. 
+
+        We will emploly a similiar argument for the ordered squar $I^2_o$, first note that it cannot have a countable basis since $\{x\} \times (1/3, 2/3)$ is open for each $x \in [0,1]$ and is an uncountable disjoint collection, 
+        and so for each point $x \times \frac{1}{2} \in \{x\} \times (\frac{1}{3}, \frac{2}{3})$, there must exist a basis element $B_x \subset \{x\} \times (\frac{1}{3}, \frac{2}{3})$. Thus the basis must be uncountble. 
+        But again $\Q^2$ restricted to the ordered square will give a countable dense subset. Thus the space cannot be metrizable becasue second countable and the existence of a countable dense subset are not equivalent. 
+
+    \end{proof}
+
+    \question 
+    Which of the four countablility axioms does $S_\omega$ and $\overline{S_\omega}$ satisfy? 
+
+    \begin{proof}
+        $S_\Omega$ is first countable, given $a \in S_\Omega$, Then $S_a$ is countable and since $S_\Omega$ is totally ordered, there is an immeadiate sucessor of $a$, say $b_1$ then define the imeadiate sucessor recursivly as $b_1<b_2<b_3<\dots$ wich also gives a countable collection. 
+        Then considering all open sets $(x,y)$ with $x \in S_a$ and $y = b_i$ is a countable collection of open sets about $a$, and given an arbitrary open set around $a$, it is clear it must contain a set of this form. 
+
+        Now we show that this set is not second countable by showing that it has no countable dense subset, note that any countable set in $S_\Omega$ is bounded, but $S_\Omega$ itself is uncountable and has no maximal element, hence there cannot be a countable dense subset, since given any countble set 
+        $B$, there exists $c, d \in S_\Omega$ such that for all $b \in B$, $b < c < d$ hence $d$ will not be a limit point. 
+
+        Now we show that this space is not lindelof, consider the convering $S_a$ for all $a \in S_\Omega$, and suppose a countble subcollection covers $S_\Omega$, then we get that the countable union of countable sets convers $S_\Omega$, which cannot be the case since $S_\Omega$ is uncountable and 
+        the countable union of countable sets is countable. 
+
+        The only thing that changes when considering $\overline{S_\Omega}$, is that the space is no longer first countable since we have included the point $\Omega$, Given any countable collection of open sets around $\Omega$, the set of lower bounds of these intervals forms a countable set and 
+        as such is bounded, then we may take an element larger than the upperbound and form an open set containg $\Omega$ that doesn't contain any element of our countable collect, hence $\overline{S_\Omega}$ fails to be first countable at the point $\Omega$. 
+    \end{proof} 
+
+
+
+
+    \question
+    Let $P:X \to Y$ be closed continuous and surjective. 
+
+    \begin{alphaparts}
+        \questionpart 
+        Show that $X$ Hausdorff implies the same for $Y$. 
+
+        \begin{proof}
+            Let $p$ be a closed continuous surjective map s.t. $p^{-1}(y)$ is compact for all $y \in Y$. 
+            Let $a_1,a_2 \in Y$, the since their pre images a disjoint compact sets, they can be seperated into 
+            disjoint open sets $U$ and $V$. Then let $A = Y \setminus P(X \setminus U) \subset P(U)$. Note that $A$ is open since $U$ is open, $X \setminus U$ is closed and then its image is closed becasue $p$ is a closed map, hence the complement in $Y$ is open. We have 
+            $a_1 \in A$ and $A \cap P(V) = \varnothing$, since $p^{-1}(A) \subset U$ is disjoint from $V$. Then letting $A_2 = Y \setminus p(X \setminus V)$ gives a similiar open set about $a_2$, then we have that $Y$ is Hausdorff. 
+
+
+        \end{proof}
+
+
+        \questionpart 
+        Same but for regularity
+        \begin{proof}
+            Assume that $X$ is regular and let $a \in Y$. We show that every nbhd of $a$, $U$ has a open $V$ such that $\overline{V} \subset U$. Note that $p^{-1}(U)$ is open and contains the compact set $P^{-1}(a)$. 
+            For each $x \in p^{-1}(a)$, by regularity there exists a nbhd $V_x$ such that $x \in V_x$ and $\overline{V_x} \subset p^{-1}(U)$. Then These $V_x$'s form an open cover of $p^{-1}(a)$ and hence there exists a finite subcover, 
+            $V = \bigcup_{i = 1}^n V_{x_i}$. Since the finite union of closed sets are closed we also have $\bigcup_{i =1}^n \overline{V}$, which is a closed set containd in the pre image of $U$, then its image is a closed set contained in $U$. 
+            and the set $Y \setminus P(X \setminus V) \subset p(V)$ is an open set containg $a$ whose closure is in $U$. 
+
+        \end{proof}
+
+        \questionpart 
+        local compactness 
+
+        \begin{proof}
+            Let $X$ be locally compact and let $a \in Y$, then $p^{-1}(a)$ is compact and for all $x \in p^{-1}(a)$ there exists a compact $C_x$ and an open $U_x$ such that $U_x \subset C_x$. 
+            Then the $U_x$'s form an open cover and hence a finite number of them must cover $p^{-1}(a)$. Then let 
+            $U = \bigcup_{i = 1}^n U_i$ and $C = \bigcup_{i = 1}^n C_i$, then $p(C)$ is compact since it is the image of a compact set and taking $A = Y \setminus p(X \setminus U)$ gives an open nbhd of $a$. 
+
+            Thus $Y$ is locally compact. 
+        \end{proof}
+
+
+        \questionpart 
+        countable basis. 
+        \begin{proof}
+            As in the given hint, let $\B$ be a basis, and given a finite subset of $\B$, $J$, let $U_J$ be the union of all $p^{-1}(W)$ for $W$ open in $Y$ such that $p^{-1}(W) \subset \cup J$. 
+            Then we show that $p(U_J)$ is a basis for $Y$. Clearly the collection of $p(U_J)$ is countable since, since there are countably many finite subsets $J$ of $\B$. Now Let $V \subset Y$ be open.
+             Then consider a open covering of $p^{-1}(V)$ by basis elements in $\B$, for each $p^{-1}(a) \subset p^{-1}(V)$ we know that there 
+            exists a finite subcollection covering the compact set $p^{-1}(a)$, then unioning the finite subcover is a finite union of elements in $\B$, call it $B$. Let $U$ be the corrosponding open set consisting of the union of 
+            all $p^{-1}(W)$ where $W$ is open and $p^{-1}(W)$ is contained in $B$. Then $p(U) \subset V$ since it is the union of open sets whose pre images lie in $B$ and $B \subset p^{-1}(V)$. Hence by reapeating this process for each compact $p^{-1}(y)$ 
+            we can write $V$ as the union of such open sets of the form $p(U)$, so that $V$ is open in the topology generated by elements of the desired form. 
+        \end{proof}
+    \end{alphaparts}
+
+
+    \question 
+    Topological groups. 
+
+    \begin{proof}
+        First we prove normality, so assume that $X$ is normal, Then by the given hint, we know that $p$ is closed continuous and surjective. Let $A_1, A_2$ be disjoint closed sets in the quotient space $X / G$. 
+        Then since $p$ is a continuous function, $p^{-1}(A_1), p^{-1}(A_2)$ are both closed and disjoint. By normality of $X$, they can be seperated by disjoint open sets $U_1$ and $U_2$ respectivily. Then 
+        using a similiar trick as above we define 
+        \[V_1 = Y \setminus p(X \setminus U_1)\]
+        and 
+        \[V_2 = Y \setminus p(X \setminus U_2)\]
+        Note that $V_1$ is open since $U_1$ is open, its complement is closed, then since $p$ is a closed map the image of $X \setminus U_1$ is closed and hence its complement $V_1$ is open. 
+        We also have $A_1 \subset V_1$ Since $p^{-1}(A_1) \subset U_1$, equivalent statments hold for $V_2$, and since $p^{-1}(V_1) \subset U_1$ and $p^{-1}(V_2) \subset U_2$, $V_1$ and $V_2$ are disjoint. Hence $X / G $ is normal. 
+
+        Now to do the other ones we
+        let $\overline{x} \in X/G$, then $p^{-1}(\overline{x}) = \alpha(G, x)$. Then since $G$ is compact and $\alpha$ continuous, the image $\alpha(G, x)$ for fixed $x$ is compact. That is the pre image of a fiber is compact. 
+         Also by the hint given we have that $p$ is closed continuous and surjective. 
+        Thus it follows $p$ is a perfect map and the above results in the previous question provide the proof. 
+    \end{proof}
+\end{document}

@@ -627,6 +627,30 @@
    \section{Metric spaces II}
 
 
-    
+   The second section on metric spaces convered more stuff about metric spaces like the uniform limit theorem. 
 
+   \section{The Quotient Topology} 
+   The quotient topology is a very important way to get new topologies from old ones. 
+
+
+
+   \begin{defn}
+	   Let $q:X \to Y$ be a surjective continuous map. We say that $q$ is a quotient map if 
+	   $U \subset Y$ is open $\iff q^{-1}(U) \subset X$ is open. 
+   \end{defn}
+
+   A subset $U$ of $X$ is saturated (with respect to $q$) if whenever $U$ contains a point of $q^{-1}({y})$ then it 
+   contains the whole set $q^{-1}({y})$. Equivalently, a set is saturated if it is the pre image of some set in $Y$. 
+   This property gives us a way of rephrazing our definition of a quotient map.  
+   A quotient map can be open or closed or both or neither, in general it only needs to send saturated open sets to open sets. This explains why a map which may not be an open map can still be a quotient map. 
+
+
+   Since $q$ is a surjective function, it is possible to think of the map $q$ as a partition of $X$ indexed by elements of $Y$. 
+
+   \begin{defn}
+	   Given a surjective map $q:X \to Y$, there is only one topology on $Y$ in which $q$ is a quotient map. this is the topology given by letting $U \subset Y$ be open if $q^{-1}(U)$ is open in $X$. 
+   \end{defn}
+   \begin{proof}
+	   It is clear that this will form a topology, we will prove that $q$ is a quotient map, that is, that $q$ is continuous and maps saturated open sets to opensets. 
+   \end{proof}
 \end{chapter}
