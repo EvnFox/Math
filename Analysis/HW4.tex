@@ -1,0 +1,51 @@
+\documentclass[11pt,largemargins]{homework}
+\usepackage{commath, amsmath, amsfonts, hyperref}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\ran}{\operatorname{ran}}
+\newcommand{\dom}{\operatorname{dom}}
+\newcommand{\eps}{\varepsilon}
+\newcommand{\ssd}{\bigtriangleup}
+\newcommand{\pow}{\mathcal{P}}
+
+% TODO: replace these with your information
+% TODO: replace these with your information
+\newcommand{\hwname}{Evan Fox}
+\newcommand{\hwemail}{efox20@uri.edu}
+\newcommand{\hwtype}{HW}
+\newcommand{\hwnum}{1}
+\newcommand{\hwclass}{MTH 435: Analysis}
+\newcommand{\hwlecture}{}
+\newcommand{\hwsection}{}
+
+\begin{document} 
+
+\question 
+Show that if $f$ is lipschitz with $\alpha > 1$ then 
+$f$ is constant and show that if $\alpha = 1$ then 
+$f$ is of bounded variation. 
+
+\begin{proof} 
+Let $\alpha >1$. Then  we have that for all $x, y \in [a, b]$, 
+\begin{equation} 
+\label{eq:1}
+\frac{|f(x) - f(y)|}{|x-y|} \leq M|x - y|^{\alpha -1}
+\end{equation}
+
+where $\alpha - 1 > 0$ by our assumption on $\alpha$. Now let $c \in (a, b)$, 
+$f$ is differentiable at $c$ if $\lim_{x \to c} \frac{f(x) - f(c)}{x- c} $ is finite for all $c$. 
+Since the absoulute value of this limit is bounted above by $M|x - y|^{\alpha -1}$, a term which goes to 0 as $x \to y$, 
+$f^\prime (c) = 0$ for all $c \in (a, b)$. Then it is a consequence of the mean value theorem that a function whose deriviative is zero must 
+be constant. 
+
+Now if $\alpha = 1$, equation \ref{eq:1} becomes 
+\[ \frac{|f(x) - f(y)|}{|x-y|} \leq M \]
+and a similliar argument to above will show that $f^\prime$ is bounded and $f$ is clearly continuous. Thus, by a theorem proved in class will be of bounded variation. 
+
+\end{proof}
+
+\question 
+
+\end{document}
