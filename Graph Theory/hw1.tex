@@ -1,0 +1,53 @@
+\documentclass{article} 
+\usepackage{amsmath, amsfonts,amsthm, commath, tikz} 
+
+
+\newtheorem{prb}{Problem}
+
+\title{Home Work 1} 
+\author{Evan Fox}
+\date{2/6/2023}
+
+\begin{document} 
+
+\maketitle
+\begin{prb} 
+If $u,v$ are the only vertices of a graph $G$ with odd degree, prove that there exists a $u,v$ path in $G$
+\end{prb} 
+\begin{proof} 
+$u,v$ must lie in the same connected component of $G$ or else considering the induced subgraph on the vertices of the component containing $u$ but not $v$, we would obtain a graph with an odd number of odd degree vertices, contradicting the handshaking lemma proved in class. Hence $u,v$ lie in the same component and hence there exitsts a $u,$ path. 
+\end{proof}
+
+\begin{prb}
+Show that $\delta(G) \geq 3$ implies the existence of an even cycle
+\end{prb} 
+
+\begin{proof} 
+Let $x_1 x_2 \dots x_n$ be the longest path in $G$, then it follows that $x_n$ must have at least two more neighbors on the path, $x_k$ and $x_l$. 
+Suppose that $k < l$. Then if the cylce $x_k x_{k+1} \dots x_n x_k$ is even, we are done; so suppose not. Then we have 
+$|\{ x_i\, | \, k \leq i < n \}|$ is an even integer. It follows that there is either an even number of vertices less than $l$ or an even number 
+greater than $l$ (where I am ordering vertices by their index and not including $x_n$). In the first case $x_k \dots x_l x_n x_k$ is an even cycle and 
+in the second we have $x_l, \dots x_n x_l$ will be an even cycle.  
+\end{proof}
+
+\newpage
+
+\begin{prb} 
+Suppose that $G$ has no isolated vertices and that no induced subgraph on $G$ has exactly two edges. Show that $G$ is complete. 
+\end{prb}
+
+\begin{proof} 
+	Let $u, v \notin E(G)$, since no vertex in $G$ is isolated, let $u^\prime, v^\prime$ be adjaceint to $u$ and $v$ recpectivly. If $u^\prime = v^\prime$ then $G[u, v, u^\prime]$, is an induced subgraph with two edges, so we may assume that they are distinct. If either $uv^\prime, vu^\prime \in E(G)$, then we may take $G[v^\prime, u, v]$ or $G[u^\prime, u, v]$ gives us a induced subgraph on two edges so again we may assume that this doesnt happen. Now if $u^\prime v^\prime \in E(G)$, then $G[u, u^\prime, v]$ again is a counter example. But now in the last case we only have edges $u U^\prime$ and $v v^\prime$ so taking induced subgraph on all four edges gives a induced subgraph with two edges. Hence there must exits a $u, v$ edge.
+\end{proof}
+\newpage
+
+\begin{prb} 
+	Can there exist a function taking $k \in \mathbb{n}$ to the minimal degree $\delta(G)$ which insures $G$ is $k$-connected? 
+\end{prb} 
+
+\begin{proof} 
+No, It is not hard to construct a graph $G$ of arbitrarily large minimal degree that is not $2$-connected. Take two disjoint graphs $G_1, G_2$ with minimal degree $n$, then add a vetex $v$ and connectect it to every every vertex in $G_i$ for $i = 1, 2$. $G$ thus defined is not $2$-connected since removing $v$ results in two connected components.  
+\end{proof}
+
+
+\end{document} 
