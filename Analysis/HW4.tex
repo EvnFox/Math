@@ -16,12 +16,12 @@
 \newcommand{\hwemail}{efox20@uri.edu}
 \newcommand{\hwtype}{HW}
 \newcommand{\hwnum}{1}
-\newcommand{\hwclass}{MTH 435: Analysis}
+\newcommand{\hwclass}{MTH 436: Analysis}
 \newcommand{\hwlecture}{}
 \newcommand{\hwsection}{}
 
 \begin{document} 
-
+\maketitle
 \question 
 Show that if $f$ is lipschitz with $\alpha > 1$ then 
 $f$ is constant and show that if $\alpha = 1$ then 
@@ -48,4 +48,132 @@ and a similliar argument to above will show that $f^\prime$ is bounded and $f$ i
 
 \question 
 
+\begin{alphaparts} 
+\questionpart 
+(a) 
+
+\begin{proof} 
+	First $v(x) \leq p(x) + n(x)$ is clear, since for any partition $P$ of $[a,b]$, Then we have 
+	\[ v(x) = \sum_{k=1}^n \Delta f_k = \sum_{k \in A(p)} \Delta f_k + \sum_{k \in B(P)}| \Delta f_k |\] 
+	\[ \leq \sup \{\sum_{k \in A(P)} \Delta f_k | P \in \mathcal{P}[a, b] \} +\sup \{\sum_{k \in B(P)}| \Delta f_k| | P \in \mathcal{P}[a, b] \} \]
+	\[= p(x) + n(x) \]
+
+	Now we must prove the opposite inequality, first note that for $P_1, P_2 \in \mathcal{P}[a, b]$ we have 
+	\begin{equation} \sum_{k \in A(P_1)} \Delta f_k \leq \sum_{k \in A(P_1 \cup P_2)} \Delta f_k \end{equation} 
+	and 
+	\begin{equation} \sum_{k \in B(P_2)} |\Delta f_k| \leq \sum_{k \in B(P_1 \cup P_2)} |\Delta f_k| \end{equation} 
+	(2) follows since if I evaluate the posistive variation at some partition $P = \{x_0, \dots, x_1 \}$, then adding a single point $u$ to $P$
+	lies in some interval $[x_k, x_{k+1}]$. If $f(x_k) < f(u) < f(x_{k+1})$ Then there is nothing to prove. If $f(u) < f(x_k)$, 
+	then $f(x_{k-1}) - f(u) > f(u) - f(x_k)$ so that the positive variation increases and the same is true if $f(u) > f(x_{k+1})$. 
+	Hence by adding a point to a partition $P$, I cannot decrease the positve variation, then by induction, I can add any finite number of points to the 
+	parition and I can only increase the positive variation. (3) is similliar. 
+	
+	Now we want to prove $p(x) + n(x) < v(x)$, so we prove that for any partitions $P_1$ and $P_2$, there exists a parition $P$ such that 
+	\begin{equation} \sum_{k \in A(P_1)} \Delta f_k + \sum_{k \in B(P_2)} |\Delta f_k | \leq \sum_{k = 1}^n |\Delta f_k | \end{equation}  
+        Where the term on the right of the inequality is being evaluated at the partition $P$.	Namely, choose $P= P_1 \cup P_2$, then using (2) and (3) and
+	noticing that I can add the two terms on the right of the inequality when they are being evaluated at the same partition, the desired result follows. 
+\end{proof} 
+
+\questionpart 
+(d) 
+
+\begin{proof} 
+	First note that this is clear intuitively, it is saying that the value of $f(x)$ for $x \in [a,b]$ is just the initial value at the start of the interval $f(a)$ plus the positive variation from $a$ to $x$ and minus the negitive varition (we subtract since negitive variation is defined with an absoulute value so that it is positive). We prove that $p(x) - n(x) = f(x) - f(a) = \sum_{k = 1}^n \Delta f_k$. Let $P_1$ be the partition which maximizes the positive variation and let $P_2$ maximize the negitive variation on $[a, x]$. Then let $P = P_1 \cup P_2$.  Then 
+	\[ p(x) - n(x) = \sum_{k \in A(P_1 \cup P_2)} \Delta f_k + \sum_{k \in B(P_1 \cup P_2) } - |\Delta f_k| \] 
+\[ = \sum_{k = 1}^n \Delta f_k = f(x) - f(a) \] 
+Where we dont need an absoulte value n the second line since we reintroduced the negitive to all the terms $\Delta f_k$ with $k \in B(P_1 \cup P_2)$. 
+\end{proof}
+
+\questionpart
+(e) 
+\begin{proof} we have 
+	\[ f(x) = f(a) + p(x) - n(x) \] 
+	\[ f(x) = f(a) + p(x) - p(x) - n(x) \] 
+	\[ f(x) = f(a) + 2p(x) - v(x) \] 
+	\[f(x) - f(a) + v(x) = 2p(x) \] 
+	where the seconed step follows from (a). The other equation follows from adding and subtracting $n(x)$ rather than $p(x)$ 
+\end{proof}
+
+\questionpart 
+(f) 
+\begin{proof} 
+
+	We proved in classes that if $x \in [a, b]$ is a point of continuity for $f$ then it is also a point of continuity for $v$. Then using 
+	the results of the last section, we can see that $p(x) = \frac{1}{2} (f(x) + v(x) - f(a)$ and since the sum of continuous functions is continuous, 
+	we are done. The same argument applies to $n(x)$. 
+\end{proof} 
+\end{alphaparts}
+ 
+
+\question 
+10 
+
+	\begin{alphaparts} 
+
+		\questionpart 
+		First let $g_1 = im(H)$ and $g_2 = Re(H)$, these are just analogs to first and seconed projection if we considered $H$ as a paramterized cure in $\mathbb{R}^2$. $g_1$ is continuous on $[a, 2b-a]$ by the pasting lemma. Since $V_{g_1} [a, b]  = V_{f} [a, b]$ is well defined as $f$ is of bounded variation and similiarlly for $V_{g_1}[b, 2b-a] = V_{g(x)} [a, b]$ we have by the additive property of total variation, adding the previous two numbers gives the total variation of $g_1$ on the interval $[a, 2b-1]$. A similiar story is going to hold for $g_2$, hence since the components of $H$ are of bounded variation, $H$ defines a rectifiable curve.
+	
+\questionpart
+
+Look at last page.  
+
+\questionpart
+I think in the second line defining $H$, they mean 2b-t not t.
+
+\begin{proof} 
+$f-g$ is continuous since $f$ and $g$ are. Then the same approach as above will show that $Im(H)$ has a well defined total variation on $[a, b]$ and on $[b, 2b -1]$ since $H$ is continuous on the union of these intervals, The total variation will be given by the additive property of variation. 
+
+again $S$ defines a closed region in $\mathbb{R}^2$, so its interior is all points $S \setminus intS$. But then any point not on $\Gamma_0$ but in $S$, 
+will be in the interior since its coordinates are given by strict inequalities $a < x < b$ and -$1/2 (f - g) < y < 1/2 f-g$
+\end{proof}
+\questionpart 
+This is easy to see since the imaginary component of $H$ is the $y$-axis, and in the first half of the interval $[a, b]$ the imaginary component of $H$ 
+is minus its value in the second half $[b, 2b-a]$, so it is fliping the curve over the $x$-axis. also note that it is zero at $a$ and $b$, since $g$ and $f$ 
+agree there. 
+
+\questionpart 
+\begin{proof} 
+	$S$ is a closed set, so its boundry are all points $S \setminus intS$. For any point $(x, y)$ not on $\Gamma$ if $a < x < b$ and $f(x) < y < g(x)$ then we can find a open set of $(x, y)$ contained in $S$, so it is not in the boundry. Hence the only points are the points in $S$ that do not satisfy the above, i.e they must lie on the curve $\Gamma$.
+\end{proof}
+
+\questionpart
+\begin{proof} 
+The curve $\Gamma_0$ (or $\Gamma$) is traced out by the imaginary component. When computing 
+$\Lambda_{\Gamma_0}(P) = \sum_{k=1}^n \|(g-f)(x_k) - (g- f)(x_{k-1})\|$ at some partition $P \in \mathcal{P}[a,2b-a]$, we see that 
+\[\Lambda_{\Gamma_0}(P) = \sum_{k=1}^n \|(g-f)(x_k) - (g- f)(x_{k-1})\|\] 
+\[= \sum_{k=1}^n\|g(x_k) - g(x_{k-1}) \| + \sum_{k=1}^n \|f(x_k) - f(x_{k-1})\| \] 
+but this is the same as the arclength of $\Gamma$ execpt I dont get to choose two different partitions for $g$ and $f$. Hence by choosing the same partition 
+for $g$ and $f$ we see that $\Lambda_{\Gamma_0}$ must be obtained by some partition for $\Lambda_{\Gamma}$
+\end{proof}
+
+	\end{alphaparts}
+
+
+
+\question 
+11 
+\begin{proof} 
+	Let $f$ be absolutely continuous, and let $\epsilon > 0$. Then using the definition for $n =1$, we see that it says given a subinterval $(a_1, b_1)$ such that $b_1 - a_1 < \delta$ then $|f(b_1) - f(a_2)| <  \epsilon$. So for any point $x \in [a,b]$, if $|x - y| < \delta $ then we cany take the one subinterval to be $(x, y)$ if $x < y$ or $(y, x)$ if $y < x$. 
+
+	Now we prove that $f$ is of bounded variation. Let $P \in \mathcal{P}[a,b]$ such that $\| P\| < \delta$ and $P = \{x_0, \dots x_m\}$. 
+	Then on each interval 
+	$[x_{k-1}, x_k]$ consider a partition $P_k$, by grouping the points of the parition as disjoint subintervals we 
+	get $\sum_{P_k} |\Delta f| < \epsilon$ since the sum of the lengths of disjoint subintervals 
+	cannont exceed $x_k - x_{k-1} < \delta$ so that $f$ is clearly of bounded variation on each subinterval. 
+	Then let $P^\prime = P \cup \bigcup_{k=1}^m P_k$ and we have 
+	\[\sum_{p^\prime} |\Delta f_k| < m \epsilon \] 
+
+	Since $P_k \in \mathcal{P}[x_{k-1}, x_k]$ was arbitrary and since $\bigcup_{k=1}^m P_k \in \mathcal{P}[a,b]$, we see that $f$ is of bounded variation.
+\end{proof}
+
+\question 
+12 
+
+\begin{proof} 
+
+Fix $M$ such that $|f(x) - f(y)| \leq M |x - y|$ then given $\epsilon > 0$, let $\delta = \frac{\epsilon}{M}$. Then 
+Given $(a_k, b_k)$ satisfing $\sum b_k - a_k < \delta$ we have 
+\[\sum |f(b_k) - f(a_k)| \leq M \sum |b_k - a_k| < \epsilon\] 
+where the first inequality followed by our assumption on $f$.
+\end{proof}
 \end{document}
