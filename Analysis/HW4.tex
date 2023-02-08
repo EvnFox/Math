@@ -71,7 +71,8 @@ and a similliar argument to above will show that $f^\prime$ is bounded and $f$ i
 	Now we want to prove $p(x) + n(x) < v(x)$, so we prove that for any partitions $P_1$ and $P_2$, there exists a parition $P$ such that 
 	\begin{equation} \sum_{k \in A(P_1)} \Delta f_k + \sum_{k \in B(P_2)} |\Delta f_k | \leq \sum_{k = 1}^n |\Delta f_k | \end{equation}  
         Where the term on the right of the inequality is being evaluated at the partition $P$.	Namely, choose $P= P_1 \cup P_2$, then using (2) and (3) and
-	noticing that I can add the two terms on the right of the inequality when they are being evaluated at the same partition, the desired result follows. 
+	noticing that I can add the two terms on the right of the inequality when they are being evaluated at the same partition and the sum 
+	is the same as just evaluating $f$ at the partition, the desired result follows. 
 \end{proof} 
 
 \questionpart 
@@ -108,15 +109,26 @@ Where we dont need an absoulte value n the second line since we reintroduced the
 \question 
 10 
 
-	\begin{alphaparts} 
+\begin{alphaparts} 
 
-		\questionpart 
-		First let $g_1 = im(H)$ and $g_2 = Re(H)$, these are just analogs to first and seconed projection if we considered $H$ as a paramterized cure in $\mathbb{R}^2$. $g_1$ is continuous on $[a, 2b-a]$ by the pasting lemma. Since $V_{g_1} [a, b]  = V_{f} [a, b]$ is well defined as $f$ is of bounded variation and similiarlly for $V_{g_1}[b, 2b-a] = V_{g(x)} [a, b]$ we have by the additive property of total variation, adding the previous two numbers gives the total variation of $g_1$ on the interval $[a, 2b-1]$. A similiar story is going to hold for $g_2$, hence since the components of $H$ are of bounded variation, $H$ defines a rectifiable curve.
+\questionpart 
+First let $g_1 = Im(H)$ and $g_2 = Re(H)$, these are just analogs to first and seconed projection if we considered $H$ as a paramterized cure in $\mathbb{R}^2$. 
+
+$g_1$ is continuous on $[a, 2b-a]$ by the pasting lemma. We have $g_1(t) = f(t)$ for $t \in [a, b]$ and $g_1(t) = g(2b-t)$ for $t \in [b, ab-a]$. 
+Given a partition $P \in \mathcal{P}[a, 2b-a]$, add $b$ to $P$ if it is not already there. Then 
+\[\sum_{k=1}^n |\Delta g_{1_k} | = \sum_{k=1}^m |\Delta f_k| + \sum_{k = m}^n |\Delta g_k| \] 
+where $x_m = b$. Clearly this is bounded by our assumptions of $f$ and $g$.
+Further, since $V_{g_1} [a, b]  = V_{f} [a, b]$  and $V_{g_1}[b, 2b-a] = V_{g(x)} [a, b]$ we have by the additive property of total variation, adding the previous two numbers gives the total variation of $g_1$ on the interval $[a, 2b-1]$.
+A similiar story is going to hold for $g_2$, hence since the components of $H$ are of bounded variation, $H$ defines a rectifiable curve.
 	
 \questionpart
 
 Look at last page.  
 
+\questionpart 
+\begin{proof} 
+	$S$ is a closed set, so its boundry are all points $S \setminus intS$. For any point $(x, y)$ not on $\Gamma$ if $a < x < b$ and $f(x) < y < g(x)$ then we can find a open set of $(x, y)$ contained in $S$, so it is not in the boundry. Hence the only points are the points in $S$ that do not satisfy the above, i.e they must lie on the curve $\Gamma$.
+\end{proof}
 \questionpart
 I think in the second line defining $H$, they mean 2b-t not t.
 
@@ -131,10 +143,6 @@ This is easy to see since the imaginary component of $H$ is the $y$-axis, and in
 is minus its value in the second half $[b, 2b-a]$, so it is fliping the curve over the $x$-axis. also note that it is zero at $a$ and $b$, since $g$ and $f$ 
 agree there. 
 
-\questionpart 
-\begin{proof} 
-	$S$ is a closed set, so its boundry are all points $S \setminus intS$. For any point $(x, y)$ not on $\Gamma$ if $a < x < b$ and $f(x) < y < g(x)$ then we can find a open set of $(x, y)$ contained in $S$, so it is not in the boundry. Hence the only points are the points in $S$ that do not satisfy the above, i.e they must lie on the curve $\Gamma$.
-\end{proof}
 
 \questionpart
 \begin{proof} 
