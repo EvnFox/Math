@@ -37,17 +37,17 @@ Suppose that $G$ has no isolated vertices and that no induced subgraph on $G$ ha
 \end{prb}
 
 \begin{proof} 
-	Let $u, v \notin E(G)$, since no vertex in $G$ is isolated, let $u^\prime, v^\prime$ be adjaceint to $u$ and $v$ recpectivly. If $u^\prime = v^\prime$ then $G[u, v, u^\prime]$, is an induced subgraph with two edges, so we may assume that they are distinct. If either $uv^\prime, vu^\prime \in E(G)$, then we may take $G[v^\prime, u, v]$ or $G[u^\prime, u, v]$ gives us a induced subgraph on two edges so again we may assume that this doesnt happen. Now if $u^\prime v^\prime \in E(G)$, then $G[u, u^\prime, v]$ again is a counter example. But now in the last case we only have edges $u U^\prime$ and $v v^\prime$ so taking induced subgraph on all four edges gives a induced subgraph with two edges. Hence there must exits a $u, v$ edge.
+	Let $u, v \notin E(G)$, since no vertex in $G$ is isolated, let $u^\prime, v^\prime$ be adjaceint to $u$ and $v$ recpectivly. If $u^\prime = v^\prime$ then $G[u, v, u^\prime]$, is an induced subgraph with two edges, so we may assume that they are distinct. If either $uv^\prime, vu^\prime \in E(G)$, then we may take $G[v^\prime, u, v]$ or $G[u^\prime, u, v]$ gives us a induced subgraph with two edges so again we may assume that this doesnt happen. Now if $u^\prime v^\prime \in E(G)$, then $G[u, u^\prime, v^\prime]$ again is a counter example. But now in the last case we only have edges $u u^\prime$ and $v v^\prime$ so taking induced subgraph on all four vertices gives a induced subgraph with two edges. Hence there must exits a $u, v$ edge.
 \end{proof}
 \newpage
 
 \begin{prb} 
-	Can there exist a function taking $k \in \mathbb{n}$ to the minimal degree $\delta(G)$ which insures $G$ is $k$-connected? 
+
+	Can there exist a function taking $k \in \mathbb{N}$ to the minimal degree $\delta(G)$ which insures $G$ is $k$-connected? 
 \end{prb} 
 
 \begin{proof} 
 No, It is not hard to construct a graph $G$ of arbitrarily large minimal degree that is not $2$-connected. Take two disjoint graphs $G_1, G_2$ with minimal degree $n$, then add a vetex $v$ and connectect it to every every vertex in $G_i$ for $i = 1, 2$. $G$ thus defined is not $2$-connected since removing $v$ results in two connected components.  
 \end{proof}
-
 
 \end{document} 
