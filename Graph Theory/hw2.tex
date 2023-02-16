@@ -1,0 +1,98 @@
+\documentclass{article} 
+\usepackage{amsmath, amsthm, hyperref}
+\title{Homework 2} 
+\author{Evan Fox} 
+\date{2/13/2023}
+
+\newcommand{\defeq}{\overset{\mathrm{def}}{=\joinrel=}}
+\newtheorem{prb}{Problem}
+\begin{document} 
+\maketitle
+Disclosure: Morgan Prior and I worked together on most of the problems, speficially on number 2. 
+\begin{prb} 
+	The base case for $n=2$ is clear($ 0 = 0$), now suppose that the theorem is true for all $n \geq 2$ and let $T$ be a tree on $n+1$ vertices. 
+	Fix $v$ as a leaf in $T$ and let $u$ be adjacent to $v$. Now consider the tree $T^\prime \defeq T \setminus v$. 
+	Then we may apply our induction hypothesis to $T^\prime$ and say 
+	\begin{equation} 
+	t^\prime_3 + \dots (n-3)t^\prime_{n-1} = t^\prime_1 -2
+	\end{equation} 
+
+	We proced with two cases on the degree of $u$ in $T^\prime$. First suppose that $deg_{T^\prime}(u) = 1$. Then when adding $v$ back we remove a 
+	vertex of degree 1 ($u$) and we add back a vertex of degree 1($v$); this is the same as adding and subtracting 1 from the RHS of equation (1) so that equality still holds for $T$. Now on the other hand suppose that $deg_{T^\prime}(u) = k \geq 2$. 
+	Then adding $v$ back to $T^\prime$ gives $T$ and we have that the RHS of (1) increases by one (since $v$ has degree 1). 
+	however, we also have that $k + 1 = deg_{T}(u) \geq 3$. Effectivly $t_k^\prime - 1 = t_{k}$ and $t_{k+1}^\prime + 1 = t_{k+1}$ where 
+	$t_i$ denotes the same thing as $t_i^\prime$ but for $T$ rather than $T^\prime$. Since the coefficents are increasing by 1 for each consecutive 
+	term, the LHS of the equation will increase by 1 when we add v back, we can calculate the LHS of ! for $T$ in the following way,  
+	\[t_3 + 2t_4 + \dots + (n-3)t_{n-1}=  \] 
+	\[t_3 + 2t_4 + \dots + (k-2)t_k + (k-1)t_{k+1} + \dots + (n-3)t_{n-1} =  \] 
+	\[t^\prime_3 + 2t^\prime4 + \dots + (k-2)(t^\prime_k - 1) + (k-1)(t^\prime_{k+1} +1) +  \dots + (n-3)t^\prime_{n-1} =  \] 
+	\[t^\prime_3 + 2t^\prime4 + \dots + (k-2)(t^\prime_k)  + (k-1)(t^\prime_{k+1})- (k - 2) + (k - 1) + \dots + (n-3)t^\prime_{n-1}  =  \] 
+	\[t^\prime_3 + 2t^\prime4 + \dots + (k-2)(t^\prime_k)  + (k-1)(t^\prime_{k+1}) + \dots + (n-3)t^\prime_{n-1} +1  \] 
+	hence adding $v$ back to $T^\prime$ increases the LHS of equation (1) by 1, since the RHS increses by the same quanity the equation 
+	holds in $T$. 
+
+
+	Now part (b) will be clear since adding 2 to both sides gives  
+
+	\[t_3 + 2t_4 + \dots + (n-3)t_{n-1} + 2= t_1  \] 
+	we just verify that the lhs is always at least the maximall degree of $T$. 
+	if the max degree is $3  \leq k \leq n-1$, then we have 
+	\[ t_1 > (k - 2)t_k + 2 \geq k \] 
+	and this will be a term on the LHS of the above. All other terms only serve to increase the value of $t_1$ more. 
+	If $k = 1,2$, then the lhs side is 0 so the proposistion is true. 
+\end{prb}
+\begin{prb} 
+	Since $n^{n-2}$ is the number of labeled trees on $n$ vertices, it is clear that we need to show that the number of labeled trees that use 
+	a specfic edge $e$ is $2n^{n-3}$. Then subtracting this quanity from the total number of spaning trees will give the number of labeled spanning 
+	trees in $K_n \setminus e$. To do this we use the same bipartite technique that we learned in class. 
+	Let $G_1$ be the set of all labeled trees on $n$ vertices, and $G_2$ be the set of all edges in $K_n$
+Then $|G_1| = n^{n-1}$ by cayleys formula and $|G_2| = {n \choose 2}$. Then we add an edge to our bipartite graph from a 
+	fixed labeled tree to a vertice in $G_2$ (which is an edge in $K_n$) if the given tree contains the edge. This is the correct setup 
+	since we want to find the number of labeled trees that use a spefic edge, which will be the degree of the vertice 
+	in $G_2$. Since we know that each tree contains exactly $n-1$ edges, each vertice in $G_1$ must have that many edges, so the degree of each vertice in 
+	$G_1$ is $n-1$. We also know that the sum of the degrees of the vertices of both partite sets are equal. The sum of the degrees in $G_1$ is then $n-1(n^{n-2})$ and this must be equal to the sum of the deg
+	rees in $G_2$ which is $\sum_{k = 1}^{n \choose 2} d(k)$, but each degree will be the same since for each edge the number of labeled spanning trees in $K_n$ which contain said edge is 
+	constant, that is, it doesnt matter which edge we removed in the statement of the question. 
+	So the sum above becomes $t{n \choose 2}$ where 
+	$t$ is the number of (labeled spanning) trees that use a given edge in $K_n$. Now solving $n-1(n^{n-2})  = t {n \choose 2}$ for $t$ gives us 
+	
+	\[(n-1)(n^{n-2}) = t \cdot \frac{n(n-1)}{2} \]
+	\[2n^{n-2} = nt \]
+	\[2n^{n-3} = t \].  
+	So $t = 2n^{n-3}$ this is the number of trees that use the edge $e$. Now subtracting this from cayleys formula $n^{n-2}$ must give the total number 
+	of labeld trees in $K_n\setminus e$. 
+
+\end{prb}
+\begin{prb}
+Suppose that $G$ is bipartite and let $B_i$ for $i = 1,2$ be the partite sets for $G$. For each $H$ subgraph of $G$. 
+Consider $A_i = V(G) \cap B_i$ for $i = 1, 2$, clearly, $A_i$ is an independant set and $|A_1| + |A_2| = |H|$ so that at least 
+one of them must contain at least half the vertices of $H$. 
+
+On the other hand, suppose that $G$ is not bipartite, then there exits an odd cycle $C_m$ subgraph of $G$. 
+Let $|C_m| = 2k+1$. We want to show that any set $X \subset V(C_m)$ such that 
+$|X| \geq k + 1/2$ contains two neighbors in $C_m$. 
+To do this, fix a vertex $v \in X$, now since $X$ is supposed to be independant it cannot contain neighbors of $v$, so it 
+can only contain points of even distance from $v$. In fact we would have to contain all points of even distance from $v$ so that $X$ contains at least 
+half the elements of $X$ (there are $k$ vertices of even distance and including $v$ gives $k+1 > k + \frac{1}{2}$). However, 
+it will be the case that there will exists a pair of adjcent vertices with even distence to v, so that $X$ is not independant. Namley the furthest two vertices of even distance, will be adjacent; otherwise we contradict $C_m$ being an odd cycle. Given the two furthest vertices of even distance, there could 
+at most be one vertice between them (otherwise they are not furthest); if this vertice $y$ exists, then it is the unique vertice of distance $l$ from 
+$v$, but this contradicts $C_m$ being odd, since it implies $m = 2l - 2$ which is even. 
+
+\end{prb}
+\begin{prb} 
+
+Base case is clear for $n=2$ and $n=3$, since one can very quickly draw the bipartite graph using the method discussed in class and the bipartite graph obtained is unique.  
+
+Suppose that for $n \geq 3$ that $T_n$ has a leaf in its larger partite set or both if they are equal. Let $v, u \in T_{n+1}$ with $v$ a leaf and $vu \in E(T_{n+1})$  
+now set $T = T_{n+1} \setminus v$. Clearly $|T| = n$ so that we may apply the induction hypothesis. Let $A_1, A_2$ denote the partite sets of $T$ and 
+suppose $|A_1| \geq |A_2|$. Then we may fix a leaf in $A_1$. If this leaf is any vertex other than $u$, we are done since adding $v$ back could at worst 
+(if $u \in A_1$) make $|A_1| = |A_2|$ in which case there would be a leaf in both and at best (if $u \in A_2$) we just add another leaf to $A_1$. Now we need to pay attention to the case where $u$ is the only leaf in $A_1$ since adding $v$ back could concivably make it so that there are no leaves in $A_1$, in this case we prove that $|A_1| = |A_2|$. Indeed, assume that $u$ is the only leaf in $A_1$. Then we can consider $T \setminus u$ and apply the induction hypothesis, since $u$ was the only leaf in $A_1$, $A_1^\prime \defeq A_1 \setminus u$ now has no leaves, so that it cannot 
+be larger than $A_2^\prime \defeq A_2$ or we would obtain a contradiction; so $|A_1^\prime| \leq |A_2^\prime|$ but this just says 
+$|A_1| - 1 \leq |A_2|$, Hence adding $u$ back and recalling we assumed $|A_2| \leq |A_1|$, must make $|A_1| = |A_2|$. 
+and then adding $v$ back makes $|A_1| < |A_2|$, 
+with $v \in A_2$ (since $u$ was in $A_1$) so that $T_{n+1}$ contains a leaf in its larger parite set. 
+\end{prb}
+
+\end{document}
+
+
