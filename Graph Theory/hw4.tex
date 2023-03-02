@@ -1,0 +1,106 @@
+\documentclass{article} 
+\usepackage{amsmath, amsthm, hyperref}
+\title{Homework 4} 
+\author{Evan Fox} 
+\date{2/13/2023}
+
+\newcommand{\defeq}{\overset{\mathrm{def}}{=\joinrel=}}
+\newtheorem{prb}{Problem}
+\begin{document} 
+\maketitle
+Morgan Prior and I worked together
+\begin{prb} 
+	\begin{proof} 
+	We prove that the smaller partite set of $G = X \dot{\cup} Y$ is at least $e(G) / \Delta(G)$, then it follows that $X$ is a minimal 
+	vertex cover and since $G$ is bipartite, this is also the largest matching. 
+
+	We proceed with induction. If $n =2$ the result clearly holds since the max degree is $1$ and the number of edges is $1$ we get 
+	$e(G)/\Delta(G) = 1$ which is equal to the size of the largest matching. 
+
+	Now suppose that for $n \geq 2$ all bipartite graphs $B$ have a matching of size at least $\frac{e(B)}{\Delta(B)}$. and let 
+	$G = X \dot{\cup} Y$ be bipartite. Without loss of generality, assume that $|X| \leq |Y|$. Then we remove a vertex $v$ from 
+	$X$ such that removing $v$ does not lower the maximal degree of the graph (This is always possible unless $|X| = 1$, in which 
+case the graph is a star and we have $\frac{e(G)}{\Delta{G}} = \frac{n-1}{n-1} = 1$ which is equal to the size of the largest matching). 
+	Now consider $G^\prime = G \setminus v$. Then this is a graph on $n$ vertices show that by our induction hypothesis, we have 
+	$|X \setminus v| = \frac{e(G^\prime)}{\Delta(G)}$. Then we have 
+	\[ \frac{G^\prime}{\Delta(G)} \leq \frac{e(G)}{\Delta(G)} \leq \frac{e(G^\prime + \Delta(G)}{\Delta(G)} \leq \frac{e(G^\prime)}{\Delta(G)} + 1 \] 
+	So that adding back $v$ increases the ration by at most 1, but increases the size of $X$ by exactly 1, hence we have $|X| \geq \frac{e(G)}{\Delta(G)}$. 
+	
+	We have established that in any bipartite graph, the smaller of the two partite sets is at least $\frac{e(G)}{\Delta(G)}$, since taking 
+	$X$ gives a minimial vertex cover, we may apply the theorem proved in class for bipartite graphs, namely, that maximum size of a matching 
+	is the same as the minimum size of a vertex cover. Size a minimum vertex cover is at least $\frac{e(G)}{\Delta(G)}$, the size of a max matching is 
+	also at least as big. 
+
+	For the example, since we know that there are more than $(k-1)n$ vertices and that the complete bipartite graph has max degree $n$, we have that 
+	\[ \alpha^\prime(G) > \frac{(k-1)n}{n} = (k-1) \] 
+	so it is at least $k$ (because the inequality is strict and $\alpha^\prime(G)$ is restricted to integers). 
+	\end{proof} 
+\end{prb}
+
+\begin{prb} 
+	\begin{proof} 
+		Let $G$ be a group and let $M$ be a matching of max size. Then let $S$ be the set of all vertices in $G$ that are contained in an edge of $M$. 		Note that $S = 2\alpha^\prime(G)$. We prove that $S$ is a vertex covering. Indeed, we have by maximality of $M$ that for every edge $e$ in $G$, either $e \in M$ or 
+		$e$ is incident to an edge in $M$. In the first case $e$ is covered by the vertices it connects, in the second case $e$ is covered by the verties of the edge it is incident to. Hence $S$ is a vertex covereing of the graph $G$. Then it follows 
+		\[ \beta(G) \leq S = 2\alpha^\prime(G) \] 
+		as desired. 
+
+		For the second part, one can consider a graph $G$ with $k$ components, such that each component is a 3 cycle. 
+		It is clear that the three cycle has a max matching of 1 and a minimum vertex cover of size 2, then 
+		repeating this component $k$ times gives the result. 
+	\end{proof}
+\end{prb}
+
+\begin{prb} 
+	\begin{proof} 
+		The max matching is 8 as pictured because there exists a vertex cover of size 8 
+	\end{proof}
+\end{prb} 
+\newpage
+\begin{prb} 
+	\begin{proof} 
+	Assume that $T$ have a perfect matching, then by tuttes thm we have that $q(T \setminus v) \leq |\{v\}| = 1$. 
+	Now since $T$ is a tree and have a perfect matching it cannot be on an odd number of vertices. If $v$ is a leaft 
+	then clearly $T \setminus v$ has exactly one odd component. In the case that $v$ is not a leaf, removing $v$ splits the 
+	tree into two components (since any two vertices have exactly one path in a tree), whose odders must add to an odd number 
+	(so that adding $v$ back gives $T$ on an even number of vertices). Hence exactly one of the compents will be odd. 
+
+
+	Now we must proceed in the opposite direction. Assume that $T$ does not have a perfect matching, we will show that the condidtion given in the problem is violated. As in my last homework, I define a leaf edge to be an edge that contains a leaf. We begin to build a matching by first taking $M$ to be the collections of all leaf edges in $T$, then we look at the subgraph $T_1$ wich is induced on all vertices not contained in a leaf edge of $T$. 
+	Inductivly, we define $T_n$ to be the induced subgraph on all vertices not contained in a leaf edge of $T_{n-1}$ and we identify $T$ with $T_0$. 
+	Now for some $k \in \{0, 1 \dots\}$ we must have that this process fails, that is at some $k$, we will be unable to add all leaf edges of $T_k$ to $M$ without a contradiction (because we assumed there is no perfect matching.) At this step, it must be the case that there are two (or more) leaf edges $e_1, e_2$ which 
+	share a common vertice, say, $w$. We will show that $q(T \setminus w) \geq 2$. Since we are assuming that the process fails at step $k$, 
+	it then is succesful for the first $k-1$ steps (I deal with $k=0$ below). The leaves in $T_k$ then connect to vertices which themselves can be thought of as roots of a tree that contains a perfect matching, and hence contains an even number of vertices. Then when we consider $T \setminus w$, 
+we get one componet with each tree plus the edge $e_1$ or $e_2$ (or more if thats the case), since the tree is on an even number of vertices, these are two odd components. The above doesnt quite apply to the case $k =0$, which I deal with now, if on the first step we are unable to add all leaf edges to $M$, then as above this must be because at least two leaf edges both contain the same vertice, $w$, then $T\setminus w$, splits into two componets which contain exactly 1 point and the rest of the tree, hence this has more than one odd component. 
+	\end{proof} 
+
+\end{prb} 
+
+\newpage
+\end{document} 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
