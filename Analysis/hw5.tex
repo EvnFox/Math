@@ -1,0 +1,207 @@
+\documentclass[11pt,largemargins]{homework}
+\usepackage{commath, amsmath, amsfonts, hyperref}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\ran}{\operatorname{ran}}
+\newcommand{\dom}{\operatorname{dom}}
+\newcommand{\eps}{\varepsilon}
+\newcommand{\ssd}{\bigtriangleup}
+\newcommand{\pow}{\mathcal{P}}
+\newcommand{\itab}{\int_a^b f(x)d\alpha(x)}
+% TODO: replace these with your information
+% TODO: replace these with your information
+\newcommand{\hwname}{Evan Fox}
+\newcommand{\hwemail}{efox20@uri.edu}
+\newcommand{\hwtype}{HW}
+\newcommand{\hwnum}{1}
+\newcommand{\hwclass}{MTH 436: Analysis}
+\newcommand{\hwlecture}{}
+\newcommand{\hwsection}{}
+
+\begin{document}
+\maketitle
+\question 
+
+\begin{alphaparts} 
+	\questionpart  
+	\begin{proof} 
+If $\itab$ exists by the given definition the for any $\eps > 0$ there exists a $\delta > 0$ such that $\| P \| < \delta$ we have that for any choice of $t_k \in [x_{k-1}, x_{k}]$, 
+$|S(P, f, \alpha) - A | < \eps$ for some $A \in \R$. We want to show that there exists $P_\eps$ 
+such that taking $P \supset P_\eps$ will imply the same inequality. Taking $P_\eps = P$ where 
+$P$ is any partition of $[a, b]$ with norm less than $\delta$ will product the desired result, 
+since refining a partition can only decrease its norm. The fact that the integrals are the same 
+follows since both are converging to the same $A$. 
+\end{proof}
+\questionpart  
+
+\begin{proof} 
+The existence of this integral according to definition 7.1 is ensured by a theorem proved in class. 
+Namely since $f$ and $\alpha$ are not \emph{both} discontinuous from the left or right, the integral exits. On the other hand, if it exists according to the definition given in the problem then they would
+have to be equal; by def 7.1, we would have the integral be equal to $f(c)[\alpha(c+) - \alpha(c-)] $, since $f(c) = 0$, we get that the integral must be 0. However, for any $\delta > 0$ we can find a partition that doesnt include $c$, and so the RS sum wil become $f(t_k)[\alpha(c+) - \alpha(c-)]$. 
+for $t_k \in [x_{k-1}, x_k]$ with $x_k > c$, so by choseing $t_k > c$, we can always make the sum non zero, hence the integral doesnt exits. 
+\end{proof} 
+\end{alphaparts} 
+
+\question 
+
+\begin{proof} 
+	Let $I = \itab$ where $\alpha(x) =x$ and let $M= \sup\{f(x) : x \in [a, b]\} $. 
+	Given $\eps > 0$, there exits a $P_\eps$ such that $U(P_\eps, f) \leq I + \eps/2$. 
+	Now set $N$ as the number of subdivisions of $P_\eps$ and let $\delta = \frac{\eps}{2MN}$. 
+	Then for $\|P\| < \delta$ we have that 
+	\[ U(P, f) = \sum_{k= 1}^M  M_k(f) \Delta x_k = S_1 + S_2 \] 
+	Where $S_1$ contains all tems such that $[x_{k-1}, x_k]$ contains no points of $P_\eps$ and $S_2$ contains all other terms. 
+	Then we have that 
+	\[ S_1 \leq U(P_\eps, f) \leq I + \frac{\eps}{2} \] 
+	and 
+	\[ S_2 \leq MN \|P\| < MN \delta < \frac{\eps}{2} \]
+	Hence adding these shows that 
+	\[ U(P, f) = S_1 + S_2 \leq I + \eps\] 
+	. Repeating the same process for the lower sums will give $L(P, f) > I - \eps$ for $\|P\| < \delta^\prime$. 
+	Then it follows 
+	\[ U(P, f) - L(P, f) < I + \eps - (I - \eps) = 2e \] 
+	So by Rienmanns condition, the integral exits. 
+\end{proof}
+
+\question 
+\begin{alphaparts} 
+	\questionpart 
+\begin{proof} 
+	We use Eulers summation formula for $f(x) = x^{-s}$. 
+	we have 
+\[ \sum_1^n f(x) = \int_1^n f(x) dx + \int_a^b f'(x)(x \lfloor x \rfloor - \frac{1}{2}) dx + \frac{f(1) + f(n)}{2} \] 
+Let the first integral be dentonted $I_1$ and the secong $I_2$. Then 
+\[ I_1 = \int_1^n x^{-s}dx = \frac{1}{s - 1} - \frac{n^{-(s-1)}}{s-1} \] 
+For $I_2$ we distribute $f^\prime(x)$ and use linearity to obtain 
+\[I_2 = \int_1^n f^\prime(x) dx - \int_1^n f^\prime(x) \lfloor x \rfloor dx - 1/2 \int_1^n f^\prime(x) dx \] 
+\[ -s \int_1^n x^{-s} dx + s\int_1^n x^{-(s+1)} \lfloor x \rfloor dx - \frac{s}{2}\int_1^n x^{-(s+1)} dx \] 
+Now we have split $I_2$ into three different integrals we can deal with each one their own. First 
+note that the second intgral above is what we are looking for so we will leave him alone. 
+Then the first integral is the same as $I_1$ and the second will evaluate to $-\frac{1}{2n^s} + \frac{1}{2}$. 
+Now for the last part of Eulers formula we have  
+\[\frac{f(1) + f(n)}{2} =  \frac{1}{2n^s} + \frac{1}{2} \]  
+Now putting all of this together, 
+\[(1 -s) \left(\frac{1}{s-1} - \frac{1}{(s-1)(n^{s-1}} \right) + s\int_1^n \frac{1}{x^{s+1}} \lfloor x \rfloor dx - \frac{1}{2n^s} + \frac{1}{2}+ \frac{1}{2n^s} + \frac{1}{2} \] 
+then we get 
+\[ -1 + \frac{1}{n^{s-1}} +  s\int_1^n \frac{1}{x^{s+1}} \lfloor x \rfloor dx  - \frac{1}{2n^s} + \frac{1}{2}+ \frac{1}{2n^s} + \frac{1}{2} \] 
+\[ \frac{1}{n^{s-1}} +  s\int_1^n \frac{1}{x^{s+1}} \lfloor x \rfloor dx \]
+as desired 
+\end{proof}
+
+\questionpart 
+\begin{proof} 
+	Let $f(x) = \frac{1}{x}$ then $f^\prime(x) = \frac{-1}{x^2}$. We have 
+	\[ \int_1^n f(x)dx = \ln(n) \] 
+	and 
+	\[ \int_1^n f^\prime(x) dx = - \int_1^n \frac{1}{x^2} dx = \frac{1}{n} - 1 \] 
+	Now we apply Eulers summation formula to get 
+	\[ \sum_1^n f(n) = \int_1^n f(x) dx + \int_1^n f^\prime(x)(x - \lfloor x \rfloor) dx - \frac{1}{2} \int_1^nf^\prime(x) dx + \frac{f(1)+ f(n)}{2}\] 
+	reducing this using the above gives 
+	\[ln(n) + \int_1^n f^\prime(x) (x - \lfloor x \rfloor) dc - \frac{1}{2}[\frac{1}{n} - 1] + \frac{1}{2n} + \frac{1}{2}  \] 
+	\[ = ln(n) - \int_1^n \frac{x - \lfloor x \rfloor}{x^2}dx + 1 \] 
+
+	as desired. 
+\end{proof}
+
+
+\end{alphaparts}
+ 
+
+\question 
+\begin{proof} 
+
+We apply integration by parts to 
+\[\int_1^{2n} f(x)d(\lfloor x \rfloor - 2 \lfloor \frac{x}{2} \rfloor) \] 
+and obtain 
+\[\int_1^{2n} f(x)d(\lfloor x \rfloor - 2 \lfloor \frac{x}{2} \rfloor) +\int_1^{2n}(\lfloor x \rfloor - 2 \lfloor \frac{x}{2} \rfloor)  d(f(x)) = -f(1) \] 
+\[ f(1) +\int_1^{2n} f(x)d(\lfloor x \rfloor - 2 \lfloor \frac{x}{2} \rfloor) + \int_1^{2n}(\lfloor x \rfloor - 2 \lfloor \frac{x}{2} \rfloor)  d(f(x)) =0  \]  
+Applying reduction to a Rienmann integral to the right most term gives what we want, so we just need to show that the two left terms  satisfies the following  
+\[f(1) + \int_1^{2n} f(x)d(\lfloor x \rfloor - 2 \lfloor \frac{x}{2} \rfloor) = - \sum_{k=1}^{2n} (-1)^kf(k) \] 
+so that we can add to both sides and get the result. 
+Using linear properties we have that the LHS integral of the above is equal to  
+\[ \int_1^{2n} f(x)d(\lfloor x \rfloor) - \int_1^{2n} f(x)d(2\lfloor \frac{x}{2} \rfloor) \] 
+\begin{equation} = \sum_{k=2}^{2n} f(k) -2 \int_1^{2n} f(x)d(\lfloor \frac{x}{2} \rfloor) \end{equation}
+Looking into the integral on the right, we notice that we may apply a change of variables to get 
+\[ -2 \int_1^{2n} f(x)d(\lfloor \frac{x}{2} \rfloor) = -2 \int_{\frac{1}{2}}^n f(2x)d(\lfloor x \rfloor) \] 
+\[= -2 \int_{\frac{1}{2}}^1 f(2x) d(\lfloor x \rfloor) -2 \int_1^n f(2x) d(\lfloor x \rfloor)\]
+which will enable us to reduce the intergral to a finite sum. 
+Then this becomes $-2f(2) -2 \sum_{k = 2}^n f(2x) $. I.e it is $-2$ times the sum of the even terms. So going back to what we want to show we have  
+\[f(1) + \sum_{k = 2}^{2n}f(k) - 2 f(2) - \sum_{k=2}^n f(2k) = (f(1) + \dots f(2k)) - (2f(2) + 2f(4) + \dots + 2f(2n)) \]
+\[ = f(1) - f(2) + f(3) + \dots - f(2n) = - \sum_{k=1}^{2n} (-1)^kf(k) \] 
+which proves the result
+
+\end{proof}
+\question 
+\begin{proof} 
+We show that 
+\[ \int_1^n f^\prime(x) [x - \lfloor x \rfloor - \frac{1}{2}] dx= - \int_1^n \phi_2(x) f''(x) dx\].
+Let $\phi_1(x)$ and $\phi_2(x)$ be defined as in the problem. Notice that $\phi_2^\prime(x) = \phi_1(x)$ by the first fundamental theorem of calculus. 
+Now we apply integration by parts to $\int_1^n f^\prime(x) d\phi_2(x)$. Note that the LHS will be zero since $\phi_2(n) = \int_0^n \phi_1(x) dx = 0$. 
+so $f^\prime(n)\phi_2(n) - f^\prime(1)\phi_2(1) = 0$. 
+Then integration by parts gives us 
+\[ \int_1^n f^\prime d\phi_2(x) + \int_1^n \phi_2(x) df^\prime(x) = 0\] 
+\[ \int_1^n f^\prime \phi_1(x) dx + \int_1^n \phi_2(x) f''(x)dx= 0 \] 
+by applying reduction to a Riemann integral. So 
+\[ \int_1^n f^\prime [x - \lfloor x \rfloor - \frac{1}{2} ] dx  = -\int_1^n \phi_2(x) f''(x) dx \] 
+Since integrating over $\phi_1(x) $ or $x - \lfloor x \rfloor - \frac{1}{2}$ is the same. now one can just subsitite this integral in Eulers formulat to obtain the result. 
+\end{proof}
+ 
+
+\question 
+\begin{proof} 
+	By the second mean value theorem for RS intefrals, there exists $x_0 \in [a, b] $ such that 
+	\begin{equation} \int_a^b f d\beta = f(a) \int_a^{x_0} d\beta + f(b)\int_{x_0}^b d \beta \end{equation}
+	Then we may apply the first fundamental theorem of calculus to see that $\beta^\prime(x) = g(x)\alpha^\prime(x)$. 
+	Then 
+	\[ \int_a^{x_0} d\beta = \int_a^{x_0} g(x) \alpha^\prime(x) dx = \int_a^{x_0} g(x) d\alpha(x) \] 
+	and the same is true for $\int_{x_0}^bd\beta$. Hence we have 
+	\[ \int_a^b fd\beta = f(a)\int_a^{x_0} gd\alpha + f(b) \int_{x_0}^b g d\alpha \] 
+	which is what we wanted to prove. 
+\end{proof}
+\end{document} 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
