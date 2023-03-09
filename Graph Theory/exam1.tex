@@ -1,0 +1,101 @@
+\documentclass{article} 
+\usepackage{amsmath, amsthm, hyperref, amssymb}
+\title{Exam 1} 
+\author{Evan Fox} 
+\date{3/9/2023}
+
+\newcommand{\defeq}{\overset{\mathrm{def}}{=\joinrel=}}
+\newtheorem{prb}{Problem}
+\begin{document} 
+\maketitle
+
+\begin{prb} 
+First I prove the following:
+Let $n \geq 4$
+and $G$ be on n vertices and let $4< k < n$. Then if every induced subgraph on $k$ vertices is disconnected, $G$ is disconected.
+	\begin{proof} 
+
+if $k = n-1$, it is clear, since in any connected graph $n > 4$ there exists a vertex v such that $G \setminus v$ is conected. This can be seen first by removing any vertex of degree 1, if none exists then $\delta \geq 2$ and there is a cycle from which an appropiate vertice can be removed(not every edge is a brige). Then for any $4 < k< n$, if all induced subgraphs on $k$ vertices are disconnected, it follows that any induced subgraph of order $k+1$ is disconnected 
+by the above. This will continue so that all induced subgraphs of order n-1 are disconnected and we see that $G$ must be disconected. 
+
+
+Now to solve the question at hand, if n = 4, clearly $P_3$ is the only solution, by checking cases. 
+Now let $G$ be on $n$ vertices and assume $G$ and $\overline{G}$ are connected. Then if $G$ does not contain $P_3$, the complement of 
+every connected induced subgraph of order 4 must be disconnected (since $P_3$ is the only graph on 4 vertices with connected complement), these subgraphs are induced subgraphs in $\overline{G}$ and 
+clearly every induced subgraph of order 4 in $\overline{G}$ is obtained this way, hence$ \overline{G}$ is disconnected by the above remark; a contradiction. 
+
+So we may conclude that $G$ contains a copy of $P_3$.
+\end{proof}
+\end{prb} 
+
+\begin{prb} 
+	\begin{proof} 
+		Suppose that $G$ is connected and that there exits vertices $a, b, c$ such that $\{b, c \} \in E(G)$ and 
+		$dist(a, b) = dist(a, c)$. We prove this holds iff there is an odd cycle. First if there is an odd clycle then clearly this will hold, fix a vertex $v$ in the cycle, then the two furthest vertices in the cycle will have the same distence to $v$ and they will be connected by an edge (since they are furthest). Conversly, let $P$ be a minimal lenght path from $a$ to $b$ and $Q$ be a minimal length path from $a$ to $c$. let $w$ be vertex 
+with the largest distance from $v$ such that both $P$ and $Q$ contain it. Then $wPbcQw$ is an odd cycle, since $P$ and $Q$ have the same lenght 
+(this remains true if we start from $w$ instead of v) the sum of their lengths is even, then the $\{b, c\}$ edge makes it an odd cycle. Hence $G$ is not bipartite. 
+	\end{proof}
+\end{prb}
+\newpage
+\begin{prb} 
+
+	\begin{proof} 
+		Let $M$ and $N$ be disjoint matchings and suppose that $|M| = |N| + k$. 
+		Then let $S \subset M$ satisfying $|S| = k-1$. Then set 
+		\[ M_1 = N \cup S \] 
+		\[ N_1 = M \setminus S \] 
+		We have that $|M_1| = |N \cup S| = |M| - k + (k - 1) = |M| - 1$, where I am using $S \cap N = \varnothing$ (since $S \subset M$) 
+		and $|N_1| = |M \setminus S| = |N| + k - (k - 1) = |N| + 1$, again since $S \subset M$. Clearly these are disjoint, 
+		\[M_1 \cap N_1 = (N \cup S) \cap (M \setminus S) = (N \cap (M \setminus S)) \cup (S \cap (M \setminus S)) = \varnothing \cup \varnothing\] 
+		and they have the same union, since 
+		\[N \cup S \cup (M \setminus S) = N \cup M \] 
+
+	\end{proof}
+\end{prb}
+ 
+
+\begin{prb} 
+
+	\begin{proof} 
+%	First note that there exists a component of $G$ has at least $2k$ vertices? no 
+	First we assume $n = 2k$ then extend the result. 
+
+	Let $G$ be a graph on $2k$ vetices such that $\delta \geq k$. We show that $\alpha^\prime(G) \geq k$ by finding a spanning path in $G$. 
+	If $k = 1$ then $G$ is $P_1$ and the result is satisfied. Now for $k > 1$, first note that $G$ is connected, since otherwise, the smaller component can have at most $k$ vertices and hence has a minimal degree less than $k$.
+
+
+	Now consider a longest path $P = \{ x_0, x_1, \dots, x_l\}$ in $G$ and order the vertices by their index. 
+	%The path $P$ lies in some connected compoment
+	%First we handle the case where $|P| \leq 2k$
+	Both $x_0$ and $x_l$ have at least $k$ neighbors on the path, let $E_1$ denote the set of all edges whose maximal (by the ordering) vertex is 
+	adjacent to $x_0$ and let $E_2$ denote the set of all edges whose minimal vertex is adjacent to $x_l$. 
+	Then both $|E_1| \geq k \leq |E_2|$, since the number of edges in $P$ is at most $2k - 1$, we have $E_1 \cap E_2 \neq \varnothing$. 
+	Hence we may fix $e = \{x_i, x_{i+1} \} \in E_1 \cap E_2$. 
+	Now the path $x_0x_{i+1}Px_lx_ipx_1$ is a path in $G$ that vists every vertex, since if there were a vertice $w$ left unvisted, 
+	we would have a path $Q$ from $w$ to $x_j$ then by travesring $Q$ onto $P$, then going to the nearest end vertice, say $x_l$ we construct a path 
+	$wQx_jPx_lx_iPx_0$ which contradics our assumption that $P$ is the longest path. 
+	Now we have a path that vists all $2k$ vertices in $G$ exactly once and doesnt repeat egdes. By constructing a matching $M$ which takes 
+	every other edge from the path we get a matching of size $k$, since $\|P\| = 2k-1$. As desired. 
+
+
+	%so for components C, with $|C| \leq 2k$ we have a spanning path and a mathcing \lfloor \frac{|C|}{2} \rfloor
+	%% \sum |C_i| \geq 2k and \sum \lfloor \frac{|C_i|}{2} \rfloor 
+	% and for comonents $C$, with $|C| > 2k$ The lonest path is at least $|P| = 2k$
+	Now if $n > 2k$ the we can no longer prove that $G$ is connected, if fact it may be the case that all connected components of $G$ have less than $2k$ vertices. For each connected component $C_i$, 
+	we will consider the longest path in each $C_i$. If $|C_i| \leq 2k$ the above argument applies and we get a matching of size $\lfloor \frac{|C_i|}{2} \rfloor$ (which is $k$ if $|C_i| = 2k$ which was the case above). 
+
+	If there is $C_i$ such that $|C_i| > 2k$, then the longest path is at least $2k$ vertices since if the longest path $P$ has $|P| < 2k$, using the fact that we are in a connected component with minimal degree $k$ along with the argument from the first paragraph will force $P$ to be spannin, hence $|C_i| < 2k$; a contradiction. Then by selecting alternating edges in the path (of length at least $2k - 1$) we get a matching of sufficint size  
+
+	So assume that each $C_i$ has order less than $2k$ and let $t$ be the number of components (clearly $t \geq 2$).  
+	We want to show that 
+	\[ k \leq \sum_{i = 1}^{t} \lfloor \frac{|C_i|}{2} \rfloor  \] 
+	Now the minimal degree restricts how small $|C_i|$ can be; in oder to satisfy the minimal degree we must have $|C_i| > k$. 
+	So since $t \geq 2$ we have $t \frac{k}{2} \geq k$. And hence, 
+	\[ k\leq t\frac{k}{2} \leq \sum_{i=1}^t \frac{k}{2} \leq \sum_{i=1}^{t} \lfloor \frac{k+1}{2} \rfloor \leq \sum_{i = 1}^{t} \lfloor \frac{|C_i|}{2} \rfloor \] 
+%\sum |C_i| > 2k ; |C_i| > k 
+%t 
+
+\noindent Hence there is a matching $M$ of size $k$ and so $\alpha^\prime(G) \geq |M| = k$. As desired. 
+	\end{proof} 
+\end{prb} 
+\end{document} 
