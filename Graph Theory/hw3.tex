@@ -1,0 +1,136 @@
+\documentclass{article} \usepackage{amsmath, amsthm, hyperref}
+\title{Homework 2} 
+\author{Evan Fox} 
+\date{2/13/2023}
+
+\newcommand{\defeq}{\overset{\mathrm{def}}{=\joinrel=}}
+\newtheorem{prb}{Problem}
+\begin{document} 
+\maketitle
+Morgan Prior and I worked together
+\begin{prb} 
+Let $G$ be a graph and let $\lambda_1$ be the largest eigenvector of the ajacency matrix $A$. Show 
+\[ 2\frac{m}{n} \leq  \lambda_1 \leq \sqrt{\frac{2m(n-1)}{n}} \] 
+
+\begin{proof} 
+We will refer to the first inequality as (1) and the second as (2). (1) will follow clearly from teqniques discussed in class, 
+namely, let $j = (1, \dots, 1)^T$. We will have $Aj = (d(1), \dots, d(n))^T$ and $\|j\| =\sqrt{n} $. Hence,  
+\begin{equation*} 
+	\frac{j^T}{\|j\|} A \frac{j}{\|j\|} = \frac{1}{n} \sum_{k = 1}^n d(k) = d(G)
+\end{equation*} 
+But since $\frac{j}{\|j\|}$ is a vector of norm 1, and we know that $\lambda_1$ is the maximum of the qudratic form $x^T A x$ over all $x$ such that $\|x\| = 1$, 
+the first inequality follows.
+\[ \lambda_1 > d(G) = \frac{2m}{n} \] 
+
+Now (2) can be proven via an application of the Cauchy-Swartz inequality. Recall that for eigen values $\lambda_1, \dots, \lambda_n$,
+\begin{enumerate} 
+	\item $\sum_{k = 1}^n \lambda_k = 0$ 
+	\item $\sum_{k = 1}^n \lambda_k^2 = 2m$
+\end{enumerate}
+So we have 
+\[ \lambda_1 = -\sum_{k = 2}^n \lambda_k \] 
+\[ \lambda_1^2 = \left(-\sum_{k = 2}^n \lambda_k \right)^2 \leq (n-1)\sum_{k=2}^n \lambda_k^2\]
+Where the last inequality follows from C-S. Now replacing $\sum_{k=2}^n \lambda_k^2$ with $2m - \lambda_1^2$ we obtain 
+\[(n-1)\sum_{k=2}^n \lambda_k^2 = (n-1)(2m - \lambda_1^2) = 2mn - n\lambda_1^2 - 2m + \lambda_1^2 \] 
+so that 
+\[\lambda_1^2 \leq 2mn - n\lambda_1^2 - 2m + \lambda_1^2 \] 
+Solving for $\lambda_1$ gives 
+\[\lambda_1 = \sqrt{\frac{2m(n-1)}{n}} \] 
+as desired. 
+
+\end{proof}
+\end{prb}
+
+
+\begin{prb} 
+Prove that a tree can have at most one perfect matching. 
+\begin{proof} 
+Let $T$ be a tree with a perfect matching, we prove that this matching is unique. 
+I wil call an egde $e_v \in E(T)$ a \emph{leaf edge} of the vertex $v$ if it contains a vertice which is a leaf in $T$. 
+We notice that in order for a matching $M$ on $T$ to be perfect, it must contain all leaf edges; otherwise, 
+there would exist a leaf not covered by the matching. Let $T_1$ be the induced subgraph on all vertices $u \in V(T)$, 
+under the condition that $u$ is not contained in any leaf edge. In symbols $T_1 = T[{u \in V(T) | u \notin e_v \forall v }]$ where $v$ runs over all leaves. 
+We may define $T_2$ from $T_1$ in a similliar way and continue inductivly until we remove all vertices. 
+
+Now at each step it is clear that $T_n$ remains a tree (and hence the matching will contain its leaf edges)
+, since we are only removeing leaves and all vertices ajacent to a leaf. Further, 
+the perfect matching $M$ on $T$ is a perfect matching restricted to $T_1$(since for every element of the matching I remove, I remove both vertices it contains) 
+, continuing inductivily, it follows that $M$ restricted to $T_n$ 
+is a perfect matching. 
+
+Now assume that there exists another perfect matching $M^\prime$, then $M^\prime$ must contain all leaf edges in $T$ as stated above.
+So that $M$ and $M^\prime$ at least agree on the leaf edges of $T$. 
+But then when we restrict $M^\prime $ to $T_1$, $M^\prime$ will also have to contain all leaf edges in $T_1$(otherwise it is not a perfect matching on $T_1$) which would be a contradiction). Continuing, we will see that $M^\prime$ must contain all leaf edges in $T_n$, but this will force $M$ and $M^\prime$ 
+to coincede, hence the perfect matching is unique (if it exits). 
+\end{proof}
+\end{prb} 
+
+\begin{prb} 
+Suppose that $G$ is bipartite and that none of its eigen values are 0. Show that $G$ has a perfect matching 
+
+
+
+	I am not sure how to use your hint to use the determinate but I think I found a nice proof
+\begin{proof} 
+	Let $G = X \dot{\cup} Y$. We prove that $|X| = |Y|$ then by halls condition, we will have a perfect matching. 
+The trick will be to pick a labeling of the graph that makes the ajacency matrix have a nice form. 
+Let the vertices in $X$ be labeled from $\{1, \dots, k\}$ and the verticies in $Y$ be labeled $\{n-k, \dots, n \}$. 
+Then since $X$ and $Y$ are independant sets, when forming $A(G)$ we get the following block matrix 
+\[A(G) = \begin{pmatrix} 
+	0_{k \times k} & a_{(n-k) \times k} \\ 
+	b_{k \times (n-k) } & 0_{(n -k) \times (n-k) }
+\end{pmatrix}
+\]
+
+We know that $0$ is not an egienvalue of this matrix, hence it is invertable, by inspection one can see the inverse of this matrix to be of the form 
+\[A(G)^{-1} = \begin{pmatrix} 0 & b^{-1} \\ a^{-1} & 0 \end{pmatrix}\] 
+but this will imply that $a_{(n - k) \times k}$ is left and right invertable, hence it is a square matrix (same is true for $b$). 
+Hence $k = n-k$ and we get that there will exits a perfect matching. 
+
+
+To see that the converse is false, look at a 4-cycle. This is bipartite since it doesnt contain an odd cycle, further, it has a perfect matching. 
+However, when you look at the adjacency matrix, you see that it is not invertable (row-echolen form has row of all zeros). 
+\end{proof}
+
+In case I need to be more cear in finding the inverse note 
+
+\[\begin{pmatrix} 0 & a \\ b & 0 \end{pmatrix} \times \begin{pmatrix} x & z \\ y &  w \end{pmatrix} = \begin{pmatrix} I & 0 \\ 0 & I\end{pmatrix} \] 
+Then this gives 
+\[ 0x + ay = I \] 
+\[ 0 z + aw = 0 \] 
+\[ bx + 0y = 0 \] 
+\[ bz + 0w = I \] 
+
+So $w = x = 0$ and $y$ is the right inverse of $a$ and $z$ is the right inverse of $b$, multipling the other directions shows $a$ and $b$ to be left invertable. 
+
+
+
+
+
+
+
+
+
+
+
+\end{prb}
+
+\end{document} 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

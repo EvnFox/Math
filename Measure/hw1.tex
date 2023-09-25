@@ -1,0 +1,139 @@
+\documentclass{article}
+
+\usepackage{import}
+\usepackage{pdfpages}
+\usepackage{transparent}
+\usepackage{xcolor}
+\usepackage{amsmath, amsthm, amsfonts, amsthm, amssymb, mathtools, mathrsfs}
+\usepackage{graphicx} 
+\usepackage{tikz, tikz-cd} 
+\usepackage{hyperref} 
+\usepackage[margin=1in]{geometry} 
+
+
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\N}{\mathbb{N}}
+       %	\newcommand{\incfig}[2][1]{%
+%	    \def\svgwidth{#1\columnwidth}
+%	    \import{./figures/}{#2.pdf_tex}
+%}
+%\pdfsuppresswarningpagegroup=1
+
+\newtheorem{prb}{Problem}
+
+\title{MTH535 Homework 1}
+\author{Evan Fox} 
+\date{9/24}
+
+
+\begin{document}
+\maketitle
+	    \begin{prb}  \end{prb} 
+	    \begin{proof} 
+	Let $A = \{ \bigcup_{i = 1}^n E_i	\, | \, n \in \mathbb{N}, \, E_j \in S, \,  E_i \cap E_j = \varnothing \text{ for } i \neq j \} $
+	    We have $S \subset A$ since for any $X \in S$, we can write $X$ as a disjoint union of elements in $S$ 
+	    in a trivial way. Further, any algebra containing $S$, by definition, contains all finite unions
+	    of elements of $S$, which is a superset of all finite unions of disjoint elements in $S$, thus the algebra 
+	    contains $A$. All that remains is to see that $A$ is an algebra itself. We have $\varnothing \in S \subset A$. 
+	 We need to prove that $A$ is closed under complements, take $X \in A$, then we have $X = \bigcup_{i = 1}^n E_i$
+	 for a finite collection of pairwise disjoint sets $E_i \in S$, $i = 1, \dots, n$. Now since $E_i \in S$, 
+	 we have by property (c), that $E_i^c = \bigcup_{j =1}^{n_i} R_{j, i}$. Then 
+	 \begin{equation}
+		 \label{eq:1}
+		 X^c = \left(\bigcup_{i = 1}^n E_i \right)^c = \bigcap_{i =1 }^n E_i^c = \bigcap_{i = 1}^n \left( \bigcup_{j=1}^{n_i} R_{j, i}\right)
+	 \end{equation}
+	 let $N = \max\{ n_i \, |\, i = 1, \dots, n\} $ and set $R_{j, i} = \varnothing$ for $ n_i < j \leq N$. Then \ref{eq:1} becomes 
+	 \begin{equation}
+		 \label{eq:2}
+		 X^c =  \bigcap_{i = 1}^n \left( \bigcup_{j=1}^{N} R_{j, i}\right) = \bigcup_{j = 1}^N \left( \bigcap_{i = 1}^n R_{j, i} \right)
+	 \end{equation}
+	 Since $E_1^c = \bigcup_{j = 1}^{n_1} R_{j, 1}$ is a disjoint union, we have for any $k_1 \neq k_2$, $R_{k_1, 1} \cap R_{k_2, 1} = \varnothing$. 
+	 We also have that $\bigcap_{i =1}^n R_{k_1, i} \subset R_{k_1, 1}$ and $\bigcap_{i =1}^n R_{k_2, i} \subset R_{k_2, 1}$. Hence the intersections 
+	 $\bigcap_{i =1}^n R_{j, i}$ are pairwise disjoint for all $j$. Since $S$ is closed under finite intersections, $\bigcap_{i =1}^n R_{j, i} \in S$. 
+	 Thus, \ref{eq:2} expresses $X^c$ as a finite pairwise disjoint union of elements of $S$ and $X^c \in A$.  
+	 Finially, we show $A$ is closed under finite interesections (closure of $A$ under finite unions then follows from DeMorgan's laws).  
+	 Let $A_1, A_2 \in A$, then we have pairwise disjoint collections $\{E_1, \dots, E_n\}$ and $\{F_1, \dots, F_m\}$ such that 
+	 \[ A_1 = \bigcup_{i = 1}^n E_i \] 
+	 \[ A_2 = \bigcup_{i =1}^m F_i \] 
+	 Then 
+	 \begin{equation}
+		 A_1 \cap A_2 = \left[ \bigcup_{i = 1}^n E_i \right] \cap \left[ \bigcup_{j=1}^m F_j \right]  
+		 = \bigcup_{j = 1}^m \left[\bigcup_{i = 1}^n E_i\right] \cap F_j  
+		 = \bigcup_{j=1 }^m \bigcup_{i =1}^n E_i \cap F_j
+	 \end{equation}
+	 if $n \neq m$ let $F_i = E_i$ for $\min\{n, m\} <  i \leq \max\{n, m\}$, Then 
+	 \begin{equation}
+		 A_1 \cap A_2 = \bigcup_{i, j}^{\max\{n, m\}} E_i \cap F_j \in S
+	 \end{equation}
+	since the union is finite and the sets $E_i \cap F_j$ are disjoint since $\{E_1, \dots, E_n\}$ is. Since $A$ is closed under the intersection of any two
+	of its elemetns, it follows from induction and associativity of intersections that it is closed under all finite intersections. Hence $A$ is an 
+	algebra containing $S$ and since any algebra containing $S$ also contains $A$, it follows that $A = \mathcal{A}(S)$. 
+\end{proof} 
+
+\begin{prb}  \end{prb} 
+\begin{proof} 
+	\begin{enumerate}
+		\item Suppose not and let $\alpha:\mathbb{N} \to \{0, 1\}^{\N}$ be any bijection. 
+			Let \newline $\pi_n:\{0, 1\}^{\N} \to \Z_2$ be the projection on to the $n^{th}$ component. Then consider 
+			$	b_i = \pi_i(\alpha(i)) +1 	$ and let $b = (b_1, b_2, \dots, b_k, \dots) \in \{0, 1\}^{\N}$ 
+			then for all $n \in \N$, $b \neq \alpha(n)$ since they 
+			differ in the $n^{th}$ component by construction. Thus $b \notin {\tt Im}(\alpha)$, so $\alpha$ is not 
+			a surjection. a contradiction. 
+
+		\item 
+			Define 
+			$\alpha: \mathcal{P}(\N) \to \{0, 1\}^\N$ by $\alpha(A) = \{ \alpha_1, \alpha_2, \dots)$ where
+			$\alpha_n = 1 $ if $n \in A$ and 0 otherwise. Then given $b \in \{0, 1\}^{\N}, 
+			\, b = (b_1, b_2, \dots)$, we have $S = \{ n \, | \, b_n = 1\} \in \mathcal{P}(\N)$ with $\alpha(S) = b$. Hence
+			$\alpha$ is a surjection. 
+	\end{enumerate}
+\end{proof} 
+
+\begin{prb}  \end{prb} 
+\begin{proof} 
+	From class we know that $m^*([0,1]) = 1$, since 
+	the outer measure of an interval is 
+	its length, but the outer measure of a countable set is 0(also proven in class), hence if we assume that $[0, 1]$ is 
+	countable its an interval whose outermeasure is not its length a contradiction. 
+\end{proof} 
+
+\begin{prb}  \end{prb} 
+\begin{proof} 
+	Let $E$ have positive outer measure, we write $E$ as the union of countably many disjoint bounded sets, for example by considering 
+	the collection $b_k = (k, k+1]$ for all $k \in \mathbb{Z}$, and taking $A_k  = b_k \cap E$. If $m^*(A_k) = 0$ for all $k \in \Z$, 
+	then by countable subadditivity of outer measure, we have $m^*(E) = m*(\bigcup_{n \in \Z} A_k) \leq \sum_{n \in \Z} m^*(A_n)= 0$
+	contradicting our assumption that $E$ has positive outer measure. 
+\end{proof} 
+
+\begin{prb}  \end{prb} 
+\begin{proof} 
+	Assume $E$ is measureable,
+	Fix $\epsilon  > 0$. 
+	By thm 2.11 parts 1 and 3 proved in class we may fix an open set $\mathcal{O}$ such that $E \subset \mathcal{O}$ and 
+	$m^*(\mathcal{O} \setminus E) < \frac{\epsilon}{2} $ and a closed set $\mathcal{C}$ such that $\mathcal{C} \subset E$ and 
+	$m^*(E \setminus \mathcal{C}) < \frac{\epsilon}{2}  $ Then by measureability of $E$ and $\mathcal{C}$, we apply excision, 
+	\[		m^*(\mathcal{O} \setminus E) = m^*(\mathcal{O}) - m^*(E) < \frac{\epsilon}{2} \] 
+	\[ m^* (E \setminus \mathcal{C}) = m^*(E) - m^*(\mathcal{C}) < \frac{\epsilon}{2} \] 
+	Then adding these inequalities and applying excision
+	on the result yeilds $m^*(\mathcal{O} \setminus \mathcal{C}) < \epsilon$. Conversly, suppose that for every $\epsilon > 0$, there exists $\mathcal{O} 
+	\supset E$ open 
+	and $\mathcal{C} \subset E$ closed such that $m^*(\mathcal{O} \setminus \mathcal{C}) < \epsilon$. Then 
+	by monotinicity, $m^*(\mathcal{O}\setminus E) \leq m^*(\mathcal{O} \setminus \mathcal{C}) < \epsilon$. 
+	so by thm 2.11 $E$ is measureable. 
+\end{proof}
+
+\begin{prb}  \end{prb} 
+\begin{proof} 
+	if $E$ is not measurable then by the negation of 2.11 there exists $\epsilon_0 > 0$ such that for all $\mathcal{O}$ open sets 
+	containing $E$, $m^*(\mathcal{O} \setminus E) > \epsilon_0$. By definition of outer measure as an infimum, we may fix a countable 
+	collection of bounded open intervals $\{I_k\}_{k=1}^\infty$ convering $E$, such that $\sum_{k = 1}^\infty \ell(I_k) < m^*(E) + \epsilon_0$. 
+	Then let $\mathcal{O} = \bigcup_{k=1}^\infty I_k$, we have 
+	\[ m^*(\mathcal{O}) \leq \sum_{k=1}^\infty \ell(I_k) < m^*(E) + \epsilon_0 \] 
+	so that 
+	\[ m^*(\mathcal{O})- m^*(E) < \epsilon_0 < m^*(\mathcal{O} \setminus E)\]`
+	as desired. 
+\end{proof} 
+\end{document}
+

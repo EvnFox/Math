@@ -1,0 +1,154 @@
+\documentclass{article}
+
+\usepackage{import}
+\usepackage{pdfpages}
+\usepackage{transparent}
+\usepackage{xcolor}
+\usepackage{amsmath, amsthm, amsfonts, amsthm,amssymb,mathtools, mathrsfs}
+\usepackage{graphicx} 
+\usepackage{tikz, tikz-cd} 
+\usepackage{hyperref} 
+\usepackage[margin=.75in]{geometry} 
+\usepackage[shortlabels]{enumitem}
+
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\N}{\mathbb{N}}
+       %	\newcommand{\incfig}[2][1]{%
+%	    \def\svgwidth{#1\columnwidth}
+%	    \import{./figures/}{#2.pdf_tex}
+%}
+%\pdfsuppresswarningpagegroup=1
+
+\newtheorem{prb}{Problem}
+
+\title{MTH 436 Homework 4}
+\author{Evan Fox} 
+\date{May 1, 2023}
+
+
+\begin{document}
+\maketitle
+Morgan and I worked together on this homework. 
+	\begin{prb}
+		
+	\end{prb} 
+
+\begin{proof}
+	Let $ \mathcal{A}$ be a set of closed subsets of $\R$ such that at least one element is bounded, say $C \in \mathcal{A}$. Then it follows 
+	from the Hine-Borel theorem that this set is compact. 
+	We prove the contrapositive, that is, suppose that for all $F_1, \dots , F_n \in \mathcal{A}$, we have the intersection 
+	$\bigcap^n F_i \neq \varnothing $. Then we prove theat $\bigcap_{F \in \mathcal{A}} F \neq \varnothing$. 
+	We do this by recalling the finite intersection propertery from 525. We know a space $X$ is compact if and only if for all collections 
+	of closed sets having the finite intersection property, the intersection over the whole collection is non empty. 
+	First note that $C$ (The compact set in $\mathcal{A}$ above) must have a non-trivial intersection with every other $A \in \mathcal{A}$, by assumption. 	Then consider the collection $\mathcal{B} = \{C \cap A \, | \, A \in \mathcal{A}\}$ considered as subsets of the compact metric space $C$. Then 
+	this is a collection of closed sets (in $C$) and it has the finite intersection property, since $\mathcal{A}$ does. 
+	Hence, by the theorem stated above $\bigcap_{B \in \mathcal{B}} B \neq \varnothing$. Which is to say, 
+	$\bigcap_{A \in \mathcal{A}} \Big(C \cap A \Big) = \bigcap_{A \in \mathcal{A}} A \neq \varnothing$ as desired.  
+	\end{proof}
+
+\begin{prb}
+		
+\end{prb}
+\begin{proof}
+	\begin{enumerate}[(a)]
+		\item $F$ is defined as the complement of a union of open sets and hence is closed 
+			\item Let $I$ be an interval contained in $F$ and $x, y \in I$; further suppose that  $x < y$.  
+				Then by density there exists $r_m$ with $x < r_m < y$, but then by definition $F$ cannot contain the interval 
+				$(r_m - \frac{1}{2^m}, r_m + \frac{1}{2^m})$, hence neither can $I$, hence $I$ cannot be an interval. It follows $x = y$. 
+			\item We have 
+				\[
+| \bigcup^\infty (r_k - \frac{1}{2^k}, r_k + \frac{1}{2^k} ) | = \sum^\infty |(r_k - \frac{1}{2^k}, r_k + \frac{1}{2^k} )|  = \sum^\infty \frac{1}{2^{k-1}} 
+= 2 
+				\]
+				Since $|\R| = \infty$, it follows that $|F| = \infty$. 
+	\end{enumerate}
+\end{proof}
+\begin{prb}
+	
+\end{prb}
+
+\begin{proof}
+	Consider the space $(\R, \{ \varnothing, \R\})$. Then the only continuous functions into $\R$ with the usually sigma algebra of borel sets are 
+	the constant functions; If $f$ takes more than one value so that $f(x_1) \neq f(x_2)$, let $B$ be a borel set containing $f(x_1)$ but not $f(x_2)$. Then 
+	the preimage of $B$ will be some proper subset of $\R$, hence, not in our sigma algbra. Construct the function, 
+	\[
+		f(x) =  \begin{cases}
+			a & x \in [0, \infty) \\ 
+			-a & x \in (-\infty, 0)
+	         	\end{cases}
+	\]
+	Then this will produce the desired result. It is not constant so it is not measurable, but $|f|$ is constant.  
+
+\end{proof}
+
+
+
+
+ 
+
+\begin{prb}
+	
+\end{prb}
+
+\begin{proof}
+	\begin{enumerate}[(a)]
+		\item 
+			Let $E \in \mathcal{S}$, then $E \in \mathcal{T}$ and $E \subset X$ by assumption, then $E \cap X = E$. 
+			Conversly, it is clear that $F \cap X \subset X$, and a $\sigma$-algebra is closed under intersections, 
+			so $F \cap X \in \mathcal{T}$ hence it is also in $\mathcal{S}$. 
+		\item	Let $\mathcal{S} = \{ F \cap X | F \in \mathcal{T} \}$.  
+			$\varnothing \in S$ since $\varnothing \in \mathcal{T}$, Then $X \setminus (F \cap X) = (Y \setminus F) \cap X $, and 
+			$Y \setminus F \in \mathcal{T}$ since $\mathcal{T}$ is a $\sigma$-algebra hence 
+			this set is closed under complementation. Then given a collection of sets of the form $F \cap X$ for $F \in \mathcal{T}$. 
+			we have 
+			\[
+				\bigcup^\infty F_i \cap X  = X \cap \Big( \bigcup^\infty F_i \Big) \in \mathcal{S}	
+			\]
+ 	\end{enumerate}
+\end{proof}
+
+
+\begin{prb}
+	
+\end{prb}
+
+\begin{proof}
+	Let $f: B \to \R$ be a borel measurable function defined on a borel set $B$. Define $g$ as in the problem. 
+	Let $C$ be a borel set and write $C = (C \cap f(B)) \cup (C \cap \{0\})$. 
+	Then 
+	\[
+		g^{-1}(C) = g^{-1}(C \cap f(B)) \cup g^{-1}(C \cap \{0\})
+	\]
+
+	Since $C \cap f(B) \subset f(B)$ and $f$ is borel measurable, the first primage on the RHS must be a borel set. 
+	Then if $C \cap \{0\} = \varnothing$ the second priamge is trivial and if $C \cap \{0\} = \{0\}$ the second primage is 
+	$\R \setminus B$ wich is a borel set. Then since the union of borel sets is a borel set, $g$ is borel measureable. 
+\end{proof}
+
+\begin{prb}
+	
+\end{prb}
+
+\begin{proof}
+Let $f(x) > 0$ for all $x$, then we can write 
+\[
+	f(x)^{g(x)} = e^{\ln(f(x)^{g(x)})} = e^{g(x) \ln(f(x))}
+\]
+Where the RHS is $S$ measurable by the product and composistion results obtained in class. Note that $f(x) > 0$ is required so the $ \ln(f(x))$ is defined.  
+\end{proof}
+
+\begin{prb}
+	
+\end{prb}
+
+\begin{proof}
+ Let $\mu$ and $\nu$ be measures. Then $(\mu + \nu)(\varnothing) = 0 + 0 = 0$. let $E$  be a collection of disjoint sets. We have 
+ \[
+	 (\mu + \nu)(\bigcup E) = \mu(\bigcup E) + \nu( \bigcup E) = \sum^{\infty} \mu(E) + \sum^\infty \nu(E) = \sum (\mu + \nu)(E) \]
+
+\noindent Where the last equality follows from basic facts about 
+infinite series, hence $(\mu + \nu)$ is a measure. 
+\end{proof}
+\end{document}

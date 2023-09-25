@@ -1,0 +1,143 @@
+\documentclass{article}
+
+\usepackage{import}
+\usepackage{pdfpages}
+\usepackage{transparent}
+\usepackage{xcolor}
+\usepackage{amsmath, amsthm, amsfonts, amsthm, mathtools, mathrsfs}
+\usepackage{graphicx} 
+\usepackage{tikz, tikz-cd} 
+\usepackage{hyperref} 
+\usepackage[margin=1in]{geometry} 
+
+
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\N}{\mathbb{N}}
+       %	\newcommand{\incfig}[2][1]{%
+%	    \def\svgwidth{#1\columnwidth}
+%	    \import{./figures/}{#2.pdf_tex}
+%}
+%\pdfsuppresswarningpagegroup=1
+
+\newtheorem{prb}{Problem}
+
+\title{MTH 548 Homework 6}
+\author{Evan Fox} 
+\date{April 11, 2023}
+
+
+\begin{document}
+\maketitle
+\begin{prb} Let $G$ be $m$-regular with a cut vertex, show that $G$ is class 2. \end{prb} 
+
+\noindent I will make heavy use of the following
+\[
+	\chi^\prime(G) \geq \lceil \frac{e(G)}{\alpha^\prime(G)} \rceil . 
+\]
+\begin{proof}
+	let $G$ be a graph on $n$ vertices that is $m$-regular and has a cut vertex $x$. 
+	First we must have matching of size $\Big\lceil \tfrac{n}{2} \Big\rceil$, since if $\alpha^\prime(G) < \lfloor \frac{n}{2} \rfloor$ we have 
+	\[    	
+	\chi^\prime(G) \geq \Big\lceil \frac{e(G)}{\alpha^\prime(G)} \Big\rceil > \Big\lceil \frac{e(G)}{\lfloor \tfrac{n}{2} \rfloor} \Big\rceil \geq 
+	\frac{\tfrac{n}{2}}{\lfloor \tfrac{n}{2} \rfloor} m \geq m
+	\]
+
+	\noindent The case where $|G|$ is odd is handeled below, so we can assume that $|G|$ is even and hence that $G$ has a perfect matching.
+	Since $G$ has a perfect matching tuttes condidtion is satisfied. 
+	Then consider $G \setminus x$, Tuttes condition together
+	with our assumption that $|G|$ is even, implies that there is exactly one odd component of $|G \setminus x|$. Moreover, since removing $x$ 
+	splits $G$ into	at least 2 components (cut vertex), there exists a component of $G \setminus x$ with even order, call it $E$. 
+	Now define $E^\star = E \cup x$, this is a graph on an odd number of vertices where every vertex execpt $x$ has degree $m$. 
+	let $c_0$ denote the degree of $x$ in $E^\star$, so we have $1 \leq c_0 \leq m-1$. we will show that $E^\star$ cannot be $m$ colorable. 
+
+	
+\noindent	To see this, let $|E^\star| = 2k + 1$ and notice that 
+	\[
+		\chi^\prime(G) \geq  \Big\lceil \frac{e(G)}{\alpha^\prime(G)} \Big\rceil \geq \frac{\frac{1}{2} (2km + c_0)}{k} > m + \frac{c_0}{2k} > m 
+	\]
+
+	\noindent so we are done. Clearly, the existance of a subgraph with $\chi^\prime(E^\star) > m$ implies the result for $G$.  
+\end{proof} 
+
+
+
+\begin{prb} Let $G$ be a $m$-regular graph with $|G| = 2k + 1$, Then $G$ is class 2.  \end{prb} 
+\begin{proof}  
+	We know $\alpha^\prime(G) \leq k$. 
+	Then we have that 
+	\[
+		\chi^\prime(G) \geq \frac{e(G)}{\alpha^\prime(G)}  = \frac{m(2k+1)}{2\alpha^\prime(G)} \geq \frac{m(2k+1)}{2k} > m 
+	\]
+	where $e(G) = \frac{m(2k+1)}{2} $ follows from the fact that $G$ is regular and an application of the hand shaking lemma. 
+
+\end{proof} 	    
+
+
+
+\begin{prb} Let $G$ be a graph with $|G| \geq 3$, such that for all  $k < n$ we have that all non adjacent $x, y$ satisfy $deg(x) + deg(y) \geq k$. Then there 
+exists a path of length $k$\end{prb} 
+\begin{proof} 
+	Let $n \geq 3$ and let $G$ be a graph on $n$ vertices. Further take some $k < n$ such that for all $x, y \in V(G)$ non-adjaicent, we have 
+	$deg(x) + deg(y) \geq k$. We want to find a path of length $k$, so suppose no such path exists; then the longest path in $G$ has at
+	most $k-1$ vertices. Let $m$ be the length of the longest path $P$ in $G$. 
+
+	Case I: if $x_1 x_m \in E$, then adding this edge to the path creates a hamiltonian cycle. Since if any vertice is un visted, 
+	there exists a path to some vertex in $P$, then looping around the cycle contradicts our assumption about $P$ being the longest path. 
+	Then this cycle visits $n$ vertices and one can obtain a path of length $k$ 
+
+
+	Case II: if $x_1 x_m \notin E$, then by our assumption we have the condidtion that $d(x_1) + deg(x_m) \geq k$. 
+	Now order the vertices in the path $P$ by their index, we prove that there exists a pair $x_i, x_{i+1} $ such that 
+	$x_1 x_{i + 1} \in E$ and $ x_{i} x_m \in E$.  
+	First define
+	\[
+		S = \{ i | x_1 x_{i + 1} \in E \} 
+	\]
+	and 
+	\[	
+		T = \{ i | x_i x_m \in E \}  
+	\]
+	then 
+	\[
+		|S \cup T| + |S \cap T| = |S| + |T| = deg(x_1) + deg(x_m) \geq k
+	\]
+	and since there is no $x_1 x_m$ edge, we have  $|S \cup T| < k-2$. Hence $|S \cap T| \geq 1$ as desired. 
+	Then, this cycle must be hamiltonian as argued in the book and in class. Hence it is a cycle of length $n$, contradicting 
+	the assumption that the longest path has $k-1$ vertices. 
+
+	
+\end{proof} 
+
+
+
+
+
+
+
+
+\end{document}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
