@@ -1,0 +1,157 @@
+\documentclass{article}
+
+\usepackage{import}
+\usepackage{pdfpages}
+\usepackage{transparent}
+\usepackage{xcolor}
+\usepackage{amsmath, amsthm, amsfonts, amsthm, amssymb, mathtools, mathrsfs}
+\usepackage{graphicx} 
+\usepackage{tikz, tikz-cd} 
+\usepackage{hyperref} 
+\usepackage[margin=1in]{geometry} 
+
+
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\m}{m^*}
+       %	\newcommand{\incfig}[2][1]{%
+%	    \def\svgwidth{#1\columnwidth}
+%	    \import{./figures/}{#2.pdf_tex}
+%}
+%\pdfsuppresswarningpagegroup=1
+
+\newtheorem{prb}{Problem}
+
+\title{MTH 535 Homework 2}
+\author{Evan Fox} 
+\date{October 10, 2023}
+
+
+\begin{document}
+\maketitle
+	    \begin{prb}  \end{prb} 
+	    \begin{proof} 
+	    	Let $b_k = (k, \infty)$, then $\m(b_k)  = \infty$ for all $k$, so $\lim_{k \to \infty}\m(b_k) = \infty$ but 
+		$B = \bigcap_{k = 1}^\infty b_k = \varnothing$ so $\m(B) = 0$. Therfore the assumption 
+		that $b_1$ have finite outer measure is critical for continuity of measure to hold (for intersections).
+
+	    \end{proof} 
+
+	    \begin{prb}  \end{prb} 
+	    \begin{proof} 
+	        Let $A \subset \R$ and let $\{E_k\}_{k = 1}^\infty$ be a countable collection of
+		disjoint measurable sets. By proposistion 6
+		we have that for $n \in \N$, 
+		\[ m^*(A \cap \bigcup_{k = 1}^n E_k) = \sum_{k = 1}^n m^*(A \cap E_k) \] 
+		Now monotinicity of outer measure 
+		and the fact that $A \cap \bigcup_{k =1}^n E_k \subseteq A \cap \bigcup_{k = 1}^\infty E_k$ together 
+		with the above yeilds 
+		\begin{equation}
+			\sum_{k = 1}^n \m(A \cap E_k) \leq \m(A \cap \bigcup_{k = 1}^\infty E_k )
+		\end{equation}
+		Since the above holds for all $n$, taking the limit as $n \to \infty$ we get 
+		\begin{equation}	
+			\sum_{k = 1}^\infty \m(A \cap E_k) \leq \m(A \cap \bigcup_{k = 1}^\infty E_k )
+		\end{equation}
+		The reverse inequality follows from sub additivity of outer measure, 
+		\begin{equation}
+			\m(A \cap \bigcup_{k = 1}^\infty E_k ) \leq \sum_{k = 1}^\infty \m(A \cap E_k) 
+		\end{equation}
+		Thus, $\sum_{k = 1}^\infty \m(A \cap E_k) = \m(A \cap \bigcup_{k=1}^\infty E_k)$.  
+	    \end{proof} 
+
+	    \begin{prb}  \end{prb} 
+	    \begin{proof}
+	    Let $E \subseteq \R$ with $\m(E) > 0$, by Vitali's theorem any given choice set $C_E$ is nonmeasurable. 
+	    Since any countable set has measure 0 and is thus measurable, $C_E$ must be uncountable.
+	    \end{proof}
+
+
+	    \begin{prb}  \end{prb} 
+	    \begin{proof} 
+	    	Let $E$ be non-measurable with finite outer measure, then by the negation of 2.11 (part 1) 
+		there exists $\epsilon_0 > 0$ such that for all open sets $O \supseteq E$,  $\m(O\setminus E) \geq \epsilon_0$. Since outer measure is defined as an infimum and 
+		$\m(E) < \infty$, for each $n \in \N$ we finc a collection of disjoint bounded 
+		open sets $\{I_{n, k}\}_{k =1}^\infty$ with 
+		$\sum_{k =1}^\infty \ell(I_{n, k}) < \m(E) + \frac{1}{n} $. Now define 
+		$G_n = \bigcup_{k = 1}^\infty I_{n, k}$ so 
+		\[ \m(G_n) \leq \sum_{k =1}^\infty \ell(I_{n, k}) < \m(E) + \frac{1}{n} \] 
+		Thus $\m(G_n) - \m(E) < \frac{1}{n}$. 
+		Let $G = \bigcap_{n = 1}^\infty G_n$, 
+		Since 	$E \subseteq G_n$, $E \subseteq G$ and $\m(E) \leq \m(G)$. Conversly $G \subseteq G_n$ 
+		and $\m(G_n) \leq \m(E) + \frac{1}{n}$ for every $n$, hence $\m(E) = \m(G)$. 
+		$G$ is $G_\delta$ by definition, and 
+		\[ \m(G_n \setminus E) > \epsilon_0 \] 
+		\[ \implies \m(G \cap E^c) = \m(\bigcap_{n=1}^\infty G_n \cap E^c) = \lim_{n \to \infty} \m(G_n \cap E^c) > \epsilon_0 \] 
+		where in the last step I am using continuity of measure
+		since $\m(G_1) < \m(E) + \tfrac{1}{n}$ implies $G_1$
+		has finite outer measure. 
+	    \end{proof} 
+
+            \begin{prb}  \end{prb} 
+            \begin{proof} 
+		    Let $F = \bigcap_{k =1}^\infty F_k$ where $F_k$ is the subset of $[0, 1]$ remaining after 
+		    $k$ steps of the generalized cantor removal process. Since at each step we are removing open sets, 
+		    $F_k$ is closed, and thus as a intersection of closed sets, $F$ is closed.
+		    Now we prove that that $[0, 1]\setminus F$ is dense in $[0, 1]$. Let $x \in [0, 1]$, 
+		    We show that very open ball around $x$ of 
+		    radius $\epsilon > 0$ contains a point of $[0, 1]\setminus F$. 
+		    %%%%
+%		    we construct a sequence in $[0, 1]\setminus F$ converging to $x$.
+		    %%
+		    If $x \in [0, 1] \setminus F$ 
+		    we are done since $[0, 1]\setminus F$ is a union of open intervals. So we assume that $x \in F$. 
+		    Notice that at the $n^{th}$ step of the removal process, 
+		   $F_n$ is the union of $2^n$ disjoint closed intervals of equal length, 
+		   so that each closed interval has length less than $\tfrac{1}{2^n}$. This says that for $x \in F_n$, 
+		    there exists a point $u_n$ in $[0, 1]\setminus F_n$ such that $|x - u_n| < \tfrac{1}{2^n}$.
+		    %%
+		    % then letting $u = \{u_n\}_{n = 1}^\infty$, is a sequence of points in $[0, 1] \setminus F$ 
+		    % converging to $x$, hence every point of $[0, 1]$ is a limit point of $[0, 1] \setminus F$. 
+	            %%
+		    Since $x \in F$ implies $x \in F_n$ for all $n$, and since $\tfrac{1}{2^n} \to 0$ as $n \to \infty$,	            it follows that for any open ball of radius $\epsilon$, say $B_\epsilon(x)$ there exits $n \in \N$ such that 
+		    $\tfrac{1}{2^n} < \epsilon$, so that $u_n \in B_\epsilon(x)$.  
+		    Thus since every open ball around $x \in [0, 1]$ contains elements $u \in [0, 1]\setminus F$, Thus
+		    $x$ is a limit point of $[0, 1]\setminus F$ and hence is contained in the clousure. 
+		    
+		    To compute $\m(F)$, note that at step $n$ we are removing 
+		    $2^{n-1}$ intervals of length $\alpha \tfrac{1}{3^n}$, So 
+		    \[ \m([0, 1]\setminus F_n) = \alpha \sum_{k =1}^n \frac{2^{k-1}}{3^k} \] 
+		    Thus 
+		    \[ \m([0, 1] \setminus F) = \alpha \sum_{k = 1}^\infty \frac{2^{k-1}}{3^k} = \alpha \] 
+		Then since $F$ is measurable 
+		\[ \m([0, 1]) - \m(F) = \alpha \implies \m(F) = 1 - \alpha \] 
+            \end{proof} 
+
+	    \begin{prb}  \end{prb} 
+	    \begin{proof} 
+	    	let $f$ be continuous. 
+		Let $E$ be the collection of subsets such that $e \in E$ if $f^{-1}(e)$ is Borel. 
+		Since $f$ is continuous, the preimage of an open set is open, since 
+		open sets are Borel the preimage of an open set under $f$ is borel, thus $E$ contains all open sets. 	
+		Further, since preimages are well behaved with respect to
+		unions, intersections, and complements, for any countable collection $\{A_n\}_{n = 1}^\infty
+		\subseteq E$ 
+		
+		\[ f^{-1} (\bigcap_{n = 1}^\infty A) = \bigcap_{n = 1}^\infty f^{-1}(A) \] 
+		\[ f^{-1} (\bigcup_{n = 1}^\infty A) = \bigcup_{n = 1}^\infty f^{-1}(A) \] 
+		\[ f^{-1}(A_n^c) = f^{-1}(A_n)^c \, \text{ for all } \, n \in \N \] 
+		That its, 
+		the preimage of any union of elements of $E$ is a 
+		union of preimages of elements of $E$, and hence Borel (Borel sets are 
+		a $\sigma$-algebra); likewise, the preimage of a complement 
+		will be a complement of a preimage; and it follows the same is true for intersections. 
+		Thus, $E$ is a $\sigma$-algebra which contains all the open sets, then it follows 
+		by defintion that all Borel sets are contained in $E$, that is, the preimage of a Borel set is Borel. 
+	    \end{proof} 
+
+	    \begin{prb}  \end{prb} 
+	    \begin{proof} 
+	    	Let $g$ be the continuous inverse of $f$, so $f \circ g = g \circ f = {\tt id} $. By the above, 
+		for any Borel set $B$ in the range of $g$, $g^{-1}(B)$ is Borel, since $g = f^{-1}$ we have 
+		that for any Borel set $B$, $(f^{-1})^{-1} (B) = f(B)$ is Borel, hence $f$ maps Borel sets to Borel sets. 
+	    \end{proof} 
+\end{document}
+
