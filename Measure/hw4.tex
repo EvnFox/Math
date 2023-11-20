@@ -1,0 +1,137 @@
+\documentclass{article}
+
+\usepackage{import}
+\usepackage{pdfpages}
+\usepackage{transparent}
+\usepackage{xcolor}
+\usepackage{amsmath, amsthm, amsfonts, amsthm, amssymb, mathtools, mathrsfs, enumitem}
+\usepackage{graphicx} 
+\usepackage{tikz, tikz-cd} 
+\usepackage{hyperref} 
+\usepackage[margin=1in]{geometry} 
+
+
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\tphi}{\tilde{\phi}}
+       %	\newcommand{\incfig}[2][1]{%
+%	    \def\svgwidth{#1\columnwidth}
+%	    \import{./figures/}{#2.pdf_tex}
+%}
+%\pdfsuppresswarningpagegroup=1
+
+\newtheorem{prb}{Problem}
+
+\title{MTh 535 Homework 4}
+\author{Evan Fox} 
+\date{11/19}
+
+
+\begin{document}
+\maketitle
+	    \begin{prb}  \end{prb} 
+	    \begin{proof} 
+	    	Since $f$ is a bounded measureable function on a set of finite measure, $E$, and $A 
+		\subseteq E$, $\int_A f$ exists and thus, 
+		\[ \sup\{\int_A \phi \, | \, \phi:A \to \R \text{ simple } \, , \, \phi \leq f \} = \int_A f \] 
+		Similarly, $\int_E f \cdot \chi_A$ exits and we have, 
+		\[ \sup\{\int_E \psi \, | \, \psi:E \to \R \text{ simple } \, , \, \psi \leq f \cdot \chi_A \} = \int_E f \cdot \chi_A \] 
+		Now for each such simple function $\phi:A \to \R$ with $\phi \leq f$ we may define $\tphi: E \to \R$ to be $\phi$ for all $x \in A$ and $0$ for all $x \in E \setminus A$.  We have defined a map $\phi \to \tphi$ and we have 
+		\[ \sup\{\int_E \psi \, | \, \psi:E \to \R \text{ simple } \, , \, \psi \leq f \cdot \chi_A \} = 
+		\sup\{\int_E \tphi \, | \, \phi:A \to \R \text{ simple } \, , \, \phi \leq f \} \] 
+By construction, $\tphi$ is a simple function defined on all of $E$ and clearly $\tphi \leq f \cdot \chi_A$, so the fact that the LHS of the above is greater or equal to the RHS is clear. To see the other direction, for any such $\psi:E \to \R$ simple satisfing $\psi \leq f \cdot \chi_A$, we can first restrict the domain of $\phi$ to $A$, to obtain a $\phi$ 
+such that $\phi = \psi$ on $A$ and then extending again we will have $\phi \leq \tphi \leq f \cdot \chi_A$, since $\tphi = f \cdot \chi_A$ on the complement of $A$ in $E$. Thus we also have that the RHS is less or eqaul the LHS and this implies equality. 
+All that remains is to argue 
+\[ \int_A \phi = \int_E \tphi \] 
+Since both $\phi$  and $\tphi$ are a simple functions and since $\tphi$ is an extension of $\phi$ to all of $E$ which is identically zero on $E \setminus A$. Thier canonical representations differ by a single term, of the from $0\cdot \chi_{E_0}$ where $E_0 = \{ x \in E | \tphi(x) = o \}$. Since this term has a leading coefficient $0$, it follows from the definiton of the Lesbegue integral for simple functions, that the integrals above are equal. Then the result follows just by following the equalities. 
+
+
+	    \end{proof} 
+
+
+
+	    \begin{prb}  \end{prb} 
+	    \begin{proof} 
+		    Let $A = \{ x \in E\, | \, f(x) \neq 0 \}$. By additivity over domains of integration we have 
+
+		    \[  0 = \int_E f = \int_{E \setminus A } f + \int_A f = \int_A f \] 
+		    since $f = 0$ for all $x \in E \setminus A$, the integral over this set is zero. 
+		    Now 
+		    \[ 0 = \int_A f = \sup\{ \int_A h \, |\, h \text{ simple } \, , \, 0 \leq h \leq f \} \] 
+		    Thus for all such $h$, we have 
+		    \[ 0 = \int_A h = \sum_{i = 1}^n a_i \cdot m(E_i) \]
+		    for some canonical representation of $h = \sum_{i = 1}^n a_i \chi_{E_i}$. If $m(A) > 0$, 
+		    then there would exist a simple function $h 
+		    \leq f$ defined on $A$ such that 
+		    $h = \sum_{i = 1}^n a_i \cdot \chi_{E_i}$ where $m(E_i) > 0$ and thus $\int_A h> 0$ a contradiction. 
+	    \end{proof} 
+
+	    \begin{prb}  \end{prb} 
+	    \begin{proof} 
+	      First we have a small lemma. Let $\{a_n\}_n \to a$ in $\R$ and let $\{b_n\}_n$ be any real valued sequence. 	Then 
+	      \[ \liminf \{ a_n + b_n \} = a + \liminf\{b_n\} \] 
+	      Let $\epsilon > 0$, then fix $N \in \N$ such that for all $n \geq N$ we have $a - \epsilon \leq a_n \leq a + \epsilon$. Then 
+
+	      \[ a - \epsilon + \liminf\{b_n\} =  \liminf\{a - \epsilon + b_n\} \leq \liminf\{ a_n + b_n\} \leq \liminf\{ a + \epsilon + b_n \} = a + \epsilon + \liminf\{b_n\} \]
+As desired. Note that this prove works just as well for $\limsup$. 
+	       
+\medskip 
+
+Let $E \subseteq \R$ be arbitrary. By Fatou's lemma we have 
+\[\int_E f \leq \liminf_{n \to \infty} \int_E f_n \] 
+Using the above lemma we get 
+\[ \limsup_{n \to \infty} \left( \int_E f_n \right) = \limsup_{n \to \infty } \left( \int_\R f_n - \int_{\R \setminus E}f_n \right) = 
+\int_\R f + \limsup_{n \to \infty} \left( - \int_{\R \setminus E} f_n \right)\] 
+\[ = \int_\R f - \liminf_{n \to \infty } \left( \int_{\R \setminus E} f_n \right) \leq \int_E f \] 
+where the last inequality follows from Fatou's lemma and linearity of integration.  
+Then since we have 
+\[ \limsup_{n \to \infty} \int_E f_n \leq \liminf_{n \to \infty} \int_E f_n  \] 
+the two are equal (the other inequality is always true) and this implies convegence of the sequene $\int_E f_n$. 
+Thus 
+\[ \lim_{n \to \infty } \int_E f_n = \int_E f \] 
+
+	    \end{proof} 
+
+
+	    \begin{prb}  \end{prb} 
+	    \begin{proof} 
+	  By Fatou's lemma we have that 
+	  
+	\[ \int_E f \leq \liminf_{n \to \infty} \int_E f_n \] 
+	And since for all $n \in \N$ we have $f_n \leq f$, by monotinicity, it follows 
+	$\int_E f_n \leq \int_E f$, thus 
+	\[ \limsup_{n \to \infty} \int_E f_n \leq \int_E f \] 
+	and just as above we get that  
+	\[ \limsup_{n \to \infty} \int_E f_n \leq \liminf_{n \to \infty} \int_E f_n \] 
+	which implies the result, as in the previous problem.  
+\end{proof} 
+
+\begin{prb}  \end{prb} 
+\begin{proof} 
+	Given $h$, boundend, measureable, function on $C$ with finite support which satisfies $0 \leq h \leq f$, then 
+	automatically $h$ is a bounded, measureable, finite support function on $E$ satifying $0 \leq h \leq f \cdot \chi_C$. 
+	Conversly, given a bounded, measureable function $h:A \to \R^+$ with finite support $A \subset E$ satisfying $0 \leq h \leq f \cdot \chi_C$ by restricting the domain of $h$ to $A \cap C$ and setting $h = 0$ for all $C$ if $A \cap C = \varnothing$. We obtain a bdd., measu., finite spp function on $C$ such that $0 \leq h \leq f$.  Then clearly 
+
+	\[ \sup \{ \int_C h\, | \, h \text{ bdd., measu., finite spp. } \, , \, 0 \leq h \leq f \} 
+	= \sup \{ \int_E h \, | \, h \text{ bdd., measu., sinite spp.} \, , \, 0 \leq h \leq f\cdot \chi_C \} \]
+
+Thus by definition, $\int_C f = \int_E f \cdot \chi_C $. 
+\end{proof} 
+
+
+\begin{prb}  \end{prb} 
+\begin{proof} 
+	Fix a sequence $y_n \to 0^+$ and define $f_n(x) = f(x, y_n)$. 
+	Then $f_n(x)$ is a measureable function for each $n$. Since for each fixed value of $x$ we have 
+	$\lim_{y \to 0^+} f(x, y)= f(x)$, we have $f_n(x) \to f(x)$ pointwise. 
+	Further, $|f_n(x)| \leq g(x)$ for all $n$, by assumption. Then by the Lesbeque dominated convergence theorem we have that 
+	\[ \lim_{y \to 0^+} \int_0^1 f(x, y)  = \lim_{n \to \infty} \int_0^1 f_n(x) = \lim_{n \to \infty} \int_0^1 f(x) \] 
+\end{proof} 
+
+\begin{prb}  \end{prb} 
+\begin{proof} 
+ 	
+\end{proof} 
+\end{document}
