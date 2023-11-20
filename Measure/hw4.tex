@@ -54,7 +54,7 @@ Since both $\phi$  and $\tphi$ are a simple functions and since $\tphi$ is an ex
 
 	    \begin{prb}  \end{prb} 
 	    \begin{proof} 
-		    Let $A = \{ x \in E\, | \, f(x) \neq 0 \}$. By additivity over domains of integration we have 
+		    Let $A = \{ x \in E\, | \, f(x) \neq 0 \}$. We show $m(A) = 0$. By additivity over domains of integration we have 
 
 		    \[  0 = \int_E f = \int_{E \setminus A } f + \int_A f = \int_A f \] 
 		    since $f = 0$ for all $x \in E \setminus A$, the integral over this set is zero. 
@@ -65,27 +65,27 @@ Since both $\phi$  and $\tphi$ are a simple functions and since $\tphi$ is an ex
 		    for some canonical representation of $h = \sum_{i = 1}^n a_i \chi_{E_i}$. If $m(A) > 0$, 
 		    then there would exist a simple function $h 
 		    \leq f$ defined on $A$ such that 
-		    $h = \sum_{i = 1}^n a_i \cdot \chi_{E_i}$ where $m(E_i) > 0$ and thus $\int_A h> 0$ a contradiction. 
+		    $h = \sum_{i = 1}^n a_i \cdot \chi_{E_i}$ where $a_i \neq 0$ for all $i$ and  $m(E_i) > 0$ for some $i$, thus $\int_A h> 0$ which implies $\int_A f > 0$ a contradiction. 
 	    \end{proof} 
 
 	    \begin{prb}  \end{prb} 
 	    \begin{proof} 
 	      First we have a small lemma. Let $\{a_n\}_n \to a$ in $\R$ and let $\{b_n\}_n$ be any real valued sequence. 	Then 
 	      \[ \liminf \{ a_n + b_n \} = a + \liminf\{b_n\} \] 
-	      Let $\epsilon > 0$, then fix $N \in \N$ such that for all $n \geq N$ we have $a - \epsilon \leq a_n \leq a + \epsilon$. Then 
+	      Let $\epsilon > 0$, then fix $N \in \N$ such that for all $n \geq N$ we have $a - \epsilon \leq a_n \leq a + \epsilon$. Then for $n \geq N$, we have  
 
 	      \[ a - \epsilon + \liminf\{b_n\} =  \liminf\{a - \epsilon + b_n\} \leq \liminf\{ a_n + b_n\} \leq \liminf\{ a + \epsilon + b_n \} = a + \epsilon + \liminf\{b_n\} \]
-As desired. Note that this prove works just as well for $\limsup$. 
+Letting $\epsilon$ go to zero proves the result. Note that this prove works just as well for $\limsup$. 
 	       
 \medskip 
 
-Let $E \subseteq \R$ be arbitrary. By Fatou's lemma we have 
+\noindent Let $E \subseteq \R$ be arbitrary. By Fatou's lemma we have 
 \[\int_E f \leq \liminf_{n \to \infty} \int_E f_n \] 
 Using the above lemma we get 
 \[ \limsup_{n \to \infty} \left( \int_E f_n \right) = \limsup_{n \to \infty } \left( \int_\R f_n - \int_{\R \setminus E}f_n \right) = 
 \int_\R f + \limsup_{n \to \infty} \left( - \int_{\R \setminus E} f_n \right)\] 
 \[ = \int_\R f - \liminf_{n \to \infty } \left( \int_{\R \setminus E} f_n \right) \leq \int_E f \] 
-where the last inequality follows from Fatou's lemma and linearity of integration.  
+where the last inequality follows from Fatou's lemma applied to the integral of $f$ over $\R \setminus E$ and linearity of integration.  
 Then since we have 
 \[ \limsup_{n \to \infty} \int_E f_n \leq \liminf_{n \to \infty} \int_E f_n  \] 
 the two are equal (the other inequality is always true) and this implies convegence of the sequene $\int_E f_n$. 
@@ -110,14 +110,22 @@ Thus
 
 \begin{prb}  \end{prb} 
 \begin{proof} 
+	First we prove it for non-negative functions on sets of arbitrary measure. Let $f$ be a non-negative measureable function of $E$. Let $C \subseteq E$ be measureable. 
 	Given $h$, boundend, measureable, function on $C$ with finite support which satisfies $0 \leq h \leq f$, then 
 	automatically $h$ is a bounded, measureable, finite support function on $E$ satifying $0 \leq h \leq f \cdot \chi_C$. 
-	Conversly, given a bounded, measureable function $h:A \to \R^+$ with finite support $A \subset E$ satisfying $0 \leq h \leq f \cdot \chi_C$ by restricting the domain of $h$ to $A \cap C$ and setting $h = 0$ for all $C$ if $A \cap C = \varnothing$. We obtain a bdd., measu., finite spp function on $C$ such that $0 \leq h \leq f$.  Then clearly 
+	Conversly, given a bounded, measureable function $h:A \to \R^+$ with finite support $A \subset E$ satisfying $0 \leq h \leq f \cdot \chi_C$ by restricting the domain of $h$ to $A \cap C$ and setting $h = 0$ for all $C \setminus( A \cap C) $. We obtain a bdd., measu., finite spp function on $C$ such that $0 \leq h \leq f$.  Then it clearly follows 
 
 	\[ \sup \{ \int_C h\, | \, h \text{ bdd., measu., finite spp. } \, , \, 0 \leq h \leq f \} 
 	= \sup \{ \int_E h \, | \, h \text{ bdd., measu., sinite spp.} \, , \, 0 \leq h \leq f\cdot \chi_C \} \]
 
 Thus by definition, $\int_C f = \int_E f \cdot \chi_C $. 
+
+Now, for the general case let $f$ be integrable, then 
+\begin{equation}
+	\int_A f = \int_A f^+ - \int_A f^- = \int_E f^+ \cdot \chi_A - \int_E f^- \cdot \chi_A = \int_E f \cdot \chi_A 
+\end{equation}
+where the first and last equalities are by the defintion of integration and the middle inequality follows since $f^{+}$ and $f^{-}$ 
+are both non-negative measureable functions, we may apply the case proven above. 
 \end{proof} 
 
 
@@ -127,11 +135,33 @@ Thus by definition, $\int_C f = \int_E f \cdot \chi_C $.
 	Then $f_n(x)$ is a measureable function for each $n$. Since for each fixed value of $x$ we have 
 	$\lim_{y \to 0^+} f(x, y)= f(x)$, we have $f_n(x) \to f(x)$ pointwise. 
 	Further, $|f_n(x)| \leq g(x)$ for all $n$, by assumption. Then by the Lesbeque dominated convergence theorem we have that 
-	\[ \lim_{y \to 0^+} \int_0^1 f(x, y)  = \lim_{n \to \infty} \int_0^1 f_n(x) = \lim_{n \to \infty} \int_0^1 f(x) \] 
+	\[ \lim_{y \to 0^+} \int_0^1 f(x, y)  = \lim_{n \to \infty} \int_0^1 f_n(x) =  \int_0^1 f(x) \] 
 \end{proof} 
 
 \begin{prb}  \end{prb} 
 \begin{proof} 
- 	
+ First note that by the definition of the derivative, we have 
+\begin{equation}
+	\frac{d}{dy} \left( \int_{[0, 1]} f(x,y) dx\right) = \lim_{h \to 0} \left( \frac{\int_{[0, 1]} f(x, y) dx - \int_{[0,1]} f(x, y + h)dx } { h} \right) 
+\end{equation}
+then by linearity we have 
+\begin{equation}
+	\frac{d}{dy} \left( \int_{[0, 1]} f(x,y) dx\right) = \lim_{h \to 0} \left( \int_{[0, 1]} \frac{f(x, y) - f(x, y + h) }{h} dx\right) 
+\end{equation}
+Now for each $y \in Q$, we have that $f(x, y)$ is a measureable function of $x$, thus so is $\frac{f(x, y) - f(x, y+ h)}{h}$. Then  
+\[ \lim_{h \to 0 } \frac{f(x, y) - f(x, y + h)}{h} = \frac{\partial f} {\partial y}(x, y) \] 
+for each $(x, y) \in Q$ so we have pointwise convergence. All that remains is to exchange the limit and the integral sign. 
+By assumption we have 
+\begin{equation}
+	\left| \frac{\partial f} {\partial y} (x, y) \right| \leq g(x, y) \, \, \forall (x, y) \in Q
+\end{equation}
+Fix $y \in [0, 1]$. This inequality can easily be made strict (i.e. redefine $G(x) = g(x, y) + 1$). Then if we fix a sequence $\{h_n\} \to 0 $ there exists an $N \in \N$ such that 
+\[|F_n(x) |= \left|\frac{f(x, y) - f(x, y + h_n)}{ h_n}\right| \leq G(x) \] 
+for all $n \geq N$. Then by starting the sequencce $\{F_n\}_{n = N}^\infty$ at $N$ we get a sequence of measureable functions in $x$ which are uniformly bounded by $G(x)$ which are converging point wise
+to the partial derivative of $f$ w.r.t $y$. By Lesbeque Dominated convergence we have,  
+\begin{equation}	
+	\lim_{h \to 0} \left( \int_{[0, 1]} \frac{f(x, y) - f(x, y + h) }{h} dx\right) = \lim_{n \to \infty} \left( \int_{[0, 1]} F_n(x) dx \right) = \int_{[0, 1]} \frac{\partial f}{\partial y} (x, y) dx 
+\end{equation}
+Since $y \in [0, 1]$ was arbitrary, the above holds for all $y \in [0, 1]$. 
 \end{proof} 
 \end{document}
